@@ -110,8 +110,7 @@ namespace Enterprise
             public static class Dashboard
             {
                 public static LocalText ContentDescription =
-                    "a sample with random data (from free <em><a href = \"https://almsaeedstudio.com/\" target= \"_blank\">" +
-                    "AdminLTE theme</a></em>)";
+                    "let's get started";
             }
 
             public static class BasicProgressDialog
@@ -161,7 +160,7 @@ namespace Enterprise
 
             public static class Layout
             {
-                public static LocalText FooterCopyright = "Copyright (c) 2015.";
+                public static LocalText FooterCopyright = " Copyright 2017 Neurral Systems.";
                 public static LocalText FooterInfo = "Serenity Platform";
                 public static LocalText FooterRights = "All rights reserved.";
                 public static LocalText GeneralSettings = "General Settings";
