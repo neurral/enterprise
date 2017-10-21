@@ -1571,7 +1571,6 @@
     <Content Include="Modules\Common\Reporting\ReportDialog.Template.html" />
     <Content Include="Modules\Membership\Account\ForgotPassword\AccountForgotPassword.AdminLTE.cshtml" />
     <Content Include="Modules\Membership\Account\ResetPassword\AccountResetPassword.AdminLTE.cshtml" />
-    <Content Include="Modules\Membership\Account\AccountLogin.AdminLTE.cshtml" />
     <Content Include="Scripts\jquery.event.drag.live.js" />
     <Content Include="Scripts\jquery.event.drag.live.min.js" />
     <Content Include="Scripts\jquery.icheck.js" />
@@ -2728,10 +2727,7 @@
     </Message>
     <Exec Command="&quot;$(TscToolPath.Replace('build\\..\tools\', 'tools\'))\tsc&quot; -p ./tsconfig.json" ContinueOnError="true" />
   </Target>
-  <UsingTask
-    TaskName="TransformXml"
-    AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
-
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
   <Target Name="BeforeBuild">
     <TransformXml Source="Web.Base.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
   </Target>

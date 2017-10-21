@@ -8263,3 +8263,43 @@ a.navbar-brand:hover b {
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
   border: none;
 }
+/* default screen, non-retina
+html {
+	/* These two are for sticky footer
+	position: relative;
+	min-height: 100%;
+
+	background: url('../../assets/images/bg/plane970.jpg') no-repeat top center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale')";
+}
+
+/*
+@media only screen and (max-width: 320px) {
+   // Small screen, non-retina 
+	html { background-image: url("../../assets/images/bg/plane290.jpg"); }
+}
+@media only screen and (min-width: 321px) and (max-width: 538px) {
+	/* Medium screen, non-retina 
+	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
+}
+@media
+	only screen and (min-resolution: 2dppx) and (max-width: 320px) {
+	/* Small screen, retina
+	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
+}
+@media
+only screen and (min-resolution: 2dppx) and (min-width: 321px) and (max-width: 538px) {
+	 /*Medium screen, retina
+	html { background-image: url("../../assets/images/bg/plane970.jpg"); }
+}
+@media
+	only screen and (min-resolution: 2dppx) and (min-width: 539px) {
+	/* Large screen, retina
+	html { background-image: url("../../assets/images/bg/plane970@2x.jpg"); }
+}*/
