@@ -7,10 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise.Web", "Enterpris
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Base|Any CPU = Base|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E298DC33-D240-4585-AC47-775575246780}.Base|Any CPU.ActiveCfg = Base|Any CPU
+		{E298DC33-D240-4585-AC47-775575246780}.Base|Any CPU.Build.0 = Base|Any CPU
 		{E298DC33-D240-4585-AC47-775575246780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E298DC33-D240-4585-AC47-775575246780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E298DC33-D240-4585-AC47-775575246780}.Release|Any CPU.ActiveCfg = Release|Any CPU
