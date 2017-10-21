@@ -4,6 +4,7 @@
     using FluentMigrator.Runner.Initialization;
     using Serenity.Data;
     using System;
+    using System.Web.Configuration;
     using System.Data.SqlClient;
     using System.IO;
     using System.Linq;
@@ -16,6 +17,7 @@
             "Default"
             , "Northwind"
         };
+        private static string env = WebConfigurationManager.AppSettings["Environment"];
 
         /// <summary>
         /// Automatically creates a database for the template if it doesn't already exists.
@@ -140,6 +142,7 @@
         }
 
         public static bool SkippedMigrations { get; private set; }
+        public static String SkippedDatabase { get; private set; }
 
         private static void RunMigrations(string databaseKey)
         {
@@ -153,7 +156,7 @@
             // safety check to ensure that we are not modifying an arbitrary database.
             // remove these lines if you want Enterprise migrations to run on your DB.
             if (!isOracle && cs.ConnectionString.IndexOf(typeof(SiteInitialization).Namespace +
-                    @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
+                    @"_" + databaseKey + "_" + env, StringComparison.OrdinalIgnoreCase) < 0)
             {
                 SkippedMigrations = true;
                 return;
