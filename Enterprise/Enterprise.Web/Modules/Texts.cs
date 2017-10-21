@@ -93,6 +93,7 @@ namespace Enterprise
         {
             public static LocalText LogoutLink = "Logout";
             public static LocalText SiteTitle = "Enterprise";
+            public static LocalText OrgTitle = "Neurral";
         }
 
         public static class Site

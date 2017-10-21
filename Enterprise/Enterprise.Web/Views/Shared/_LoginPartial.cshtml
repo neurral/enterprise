@@ -1,0 +1,42 @@
+﻿
+@{ 
+    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+    var userImage = VirtualPathUtility.ToAbsolute(
+        (user == null || string.IsNullOrEmpty(user.UserImage)) ? "~/Content/adminlte/img/avatar04.png" :
+        "~/upload/" + user.UserImage);
+}
+
+<div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="@userImage" class="user-image" alt="User Image">
+                <span class="hidden-xs">@Serenity.Authorization.Username</span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                    <img src="@userImage" class="img-circle" alt="User Image">
+
+                    <p>
+                        @(user != null ? user.DisplayName : "")
+                    </p>
+                </li>
+
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    <div class="pull-left">
+                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat"><i class="fa fa-lock fa-fw"></i> @Texts.Forms.Membership.ChangePassword.FormTitle</a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="~/Account/Signout" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> @LocalText.Get("Navigation.LogoutLink")</a>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+        </li>
+    </ul>
+</div>

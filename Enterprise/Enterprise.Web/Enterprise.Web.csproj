@@ -1765,6 +1765,7 @@
     <Content Include="Scripts\site\texts\site.texts.de.json" />
     <Content Include="tools\Web.config" />
     <Content Include="Views\Errors\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
