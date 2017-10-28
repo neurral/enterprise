@@ -28,3 +28,24 @@
   font-weight: 400;
   src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/OpenSansItalic.woff) format('woff');
 }
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSansCondensed'), url(../fonts/OpenSansCondensedLight.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSansCondensed-Bold'), url(../fonts/OpenSansCondensedBold.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Condensed Italic'), local('OpenSansCondensed-Italic'), url(../fonts/OpenSansCondensedLightItalic.ttf) format('ttf');
+}
