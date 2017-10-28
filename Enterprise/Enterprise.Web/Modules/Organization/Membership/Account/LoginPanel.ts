@@ -20,7 +20,7 @@
                 animation: "random",
                 slides: []
             };
-            for (var i = 1; i <= 9; i++) {
+            for (var i = 1; i <= 10; i++) {
                 vegasOptions.slides.push({
                     src: Q.resolveUrl('~/Content/site/slides/slide'+i+'.jpg')
                 });

@@ -21,9 +21,9 @@ namespace Enterprise.Membership.Pages
         public ActionResult SignUp()
         {
             if (UseAdminLTELoginBox)
-                return View(MVC.Views.Membership.Account.SignUp.AccountSignUp_AdminLTE);
+                return View(MVC.Views.Organization.Membership.Account.SignUp.AccountSignUp_AdminLTE);
             else
-                return View(MVC.Views.Membership.Account.SignUp.AccountSignUp);
+                return View(MVC.Views.Organization.Membership.Account.SignUp.AccountSignUp);
         }
 
         [HttpPost, JsonFilter]
@@ -83,7 +83,7 @@ namespace Enterprise.Membership.Pages
 
                     var emailSubject = Texts.Forms.Membership.SignUp.ActivateEmailSubject.ToString();
                     var emailBody = TemplateHelper.RenderTemplate(
-                        MVC.Views.Membership.Account.SignUp.AccountActivateEmail, emailModel);
+                        MVC.Views.Organization.Membership.Account.SignUp.AccountActivateEmail, emailModel);
 
                     Common.EmailHelper.Send(emailSubject, emailBody, email);
 

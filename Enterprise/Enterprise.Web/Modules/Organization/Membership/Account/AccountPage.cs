@@ -19,9 +19,9 @@ namespace Enterprise.Membership.Pages
             ViewData["HideLeftNavigation"] = true;
 
             if (UseAdminLTELoginBox)
-                return View(MVC.Views.Membership.Account.AccountLogin_AdminLTE);
+                return View(MVC.Views.Organization.Membership.Account.AccountLogin_AdminLTE);
             else
-                return View(MVC.Views.Membership.Account.AccountLogin);
+                return View(MVC.Views.Organization.Membership.Account.AccountLogin);
         }
 
         [HttpGet]

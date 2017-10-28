@@ -69,13 +69,13 @@
         new Enterprise.Membership.LoginPanel($('#LoginPanel')).init();
        
         @if (ViewData["Activated"] != null)
-{
-    <text>
-        $(function () {
-            $('#Enterprise_Membership_LoginPanel0_Username').val(@Html.Raw(Serenity.JSON.Stringify(ViewData["Activated"])));
-            $('#Enterprise_Membership_LoginPanel0_Password').focus();
-        });
-        </text>
-}
+        {
+            <text>
+                $(function () {
+                    $('#Enterprise_Membership_LoginPanel0_Username').val(@Html.Raw(Serenity.JSON.Stringify(ViewData["Activated"])));
+                    $('#Enterprise_Membership_LoginPanel0_Password').focus();
+                });
+                </text>
+        }
     });
 </script>

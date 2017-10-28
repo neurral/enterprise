@@ -17,7 +17,7 @@ namespace Enterprise.Membership.Pages
         [HttpGet, Authorize]
         public ActionResult ChangePassword()
         {
-            return View(MVC.Views.Membership.Account.ChangePassword.AccountChangePassword);
+            return View(MVC.Views.Organization.Membership.Account.ChangePassword.AccountChangePassword);
         }
 
         [HttpPost, JsonFilter, ServiceAuthorize]

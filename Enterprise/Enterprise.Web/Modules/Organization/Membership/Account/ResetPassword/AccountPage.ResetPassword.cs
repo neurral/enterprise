@@ -43,9 +43,9 @@ namespace Enterprise.Membership.Pages
             }
 
             if (UseAdminLTELoginBox)
-                return View(MVC.Views.Membership.Account.ResetPassword.AccountResetPassword_AdminLTE, new ResetPasswordModel { Token = t });
+                return View(MVC.Views.Organization.Membership.Account.ResetPassword.AccountResetPassword_AdminLTE, new ResetPasswordModel { Token = t });
             else
-                return View(MVC.Views.Membership.Account.ResetPassword.AccountResetPassword, new ResetPasswordModel { Token = t });
+                return View(MVC.Views.Organization.Membership.Account.ResetPassword.AccountResetPassword, new ResetPasswordModel { Token = t });
 
         }
 
