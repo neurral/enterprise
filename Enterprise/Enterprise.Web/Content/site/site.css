@@ -1087,7 +1087,7 @@ a:focus {
   border-bottom-left-radius: 4px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
-  height: 175px;
+  height: 150px;
   padding: 10px;
   text-align: center;
 }
@@ -1103,17 +1103,18 @@ a:focus {
   z-index: 5;
   color: #fff;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 17px;
+  font-size: 1.5em;
   margin-top: 10px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p > small {
   display: block;
-  font-size: 12px;
+  font-size: 0.9em;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
-  padding: 15px;
+  padding: 8px;
   border-bottom: 1px solid #f4f4f4;
   border-top: 1px solid #dddddd;
+  background-color: #f9f9f9;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body:before,
 .navbar-nav > .user-menu > .dropdown-menu > .user-body:after {
@@ -1124,17 +1125,14 @@ a:focus {
   clear: both;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body a {
-  color: #444 !important;
-}
-@media (max-width: 991px) {
-  .navbar-nav > .user-menu > .dropdown-menu > .user-body a {
-    background: #fff !important;
-    color: #444 !important;
-  }
+  /*@media (max-width: @screen-sm-max) {
+          background: #fff !important;
+          color: #444 !important;
+        }*/
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer {
   background-color: #f9f9f9;
-  padding: 10px;
+  padding: 8px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer:before,
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer:after {
@@ -1158,14 +1156,13 @@ a:focus {
   height: 25px;
   border-radius: 50%;
   margin-right: 10px;
-  margin-top: -2px;
+  margin-top: -6px;
 }
 @media (max-width: 767px) {
   .navbar-nav > .user-menu .user-image {
     float: none;
     margin-right: 0;
-    margin-top: -8px;
-    line-height: 10px;
+    margin-top: -6px;
   }
 }
 /* Add fade animation to dropdown menus by appending
@@ -8247,9 +8244,10 @@ section.content > .s-DataGrid {
 .inline-action.add-child-unit {
   background-image: url(../serenity/images/node-insert-next.png);
 }
-.main-header .navbar,
+.main-header .navbar:hover,
 .main-header .dropdown-menu {
   box-shadow: 0px 7px 10px #aaa;
+  transition: box-shadow ease-in-out 0.3s;
 }
 a.navbar-brand {
   font-variant: small-caps;

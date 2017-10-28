@@ -189,7 +189,7 @@
     }
     // Header menu
     > li.user-header {
-      height: 175px;
+      height: 150px;
       padding: 10px;
       text-align: center;
       // User image
@@ -205,35 +205,36 @@
         z-index: 5;
         color: #fff;
         color: rgba(255, 255, 255, 0.8);
-        font-size: 17px;
+        font-size: 1.5em;
         //text-shadow: 2px 2px 3px #333333;
         margin-top: 10px;
         > small {
           display: block;
-          font-size: 12px;
+          font-size: 0.9em;
         }
       }
     }
 
     // Menu Body
     > .user-body {
-      padding: 15px;
+      padding: 8px;
       border-bottom: 1px solid #f4f4f4;
       border-top: 1px solid #dddddd;
+      background-color: #f9f9f9;
       .clearfix();
       a {
-        color: #444 !important;
-        @media (max-width: @screen-sm-max) {
+        //color: #444 !important;
+        /*@media (max-width: @screen-sm-max) {
           background: #fff !important;
           color: #444 !important;
-        }
+        }*/
       }
     }
 
     // Menu Footer
     > .user-footer {
       background-color: #f9f9f9;
-      padding: 10px;
+      padding: 8px;
       .clearfix();
       .btn-default {
         color: #666666;
@@ -251,12 +252,12 @@
     height: 25px;
     border-radius: 50%;
     margin-right: 10px;
-    margin-top: -2px;
+    margin-top: -6px;
     @media (max-width: @screen-xs-max) {
       float: none;
       margin-right: 0;
-      margin-top: -8px;
-      line-height: 10px;
+      margin-top: -6px;
+      //line-height: 10px;
     }
   }
 }

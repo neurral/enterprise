@@ -29,6 +29,10 @@ namespace Enterprise
         {
             public static class Membership
             {
+                public static class EditProfile {
+                    public static LocalText EditButton = "Edit Profile";
+                }
+
                 public static class ChangePassword
                 {
                     public static LocalText FormTitle = "Change Password";
