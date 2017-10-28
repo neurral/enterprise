@@ -54,7 +54,7 @@ body {
   -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-  margin-left: 230px;
+  margin-left: 330px;
   z-index: 820;
 }
 .layout-top-nav .content-wrapper,
@@ -80,16 +80,16 @@ body {
   .sidebar-open .content-wrapper,
   .sidebar-open .right-side,
   .sidebar-open .main-footer {
-    -webkit-transform: translate(230px, 0);
-    -ms-transform: translate(230px, 0);
-    -o-transform: translate(230px, 0);
-    transform: translate(230px, 0);
+    -webkit-transform: translate(330px, 0);
+    -ms-transform: translate(330px, 0);
+    -o-transform: translate(330px, 0);
+    transform: translate(330px, 0);
   }
 }
 .content-wrapper,
 .right-side {
   min-height: 100%;
-  background-color: #ecf0f5;
+  background-color: #f1e5e5;
   z-index: 800;
 }
 .main-footer {
@@ -193,7 +193,7 @@ a:focus {
   -o-transition: margin-left 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out;
   margin-bottom: 0;
-  margin-left: 230px;
+  margin-left: 330px;
   border: none;
   min-height: 50px;
   border-radius: 0;
@@ -287,7 +287,7 @@ a:focus {
   font-size: 20px;
   line-height: 50px;
   text-align: center;
-  width: 230px;
+  width: 330px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
   font-weight: 300;
@@ -413,7 +413,7 @@ a:focus {
   left: 0;
   padding-top: 50px;
   min-height: 100%;
-  width: 230px;
+  width: 330px;
   z-index: 810;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -429,19 +429,19 @@ a:focus {
 @media (max-width: 767px) {
   .main-sidebar,
   .left-side {
-    -webkit-transform: translate(-230px, 0);
-    -ms-transform: translate(-230px, 0);
-    -o-transform: translate(-230px, 0);
-    transform: translate(-230px, 0);
+    -webkit-transform: translate(-330px, 0);
+    -ms-transform: translate(-330px, 0);
+    -o-transform: translate(-330px, 0);
+    transform: translate(-330px, 0);
   }
 }
 @media (min-width: 768px) {
   .sidebar-collapse .main-sidebar,
   .sidebar-collapse .left-side {
-    -webkit-transform: translate(-230px, 0);
-    -ms-transform: translate(-230px, 0);
-    -o-transform: translate(-230px, 0);
-    transform: translate(-230px, 0);
+    -webkit-transform: translate(-330px, 0);
+    -ms-transform: translate(-330px, 0);
+    -o-transform: translate(-330px, 0);
+    transform: translate(-330px, 0);
   }
 }
 @media (max-width: 767px) {
@@ -620,7 +620,7 @@ a:focus {
   .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {
     display: block!important;
     position: absolute;
-    width: 180px;
+    width: 280px;
     left: 50px;
   }
   .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > a > span {
@@ -701,8 +701,8 @@ a:focus {
 .control-sidebar-bg,
 .control-sidebar {
   top: 0;
-  right: -230px;
-  width: 230px;
+  right: -330px;
+  width: 330px;
   -webkit-transition: right 0.3s ease-in-out;
   -o-transition: right 0.3s ease-in-out;
   transition: right 0.3s ease-in-out;
@@ -732,7 +732,7 @@ a:focus {
   .control-sidebar-open .content-wrapper,
   .control-sidebar-open .right-side,
   .control-sidebar-open .main-footer {
-    margin-right: 230px;
+    margin-right: 330px;
   }
 }
 .nav-tabs.control-sidebar-tabs > li:first-of-type > a,
@@ -7426,12 +7426,13 @@ section.content > .s-DataGrid {
 }
 /*Default styles for login/register pages*/
 .page-content .s-LoginPanel {
-  padding: 30px 20px;
-  width: 550px;
-  margin: 90px auto auto auto;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  font-weight: 700;
+  padding: 28px 24px;
+  margin: 24px 24px auto auto;
+  width: 30%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  bottom: 10px;
+  box-shadow: 0px 0px 5px #000;
 }
 .page-content .s-LoginPanel .caption {
   width: 180px;
@@ -7442,25 +7443,27 @@ section.content > .s-DataGrid {
   height: 128px;
   background: transparent url(images/serenity-logo-w-128.png) no-repeat center center;
 }
-.page-content .s-LoginPanel h3 {
-  font-size: 18px;
-  font-weight: 700;
+.page-content .s-LoginPanel .login-title {
+  font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
   margin: 16px 0 24px;
-  color: #f5f27e;
   text-align: center;
-  text-shadow: 0 1px 1px #333;
+  font-variant: small-caps;
+  font-weight: 100;
+}
+.page-content .s-LoginPanel .login-title > b {
+  font-variant: normal;
+  font-weight: 700;
 }
 .page-content .s-LoginPanel .buttons {
-  text-align: right;
-  padding: 8px 0 4px 0;
-  margin-right: 28px;
+  padding: 8px 8px;
 }
 .page-content .s-LoginPanel .buttons .btn {
   padding: 8px 24px;
   font-weight: 700;
 }
 .page-content .s-LoginPanel .caption {
-  color: #ececec;
+  display: none;
   font-weight: 700;
   text-shadow: 0 1px 1px #333;
 }
@@ -7468,18 +7471,15 @@ section.content > .s-DataGrid {
   padding-right: 28px;
 }
 .page-content .s-LoginPanel .actions a {
-  color: #ececec;
   padding: 2px 2px 2px 2px;
   margin-top: 5px;
   display: block;
   float: right;
   clear: both;
   border-bottom: 1px dashed #999;
-  text-shadow: 0 1px 1px #333;
 }
-.page-content .s-LoginPanel .actions a i {
-  font-weight: 700;
-  margin-right: 4px;
+.page-content .s-LoginPanel .actions a:hover {
+  color: white;
 }
 .page-content .s-LoginPanel .s-Form label.error {
   background-image: url(../serenity/images/cross.png);
@@ -7502,7 +7502,7 @@ section.content > .s-DataGrid {
   color: #fff;
 }
 .page-content .s-LoginPanel a {
-  color: aqua;
+  color: cornflowerblue;
 }
 .page-content .s-LoginPanel .s-PropertyGrid .categories {
   height: auto;
@@ -7514,7 +7514,7 @@ section.content > .s-DataGrid {
   .page-content .s-LoginPanel {
     padding: 16px 4px 16px 4px;
     position: absolute;
-    margin: 0;
+    margin: auto;
     width: auto;
     top: 10px;
     left: 10px;
@@ -8253,6 +8253,7 @@ section.content > .s-DataGrid {
 }
 a.navbar-brand {
   font-variant: small-caps;
+  padding: 10px 10px;
 }
 a.navbar-brand:hover b {
   text-shadow: 0 1px 2px #000;
@@ -8263,43 +8264,66 @@ a.navbar-brand:hover b {
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
   border: none;
 }
-/* default screen, non-retina
-html {
-	/* These two are for sticky footer
-	position: relative;
-	min-height: 100%;
-
-	background: url('../../assets/images/bg/plane970.jpg') no-repeat top center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover; 
-
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale');
-	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale')";
+.vx:empty {
+  display: none;
 }
-
-/*
-@media only screen and (max-width: 320px) {
-   // Small screen, non-retina 
-	html { background-image: url("../../assets/images/bg/plane290.jpg"); }
+@media (max-width: 767px) {
+  .control-sidebar-open {
+    width: 80%;
+  }
 }
-@media only screen and (min-width: 321px) and (max-width: 538px) {
-	/* Medium screen, non-retina 
-	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
+.treeview a:hover,
+.treeview-menu {
+  box-shadow: 2px 1px 3px #000;
 }
-@media
-	only screen and (min-resolution: 2dppx) and (max-width: 320px) {
-	/* Small screen, retina
-	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
+.select2-container {
+  position: relative;
+  /*z-index: 2;*/
+  /*float: left;*/
+  width: 100%;
+  margin-bottom: 0;
+  display: table;
+  table-layout: fixed;
 }
-@media
-only screen and (min-resolution: 2dppx) and (min-width: 321px) and (max-width: 538px) {
-	 /*Medium screen, retina
-	html { background-image: url("../../assets/images/bg/plane970.jpg"); }
+header.main-header .logo,
+header.main-header .sidebar-toggle,
+header.main-header .navbar,
+header.main-header .navbar-brand,
+header.main-header #context-sidebar-toggle,
+header.main-header a.dropdown-toggle,
+header.main-header .navbar-custom-menu {
+  min-height: 40px !important;
+  height: 40px;
+  line-height: 1em;
 }
-@media
-	only screen and (min-resolution: 2dppx) and (min-width: 539px) {
-	/* Large screen, retina
-	html { background-image: url("../../assets/images/bg/plane970@2x.jpg"); }
-}*/
+header.main-header .user-image {
+  margin-top: -6px;
+}
+header.main-header #context-sidebar-toggle,
+header.main-header .sidebar-toggle {
+  font-size: 1.9em;
+  line-height: 1.9em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+/* Make the header bar 40px only (para maliit sa mobile)*/
+.mobile-device header.main-header .navbar-brand,
+.mobile-device header.main-header .sidebar-toggle,
+.mobile-device header.main-header .navbar,
+.mobile-device header.main-header #context-sidebar-toggle,
+.mobile-device header.main-header a.dropdown-toggle,
+.mobile-device header.main-header .navbar-custom-menu {
+  min-height: 40px !important;
+  height: 40px;
+  line-height: 1em;
+}
+.mobile-device header.main-header .navbar-brand > b {
+  display: none;
+}
+.mobile-device header.main-header #context-sidebar-toggle,
+.mobile-device header.main-header .sidebar-toggle {
+  font-size: 1.9em;
+  line-height: 1.9em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

@@ -12,9 +12,9 @@
 
 <script id="Template_Membership_LoginPanel" type="text/template">
     <div class="flex-layout">       
-        <h3 class="login-title text-blue">@Texts.Forms.Membership.Login.FormTitle</h3>
+        <h3 class="login-title">@LocalText.Get("Navigation.OrgTitle") | <b>@LocalText.Get("Navigation.SiteTitle")</b></h3>
         <form id="~_Form" action="">
-            <div class="s-Form form-group has-feedback">
+            <div class="s-Form">
                 <div class="fieldset ui-widget ui-widget-content ui-corner-all">
                     <div id="~_PropertyGrid"></div>
                     <div class="clear"></div>
@@ -26,10 +26,10 @@
                 </div>
                 <div class="actions">
                     <a href="@Url.Content("~/Account/ForgotPassword")" class="btn btn-block">
-                        <i class="fa fa-angle-right"></i>&nbsp;@Texts.Forms.Membership.Login.ForgotPassword
+                        @Texts.Forms.Membership.Login.ForgotPassword
                     </a>
                     <a href="@Url.Content("~/Account/SignUp")" class="btn btn-block">
-                        <i class="fa fa-angle-right"></i>&nbsp;@Texts.Forms.Membership.Login.SignUpButton
+                        @Texts.Forms.Membership.Login.SignUpButton
                     </a>
                     <div class="clear"></div>
                 </div>
@@ -67,6 +67,7 @@
 <script type="text/javascript">
     jQuery(function () {
         new Enterprise.Membership.LoginPanel($('#LoginPanel')).init();
+       
         @if (ViewData["Activated"] != null)
 {
     <text>

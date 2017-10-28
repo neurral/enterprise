@@ -10,67 +10,95 @@
 
 
 .main-header .navbar, .main-header .dropdown-menu {
-	box-shadow: 0px 7px 10px #aaa;
+    box-shadow: 0px 7px 10px #aaa;
 }
 
 a.navbar-brand {
-	font-variant: small-caps;
+    font-variant: small-caps;
+    padding: 10px 10px;
 }
 
 a.navbar-brand:hover {
-	b { 
-		text-shadow: 0 1px 2px #000;
-	}
+    b {
+        text-shadow: 0 1px 2px #000;
+    }
 }
 
 .main-header .dropdown-menu {
-	padding: 0px !important;
+    padding: 0px !important;
 }
 
-.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {    
-	border:none;
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+    border: none;
+}
 
+.vx:empty {
+    display: none;
+}
+
+.control-sidebar-open {
+    //make conext sidebar only 80% in small screens
+    @media (max-width: @screen-xs-max) {
+        width: 80%;
+    }
+}
+
+.treeview a:hover, .treeview-menu {
+    box-shadow: 2px 1px 3px #000;
+}
+
+.select2-container {
+    position: relative;
+    /*z-index: 2;*/
+    /*float: left;*/
+    width: 100%;
+    margin-bottom: 0;
+    display: table;
+    table-layout: fixed;
 }
 
 
+header.main-header {
+    .logo, .sidebar-toggle, .navbar, .navbar-brand,
+    #context-sidebar-toggle,
+    a.dropdown-toggle, .navbar-custom-menu {
+        min-height: 40px !important;
+        height: 40px;
+        line-height: 1em;
+    }
+    .user-image {
+        margin-top: -6px;
+    }
 
-/* default screen, non-retina
-html {
-	/* These two are for sticky footer
-	position: relative;
-	min-height: 100%;
-
-	background: url('../../assets/images/bg/plane970.jpg') no-repeat top center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover; 
-
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale');
-	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../assets/images/bg/plane970@2x.jpg', sizingMethod='scale')";
+    #context-sidebar-toggle, .sidebar-toggle {
+        font-size: 1.9em;
+        line-height: 1.9em;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
 }
 
-/*
-@media only screen and (max-width: 320px) {
-   // Small screen, non-retina 
-	html { background-image: url("../../assets/images/bg/plane290.jpg"); }
+/* Make the header bar 40px only (para maliit sa mobile)*/
+.mobile-device {
+    header.main-header {
+        .navbar-brand, .sidebar-toggle, .navbar,
+        #context-sidebar-toggle,
+        a.dropdown-toggle, .navbar-custom-menu {
+            min-height: 40px !important;
+            height: 40px;
+            line-height: 1em;
+        }
+
+        .navbar-brand > b {
+            display: none;
+        }
+
+        #context-sidebar-toggle, .sidebar-toggle {
+            font-size: 1.9em;
+            line-height: 1.9em;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    }
 }
-@media only screen and (min-width: 321px) and (max-width: 538px) {
-	/* Medium screen, non-retina 
-	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
-}
-@media
-	only screen and (min-resolution: 2dppx) and (max-width: 320px) {
-	/* Small screen, retina
-	html { background-image: url("../../assets/images/bg/plane538.jpg"); }
-}
-@media
-only screen and (min-resolution: 2dppx) and (min-width: 321px) and (max-width: 538px) {
-	 /*Medium screen, retina
-	html { background-image: url("../../assets/images/bg/plane970.jpg"); }
-}
-@media
-	only screen and (min-resolution: 2dppx) and (min-width: 539px) {
-	/* Large screen, retina
-	html { background-image: url("../../assets/images/bg/plane970@2x.jpg"); }
-}*/
+

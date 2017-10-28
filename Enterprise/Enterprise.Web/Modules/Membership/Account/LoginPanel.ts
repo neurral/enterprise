@@ -16,7 +16,7 @@
                 cover: true,
                 overlay: Q.resolveUrl("~/Scripts/vegas/overlays/06.png"),
                 slidesToKeep: 1,
-                transition: ['fade2', 'blur','fade'],
+                transition: ['fade2', 'blur', 'fade', 'zoomOut2'],
                 animation: "random",
                 slides: []
             };
