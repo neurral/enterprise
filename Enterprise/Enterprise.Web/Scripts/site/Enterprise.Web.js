@@ -1688,19 +1688,22 @@ var Enterprise;
             __extends(LoginPanel, _super);
             function LoginPanel(container) {
                 var _this = _super.call(this, container) || this;
-                $(function () {
-                    $('body').vegas({
-                        delay: 10000,
-                        cover: true,
-                        overlay: Q.resolveUrl("~/Scripts/vegas/overlays/01.png"),
-                        slides: [
-                            { src: Q.resolveUrl('~/Content/site/slides/slide1.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide2.jpg'), transition: 'fade' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide3.jpg'), transition: 'zoomOut' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide4.jpg'), transition: 'blur' },
-                            { src: Q.resolveUrl('~/Content/site/slides/slide5.jpg'), transition: 'swirlLeft' }
-                        ]
+                var vegasOptions = {
+                    delay: 10000,
+                    cover: true,
+                    overlay: Q.resolveUrl("~/Scripts/vegas/overlays/06.png"),
+                    slidesToKeep: 1,
+                    transition: ['fade2', 'blur', 'flash2', 'fade', 'zoomOut', 'burn2', 'zoomIn', 'zoomIn2'],
+                    animation: "random",
+                    slides: []
+                };
+                for (var i = 1; i <= 9; i++) {
+                    vegasOptions.slides.push({
+                        src: Q.resolveUrl('~/Content/site/slides/slide' + i + '.jpg')
                     });
+                }
+                $(function () {
+                    $('body').vegas(vegasOptions);
                 });
                 _this.form = new Membership.LoginForm(_this.idPrefix);
                 _this.byId('LoginButton').click(function (e) {

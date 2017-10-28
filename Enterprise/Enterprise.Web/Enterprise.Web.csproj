@@ -523,6 +523,15 @@
     <Content Include="Content\serenity\serenity.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="Content\site\images\accordion-arrows.png" />
+    <Content Include="Content\site\slides\slide6.jpg" />
+    <Content Include="Content\site\slides\slide7.jpg" />
+    <Content Include="Content\site\slides\slide8.jpg" />
+    <Content Include="Content\site\slides\slide9.jpg" />
+    <Content Include="Content\site\slides\vegas\slide1.jpg" />
+    <Content Include="Content\site\slides\vegas\slide2.jpg" />
+    <Content Include="Content\site\slides\vegas\slide3.jpg" />
+    <Content Include="Content\site\slides\vegas\slide4.jpg" />
+    <Content Include="Content\site\slides\vegas\slide5.jpg" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Sqlite.sql" />
     <Content Include="Content\slick-default-theme.css" />
