@@ -6,7 +6,7 @@
     var themeCookie = Request.Cookies["ThemePreference"];
     var theme = themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
     var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
-    
+
 
 
     //AdminLTE colorschemes
@@ -27,42 +27,42 @@
 <head>
     @{Html.RenderPartial(MVC.Views.Shared._LayoutHead);}
     @RenderSection("Head", false)
-    <title>@(ViewData["Title"]) - Enterprise</title>
+    <title>@(ViewData["Title"]) | Enterprise</title>
+    @{Html.RenderPartial(MVC.Views.Shared._GoogleAdsense);}
 </head>
 <body id="bodytag" class="@(sidebarCollapsedHoverMenu )">
-   <!-- <body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) fixed sidebar-mini hold-transition skin-@theme@(hideNav ? " no-navigation" : " has-layout-event")@(rtl ? " rtl" : "")">
-    --> 
-        @if (hideNav)
-        {
-            <script type="text/javascript">
-                $(function () {
-                    @RenderSection("PageInitScript", false)
-                });
-            </script>
+    <!-- <body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) fixed sidebar-mini hold-transition skin-@theme@(hideNav ? " no-navigation" : " has-layout-event")@(rtl ? " rtl" : "")">
+     -->
+    @if (hideNav)
+    {
+        <script type="text/javascript">
+            $(function () {
+                @RenderSection("PageInitScript", false)
+            });
+        </script>
             <div id="page-outer-nonav">
                 <div id="page-container" class="page-container-common">
                     @RenderBody()
                 </div>
             </div>
-        }
-        else
-        {
-            <div class="wrapper">
-                <header class="main-header">
-                    <nav class="navbar navbar-static-top">
-                        
-                        <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
-                            <span class="sr-only">Toggle Navigation</span>
-                        </a>
-                        
-                        <div class="navbar-header">
-                            <a href="/" class="navbar-brand">@LocalText.Get("Navigation.OrgTitle") \\\ <b>@LocalText.Get("Navigation.SiteTitle")</b></a>
-                        </div>
-                        @Html.Partial("_LoginPartial")
-                    </nav>
-                </header>
+    }
+    else
+    {
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle Navigation</span>
+                    </a>
 
-                @*<header class="main-header">
+                    <div class="navbar-header">
+                        <a href="/" class="navbar-brand">@LocalText.Get("Navigation.OrgTitle") \\\ <b>@LocalText.Get("Navigation.SiteTitle")</b></a>
+                    </div>
+                    @Html.Partial("_LoginPartial")
+                </nav>
+            </header>
+
+            @*<header class="main-header">
                     <a href="~/" class="logo">
                         <span class="logo-mini"><i></i></span>
                         <span class="logo-lg"><i></i><b>@LocalText.Get("Navigation.SiteTitle")</b></span>
@@ -109,62 +109,62 @@
                     </nav>
                 </header>*@
 
-                <aside class="main-sidebar">
-                    <section class="sidebar">
-                        <form action="#" method="get" class="sidebar-form">
-                            <div class="input-group">
-                                <input type="text" id="SidebarSearch" name="q" class="form-control" autocomplete="off">
-                                <span class="input-group-btn">
-                                    <button type="button" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                                </span>
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" id="SidebarSearch" name="q" class="form-control" autocomplete="off">
+                            <span class="input-group-btn">
+                                <button type="button" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <ul class="sidebar-menu" id="SidebarMenu">
+                        @{Html.RenderPartial(MVC.Views.Shared.LeftNavigation, new Enterprise.Navigation.NavigationModel()); }
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="content-wrapper">
+                @if (IsSectionDefined("ContentHeader"))
+                {
+                    <section class="content-header">
+                        @RenderSection("ContentHeader")
+                    </section>
+                }
+                <section class="content">
+                    @RenderBody()
+                </section>
+            </div>
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    @Texts.Site.Layout.FooterInfo
+                </div>
+                <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights
+            </footer>
+
+            <aside class="control-sidebar control-sidebar-dark">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="control-sidebar-settings-tab">
+                        <form method="post">
+                            <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
+                                <select id="LanguageSelect" class="form-control"></select>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label class="control-sidebar-subheading">@Texts.Site.Layout.Theme</label>
+                                <select id="ThemeSelect" class="form-control"></select>
                             </div>
                         </form>
-                        <ul class="sidebar-menu" id="SidebarMenu">
-                            @{Html.RenderPartial(MVC.Views.Shared.LeftNavigation, new Enterprise.Navigation.NavigationModel()); }
-                        </ul>
-                    </section>
-                </aside>
-
-                <div class="content-wrapper">
-                    @if (IsSectionDefined("ContentHeader"))
-                    {
-                        <section class="content-header">
-                            @RenderSection("ContentHeader")
-                        </section>
-                    }
-                    <section class="content">
-                        @RenderBody()
-                    </section>
+                    </div>
                 </div>
-
-                <footer class="main-footer">
-                    <div class="pull-right hidden-xs">
-                        @Texts.Site.Layout.FooterInfo
-                    </div>
-                    <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights
-                </footer>
-
-                <aside class="control-sidebar control-sidebar-dark">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="control-sidebar-settings-tab">
-                            <form method="post">
-                                <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
-
-                                <div class="form-group">
-                                    <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
-                                    <select id="LanguageSelect" class="form-control"></select>
-                                </div>
-
-                                <div class="form-group" style="margin-top: 15px;">
-                                    <label class="control-sidebar-subheading">@Texts.Site.Layout.Theme</label>
-                                    <select id="ThemeSelect" class="form-control"></select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </aside>
-                <div class="control-sidebar-bg"></div>
-            </div>
+            </aside>
+            <div class="control-sidebar-bg"></div>
+        </div>
 
             <script type="text/javascript">
                 $().ready(function () {
@@ -182,12 +182,18 @@
                         $("section.content").css("min-height", (height) + "px");
 
                         $('body').triggerHandler('layout');
+
+                        var $hamburger = $(".hamburger");
+                        $hamburger.on("click", function (e) {
+                            $hamburger.toggleClass("is-active");
+                            // Do something else, like open/close menu
+                        });
                     };
 
                     $(window).bind("load resize layout", doLayout);
                     doLayout();
                 });
             </script>
-                                }
-    </body>
+                            }
+</body>
 </html>

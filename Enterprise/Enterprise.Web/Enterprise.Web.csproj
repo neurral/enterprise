@@ -202,6 +202,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\font-open-sans.css" />
     <Content Include="Content\glyphicons.css" />
+    <Content Include="Content\hamburgers.css" />
     <Content Include="Content\images\collapse.gif" />
     <Content Include="Content\images\down.gif" />
     <Content Include="Content\images\expand.gif" />
@@ -529,6 +530,7 @@
     <Content Include="Content\serenity\serenity.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="Content\site\images\accordion-arrows.png" />
+    <Content Include="Content\site\slides\slide10.jpg" />
     <Content Include="Content\site\slides\slide6.jpg" />
     <Content Include="Content\site\slides\slide7.jpg" />
     <Content Include="Content\site\slides\slide8.jpg" />
@@ -595,7 +597,7 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\OtherFormOneBarDialog.Template.html" />
     <Content Include="Modules\Meeting\Meeting\Meeting.MeetingDialog.Template.html" />
-    <Content Include="Modules\Membership\Account\SignUp\AccountSignUp.AdminLTE.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\SignUp\AccountSignUp.AdminLTE.cshtml" />
     <Content Include="Imports\Web.config" />
     <Content Include="Migrations\Web.config" />
     <Content Include="Modules\BasicSamples\Grids\WrappedHeaders\Index.cshtml" />
@@ -842,7 +844,9 @@
     <Content Include="fonts\OpenSansCondensedBold.ttf" />
     <Content Include="fonts\OpenSansCondensedLight.ttf" />
     <Content Include="fonts\OpenSansCondensedLightItalic.ttf" />
-    <Content Include="Modules\Membership\Account\AccountLogin.AdminLTE.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\AccountLogin.AdminLTE.cshtml" />
+    <None Include="Properties\PublishProfiles\cutin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\cutin - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -1561,11 +1565,11 @@
     <TypeScriptCompile Include="Modules\Common\Reporting\ReportDialog.ts" />
     <TypeScriptCompile Include="Modules\Common\ScriptInitialization.ts" />
     <TypeScriptCompile Include="Modules\Common\UserPreference\UserPreferenceStorage.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\ResetPassword\ResetPasswordPanel.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
-    <TypeScriptCompile Include="Modules\Membership\Account\SignUp\SignUpPanel.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Membership\Account\ResetPassword\ResetPasswordPanel.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Membership\Account\LoginPanel.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Membership\Account\SignUp\SignUpPanel.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Category\CategoryDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Category\CategoryGrid.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerGrid.ts" />
@@ -1588,8 +1592,8 @@
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryGrid.ts" />
     <Content Include="Modules\Common\Reporting\ReportDialog.Template.html" />
-    <Content Include="Modules\Membership\Account\ForgotPassword\AccountForgotPassword.AdminLTE.cshtml" />
-    <Content Include="Modules\Membership\Account\ResetPassword\AccountResetPassword.AdminLTE.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ForgotPassword\AccountForgotPassword.AdminLTE.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ResetPassword\AccountResetPassword.AdminLTE.cshtml" />
     <Content Include="Scripts\jquery.event.drag.live.js" />
     <Content Include="Scripts\jquery.event.drag.live.min.js" />
     <Content Include="Scripts\jquery.icheck.js" />
@@ -1727,10 +1731,10 @@
       <LastGenOutput>ServerTypings.log</LastGenOutput>
     </Content>
     <Content Include="Welcome.htm" />
-    <Content Include="Modules\Membership\Account\ChangePassword\AccountChangePassword.cshtml" />
-    <Content Include="Modules\Membership\Account\ForgotPassword\AccountForgotPassword.cshtml" />
-    <Content Include="Modules\Membership\Account\ResetPassword\AccountResetPassword.cshtml" />
-    <Content Include="Modules\Membership\Account\ResetPassword\AccountResetPasswordEmail.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ChangePassword\AccountChangePassword.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ForgotPassword\AccountForgotPassword.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ResetPassword\AccountResetPassword.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\ResetPassword\AccountResetPasswordEmail.cshtml" />
     <Content Include="Content\site\site.less" />
     <Content Include="Content\site\site.theme.less" />
     <Content Include="Scripts\input-mask\phone-codes\phone-be.json" />
@@ -1769,15 +1773,15 @@
     <Content Include="Modules\AdminLTE\Examples\PacePage.cshtml" />
     <Content Include="Modules\AdminLTE\Examples\InvoicePrint.cshtml" />
     <Content Include="Content\bootstrap-less\mixins\reset-text.less" />
-    <Content Include="Modules\Membership\Account\SignUp\AccountSignUp.cshtml" />
-    <Content Include="Modules\Membership\Account\SignUp\AccountActivateEmail.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\SignUp\AccountSignUp.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\SignUp\AccountActivateEmail.cshtml" />
     <Content Include="Scripts\site\texts\site.texts.es.json" />
     <Content Include="Scripts\site\texts\site.texts.invariant.json" />
     <Content Include="Scripts\site\texts\site.texts.tr.json" />
-    <Content Include="Modules\Membership\Account\AccountLogin.cshtml" />
+    <Content Include="Modules\Organization\Membership\Account\AccountLogin.cshtml" />
     <Content Include="Modules\Web.config" />
     <Content Include="Modules\Common\Dashboard\DashboardIndex.cshtml" />
-    <Content Include="Modules\Membership\_ViewStart.cshtml" />
+    <Content Include="Modules\Organization\Membership\_ViewStart.cshtml" />
     <Content Include="Modules\_ViewStart.cshtml" />
     <Content Include="Views\Templates\EntityDialog.Template.html" />
     <Content Include="Views\Templates\PropertyDialog.Template.html" />
@@ -1793,6 +1797,7 @@
     <Content Include="tools\Web.config" />
     <Content Include="Views\Errors\AccessDenied.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_GoogleAdsense.cshtml" />
     <None Include="Web.Base.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2163,19 +2168,19 @@
     <Compile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeType.cs" />
     <Compile Include="Modules\Meeting\MeetingNavigation.cs" />
     <Compile Include="Modules\Meeting\MeetingPermissionKeys.cs" />
-    <Compile Include="Modules\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
-    <Compile Include="Modules\Membership\Account\EnvironmentSettings.cs" />
-    <Compile Include="Modules\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
-    <Compile Include="Modules\Membership\Account\ResetPassword\AccountPage.ResetPassword.cs" />
-    <Compile Include="Modules\Membership\Account\ResetPassword\ResetPasswordModel.cs" />
-    <Compile Include="Modules\Membership\Account\ResetPassword\ResetPasswordEmailModel.cs" />
-    <Compile Include="Modules\Membership\Account\ResetPassword\ResetPasswordRequest.cs" />
-    <Compile Include="Modules\Membership\Account\ForgotPassword\ForgotPasswordRequest.cs" />
-    <Compile Include="Modules\Membership\Account\ChangePassword\ChangePasswordRequest.cs" />
-    <Compile Include="Modules\Membership\Account\SignUp\AccountPage.SignUp.cs" />
-    <Compile Include="Modules\Membership\Account\SignUp\ActivateEmailModel.cs" />
-    <Compile Include="Modules\Membership\Account\SignUp\SignUpForm.cs" />
-    <Compile Include="Modules\Membership\Account\SignUp\SignUpRequest.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\EnvironmentSettings.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ResetPassword\AccountPage.ResetPassword.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ResetPassword\ResetPasswordModel.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ResetPassword\ResetPasswordEmailModel.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ResetPassword\ResetPasswordRequest.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ForgotPassword\ForgotPasswordRequest.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\ChangePassword\ChangePasswordRequest.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\SignUp\AccountPage.SignUp.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\SignUp\ActivateEmailModel.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\SignUp\SignUpForm.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\SignUp\SignUpRequest.cs" />
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Northwind\CategoryLang\CategoryLangEndpoint.cs" />
     <Compile Include="Modules\Northwind\CategoryLang\CategoryLangRepository.cs" />
@@ -2215,14 +2220,14 @@
     <Compile Include="Modules\Organization\OrganizationPermissionKeys.cs" />
     <Compile Include="Modules\Organization\OrganizationNavigation.cs" />
     <Compile Include="Modules\Texts.cs" />
-    <Compile Include="Modules\Membership\Account\AccountPage.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\PermissionService.cs" />
     <Compile Include="Modules\Administration\User\LoggingRow.cs" />
     <Compile Include="Modules\Administration\User\Authentication\UserDefinition.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthenticationService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\UserRetrieveService.cs" />
-    <Compile Include="Modules\Membership\Account\LoginRequest.cs" />
+    <Compile Include="Modules\Organization\Membership\Account\LoginRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\Administration\User\UserRow.cs" />
     <Compile Include="Modules\Administration\User\UserForm.cs" />
