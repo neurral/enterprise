@@ -8245,7 +8245,6 @@ a.navbar-brand:hover b {
 }
 .main-header .dropdown-menu {
   padding: 0px !important;
-  transition: box-shadow ease-in-out 0.3s;
 }
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
   border: none;
