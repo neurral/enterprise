@@ -54,7 +54,7 @@ namespace Enterprise.Membership.Pages
                     var username = request.Email;
 
                     var fld = UserRow.Fields;
-                    var userId = (int)connection.InsertAndGetID(new UserRow
+                    var newUser = new UserRow
                     {
                         Username = username,
                         Source = "sign",
@@ -66,19 +66,9 @@ namespace Enterprise.Membership.Pages
                         InsertDate = DateTime.Now,
                         InsertUserId = 1,
                         LastDirectoryUpdate = DateTime.Now
-                    });
-
-                    byte[] bytes;
-                    using (var ms = new MemoryStream())
-                    using (var bw = new BinaryWriter(ms))
-                    {
-                        bw.Write(DateTime.UtcNow.AddHours(3).ToBinary());
-                        bw.Write(userId);
-                        bw.Flush();
-                        bytes = ms.ToArray();
-                    }
-
-                    var token = Convert.ToBase64String(MachineKey.Protect(bytes, "Activate"));
+                    };
+                    newUser.UserId = (int)connection.InsertAndGetID(newUser);
+                    var token = newUser.GetActivationToken();
 
                     var externalUrl = Config.Get<EnvironmentSettings>().SiteExternalUrl ??
                         Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
@@ -98,7 +88,7 @@ namespace Enterprise.Membership.Pages
                     Common.EmailHelper.Send(emailSubject, emailBody, email);
 
                     uow.Commit();
-                    UserRetrieveService.RemoveCachedUser(userId, username);
+                    UserRetrieveService.RemoveCachedUser(newUser.UserId, username);
 
                     return new ServiceResponse();
                 }

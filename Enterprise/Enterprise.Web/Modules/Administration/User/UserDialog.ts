@@ -10,6 +10,7 @@
         protected getService() { return UserService.baseUrl; }
 
         protected form = new UserForm(this.idPrefix);
+        private activateBtn: JQuery;
 
         constructor() {
             super();
@@ -25,16 +26,14 @@
             });
         }
 
-        protected getToolbarButtons()
-        {
+        protected getToolbarButtons() {
             let buttons = super.getToolbarButtons();
 
             buttons.push({
                 title: Q.text('Site.UserDialog.EditRolesButton'),
                 cssClass: 'edit-roles-button',
                 icon: 'icon-people text-blue',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserRoleDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username
@@ -46,14 +45,36 @@
                 title: Q.text('Site.UserDialog.EditPermissionsButton'),
                 cssClass: 'edit-permissions-button',
                 icon: 'icon-lock-open text-green',
-                onClick: () =>
-                {
+                onClick: () => {
                     new UserPermissionDialog({
                         userID: this.entity.UserId,
                         username: this.entity.Username
                     }).dialogOpen();
                 }
             });
+
+            buttons.push({
+                title: 'Resend Activation Link', //TODO add to Texts
+                cssClass: 'activate-user-button disabled',
+                icon: 'icon-check text-blue',
+                onClick: () => {
+
+                    Q.confirm("Confirm resend of activation link?",
+                        () => {
+                            this.activateBtn.addClass("disabled");
+                            UserService.ResendActivationLink({
+                                EntityId: this.entityId
+                            },
+                            (response) => {
+                                Q.notifyInfo("Activation link sent.");
+                            });
+                        }
+
+                    );
+                }
+            });
+
+
 
             return buttons;
         }
@@ -73,6 +94,14 @@
                 .closest('.field').find('sup').toggle(this.isNew());
             this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
                 .closest('.field').find('sup').toggle(this.isNew());
+
+            this.activateBtn = $(".activate-user-button");
+            if (this.entity[UserRow.isActiveProperty] != 1) {
+                this.activateBtn.removeClass("disabled");
+            }
+            else {
+                this.activateBtn.hide(1);
+            }
         }
     }
 }

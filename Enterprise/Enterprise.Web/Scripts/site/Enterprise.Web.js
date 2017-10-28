@@ -1689,11 +1689,12 @@ var Enterprise;
             function LoginPanel(container) {
                 var _this = _super.call(this, container) || this;
                 var vegasOptions = {
-                    delay: 10000,
+                    delay: 1e4,
+                    transitionDuration: 8e3,
                     cover: true,
                     overlay: Q.resolveUrl("~/Scripts/vegas/overlays/06.png"),
                     slidesToKeep: 1,
-                    transition: ['fade2', 'blur', 'flash2', 'fade', 'zoomOut', 'burn2', 'zoomIn', 'zoomIn2'],
+                    transition: ['fade2', 'blur', 'fade', 'zoomOut2'],
                     animation: "random",
                     slides: []
                 };
@@ -6769,6 +6770,21 @@ var Enterprise;
                         }).dialogOpen();
                     }
                 });
+                buttons.push({
+                    title: 'Resend Activation Link',
+                    cssClass: 'activate-user-button disabled',
+                    icon: 'icon-check text-blue',
+                    onClick: function () {
+                        Q.confirm("Confirm resend of activation link?", function () {
+                            _this.activateBtn.addClass("disabled");
+                            Administration.UserService.ResendActivationLink({
+                                EntityId: _this.entityId
+                            }, function (response) {
+                                Q.notifyInfo("Activation link sent.");
+                            });
+                        });
+                    }
+                });
                 return buttons;
             };
             UserDialog.prototype.updateInterface = function () {
@@ -6783,6 +6799,13 @@ var Enterprise;
                     .closest('.field').find('sup').toggle(this.isNew());
                 this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
                     .closest('.field').find('sup').toggle(this.isNew());
+                this.activateBtn = $(".activate-user-button");
+                if (this.entity[Administration.UserRow.isActiveProperty] != 1) {
+                    this.activateBtn.removeClass("disabled");
+                }
+                else {
+                    this.activateBtn.hide(1);
+                }
             };
             UserDialog = __decorate([
                 Serenity.Decorators.registerClass()
@@ -7563,7 +7586,8 @@ var Enterprise;
                 'Delete',
                 'Undelete',
                 'Retrieve',
-                'List'
+                'List',
+                'ResendActivationLink'
             ].forEach(function (x) {
                 UserService[x] = function (r, s, o) {
                     return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o);

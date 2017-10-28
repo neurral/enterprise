@@ -1623,6 +1623,7 @@ declare namespace Enterprise.Administration {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: UserForm;
+        private activateBtn;
         constructor();
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
@@ -2066,6 +2067,7 @@ declare namespace Enterprise.Administration {
         function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function ResendActivationLink(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -2073,6 +2075,7 @@ declare namespace Enterprise.Administration {
             const Undelete: string;
             const Retrieve: string;
             const List: string;
+            const ResendActivationLink: string;
         }
     }
 }

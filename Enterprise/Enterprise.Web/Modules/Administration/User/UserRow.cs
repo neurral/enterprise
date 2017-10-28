@@ -1,11 +1,15 @@
 ﻿
 namespace Enterprise.Administration.Entities
 {
+    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
+    using System.IO;
+    using System.Web;
+    using System.Web.Security;
 
     [ConnectionKey("Default"), TableName("Users"), DisplayName("Users"), InstanceName("User"), TwoLevelCached]
     [ReadPermission(PermissionKeys.Security)]
@@ -113,6 +117,7 @@ namespace Enterprise.Administration.Entities
             get { return Fields.IsActive; }
         }
 
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public UserRow()
@@ -140,6 +145,23 @@ namespace Enterprise.Administration.Entities
             {
                 LocalTextPrefix = "Administration.User";
             }
+        }
+
+        public String GetActivationToken() {
+            int userId = this.UserId.GetValueOrDefault(0);
+            byte[] bytes;
+            using (var ms = new MemoryStream())
+            using (var bw = new BinaryWriter(ms))
+            {
+                bw.Write(DateTime.UtcNow.AddHours(3).ToBinary());
+                bw.Write(userId);
+                bw.Flush();
+                bytes = ms.ToArray();
+            }
+
+            var token = Convert.ToBase64String(MachineKey.Protect(bytes, "Activate"));
+
+            return token;
         }
     }
 }

@@ -3,15 +3,18 @@
 namespace Enterprise.Administration.Endpoints
 {
     using Entities;
+    using Membership;
     using Repositories;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Services;
+    using Serenity.Web;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
     using MyRepository = Repositories.UserRepository;
     using MyRow = Entities.UserRow;
@@ -52,6 +55,34 @@ namespace Enterprise.Administration.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+
+        public RetrieveResponse<MyRow> ResendActivationLink(IDbConnection connection, RetrieveRequest request)
+        {
+            var response = new MyRepository().Retrieve(connection, request);
+            var user = response.Entity;
+           
+            if (user != null) {
+                var token = user.GetActivationToken();
+                var externalUrl = Config.Get<EnvironmentSettings>().SiteExternalUrl ??
+                        Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
+
+                var activateLink = UriHelper.Combine(externalUrl, "Account/Activate?t=");
+                activateLink = activateLink + Uri.EscapeDataString(token);
+
+                var emailModel = new ActivateEmailModel();
+                emailModel.Username = user.Username;
+                emailModel.DisplayName = user.DisplayName;
+                emailModel.ActivateLink = activateLink;
+
+                var emailSubject = Texts.Forms.Membership.SignUp.ActivateEmailSubject.ToString();
+                var emailBody = TemplateHelper.RenderTemplate(
+                    MVC.Views.Membership.Account.SignUp.AccountActivateEmail, emailModel);
+
+                Common.EmailHelper.Send(emailSubject, emailBody, user.Email);
+            }
+
+            return response;
         }
 
         private static string[] permissionsUsedFromScript;
