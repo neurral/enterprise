@@ -11,11 +11,12 @@
             super(container);
 
             var vegasOptions = {
-                delay: 10000,
+                delay: 1e4,
+                transitionDuration: 8e3,
                 cover: true,
                 overlay: Q.resolveUrl("~/Scripts/vegas/overlays/06.png"),
                 slidesToKeep: 1,
-                transition: ['fade2', 'blur', 'flash2', 'fade', 'zoomOut', 'burn2', 'zoomIn', 'zoomIn2'];
+                transition: ['fade2', 'blur','fade'],
                 animation: "random",
                 slides: []
             };
