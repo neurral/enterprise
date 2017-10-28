@@ -9,7 +9,7 @@ namespace Enterprise.Administration.Forms
     [BasedOnRow(typeof(Entities.RoleRow))]
     public class RoleColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight, Hidden]
         public Int32 RoleId { get; set; }
         [EditLink, Width(300)]
         public String RoleName { get; set; }

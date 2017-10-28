@@ -12,8 +12,8 @@ namespace Enterprise.Administration.Entities
     using System.Web.Security;
 
     [ConnectionKey("Default"), TableName("Users"), DisplayName("Users"), InstanceName("User"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.Profile)]
+    [ModifyPermission(PermissionKeys.Profile)]
     [LookupScript("Administration.User", Permission = PermissionKeys.Security)]
     public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
