@@ -1980,7 +1980,7 @@ body.mobile-device.modal-dialog-open {
   float: left;
 }
 .s-Form label.checked {
-  background: transparent none no-repeat scroll center center;
+  background: transparent url(images/check2.png) no-repeat scroll center center;
   display: block;
   float: left;
 }

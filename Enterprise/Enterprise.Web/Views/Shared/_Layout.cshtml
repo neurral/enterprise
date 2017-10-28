@@ -53,10 +53,11 @@
                 <nav class="navbar navbar-static-top">
                     <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-bars"></i>
                     </a>
 
                     <div class="navbar-header">
-                        <a href="/" class="navbar-brand">@LocalText.Get("Navigation.OrgTitle") \\\ <b>@LocalText.Get("Navigation.SiteTitle")</b></a>
+                        <a href="/" class="navbar-brand"><b>@LocalText.Get("Navigation.SiteTitle")</b></a>
                     </div>
                     @Html.Partial("_LoginPartial")
                 </nav>
@@ -110,6 +111,9 @@
                 </header>*@
 
             <aside class="main-sidebar">
+                <nav class="navbar-static-top sidebar-top">
+                    <a href="/" class="navbar-brand">@LocalText.Get("Navigation.OrgTitle")</a>
+                </nav>
                 <section class="sidebar">
                     <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">

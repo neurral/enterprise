@@ -26,7 +26,7 @@ a.navbar-brand:hover {
 }
 
 .main-header .dropdown-menu {
-    padding: 0px !important;
+    padding: 0px !important;    
 }
 
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
@@ -62,7 +62,7 @@ a.navbar-brand:hover {
 header.main-header {
     .logo, .sidebar-toggle, .navbar, .navbar-brand,
     #context-sidebar-toggle,
-    a.dropdown-toggle, .navbar-custom-menu {
+    .dropdown-toggle, .navbar-custom-menu {
         min-height: 40px !important;
         height: 40px;
         line-height: 1em;
@@ -72,8 +72,8 @@ header.main-header {
     }
 
     #context-sidebar-toggle, .sidebar-toggle {
-        font-size: 1.9em;
-        line-height: 1.9em;
+        font-size: 1.8em;
+        line-height: 1.8em;
         padding-top: 0px;
         padding-bottom: 0px;
     }
@@ -84,7 +84,7 @@ header.main-header {
     header.main-header {
         .navbar-brand, .sidebar-toggle, .navbar,
         #context-sidebar-toggle,
-        a.dropdown-toggle, .navbar-custom-menu {
+        .dropdown-toggle, .navbar-custom-menu {
             min-height: 40px !important;
             height: 40px;
             line-height: 1em;
@@ -95,11 +95,23 @@ header.main-header {
         }
 
         #context-sidebar-toggle, .sidebar-toggle {
-            font-size: 1.9em;
-            line-height: 1.9em;
+            font-size: 1.8em;
+            line-height: 1.8em;
             padding-top: 0px;
             padding-bottom: 0px;
         }
     }
 }
 
+
+
+.sidebar-collapse .sidebar-top {
+        visibility:hidden;
+    }
+
+.sidebar-top {    
+    display:block;
+    width:100%;
+    text-align:right;
+    .clearfix();
+}
