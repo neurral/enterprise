@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = Texts.Navigation.OrgTitle + " | " + Texts.Forms.Membership.Login.FormTitle;
     ViewData["PageId"] = "Login";
     Layout = MVC.Views.Shared._LayoutNoNavigation;
 
@@ -13,6 +13,7 @@
 <script id="Template_Membership_LoginPanel" type="text/template">
     <div class="flex-layout">       
         <h3 class="login-title">@LocalText.Get("Navigation.OrgTitle") | <b>@LocalText.Get("Navigation.SiteTitle")</b></h3>
+        <h4 class="form-title">@Texts.Forms.Membership.Login.FormTitle</h4>
         <form id="~_Form" action="">
             <div class="s-Form">
                 <div class="fieldset ui-widget ui-widget-content ui-corner-all">

@@ -60,10 +60,10 @@ namespace Enterprise
 
                 public static class Login
                 {
-                    public static LocalText FormTitle = Navigation.OrgTitle + " /// " + Navigation.SiteTitle;
+                    public static LocalText FormTitle = "Sign In";
                     public static LocalText SignInButton = "Sign In";
                     public static LocalText ForgotPassword = "Forgot password?";
-                    public static LocalText SignUpButton = "Register a new account";
+                    public static LocalText SignUpButton = "Sign Up";
                     public static LocalText RememberMe = "Remember Me";
                     public static LocalText OR = "OR";
                     public static LocalText FacebookButton = "Sign in using Facebook";
@@ -98,6 +98,7 @@ namespace Enterprise
             public static LocalText LogoutLink = "Logout";
             public static LocalText SiteTitle = "Enterprise";
             public static LocalText OrgTitle = "Neurral";
+            public static LocalText BrandTitle = Navigation.OrgTitle + " | " + Navigation.SiteTitle;
         }
 
         public static class Site

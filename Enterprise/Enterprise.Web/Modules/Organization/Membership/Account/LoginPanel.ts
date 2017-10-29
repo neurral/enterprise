@@ -2,6 +2,7 @@
 
     @Serenity.Decorators.registerClass()
     export class LoginPanel extends Serenity.PropertyPanel<LoginRequest, any> {
+        
 
         protected getFormKey() { return LoginForm.formKey; }
 
@@ -10,25 +11,7 @@
         constructor(container: JQuery) {
             super(container);
 
-            var vegasOptions = {
-                delay: 1e4,
-                transitionDuration: 8e3,
-                cover: true,
-                overlay: Q.resolveUrl("~/Scripts/vegas/overlays/06.png"),
-                slidesToKeep: 1,
-                transition: ['fade2', 'blur', 'fade', 'zoomOut2'],
-                animation: "random",
-                slides: []
-            };
-            for (var i = 1; i <= 10; i++) {
-                vegasOptions.slides.push({
-                    src: Q.resolveUrl('~/Content/site/slides/slide'+i+'.jpg')
-                });
-            }
-
-            $(function () {
-                ($('body') as any).vegas(vegasOptions);
-            });
+            Enterprise.Options.PlugVegas('body');
 
             this.form = new LoginForm(this.idPrefix);
 

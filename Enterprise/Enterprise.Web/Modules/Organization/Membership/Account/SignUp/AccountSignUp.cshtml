@@ -1,13 +1,18 @@
 ﻿@{
-    ViewData["Title"] = Texts.Forms.Membership.SignUp.FormTitle;
+    ViewData["Title"] = Texts.Navigation.OrgTitle + " | " +Texts.Forms.Membership.SignUp.FormTitle;
     ViewData["PageId"] = "SignUp";
     Layout = MVC.Views.Shared._LayoutNoNavigation;
 }
 
+@section Head {
+    <link rel="stylesheet" href="~/Scripts/vegas/vegas.css" />
+    <script src="~/Scripts/vegas/vegas.min.js"></script>
+}
+
 <script id="Template_Membership_SignUpPanel" type="text/template">
-    <div>
-        <h3 class="page-title">@Texts.Forms.Membership.SignUp.FormTitle</h3>
-        <p class="form-info">@Texts.Forms.Membership.SignUp.FormInfo</p>
+    <div class="flex-layout">
+        <h3 class="login-title">@LocalText.Get("Navigation.OrgTitle") | <b>@LocalText.Get("Navigation.SiteTitle")</b></h3>
+        <h4 class="form-title">@Texts.Forms.Membership.SignUp.FormTitle</h4>
         <form id="~_Form" action="">
             <div class="s-Form">
                 <div class="fieldset">
@@ -15,10 +20,16 @@
                     <div class="clear"></div>
                 </div>
                 <div class="buttons">
-                    <button id="~_SubmitButton" type="submit" class="btn btn-primary">
+                    <button id="~_SubmitButton" type="submit" class="btn btn-block btn-primary">
                         @Texts.Forms.Membership.SignUp.SubmitButton
 
                     </button>
+                </div>
+                <div class="actions">
+                    <a href="@Url.Content("~/Account/Login")" class="btn btn-block">
+                        @Texts.Forms.Membership.Login.SignInButton
+                    </a>
+                    <div class="clear"></div>
                 </div>
             </div>
         </form>

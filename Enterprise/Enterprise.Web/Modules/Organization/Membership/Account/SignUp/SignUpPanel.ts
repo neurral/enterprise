@@ -10,6 +10,8 @@
         constructor(container: JQuery) {
             super(container);
 
+            Enterprise.Options.PlugVegas('body');
+
             this.form = new SignUpForm(this.idPrefix);
 
             this.form.ConfirmEmail.addValidationRule(this.uniqueName, e => {

@@ -1,8 +1,22 @@
 @import "site.mixins.less";
 
 /*Default styles for login/register pages*/
-.page-content {    
-    .s-LoginPanel {
+
+body.mobile-device {
+    .s-LoginPanel,
+    .s-SignUpPanel {
+        padding: 16px 8px;
+        position: absolute;
+        margin: auto;
+        width: auto;
+        top: 16px;
+        left: 16px;
+        right: 16px;
+    }
+}
+
+.page-content {
+    .s-LoginPanel, .s-SignUpPanel {
         padding: 28px 24px;
         margin: 24px 24px auto auto;
         width: 30%;
@@ -10,8 +24,10 @@
         border-radius: 5px;
         bottom: 10px;
         box-shadow: 0px 0px 5px #000;
-        
-        .caption { width: 180px; }
+
+        .caption {
+            width: 180px;
+        }
 
         .logo {
             margin: 0 auto 20px auto;
@@ -26,12 +42,20 @@
             margin: 16px 0 24px;
             text-align: center;
             font-variant: small-caps;
-            font-weight:100;
+            font-weight: 100;
 
             > b {
-                 font-variant: normal;
-                 font-weight: 700;
+                font-variant: normal;
+                font-weight: 700;
             }
+        }
+
+        .form-title {
+            font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0 8px; 
         }
 
         .buttons {
@@ -51,18 +75,19 @@
 
 
         .actions {
-            padding-right: 28px;
-
             a {
-                padding: 2px 2px 2px 2px;
+                padding: 2px;
                 margin-top: 5px;
                 display: block;
                 float: right;
                 clear: both;
                 border-bottom: 1px dashed #999;
             }
+
             a:hover {
                 color: white;
+                text-shadow: 0px 0px 5px rgb(255,255,255);
+                text-shadow: 0px 0px 5px rgba(255,255,255,0.8);
             }
         }
 
@@ -72,7 +97,7 @@
         }
 
         .s-Form label.error.checked {
-            background-image:url(../serenity/images/check2.png);
+            background-image: url(../serenity/images/check2.png);
         }
 
         .s-Form .field {
@@ -100,74 +125,71 @@
         }
     }
 
-    .s-LoginPanel .flex-layout .s-PropertyGrid {
+    .s-LoginPanel .flex-layout .s-PropertyGrid,
+    .s-SignUpPanel .flex-layout .s-PropertyGrid {
         display: block;
     }
+}
 
-    @media(max-width: 550px), (max-height: 500px) {
-        .s-LoginPanel {
-            padding: 16px 4px 16px 4px;
-            position: absolute;
-            margin: auto;
-            width: auto;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-        }
+.s-ChangePasswordPanel {
+    width: 550px;
+    .form-styles(150px, 350px);
+
+    .buttons {
+        text-align: right;
+        padding: 8px 48px;
+    }
+}
+
+.s-ForgotPasswordPanel {
+    border: 2px solid #e7e7e7;
+    padding: 40px;
+    border-radius: 8px;
+    width: 650px;
+    margin: 60px auto auto auto;
+    .form-styles(150px, 350px);
+
+    .buttons {
+        text-align: right;
+        padding: 8px 62px;
     }
 
-    .s-ChangePasswordPanel {
-        width: 550px;
-        .form-styles(150px, 350px);
-        .buttons { text-align: right; padding: 8px 48px; }
+    p {
+        padding: 8px;
+        margin: 24px 0;
     }
+}
 
-    .s-ForgotPasswordPanel {
-        border: 2px solid #e7e7e7;
-        padding: 40px;
-        border-radius: 8px;
-        width: 650px;
-        margin: 60px auto auto auto;
-        .form-styles(150px, 350px);
-        .buttons { text-align: right; padding: 8px 62px; }
-        p { padding: 8px; margin: 24px 0; }
-    }
+.s-ResetPasswordPanel {
+    border: 2px solid #e7e7e7;
+    padding: 40px;
+    border-radius: 8px;
+    width: 650px;
+    margin: 60px auto auto auto;
+    .form-styles(150px, 350px);
 
-    .s-ResetPasswordPanel {
-        border: 2px solid #e7e7e7;
-        padding: 40px;
-        border-radius: 8px;
-        width: 650px;
-        margin: 60px auto auto auto;
-        .form-styles(150px, 350px);
-        .buttons { text-align: right; padding: 8px 62px; }
-    }
-
-    .s-SignUpPanel {
-        border: 2px solid #e7e7e7;
-        padding: 40px;
-        border-radius: 8px;
-        width: 650px;
-        margin: 60px auto auto auto;
-        .form-styles(150px, 350px);
-        .buttons { text-align: right; padding: 8px 62px; }
-        p { padding: 8px; margin: 24px 0; }
+    .buttons {
+        text-align: right;
+        padding: 8px 62px;
     }
 }
 
 /*AdminLTE style login/register box*/
-.login-box, .register-box{    
-    .page-title{
+.login-box, .register-box {
+    .page-title {
         margin-top: 0;
         padding: 0 0 8px;
     }
+
     login-box-msg, .register-box-msg {
         padding-bottom: 20px;
     }
-    .s-LoginPanel, .s-SignUpPanel, .s-ForgotPasswordPanel, .s-ChangePasswordPanel, .s-ResetPasswordPanel{
+
+    .s-LoginPanel, .s-SignUpPanel, .s-ForgotPasswordPanel, .s-ChangePasswordPanel, .s-ResetPasswordPanel {
         margin-bottom: 10px;
     }
-    .s-Form{        
+
+    .s-Form {
         input {
             display: block;
             width: 100%;
@@ -176,24 +198,30 @@
             line-height: 1.42857143;
             border-radius: 0;
         }
-        .field{
+
+        .field {
             margin-bottom: 15px;
             padding: 0;
         }
-        .has-icon{
+
+        .has-icon {
             position: relative;
+
             input {
-                padding-right:34px;
+                padding-right: 34px;
             }
-            input.emailuser{
-                padding-right:6px;
+
+            input.emailuser {
+                padding-right: 6px;
             }
         }
+
         .caption {
             width: 100%;
             text-align: left;
-            display:none;
+            display: none;
         }
+
         label.error {
             background-image: url(../serenity/images/cross.png);
             padding: 26px 0 0 22px;
@@ -202,23 +230,27 @@
         label.error.checked {
             background-image: none;
         }
-        .vx{
+
+        .vx {
             position: absolute;
             top: 3px;
             right: -20px;
             z-index: 2;
             width: 22px;
         }
-        .btn{
+
+        .btn {
             font-weight: 600;
             text-transform: uppercase;
         }
-        .s-EmailEditor{
-            width:45%;
+
+        .s-EmailEditor {
+            width: 45%;
         }
-        .emaildomain{
-            width:45%;
-            float:right;
+
+        .emaildomain {
+            width: 45%;
+            float: right;
         }
     }
 }
