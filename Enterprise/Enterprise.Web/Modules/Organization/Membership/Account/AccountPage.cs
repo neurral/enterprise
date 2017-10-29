@@ -32,7 +32,7 @@ namespace Enterprise.Membership.Pages
             return View(MVC.Views.Errors.AccessDenied, (object)returnURL);
         }
 
-        [HttpPost, JsonFilter]
+        [HttpPost, JsonFilter, IgnoreAntiforgeryToken]
         public Result<ServiceResponse> Login(LoginRequest request)
         {
             return this.ExecuteMethod(() =>
