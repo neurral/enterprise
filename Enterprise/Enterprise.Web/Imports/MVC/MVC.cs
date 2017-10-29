@@ -432,6 +432,8 @@ namespace MVC
             public const string _GoogleAdsense = "~/Views/Shared/_GoogleAdsense.cshtml";
             public const string _Layout = "~/Views/Shared/_Layout.cshtml";
             public const string _LayoutHead = "~/Views/Shared/_LayoutHead.cshtml";
+            public const string _LayoutHeadLite = "~/Views/Shared/_LayoutHeadLite.cshtml";
+            public const string _LayoutMeta = "~/Views/Shared/_LayoutMeta.cshtml";
             public const string _LayoutNoNavigation = "~/Views/Shared/_LayoutNoNavigation.cshtml";
             public const string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
             public const string Error = "~/Views/Shared/Error.cshtml";

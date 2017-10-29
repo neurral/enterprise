@@ -198,6 +198,15 @@
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.png" />
     <Content Include="Content\css\select2x2.png" />
+    <Content Include="Content\favicon\android-chrome-192x192.png" />
+    <Content Include="Content\favicon\android-chrome-512x512.png" />
+    <Content Include="Content\favicon\apple-touch-icon.png" />
+    <Content Include="Content\favicon\browserconfig.xml" />
+    <Content Include="Content\favicon\favicon-16x16.png" />
+    <Content Include="Content\favicon\favicon-32x32.png" />
+    <Content Include="Content\favicon\favicon.ico" />
+    <Content Include="Content\favicon\mstile-150x150.png" />
+    <Content Include="Content\favicon\safari-pinned-tab.svg" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\font-open-sans.css" />
@@ -845,6 +854,7 @@
     <Content Include="fonts\OpenSansCondensedLight.ttf" />
     <Content Include="fonts\OpenSansCondensedLightItalic.ttf" />
     <Content Include="Modules\Organization\Membership\Account\AccountLogin.AdminLTE.cshtml" />
+    <Content Include="Content\favicon\manifest.json" />
     <None Include="Properties\PublishProfiles\cutin - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cutin - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -1218,7 +1228,6 @@
     <Content Include="Content\site\slides\slide3.jpg" />
     <Content Include="Content\site\slides\slide4.jpg" />
     <Content Include="Content\site\slides\slide5.jpg" />
-    <Content Include="favicon.ico" />
     <Content Include="Imports\MultipleOutputHelper.ttinclude" />
     <Content Include="Content\site\site.administration.less" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Postgres.sql" />
@@ -1740,6 +1749,8 @@
     <Content Include="Views\Errors\AccessDenied.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_GoogleAdsense.cshtml" />
+    <Content Include="Views\Shared\_LayoutHeadLite.cshtml" />
+    <Content Include="Views\Shared\_LayoutMeta.cshtml" />
     <None Include="Web.Base.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

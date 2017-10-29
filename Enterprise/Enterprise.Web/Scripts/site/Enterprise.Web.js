@@ -9868,6 +9868,7 @@ var Enterprise;
             __extends(ForgotPasswordPanel, _super);
             function ForgotPasswordPanel(container) {
                 var _this = _super.call(this, container) || this;
+                Enterprise.Options.PlugVegas('body');
                 _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
                 _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();

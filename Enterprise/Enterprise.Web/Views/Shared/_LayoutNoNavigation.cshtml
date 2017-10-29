@@ -4,10 +4,10 @@ var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLe
 }
 <html lang="@UICulture">
 <head>
-    @{Html.RenderPartial(MVC.Views.Shared._LayoutHead);}
+    @{Html.RenderPartial(MVC.Views.Shared._LayoutHeadLite);}
     @RenderSection("Head", false)
+
     <title>@ViewData["Title"]</title>
-    @{Html.RenderPartial(MVC.Views.Shared._GoogleAdsense);}
 </head>
 <body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) no-navigation@(rtl ? " rtl" : "")">
     @RenderBody()
