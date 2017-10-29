@@ -116,7 +116,7 @@ body {
 @media (max-width: 767px) {
   .fixed .content-wrapper,
   .fixed .right-side {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 .fixed.layout-boxed .wrapper {
@@ -195,7 +195,7 @@ a:focus {
   margin-bottom: 0;
   margin-left: 280px;
   border: none;
-  min-height: 50px;
+  min-height: 40px;
   border-radius: 0;
 }
 .layout-top-nav .main-header .navbar {
@@ -247,7 +247,7 @@ a:focus {
   float: left;
   background-color: transparent;
   background-image: none;
-  padding: 15px 15px;
+  padding: 10px 15px;
   font-family: fontAwesome;
   /*&:before {
       content: "\f0c9";
@@ -283,7 +283,7 @@ a:focus {
   transition: width 0.3s ease-in-out;
   display: block;
   float: left;
-  height: 50px;
+  height: 40px;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -359,7 +359,7 @@ a:focus {
   color: #fff;
   border: 0;
   margin: 0;
-  padding: 15px 15px;
+  padding: 10px 15px;
 }
 @media (max-width: 991px) {
   .navbar-custom-menu .navbar-nav > li {
@@ -422,7 +422,7 @@ a:focus {
 @media (max-width: 767px) {
   .main-sidebar,
   .left-side {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 @media (max-width: 767px) {
@@ -708,12 +708,12 @@ a:focus {
 }
 .control-sidebar {
   position: absolute;
-  padding-top: 50px;
+  padding-top: 40px;
   z-index: 1010;
 }
 @media (max-width: 768px) {
   .control-sidebar {
-    padding-top: 100px;
+    padding-top: 90px;
   }
 }
 .control-sidebar > .tab-content {
@@ -7433,13 +7433,6 @@ body.mobile-device .s-SignUpPanel {
 .page-content .s-SignUpPanel .caption {
   width: 180px;
 }
-.page-content .s-LoginPanel .logo,
-.page-content .s-SignUpPanel .logo {
-  margin: 0 auto 20px auto;
-  width: 128px;
-  height: 128px;
-  background: transparent url(images/serenity-logo-w-128.png) no-repeat center center;
-}
 .page-content .s-LoginPanel .login-title,
 .page-content .s-SignUpPanel .login-title {
   font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
@@ -8218,14 +8211,50 @@ html {
   font-kerning: normal;
   line-height: 1em;
 }
+.rounded-nav-img {
+  border: solid 1px #444;
+  margin: -4px 10px 0 0;
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.site-logo {
+  margin: auto 4px;
+  width: 128px;
+  height: 128px;
+  background: #ffffff url(../favicon/neurral-192.png) no-repeat center center;
+  background-size: contain;
+  border-radius: 50%;
+  border: solid 5px #444;
+}
+.site-logo-mini {
+  margin: auto 4px;
+  width: 128px;
+  height: 128px;
+  background: #ffffff url(../favicon/neurral-192.png) no-repeat center center;
+  background-size: contain;
+  border: solid 5px #444;
+  border: solid 1px #444;
+  margin: -4px 10px 0 0;
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
 .main-header .navbar:hover,
 .main-header .dropdown-menu {
   box-shadow: 0px 7px 10px #aaa;
   transition: box-shadow ease-in-out 0.3s;
 }
 a.navbar-brand {
+  display: inline-block;
   font-variant: small-caps;
-  padding: 10px 10px;
+  padding: 10px 0px;
+  line-height: 1em;
+  vertical-align: middle;
 }
 a.navbar-brand:hover b {
   text-shadow: 0 1px 2px #000;
@@ -8240,7 +8269,8 @@ a.navbar-brand:hover b {
   display: none;
 }
 @media (max-width: 767px) {
-  .control-sidebar-open {
+  .control-sidebar-open,
+  .control-sidebar-bg {
     width: 80%;
   }
 }
@@ -8257,6 +8287,9 @@ a.navbar-brand:hover b {
   display: table;
   table-layout: fixed;
 }
+header.main-header .navbar-header {
+  width: auto;
+}
 header.main-header .logo,
 header.main-header .sidebar-toggle,
 header.main-header .navbar,
@@ -8267,9 +8300,16 @@ header.main-header .navbar-custom-menu {
   min-height: 40px !important;
   height: 40px;
   line-height: 1em;
+  vertical-align: middle;
 }
 header.main-header .user-image {
-  margin-top: -6px;
+  border: solid 1px #444;
+  margin: -4px 10px 0 0;
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
 }
 header.main-header #context-sidebar-toggle,
 header.main-header .sidebar-toggle {
@@ -8278,7 +8318,19 @@ header.main-header .sidebar-toggle {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-/* Make the header bar 40px only (para maliit sa mobile)*/
+header.main-header #profile-link {
+  color: #666666;
+}
+/* Make the header bar 40px only in mobile*/
+.mobile-device header.main-header {
+  /*.navbar-custom-menu:before {
+            display: inline-block;
+        }
+
+        .nav.navbar-nav:before {
+            display: inline-block;
+        }*/
+}
 .mobile-device header.main-header .navbar-brand,
 .mobile-device header.main-header .sidebar-toggle,
 .mobile-device header.main-header .navbar,
@@ -8289,20 +8341,36 @@ header.main-header .sidebar-toggle {
   height: 40px;
   line-height: 1em;
 }
-.mobile-device header.main-header .navbar-brand > b {
-  display: none;
-}
 .mobile-device header.main-header #context-sidebar-toggle,
 .mobile-device header.main-header .sidebar-toggle {
   font-size: 1.8em;
-  line-height: 1.8em;
-  padding-top: 0px;
+  line-height: 1em;
+  padding-top: 10px;
   padding-bottom: 0px;
 }
-.sidebar-collapse .sidebar-top {
+.sidebar-collapse:not(.sidebar-open):not(.mobile-device) .sidebar-top .navbar-brand span {
   visibility: hidden;
 }
+body.mobile-device.sidebar-open .sidebar-toggle-arrow,
+body:not(.sidebar-collapse) .sidebar-toggle-arrow {
+  display: inline;
+}
+body.mobile-device.sidebar-open .sidebar-toggle-bars,
+body:not(.sidebar-collapse) .sidebar-toggle-bars {
+  display: none;
+}
+body.mobile-device:not(.sidebar-open) .sidebar-toggle-arrow,
+body.sidebar-collapse .sidebar-toggle-arrow {
+  display: none;
+}
+body.mobile-device:not(.sidebar-open) .sidebar-toggle-bars,
+body.sidebar-collapse .sidebar-toggle-bars {
+  display: inline;
+}
 .sidebar-top {
+  height: 40px;
+  padding: 0 6px;
+  margin: 0px;
   display: block;
   width: 100%;
   text-align: right;
@@ -8314,4 +8382,8 @@ header.main-header .sidebar-toggle {
 }
 .sidebar-top:after {
   clear: both;
+}
+.sidebar-top > .navbar-brand {
+  height: 40px;
+  padding-left: 10px;
 }

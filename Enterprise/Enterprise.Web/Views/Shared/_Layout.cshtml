@@ -53,66 +53,26 @@
                 <nav class="navbar navbar-static-top">
                     <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle Navigation</span>
-                        <i class="fa fa-bars"></i>
+                        <i class="sidebar-toggle-bars fa fa-bars"></i>
+                        <i class="sidebar-toggle-arrow fa fa-arrow-circle-left"></i>
                     </a>
 
-                    <div class="navbar-header">
-                        <a href="/" class="navbar-brand"><b>@LocalText.Get("Navigation.SiteTitle")</b></a>
-                    </div>
-                    @Html.Partial("_LoginPartial")
+                    @*<div class="navbar-header">*@
+                        <a href="/" class="navbar-brand">
+                            <b>@LocalText.Get("Navigation.SiteTitle")</b>
+                        </a>
+                        @Html.Partial("_LoginPartial")
+                    @*</div>*@
+                    
                 </nav>
             </header>
 
-            @*<header class="main-header">
-                    <a href="~/" class="logo">
-                        <span class="logo-mini"><i></i></span>
-                        <span class="logo-lg"><i></i><b>@LocalText.Get("Navigation.SiteTitle")</b></span>
-                    </a>
-                    <nav class="navbar navbar-static-top" role="navigation">
-                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                            <span class="sr-only">Toggle navigation</span>
-                        </a>
-
-                        <div class="navbar-custom-menu">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown user user-menu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="@userImage" class="user-image" alt="User Image">
-                                        <span class="hidden-xs">@Serenity.Authorization.Username</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <!-- User image -->
-                                        <li class="user-header">
-                                            <img src="@userImage" class="img-circle" alt="User Image">
-
-                                            <p>
-                                                @(user != null ? user.DisplayName : "")
-                                            </p>
-                                        </li>
-
-                                        <!-- Menu Footer-->
-                                        <li class="user-footer">
-                                            <div class="pull-left">
-                                                <a href="~/Account/ChangePassword" class="btn btn-default btn-flat"><i class="fa fa-lock fa-fw"></i> @Texts.Forms.Membership.ChangePassword.FormTitle</a>
-                                            </div>
-                                            <div class="pull-right">
-                                                <a href="~/Account/Signout" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> @LocalText.Get("Navigation.LogoutLink")</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </header>*@
-
             <aside class="main-sidebar">
-                <nav class="navbar-static-top sidebar-top">
-                    <a href="/" class="navbar-brand">@LocalText.Get("Navigation.OrgTitle")</a>
+                <nav class="navbar-static-top sidebar-top">                    
+                    <a href="/" class="navbar-brand">
+                        <div class="site-logo-mini"></div>
+                        <span>@LocalText.Get("Navigation.OrgTitle")</span>
+                    </a>
                 </nav>
                 <section class="sidebar">
                     <form action="#" method="get" class="sidebar-form">

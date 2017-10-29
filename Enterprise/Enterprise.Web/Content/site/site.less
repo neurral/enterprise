@@ -7,11 +7,39 @@
 @import "site.northwind.less";
 @import "site.organization.less";
 
+@navbar-height: 40px;
+@navbar-text-height: 1.8em;
+
 html {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     font-size: 0.95em;
-    font-kerning:normal;
+    font-kerning: normal;
     line-height: 1em;
+}
+
+.rounded-nav-img {
+    border: solid 1px #444;
+    margin: -4px 10px 0 0;
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.site-logo {
+    margin: auto 4px;
+    width: 128px;
+    height: 128px;
+    background: #fff url(../favicon/neurral-192.png) no-repeat center center;
+    background-size: contain;
+    border-radius: 50%;
+    border: solid 5px #444;
+}
+
+.site-logo-mini {
+    .site-logo;
+    .rounded-nav-img;
 }
 
 .main-header .navbar:hover, .main-header .dropdown-menu {
@@ -20,8 +48,11 @@ html {
 }
 
 a.navbar-brand {
+    display: inline-block;
     font-variant: small-caps;
-    padding: 10px 10px;
+    padding: 10px 0px;
+    line-height: 1em;
+    vertical-align: middle;
 }
 
 a.navbar-brand:hover {
@@ -31,7 +62,7 @@ a.navbar-brand:hover {
 }
 
 .main-header .dropdown-menu {
-    padding: 0px !important;    
+    padding: 0px !important;
 }
 
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
@@ -42,7 +73,7 @@ a.navbar-brand:hover {
     display: none;
 }
 
-.control-sidebar-open {
+.control-sidebar-open, .control-sidebar-bg {
     //make conext sidebar only 80% in small screens
     @media (max-width: @screen-xs-max) {
         width: 80%;
@@ -65,58 +96,111 @@ a.navbar-brand:hover {
 
 
 header.main-header {
+    .navbar-header {
+        width: auto;
+    }
+
     .logo, .sidebar-toggle, .navbar, .navbar-brand,
     #context-sidebar-toggle,
     .dropdown-toggle, .navbar-custom-menu {
-        min-height: 40px !important;
-        height: 40px;
+        min-height: @navbar-height !important;
+        height: @navbar-height;
         line-height: 1em;
+        vertical-align: middle;
     }
+
     .user-image {
-        margin-top: -6px;
+        .rounded-nav-img;
     }
 
     #context-sidebar-toggle, .sidebar-toggle {
-        font-size: 1.8em;
-        line-height: 1.8em;
+        font-size: @navbar-text-height;
+        line-height: @navbar-text-height;
         padding-top: 0px;
         padding-bottom: 0px;
     }
+
+    #profile-link {
+        color: rgb(102, 102, 102);
+    }
+
+
 }
 
-/* Make the header bar 40px only (para maliit sa mobile)*/
+
+
+/* Make the header bar 40px only in mobile*/
 .mobile-device {
     header.main-header {
         .navbar-brand, .sidebar-toggle, .navbar,
         #context-sidebar-toggle,
         .dropdown-toggle, .navbar-custom-menu {
-            min-height: 40px !important;
-            height: 40px;
-            line-height: 1em;
-        }
-
-        .navbar-brand > b {
-            display: none;
+            min-height: @navbar-height !important;
+            height: @navbar-height;
+            line-height: 1em; //TODO should be 1em?
         }
 
         #context-sidebar-toggle, .sidebar-toggle {
-            font-size: 1.8em;
-            line-height: 1.8em;
-            padding-top: 0px;
+            font-size: @navbar-text-height;
+            line-height: 1em;
+            padding-top: 10px;
             padding-bottom: 0px;
+        }
+
+        /*.navbar-custom-menu:before {
+            display: inline-block;
+        }
+
+        .nav.navbar-nav:before {
+            display: inline-block;
+        }*/
+    }
+}
+
+
+//hide Neurral brand if sidebar collapsed
+.sidebar-collapse:not(.sidebar-open):not(.mobile-device) .sidebar-top .navbar-brand span {
+    visibility: hidden;
+}
+
+body {
+    &.mobile-device.sidebar-open,
+    &:not(.sidebar-collapse) {
+        .sidebar-toggle-arrow {
+            display: inline;
+        }
+
+        .sidebar-toggle-bars {
+            display: none;
+        }
+    }
+
+    &.mobile-device:not(.sidebar-open), 
+    &.sidebar-collapse {
+        .sidebar-toggle-arrow {
+            display: none;
+        }
+
+        .sidebar-toggle-bars {
+            display: inline;
         }
     }
 }
 
 
 
-.sidebar-collapse .sidebar-top {
-        visibility:hidden;
-    }
 
-.sidebar-top {    
-    display:block;
-    width:100%;
-    text-align:right;
+.sidebar-top {
+    height: @navbar-height;
+    padding: 0 6px;
+    margin: 0px;
+    display: block;
+    width: 100%;
+    text-align: right;
     .clearfix();
+
+    > .navbar-brand {
+        height: @navbar-height;
+        padding-left: 10px;
+    }
 }

@@ -43,15 +43,15 @@ namespace Enterprise
                 public static class ForgotPassword
                 {
                     public static LocalText FormInfo = "Please enter the e-mail you used to signup.";
-                    public static LocalText FormTitle = "Forgot My Password";
-                    public static LocalText SubmitButton = "Reset My Password";
+                    public static LocalText FormTitle = "Forgot Password";
+                    public static LocalText SubmitButton = "Reset Password";
                     public static LocalText Success = "An e-mail with password reset instructions is sent to your e-mail address.";
                     public static LocalText BackToLogin = "I remember my password";
                 }
 
                 public static class ResetPassword
                 {
-                    public static LocalText EmailSubject = "Reset Your Enterprise Password";
+                    public static LocalText EmailSubject = "Reset Your Password";
                     public static LocalText FormTitle = "Reset Password";
                     public static LocalText SubmitButton = "Reset Password";
                     public static LocalText Success = "Your password is changed. Please login with your new password.";

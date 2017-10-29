@@ -206,6 +206,7 @@
     <Content Include="Content\favicon\favicon-32x32.png" />
     <Content Include="Content\favicon\favicon.ico" />
     <Content Include="Content\favicon\mstile-150x150.png" />
+    <Content Include="Content\favicon\neurral-192.png" />
     <Content Include="Content\favicon\safari-pinned-tab.svg" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
