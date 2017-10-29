@@ -11,9 +11,9 @@ namespace Enterprise.Membership
     {
         [Ignore]
         public String Token { get; set; }
-        [PasswordEditor, Required(true), DisplayName("New Password")]
+        [PasswordEditor, Required(true), DisplayName("New Password"), Placeholder("New Password")]
         public String NewPassword { get; set; }
-        [PasswordEditor, Required(true), DisplayName("Confirm Password")]
+        [PasswordEditor, Required(true), DisplayName("Confirm Password"), Placeholder("Confirm Password")]
         public String ConfirmPassword { get; set; }
     }
 }

@@ -10,6 +10,8 @@
         constructor(container: JQuery) {
             super(container);
 
+            Enterprise.Options.PlugVegas('body');
+
             this.form = new ForgotPasswordForm(this.idPrefix);
 
             this.byId('SubmitButton').click(e => {

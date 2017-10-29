@@ -550,6 +550,8 @@
     <Content Include="Content\site\slides\vegas\slide3.jpg" />
     <Content Include="Content\site\slides\vegas\slide4.jpg" />
     <Content Include="Content\site\slides\vegas\slide5.jpg" />
+    <Content Include="google389462b7350c0b59.html" />
+    <Content Include="Index.htm" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Sqlite.sql" />
     <Content Include="Content\slick-default-theme.css" />
@@ -1683,7 +1685,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ServerTypings.log</LastGenOutput>
     </Content>
-    <Content Include="Welcome.htm" />
     <Content Include="Modules\Organization\Membership\Account\ChangePassword\AccountChangePassword.cshtml" />
     <Content Include="Modules\Organization\Membership\Account\ForgotPassword\AccountForgotPassword.cshtml" />
     <Content Include="Modules\Organization\Membership\Account\ResetPassword\AccountResetPassword.cshtml" />

@@ -10,6 +10,8 @@
         constructor(container: JQuery) {
             super(container);
 
+            Enterprise.Options.PlugVegas('body');
+
             this.form = new ResetPasswordForm(this.idPrefix);
 
             this.form.NewPassword.addValidationRule(this.uniqueName, e => {

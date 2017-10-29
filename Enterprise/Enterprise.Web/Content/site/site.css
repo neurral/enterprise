@@ -7410,7 +7410,10 @@ section.content > .s-DataGrid {
 }
 /*Default styles for login/register pages*/
 body.mobile-device .s-LoginPanel,
-body.mobile-device .s-SignUpPanel {
+body.mobile-device .s-SignUpPanel,
+body.mobile-device .s-ForgotPasswordPanel,
+body.mobile-device .s-ResetPasswordPanel,
+body.mobile-device c {
   padding: 16px 8px;
   position: absolute;
   margin: auto;
@@ -7420,7 +7423,10 @@ body.mobile-device .s-SignUpPanel {
   right: 16px;
 }
 .page-content .s-LoginPanel,
-.page-content .s-SignUpPanel {
+.page-content .s-SignUpPanel,
+.page-content .s-ForgotPasswordPanel,
+.page-content .s-ResetPasswordPanel,
+.page-content .s-ChangePasswordPanel {
   padding: 28px 24px;
   margin: 24px 24px auto auto;
   width: 30%;
@@ -7430,11 +7436,17 @@ body.mobile-device .s-SignUpPanel {
   box-shadow: 0px 0px 5px #000;
 }
 .page-content .s-LoginPanel .caption,
-.page-content .s-SignUpPanel .caption {
+.page-content .s-SignUpPanel .caption,
+.page-content .s-ForgotPasswordPanel .caption,
+.page-content .s-ResetPasswordPanel .caption,
+.page-content .s-ChangePasswordPanel .caption {
   width: 180px;
 }
 .page-content .s-LoginPanel .login-title,
-.page-content .s-SignUpPanel .login-title {
+.page-content .s-SignUpPanel .login-title,
+.page-content .s-ForgotPasswordPanel .login-title,
+.page-content .s-ResetPasswordPanel .login-title,
+.page-content .s-ChangePasswordPanel .login-title {
   font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
   font-size: 2em;
   margin: 16px 0 24px;
@@ -7443,12 +7455,18 @@ body.mobile-device .s-SignUpPanel {
   font-weight: 100;
 }
 .page-content .s-LoginPanel .login-title > b,
-.page-content .s-SignUpPanel .login-title > b {
+.page-content .s-SignUpPanel .login-title > b,
+.page-content .s-ForgotPasswordPanel .login-title > b,
+.page-content .s-ResetPasswordPanel .login-title > b,
+.page-content .s-ChangePasswordPanel .login-title > b {
   font-variant: normal;
   font-weight: 700;
 }
 .page-content .s-LoginPanel .form-title,
-.page-content .s-SignUpPanel .form-title {
+.page-content .s-SignUpPanel .form-title,
+.page-content .s-ForgotPasswordPanel .form-title,
+.page-content .s-ResetPasswordPanel .form-title,
+.page-content .s-ChangePasswordPanel .form-title {
   font-family: 'Open Sans Condensed', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
@@ -7456,22 +7474,34 @@ body.mobile-device .s-SignUpPanel {
   padding: 0 8px;
 }
 .page-content .s-LoginPanel .buttons,
-.page-content .s-SignUpPanel .buttons {
+.page-content .s-SignUpPanel .buttons,
+.page-content .s-ForgotPasswordPanel .buttons,
+.page-content .s-ResetPasswordPanel .buttons,
+.page-content .s-ChangePasswordPanel .buttons {
   padding: 8px 8px;
 }
 .page-content .s-LoginPanel .buttons .btn,
-.page-content .s-SignUpPanel .buttons .btn {
+.page-content .s-SignUpPanel .buttons .btn,
+.page-content .s-ForgotPasswordPanel .buttons .btn,
+.page-content .s-ResetPasswordPanel .buttons .btn,
+.page-content .s-ChangePasswordPanel .buttons .btn {
   padding: 8px 24px;
   font-weight: 700;
 }
 .page-content .s-LoginPanel .caption,
-.page-content .s-SignUpPanel .caption {
+.page-content .s-SignUpPanel .caption,
+.page-content .s-ForgotPasswordPanel .caption,
+.page-content .s-ResetPasswordPanel .caption,
+.page-content .s-ChangePasswordPanel .caption {
   display: none;
   font-weight: 700;
   text-shadow: 0 1px 1px #333;
 }
 .page-content .s-LoginPanel .actions a,
-.page-content .s-SignUpPanel .actions a {
+.page-content .s-SignUpPanel .actions a,
+.page-content .s-ForgotPasswordPanel .actions a,
+.page-content .s-ResetPasswordPanel .actions a,
+.page-content .s-ChangePasswordPanel .actions a {
   padding: 2px;
   margin-top: 5px;
   display: block;
@@ -7480,165 +7510,107 @@ body.mobile-device .s-SignUpPanel {
   border-bottom: 1px dashed #999;
 }
 .page-content .s-LoginPanel .actions a:hover,
-.page-content .s-SignUpPanel .actions a:hover {
+.page-content .s-SignUpPanel .actions a:hover,
+.page-content .s-ForgotPasswordPanel .actions a:hover,
+.page-content .s-ResetPasswordPanel .actions a:hover,
+.page-content .s-ChangePasswordPanel .actions a:hover {
   color: white;
   text-shadow: 0px 0px 5px #ffffff;
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 .page-content .s-LoginPanel .s-Form label.error,
-.page-content .s-SignUpPanel .s-Form label.error {
+.page-content .s-SignUpPanel .s-Form label.error,
+.page-content .s-ForgotPasswordPanel .s-Form label.error,
+.page-content .s-ResetPasswordPanel .s-Form label.error,
+.page-content .s-ChangePasswordPanel .s-Form label.error {
   background-image: url(../serenity/images/cross.png);
   padding: 26px 0 0 22px;
 }
 .page-content .s-LoginPanel .s-Form label.error.checked,
-.page-content .s-SignUpPanel .s-Form label.error.checked {
+.page-content .s-SignUpPanel .s-Form label.error.checked,
+.page-content .s-ForgotPasswordPanel .s-Form label.error.checked,
+.page-content .s-ResetPasswordPanel .s-Form label.error.checked,
+.page-content .s-ChangePasswordPanel .s-Form label.error.checked {
   background-image: url(../serenity/images/check2.png);
 }
 .page-content .s-LoginPanel .s-Form .field,
-.page-content .s-SignUpPanel .s-Form .field {
+.page-content .s-SignUpPanel .s-Form .field,
+.page-content .s-ForgotPasswordPanel .s-Form .field,
+.page-content .s-ResetPasswordPanel .s-Form .field,
+.page-content .s-ChangePasswordPanel .s-Form .field {
   padding: 8px;
 }
 .page-content .s-LoginPanel .s-Form input,
-.page-content .s-SignUpPanel .s-Form input {
+.page-content .s-SignUpPanel .s-Form input,
+.page-content .s-ForgotPasswordPanel .s-Form input,
+.page-content .s-ResetPasswordPanel .s-Form input,
+.page-content .s-ChangePasswordPanel .s-Form input {
   padding: 6px 10px;
   border: none;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
 }
 .page-content .s-LoginPanel .s-Form .caption,
-.page-content .s-SignUpPanel .s-Form .caption {
+.page-content .s-SignUpPanel .s-Form .caption,
+.page-content .s-ForgotPasswordPanel .s-Form .caption,
+.page-content .s-ResetPasswordPanel .s-Form .caption,
+.page-content .s-ChangePasswordPanel .s-Form .caption {
   padding: 6px 10px;
   color: #fff;
 }
 .page-content .s-LoginPanel a,
-.page-content .s-SignUpPanel a {
+.page-content .s-SignUpPanel a,
+.page-content .s-ForgotPasswordPanel a,
+.page-content .s-ResetPasswordPanel a,
+.page-content .s-ChangePasswordPanel a {
   color: cornflowerblue;
 }
 .page-content .s-LoginPanel .s-PropertyGrid .categories,
-.page-content .s-SignUpPanel .s-PropertyGrid .categories {
+.page-content .s-SignUpPanel .s-PropertyGrid .categories,
+.page-content .s-ForgotPasswordPanel .s-PropertyGrid .categories,
+.page-content .s-ResetPasswordPanel .s-PropertyGrid .categories,
+.page-content .s-ChangePasswordPanel .s-PropertyGrid .categories {
   height: auto;
 }
-.page-content .s-LoginPanel .flex-layout .s-PropertyGrid,
-.page-content .s-SignUpPanel .flex-layout .s-PropertyGrid {
+.page-content .flex-layout .s-PropertyGrid {
   display: block;
 }
 .s-ChangePasswordPanel {
-  width: 550px;
+  margin: auto;
+  width: 100%;
 }
-.s-ChangePasswordPanel .caption {
-  width: 150px;
+/*.s-ForgotPasswordPanel {
+    border: 2px solid #e7e7e7;
+    padding: 40px;
+    border-radius: 8px;
+    width: 650px;
+    margin: 60px auto auto auto;
+    .form-styles(150px, 350px);
+
+    .buttons {
+        text-align: right;
+        padding: 8px 62px;
+    }
+
+    p {
+        padding: 8px;
+        margin: 24px 0;
+    }
 }
-.s-ChangePasswordPanel .editor {
-  width: 350px;
-}
-.s-ChangePasswordPanel input.editor[type=checkbox] {
-  width: auto;
-}
-.s-ChangePasswordPanel .s-Form .editor.dateQ {
-  width: 326px;
-}
-.s-ChangePasswordPanel .s-Form .editor.emailuser {
-  width: 170px;
-}
-.s-ChangePasswordPanel .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 231px;
-}
-.s-ChangePasswordPanel .s-Form .editor.s-DateTimeEditor.time {
-  width: 64px;
-  margin-left: 4px;
-}
-.s-ChangePasswordPanel .s-Form .editor.has-inplace-button {
-  width: 324px;
-}
-.s-ChangePasswordPanel .s-Form .emaildomain {
-  width: 165px;
-}
-.s-ChangePasswordPanel .buttons {
-  text-align: right;
-  padding: 8px 48px;
-}
-.s-ForgotPasswordPanel {
-  border: 2px solid #e7e7e7;
-  padding: 40px;
-  border-radius: 8px;
-  width: 650px;
-  margin: 60px auto auto auto;
-}
-.s-ForgotPasswordPanel .caption {
-  width: 150px;
-}
-.s-ForgotPasswordPanel .editor {
-  width: 350px;
-}
-.s-ForgotPasswordPanel input.editor[type=checkbox] {
-  width: auto;
-}
-.s-ForgotPasswordPanel .s-Form .editor.dateQ {
-  width: 326px;
-}
-.s-ForgotPasswordPanel .s-Form .editor.emailuser {
-  width: 170px;
-}
-.s-ForgotPasswordPanel .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 231px;
-}
-.s-ForgotPasswordPanel .s-Form .editor.s-DateTimeEditor.time {
-  width: 64px;
-  margin-left: 4px;
-}
-.s-ForgotPasswordPanel .s-Form .editor.has-inplace-button {
-  width: 324px;
-}
-.s-ForgotPasswordPanel .s-Form .emaildomain {
-  width: 165px;
-}
-.s-ForgotPasswordPanel .buttons {
-  text-align: right;
-  padding: 8px 62px;
-}
-.s-ForgotPasswordPanel p {
-  padding: 8px;
-  margin: 24px 0;
-}
-.s-ResetPasswordPanel {
-  border: 2px solid #e7e7e7;
-  padding: 40px;
-  border-radius: 8px;
-  width: 650px;
-  margin: 60px auto auto auto;
-}
-.s-ResetPasswordPanel .caption {
-  width: 150px;
-}
-.s-ResetPasswordPanel .editor {
-  width: 350px;
-}
-.s-ResetPasswordPanel input.editor[type=checkbox] {
-  width: auto;
-}
-.s-ResetPasswordPanel .s-Form .editor.dateQ {
-  width: 326px;
-}
-.s-ResetPasswordPanel .s-Form .editor.emailuser {
-  width: 170px;
-}
-.s-ResetPasswordPanel .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 231px;
-}
-.s-ResetPasswordPanel .s-Form .editor.s-DateTimeEditor.time {
-  width: 64px;
-  margin-left: 4px;
-}
-.s-ResetPasswordPanel .s-Form .editor.has-inplace-button {
-  width: 324px;
-}
-.s-ResetPasswordPanel .s-Form .emaildomain {
-  width: 165px;
-}
-.s-ResetPasswordPanel .buttons {
-  text-align: right;
-  padding: 8px 62px;
-}
+    */
+/*.s-ResetPasswordPanel {
+    border: 2px solid #e7e7e7;
+    padding: 40px;
+    border-radius: 8px;
+    width: 650px;
+    margin: 60px auto auto auto;
+    .form-styles(150px, 350px);
+
+    .buttons {
+        text-align: right;
+        padding: 8px 62px;
+    }
+}*/
 /*AdminLTE style login/register box*/
 .login-box .page-title,
 .register-box .page-title {
@@ -8221,7 +8193,7 @@ html {
   vertical-align: middle;
 }
 .site-logo {
-  margin: auto 4px;
+  margin: auto;
   width: 128px;
   height: 128px;
   background: #ffffff url(../favicon/neurral-192.png) no-repeat center center;
@@ -8230,7 +8202,7 @@ html {
   border: solid 5px #444;
 }
 .site-logo-mini {
-  margin: auto 4px;
+  margin: auto;
   width: 128px;
   height: 128px;
   background: #ffffff url(../favicon/neurral-192.png) no-repeat center center;

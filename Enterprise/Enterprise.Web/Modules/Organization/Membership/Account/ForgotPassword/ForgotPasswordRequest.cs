@@ -9,7 +9,7 @@ namespace Enterprise.Membership
     [FormScript("Membership.ForgotPassword")]
     public class ForgotPasswordRequest : ServiceRequest
     {
-        [Required(true), EmailEditor, DisplayName("E-mail Address")]
+        [Required(true), EmailEditor, DisplayName("E-mail Address"), Placeholder("Your account email address")]
         public String Email { get; set; }
     }
 }

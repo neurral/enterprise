@@ -4,7 +4,10 @@
 
 body.mobile-device {
     .s-LoginPanel,
-    .s-SignUpPanel {
+    .s-SignUpPanel,
+    .s-ForgotPasswordPanel,
+    .s-ResetPasswordPanel,
+c {
         padding: 16px 8px;
         position: absolute;
         margin: auto;
@@ -16,7 +19,11 @@ body.mobile-device {
 }
 
 .page-content {
-    .s-LoginPanel, .s-SignUpPanel {
+    .s-LoginPanel, 
+    .s-SignUpPanel,
+    .s-ForgotPasswordPanel,
+    .s-ResetPasswordPanel,    
+    .s-ChangePasswordPanel {
         padding: 28px 24px;
         margin: 24px 24px auto auto;
         width: 30%;
@@ -118,23 +125,17 @@ body.mobile-device {
         }
     }
 
-    .s-LoginPanel .flex-layout .s-PropertyGrid,
-    .s-SignUpPanel .flex-layout .s-PropertyGrid {
+    .flex-layout .s-PropertyGrid {
         display: block;
     }
 }
 
-.s-ChangePasswordPanel {
-    width: 550px;
-    .form-styles(150px, 350px);
-
-    .buttons {
-        text-align: right;
-        padding: 8px 48px;
-    }
+.s-ChangePasswordPanel {   
+    margin: auto;
+    width: 100%;
 }
 
-.s-ForgotPasswordPanel {
+/*.s-ForgotPasswordPanel {
     border: 2px solid #e7e7e7;
     padding: 40px;
     border-radius: 8px;
@@ -152,8 +153,9 @@ body.mobile-device {
         margin: 24px 0;
     }
 }
+    */
 
-.s-ResetPasswordPanel {
+/*.s-ResetPasswordPanel {
     border: 2px solid #e7e7e7;
     padding: 40px;
     border-radius: 8px;
@@ -165,7 +167,7 @@ body.mobile-device {
         text-align: right;
         padding: 8px 62px;
     }
-}
+}*/
 
 /*AdminLTE style login/register box*/
 .login-box, .register-box {
