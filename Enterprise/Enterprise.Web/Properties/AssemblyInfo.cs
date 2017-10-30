@@ -4,14 +4,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Enterprise.Web")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Enterprise.Web")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyTitle(Enterprise.Constants.ASSEMBLY_TITLE)]
+[assembly: AssemblyDescription(Enterprise.Constants.ASSEMBLY_DESCRIPTION)]
+[assembly: AssemblyConfiguration(Enterprise.Constants.ASSEMBLY_CONFIGURATION)]
+[assembly: AssemblyCompany(Enterprise.Constants.ASSEMBLY_COMPANY)]
+[assembly: AssemblyProduct(Enterprise.Constants.ASSEMBLY_PRODUCT)]
+[assembly: AssemblyCopyright(Enterprise.Constants.ASSEMBLY_COPYRIGHT)]
+[assembly: AssemblyTrademark(Enterprise.Constants.ASSEMBLY_TRADEMARK)]
+[assembly: AssemblyCulture(Enterprise.Constants.ASSEMBLY_CULTURE)]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
