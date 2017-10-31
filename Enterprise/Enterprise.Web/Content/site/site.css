@@ -638,7 +638,7 @@ a:focus {
     display: none;
   }
   .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {
-    top: 44px;
+    top: 43px;
     margin-left: 0;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar .user-panel > .info,
@@ -6721,7 +6721,7 @@ table.text-center th {
 }
 body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: #000;
   -ms-overflow-style: scrollbar;
 }
@@ -8250,27 +8250,15 @@ a.navbar-brand:hover b {
     width: 80%;
   }
 }
-.treeview a:hover {
-  border: 1px solid #aaa;
-}
-.treeview a:hover > span {
-  border-top: 1px solid #aaa;
-  border-right: 1px solid #aaa;
-}
-.treeview a:hover > .treeview-menu {
-  box-shadow: 2px 1px 1px #000;
-  border-right: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
-}
-.select2-container {
-  position: relative;
-  /*z-index: 2;*/
-  /*float: left;*/
-  width: 100%;
-  margin-bottom: 0;
-  display: table;
-  table-layout: fixed;
-}
+/*.select2-container {
+    position: relative;
+    //z-index: 2;
+    //float: left;
+    width: 100%;
+    margin-bottom: 0;
+    display: table;
+    table-layout: fixed;
+}*/
 header.main-header .navbar-header {
   width: auto;
 }
@@ -8370,4 +8358,12 @@ body.sidebar-collapse .sidebar-toggle-bars {
 .sidebar-top > .navbar-brand {
   height: 40px;
   padding-left: 10px;
+}
+.ui-dialog {
+  padding-bottom: 20px;
+}
+.ui-dialog.s-Dialog[style] {
+  top: 50px ;
+  box-shadow: 0px 0px 200px #444 !important;
+  box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.8) !important;
 }
