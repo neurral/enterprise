@@ -3,10 +3,20 @@
 namespace Enterprise.Migrations.DefaultDB
 {
     [Migration(20161126210000)]
-    public class DefaultDB_20161126_210000_Meeting : AutoReversingMigration
+    public class DefaultDB_20161126_210000_Meeting_and_Contacts : AutoReversingMigration
     {
         public override void Up()
         {
+            this.CreateTableWithId32("Contacts", "ContactId", s => s
+               .WithColumn("Title").AsString(30).Nullable()
+               .WithColumn("FirstName").AsString(50).NotNullable()
+               .WithColumn("LastName").AsString(50).NotNullable()
+               .WithColumn("Email").AsString(100).NotNullable()
+               .WithColumn("IdentityNo").AsString(20).Nullable()
+               .WithColumn("UserId").AsInt32().Nullable()
+                   .ForeignKey("FK_Contacts_UserId", "Users", "UserId"),
+                   checkExists: true);
+
             this.CreateTableWithId32("MeetingLocations", "LocationId", s => s
                 .WithColumn("Name").AsString(100).NotNullable()
                 .WithColumn("Address").AsString(300).Nullable()
@@ -26,8 +36,8 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("EndDate").AsDateTime().NotNullable()
                 .WithColumn("LocationId").AsInt32().Nullable()
                     .ForeignKey("FK_Meetings_LocationId", "MeetingLocations", "LocationId")
-                .WithColumn("UnitId").AsInt32().Nullable()
-                    .ForeignKey("FK_Meetings_UnitId", "BusinessUnits", "UnitId")
+                //.WithColumn("UnitId").AsInt32().Nullable()
+                //    .ForeignKey("FK_Meetings_UnitId", "BusinessUnits", "UnitId")
                 .WithColumn("OrganizerContactId").AsInt32().Nullable()
                     .ForeignKey("FK_Meetings_Organizer", "Contacts", "ContactId")
                 .WithColumn("ReporterContactId").AsInt32().Nullable()

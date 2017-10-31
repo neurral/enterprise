@@ -13,7 +13,6 @@ namespace Enterprise.Organization.Columns
         public Int32 UnitId { get; set; }
         [EditLink, Width(300)]
         public String Name { get; set; }
-        [EditLink, Width(300)]
-        public Int32 ParentUnitName { get; set; }
+       
     }
 }

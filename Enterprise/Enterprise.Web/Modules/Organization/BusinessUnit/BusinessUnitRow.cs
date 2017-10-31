@@ -1,6 +1,4 @@
-﻿
-
-namespace Enterprise.Organization.Entities
+﻿namespace Enterprise.Organization.Entities
 {
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -8,12 +6,17 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Business Units"), InstanceName("Business Unit"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.BusinessUnits.Management)]
-    [ModifyPermission(PermissionKeys.BusinessUnits.Management)]
+
+    [ConnectionKey("Default"), DisplayName("Business Units"), 
+        TableName(TableName), 
+        InstanceName("Business Unit"), TwoLevelCached]
+    [ReadPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.BusinessUnit.Management)]
     [LookupScript("Organization.BusinessUnit", Permission = PermissionKeys.General)]
     public sealed class BusinessUnitRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + "BusinessUnits";
+
         [DisplayName("Unit Id"), Identity]
         public Int32? UnitId
         {
@@ -28,7 +31,8 @@ namespace Enterprise.Organization.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Parent Unit"), ForeignKey("BusinessUnits", "UnitId"), LeftJoin("jParentUnit"), TextualField("ParentUnitName")]
+        [DisplayName("Parent Unit"), ForeignKey(TableName, "UnitId"), 
+            LeftJoin("jParentUnit"), TextualField("ParentUnitName")]
         [LookupInclude, BusinessUnitEditor]
         public Int32? ParentUnitId
         {
@@ -77,7 +81,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ParentUnitParentUnitId;
 
             public RowFields()
-                : base("BusinessUnits")
+                : base()
             {
                 LocalTextPrefix = "Organization.BusinessUnit";
             }
