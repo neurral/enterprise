@@ -248,6 +248,9 @@ ModelManifest.xml
 **/*.jfm
 
 AppData/
+App_Data/
 **/*.pubxml
 **/*[Bb]in/*
 **/*.config
+# SQL Server files
+**/App_Data/*
