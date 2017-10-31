@@ -8216,6 +8216,10 @@ html {
   border-radius: 50%;
   vertical-align: middle;
 }
+.main-header {
+  border-bottom: 1px solid #aaa;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
 .main-header .navbar:hover,
 .main-header .dropdown-menu {
   box-shadow: 0px 7px 10px #aaa;
@@ -8242,13 +8246,21 @@ a.navbar-brand:hover b {
 }
 @media (max-width: 767px) {
   .control-sidebar-open,
-  .control-sidebar-bg {
+  .control-sidebar-open + .control-sidebar-bg {
     width: 80%;
   }
 }
-.treeview a:hover,
-.treeview-menu {
-  box-shadow: 2px 1px 3px #000;
+.treeview a:hover {
+  border: 1px solid #aaa;
+}
+.treeview a:hover > span {
+  border-top: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}
+.treeview a:hover > .treeview-menu {
+  box-shadow: 2px 1px 1px #000;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
 }
 .select2-container {
   position: relative;
