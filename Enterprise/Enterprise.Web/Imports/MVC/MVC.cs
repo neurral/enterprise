@@ -23,6 +23,38 @@ namespace MVC
 
             public static class User
             {
+                public static class Membership
+                {
+                    public static class Account
+                    {
+                        public const string AccountLogin = "~/Modules/Administration/User/Membership/Account/AccountLogin.cshtml";
+                        public const string AccountLogin_AdminLTE = "~/Modules/Administration/User/Membership/Account/AccountLogin.AdminLTE.cshtml";
+                        public static class ChangePassword
+                        {
+                            public const string AccountChangePassword = "~/Modules/Administration/User/Membership/Account/ChangePassword/AccountChangePassword.cshtml";
+                        }
+
+                        public static class ForgotPassword
+                        {
+                            public const string AccountForgotPassword = "~/Modules/Administration/User/Membership/Account/ForgotPassword/AccountForgotPassword.cshtml";
+                            public const string AccountForgotPassword_AdminLTE = "~/Modules/Administration/User/Membership/Account/ForgotPassword/AccountForgotPassword.AdminLTE.cshtml";
+                        }
+
+                        public static class ResetPassword
+                        {
+                            public const string AccountResetPassword = "~/Modules/Administration/User/Membership/Account/ResetPassword/AccountResetPassword.cshtml";
+                            public const string AccountResetPassword_AdminLTE = "~/Modules/Administration/User/Membership/Account/ResetPassword/AccountResetPassword.AdminLTE.cshtml";
+                            public const string AccountResetPasswordEmail = "~/Modules/Administration/User/Membership/Account/ResetPassword/AccountResetPasswordEmail.cshtml";
+                        }
+
+                        public static class SignUp
+                        {
+                            public const string AccountActivateEmail = "~/Modules/Administration/User/Membership/Account/SignUp/AccountActivateEmail.cshtml";
+                            public const string AccountSignUp = "~/Modules/Administration/User/Membership/Account/SignUp/AccountSignUp.cshtml";
+                            public const string AccountSignUp_AdminLTE = "~/Modules/Administration/User/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
+                        }
+                    }
+                }
                 public const string UserIndex = "~/Modules/Administration/User/UserIndex.cshtml";
             }
         }
@@ -384,40 +416,6 @@ namespace MVC
                 public static class MeetingType
                 {
                     public const string MeetingTypeIndex = "~/Modules/Organization/Meeting/MeetingType/MeetingTypeIndex.cshtml";
-                }
-
-            }
-
-            public static class Membership
-            {
-                public static class Account
-                {
-                    public const string AccountLogin = "~/Modules/Organization/Membership/Account/AccountLogin.cshtml";
-                    public const string AccountLogin_AdminLTE = "~/Modules/Organization/Membership/Account/AccountLogin.AdminLTE.cshtml";
-                    public static class ChangePassword
-                    {
-                        public const string AccountChangePassword = "~/Modules/Organization/Membership/Account/ChangePassword/AccountChangePassword.cshtml";
-                    }
-
-                    public static class ForgotPassword
-                    {
-                        public const string AccountForgotPassword = "~/Modules/Organization/Membership/Account/ForgotPassword/AccountForgotPassword.cshtml";
-                        public const string AccountForgotPassword_AdminLTE = "~/Modules/Organization/Membership/Account/ForgotPassword/AccountForgotPassword.AdminLTE.cshtml";
-                    }
-
-                    public static class ResetPassword
-                    {
-                        public const string AccountResetPassword = "~/Modules/Organization/Membership/Account/ResetPassword/AccountResetPassword.cshtml";
-                        public const string AccountResetPassword_AdminLTE = "~/Modules/Organization/Membership/Account/ResetPassword/AccountResetPassword.AdminLTE.cshtml";
-                        public const string AccountResetPasswordEmail = "~/Modules/Organization/Membership/Account/ResetPassword/AccountResetPasswordEmail.cshtml";
-                    }
-
-                    public static class SignUp
-                    {
-                        public const string AccountActivateEmail = "~/Modules/Organization/Membership/Account/SignUp/AccountActivateEmail.cshtml";
-                        public const string AccountSignUp = "~/Modules/Organization/Membership/Account/SignUp/AccountSignUp.cshtml";
-                        public const string AccountSignUp_AdminLTE = "~/Modules/Organization/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
-                    }
                 }
             }
 

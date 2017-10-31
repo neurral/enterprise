@@ -77,7 +77,7 @@ namespace Enterprise.Administration.Endpoints
 
                 var emailSubject = Texts.Forms.Membership.SignUp.ActivateEmailSubject.ToString();
                 var emailBody = TemplateHelper.RenderTemplate(
-                    MVC.Views.Organization.Membership.Account.SignUp.AccountActivateEmail, emailModel);
+                    MVC.Views.Administration.User.Membership.Account.SignUp.AccountActivateEmail, emailModel);
 
                 Common.EmailHelper.Send(emailSubject, emailBody, user.Email);
             }

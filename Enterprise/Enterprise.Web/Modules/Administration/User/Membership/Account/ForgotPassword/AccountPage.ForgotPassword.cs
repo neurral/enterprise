@@ -18,9 +18,9 @@ namespace Enterprise.Membership.Pages
         public ActionResult ForgotPassword()
         {
             if (UseAdminLTELoginBox)
-                return View(MVC.Views.Organization.Membership.Account.ForgotPassword.AccountForgotPassword_AdminLTE);
+                return View(MVC.Views.Administration.User.Membership.Account.ForgotPassword.AccountForgotPassword_AdminLTE);
             else
-                return View(MVC.Views.Organization.Membership.Account.ForgotPassword.AccountForgotPassword);
+                return View(MVC.Views.Administration.User.Membership.Account.ForgotPassword.AccountForgotPassword);
         }
 
         [HttpPost, JsonFilter]
@@ -62,7 +62,7 @@ namespace Enterprise.Membership.Pages
 
                 var emailSubject = Texts.Forms.Membership.ResetPassword.EmailSubject.ToString();
                 var emailBody = TemplateHelper.RenderTemplate(
-                    MVC.Views.Organization.Membership.Account.ResetPassword.AccountResetPasswordEmail, emailModel);
+                    MVC.Views.Administration.User.Membership.Account.ResetPassword.AccountResetPasswordEmail, emailModel);
 
                 Common.EmailHelper.Send(emailSubject, emailBody, user.Email);
 
