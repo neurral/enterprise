@@ -1548,6 +1548,7 @@
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\TreeGrid\TreeGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAGrid.ts" />
+    <TypeScriptCompile Include="Modules\Common\Dashboard\Dashboard.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\EnumSelectFormatter.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\LanguageList.ts" />
     <TypeScriptCompile Include="Modules\Common\Helpers\DialogUtils.ts" />

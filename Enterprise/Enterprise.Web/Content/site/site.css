@@ -8336,6 +8336,10 @@ body.mobile-device.sidebar-open .sidebar-toggle-bars,
 body:not(.sidebar-collapse) .sidebar-toggle-bars {
   display: none;
 }
+body.mobile-device.sidebar-open .main-sidebar,
+body:not(.sidebar-collapse) .main-sidebar {
+  box-shadow: 0px 0px 600px #000;
+}
 body.mobile-device:not(.sidebar-open) .sidebar-toggle-arrow,
 body.sidebar-collapse .sidebar-toggle-arrow {
   display: none;
@@ -8343,6 +8347,10 @@ body.sidebar-collapse .sidebar-toggle-arrow {
 body.mobile-device:not(.sidebar-open) .sidebar-toggle-bars,
 body.sidebar-collapse .sidebar-toggle-bars {
   display: inline;
+}
+body.mobile-device:not(.sidebar-open) .main-sidebar,
+body.sidebar-collapse .main-sidebar {
+  box-shadow: none;
 }
 .sidebar-top {
   height: 40px;
@@ -8364,13 +8372,13 @@ body.sidebar-collapse .sidebar-toggle-bars {
   height: 40px;
   padding-left: 10px;
 }
-.ui-dialog {
-  padding-bottom: 20px;
+.ui-dialog-content[style] {
+  padding-bottom: 16px;
 }
 .ui-dialog.s-Dialog[style] {
   top: 50px ;
-  box-shadow: 0px 0px 200px #444 !important;
-  box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0px 0px 200px #000 !important;
+  box-shadow: 0px 0px 200px #000000 !important;
 }
 #top-link-block.affix-top {
   position: absolute;

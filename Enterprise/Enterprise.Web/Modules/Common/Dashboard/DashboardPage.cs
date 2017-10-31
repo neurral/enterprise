@@ -32,6 +32,8 @@ namespace Enterprise.Common.Pages
                     return model;
                 });
             return View(MVC.Views.Common.Dashboard.DashboardIndex, cachedModel);
+
+            //TODO return different View for self-service
         }
     }
 }
