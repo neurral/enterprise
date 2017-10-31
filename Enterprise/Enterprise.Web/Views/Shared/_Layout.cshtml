@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
 @{
+
+
+    //AdminLTE colorschemes
+    var color_white = "black-light "; //prefix 'skin-'
+    var color_dark = "black";
+
     Func<string, IHtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
     var hideNav = Request["hideNav"] == "1";
     var logged = Serenity.Authorization.Username;
     var themeCookie = Request.Cookies["ThemePreference"];
-    var theme = themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
+    var theme = "skin-" +  (themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : color_dark);
     var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
 
-
-
-    //AdminLTE colorschemes
-    var color_white = "skin-blue-light ";
-    var color_dark = "skin-blue ";
-
     //AdminLTE alternate layouts
-    var normalSidebarSlideout = color_white + " fixed sidebar-mini";
-    var sidebarCollapsedHoverMenu = color_white + " hold-transition sidebar-collapse sidebar-mini";
-    var noSideBar = color_dark + " hold-transition sidebar-collapse layout-top-nav";
+    var normalSidebarSlideout = theme + " fixed sidebar-mini";
+    var sidebarCollapsedHoverMenu = theme + " hold-transition sidebar-collapse sidebar-mini";
+    var noSideBar = theme + " hold-transition sidebar-collapse layout-top-nav";
 
 }
 <!--[if IE 8]> <html lang="@UICulture" class="ie8 no-js"> <![endif]-->
