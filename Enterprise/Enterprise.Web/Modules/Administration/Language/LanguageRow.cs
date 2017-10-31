@@ -58,7 +58,7 @@ namespace Enterprise.Administration.Entities
             public StringField LanguageName;
 
             public RowFields()
-                : base("Languages")
+                : base()
             {
                 LocalTextPrefix = "Administration.Language";
             }

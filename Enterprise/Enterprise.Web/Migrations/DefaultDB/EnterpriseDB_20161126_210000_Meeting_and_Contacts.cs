@@ -25,7 +25,7 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("Longitude").AsDouble(), 
                 schema: SCHEMA);
 
-            this.CreateTableWithId64("MeetingTypes", "MeetingTypeId", s => s
+            this.CreateTableWithId64("MeetingType", "MeetingTypeId", s => s
                 .WithColumn("Name").AsString(100).NotNullable(), 
                 schema: SCHEMA);
 
@@ -34,17 +34,17 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("MeetingNumber").AsString(20).Nullable()
                 .WithColumn("MeetingGuid").AsGuid().NotNullable()
                 .WithColumn("MeetingTypeId").AsInt64().NotNullable()
-                    .ForeignKey("FK_Meeting_TypeId", "MeetingTypes", "MeetingTypeId")
+                    .ForeignKey("FK_Meeting_TypeId", SCHEMA, "MeetingType", "MeetingTypeId")
                 .WithColumn("StartDate").AsDateTime().NotNullable()
                 .WithColumn("EndDate").AsDateTime().NotNullable()
                 .WithColumn("LocationId").AsInt64().Nullable()
-                    .ForeignKey("FK_Meeting_LocationId", "MeetingLocation", "LocationId")
+                    .ForeignKey("FK_Meeting_LocationId", SCHEMA, "MeetingLocation", "LocationId")
                 //.WithColumn("UnitId").AsInt64().Nullable()
                 //    .ForeignKey("FK_Meeting_UnitId", "BusinessUnits", "UnitId")
                 .WithColumn("OrganizerContactId").AsInt64().Nullable()
-                    .ForeignKey("FK_Meeting_Organizer", "Contact", "ContactId")
+                    .ForeignKey("FK_Meeting_Organizer", SCHEMA, "Contact", "ContactId")
                 .WithColumn("ReporterContactId").AsInt64().Nullable()
-                    .ForeignKey("FK_Meeting_Reporter", "Contact", "ContactId")
+                    .ForeignKey("FK_Meeting_Reporter", SCHEMA, "Contact", "ContactId")
                 .WithColumn("InsertUserId").AsInt64().NotNullable()
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
                 .WithColumn("UpdateUserId").AsInt64().Nullable()
@@ -57,43 +57,43 @@ namespace Enterprise.Migrations.DefaultDB
 
             this.CreateTableWithId64("MeetingAgenda", "AgendaId", s => s
                 .WithColumn("MeetingId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetAgenda_MeetingId", "Meeting", "MeetingId")
+                    .ForeignKey("FK_MeetAgenda_MeetingId", SCHEMA, "Meeting", "MeetingId")
                 .WithColumn("AgendaNumber").AsInt64().NotNullable()
                 .WithColumn("Title").AsString(2000).Nullable()
                 .WithColumn("Description").AsString(int.MaxValue).Nullable()
                 .WithColumn("AgendaTypeId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetAgenda_AgendaTypeId", "MeetingAgendaType", "AgendaTypeId")
+                    .ForeignKey("FK_MeetAgenda_AgendaTypeId", SCHEMA, "MeetingAgendaType", "AgendaTypeId")
                 .WithColumn("RequestedByContactId").AsInt64().Nullable()
-                    .ForeignKey("FK_MeetAgenda_RequestedBy", "Contact", "ContactId")
+                    .ForeignKey("FK_MeetAgenda_RequestedBy", SCHEMA, "Contact", "ContactId")
                 .WithColumn("Images").AsString(int.MaxValue).Nullable()
                 .WithColumn("Attachments").AsString(int.MaxValue).Nullable(),
                 schema: SCHEMA);
 
             this.CreateTableWithId64("MeetingAgendaRelevant", "AgendaRelevantId", s => s
                 .WithColumn("AgendaId").AsInt64().NotNullable()
-                    .ForeignKey("FK_AgendaRel_AgendaId", "MeetingAgenda", "AgendaId")
+                    .ForeignKey("FK_AgendaRel_AgendaId", SCHEMA, "MeetingAgenda", "AgendaId")
                 .WithColumn("ContactId").AsInt64().NotNullable()
-                    .ForeignKey("FK_AgendaRel_ContactId", "Contact", "ContactId"));
+                    .ForeignKey("FK_AgendaRel_ContactId", SCHEMA, "Contact", "ContactId"));
 
             this.CreateTableWithId64("MeetingAttendee", "AttendeeId", s => s
                 .WithColumn("MeetingId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetAttendee_MeetingId", "Meeting", "MeetingId")
+                    .ForeignKey("FK_MeetAttendee_MeetingId", SCHEMA, "Meeting", "MeetingId")
                 .WithColumn("ContactId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetAttendee_ContactId", "Contact", "ContactId")
+                    .ForeignKey("FK_MeetAttendee_ContactId", SCHEMA, "Contact", "ContactId")
                 .WithColumn("AttendeeType").AsInt64().NotNullable()
                 .WithColumn("AttendanceStatus").AsInt64().NotNullable(),
                 schema: SCHEMA);
 
             this.CreateTableWithId64("MeetingDecision", "DecisionId", s => s
                 .WithColumn("MeetingId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetDecision_MeetingId", "Meeting", "MeetingId")
+                    .ForeignKey("FK_MeetDecision_MeetingId", SCHEMA, "Meeting", "MeetingId")
                 .WithColumn("AgendaId").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetDecision_AgendaId", "MeetingAgenda", "AgendaId")
+                    .ForeignKey("FK_MeetDecision_AgendaId", SCHEMA, "MeetingAgenda", "AgendaId")
                 .WithColumn("Description").AsString(int.MaxValue).Nullable()
                 .WithColumn("DecisionNumber").AsInt64().NotNullable()
-                    .ForeignKey("FK_MeetDecision_AgendaType", "MeetingAgendaType", "AgendaTypeId")
+                    .ForeignKey("FK_MeetDecision_AgendaType", SCHEMA, "MeetingAgendaType", "AgendaTypeId")
                 .WithColumn("ResponsibleContactId").AsInt64().Nullable()
-                    .ForeignKey("FK_MeetDecision_RequestedBy", "Contact", "ContactId")
+                    .ForeignKey("FK_MeetDecision_RequestedBy", SCHEMA, "Contact", "ContactId")
                 .WithColumn("DueDate").AsDateTime().Nullable()
                 .WithColumn("ResolutionStatus").AsInt64().NotNullable()
                 .WithColumn("Images").AsString(int.MaxValue).Nullable()
@@ -102,9 +102,9 @@ namespace Enterprise.Migrations.DefaultDB
 
             this.CreateTableWithId64("MeetingDecisionRelevant", "DecisionRelevantId", s => s
                 .WithColumn("DecisionId").AsInt64().NotNullable()
-                    .ForeignKey("FK_DecisionRel_DecisionId", "MeetingDecision", "DecisionId")
+                    .ForeignKey("FK_DecisionRel_DecisionId", SCHEMA, "MeetingDecision", "DecisionId")
                 .WithColumn("ContactId").AsInt64().NotNullable()
-                    .ForeignKey("FK_DecisionRel_ContactId", "Contact", "ContactId"),
+                    .ForeignKey("FK_DecisionRel_ContactId", SCHEMA, "Contact", "ContactId"),
                 schema: SCHEMA);
         }
     }

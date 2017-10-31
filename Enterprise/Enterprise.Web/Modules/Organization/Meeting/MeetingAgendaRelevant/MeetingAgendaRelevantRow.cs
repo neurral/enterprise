@@ -7,11 +7,15 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("MeetingAgendaRelevant"), InstanceName("MeetingAgendaRelevant"), TwoLevelCached]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
+    [DisplayName("MeetingAgendaRelevant"), InstanceName("MeetingAgendaRelevant"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     public sealed class MeetingAgendaRelevantRow : Row, IIdRow
     {
+        public const string TableName = Constants.SCHEMA + "MeetingAgendaRelevant";
+
         [DisplayName("Agenda Relevant Id"), Identity]
         public Int32? AgendaRelevantId
         {
@@ -166,7 +170,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ContactUserId;
 
             public RowFields()
-                : base("[MeetingAgendaRelevant]")
+                : base()
             {
                 LocalTextPrefix = "Meeting.MeetingAgendaRelevant";
             }

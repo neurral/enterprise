@@ -10,12 +10,13 @@ namespace Enterprise.Organization.Entities
     using System.IO;
 
     [ConnectionKey("Default")]
+    [TableName(TableName)]
     [DisplayName("Meeting"), InstanceName("Meeting"), TwoLevelCached]
     [ReadPermission("Organization:General")]
     [ModifyPermission("Organization:General")]
     public sealed class MeetingRow : Row, IIdRow, INameRow
-    {
-        public const string TableName = Constants.SCHEMA + "Meetings";
+    {        
+        public const string TableName = Constants.SCHEMA + "Meeting";
 
         [DisplayName("Meeting Id"), Identity]
         public Int32? MeetingId
@@ -45,7 +46,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.MeetingGuid[this] = value; }
         }
 
-        [DisplayName("Meeting Type"), NotNull, ForeignKey("[dbo].[MeetingTypes]", "MeetingTypeId"), LeftJoin("jMeetingType"), TextualField("MeetingTypeName")]
+        [DisplayName("Meeting Type"), NotNull, ForeignKey(MeetingTypeRow.TableName, "MeetingTypeId"), LeftJoin("jMeetingType"), TextualField("MeetingTypeName")]
         public Int32? MeetingTypeId
         {
             get { return Fields.MeetingTypeId[this]; }
@@ -66,21 +67,21 @@ namespace Enterprise.Organization.Entities
             set { Fields.EndDate[this] = value; }
         }
 
-        [DisplayName("Location"), ForeignKey("[dbo].[MeetingLocations]", "LocationId"), LeftJoin("jLocation"), TextualField("LocationName")]
+        [DisplayName("Location"), ForeignKey(MeetingLocationRow.TableName, "LocationId"), LeftJoin("jLocation"), TextualField("LocationName")]
         public Int32? LocationId
         {
             get { return Fields.LocationId[this]; }
             set { Fields.LocationId[this] = value; }
         }
 
-        [DisplayName("Organizer Contact"), ForeignKey("[dbo].[Contacts]", "ContactId"), LeftJoin("jOrganizerContact"), TextualField("OrganizerContactTitle")]
+        [DisplayName("Organizer Contact"), ForeignKey(ContactRow.TableName, "ContactId"), LeftJoin("jOrganizerContact"), TextualField("OrganizerContactTitle")]
         public Int32? OrganizerContactId
         {
             get { return Fields.OrganizerContactId[this]; }
             set { Fields.OrganizerContactId[this] = value; }
         }
 
-        [DisplayName("Reporter Contact"), ForeignKey("[dbo].[Contacts]", "ContactId"), LeftJoin("jReporterContact"), TextualField("ReporterContactTitle")]
+        [DisplayName("Reporter Contact"), ForeignKey(ContactRow.TableName, "ContactId"), LeftJoin("jReporterContact"), TextualField("ReporterContactTitle")]
         public Int32? ReporterContactId
         {
             get { return Fields.ReporterContactId[this]; }
@@ -273,7 +274,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ReporterContactUserId;
 
             public RowFields()
-                : base("Meetings")
+                : base()
             {
                 LocalTextPrefix = "Organization.Meeting";
             }

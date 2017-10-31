@@ -8,12 +8,16 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Meeting Locations"), InstanceName("Meeting Location"), TwoLevelCached]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
+    [DisplayName("Meeting Locations"), InstanceName("Meeting Location"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Meeting.Management)]
     [LookupScript("Organization.MeetingLocation")]
     public sealed class MeetingLocationRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + "MeetingLocation";
+
         [DisplayName("Location Id"), Identity]
         public Int32? LocationId
         {
@@ -75,7 +79,7 @@ namespace Enterprise.Organization.Entities
             public DoubleField Longitude;
 
             public RowFields()
-                : base("MeetingLocations")
+                : base()
             {
                 LocalTextPrefix = "Meeting.MeetingLocation";
             }

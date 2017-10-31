@@ -1,7 +1,6 @@
 ﻿
 namespace Enterprise.Organization.Pages
 {
-    using Serenity;
     using Serenity.Web;
     using System.Web.Mvc;
 
@@ -11,7 +10,7 @@ namespace Enterprise.Organization.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Organization/Meeting/MeetingIndex.cshtml");
+            return View(MVC.Views.Organization.Meeting.MeetingIndex);
         }
     }
 }

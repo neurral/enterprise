@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Organization/BusinessUnit/BusinessUnitIndex.cshtml");
+            return View(MVC.Views.Organization.BusinessUnit.BusinessUnitIndex);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿
 namespace Enterprise.Organization.Endpoints
 {
-    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Data;
@@ -9,7 +8,7 @@ namespace Enterprise.Organization.Endpoints
     using MyRepository = Repositories.MeetingRepository;
     using MyRow = Entities.MeetingRow;
 
-    [RoutePrefix("Services/Organization/Meeting"), Route("{action}")]
+    [RoutePrefix("Services/Meeting/Meeting"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class MeetingController : ServiceEndpoint
     {
@@ -31,13 +30,11 @@ namespace Enterprise.Organization.Endpoints
             return new MyRepository().Delete(uow, request);
         }
 
-        [HttpPost]
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRepository().Retrieve(connection, request);
         }
 
-        [HttpPost]
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);

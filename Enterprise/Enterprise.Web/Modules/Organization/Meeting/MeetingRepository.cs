@@ -1,7 +1,7 @@
 ﻿
+
 namespace Enterprise.Organization.Repositories
 {
-    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System;
@@ -37,7 +37,16 @@ namespace Enterprise.Organization.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
+            protected override void SetInternalFields()
+            {
+                base.SetInternalFields();
+
+                Row.MeetingGuid = Guid.NewGuid();
+            }
+        }
+
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

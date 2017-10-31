@@ -72,7 +72,7 @@ namespace Enterprise.Common.Entities
             public readonly StringField Value;
 
             public RowFields()
-                : base("UserPreferences")
+                : base()
             {
                 LocalTextPrefix = "Common.UserPreference";
             }

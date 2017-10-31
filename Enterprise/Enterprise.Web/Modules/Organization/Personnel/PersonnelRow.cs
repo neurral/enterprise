@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName(SCHEMA + "[Personnel]")]
+    [ConnectionKey("Default"), TableName(SCHEMA + "Personnel")]
     [DisplayName("Personnel"), InstanceName("Personnel"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Personnel.Management)]
@@ -96,7 +96,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.DateOfBirth[this] = value; }
         }
 
-        [DisplayName("User"), ForeignKey("Users", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
+        [DisplayName("User"), ForeignKey("User", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
         [LookupEditor(typeof(Administration.Entities.UserRow), InplaceAdd =true, 
             InplaceAddPermission = Administration.PermissionKeys.Security)]
         [ModifyPermission(PermissionKeys.Maintenance.Management)]

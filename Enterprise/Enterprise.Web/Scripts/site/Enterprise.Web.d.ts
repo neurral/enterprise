@@ -4180,199 +4180,6 @@ declare namespace Enterprise.Common {
         setItem(key: string, data: string): void;
     }
 }
-declare namespace Enterprise.Organization {
-    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingForm;
-        private agendaGrid;
-        private decisionGrid;
-        constructor();
-        protected arrange(): void;
-        loadEntity(entity: MeetingRow): void;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaDialog extends Serenity.EntityDialog<MeetingAgendaRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _meetingId;
-        meetingId: string;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaRelevantDialog extends Serenity.EntityDialog<MeetingAgendaRelevantRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaRelevantForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaRelevantGrid extends Serenity.EntityGrid<MeetingAgendaRelevantRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaRelevantDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaTypeDialog extends Serenity.EntityDialog<MeetingAgendaTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingAgendaTypeForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAgendaTypeGrid extends Serenity.EntityGrid<MeetingAgendaTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAgendaTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAttendeeDialog extends Common.GridEditorDialog<MeetingAttendeeRow> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected form: MeetingAttendeeForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingAttendeeDialog;
-        protected getLocalTextPrefix(): string;
-        constructor(container: JQuery);
-        protected getButtons(): any[];
-        protected createToolbarExtensions(): void;
-        protected getColumns(): Slick.Column[];
-        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingDecisionDialog extends Serenity.EntityDialog<MeetingDecisionRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingDecisionForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingDecisionGrid extends Serenity.EntityGrid<MeetingDecisionRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDecisionDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _meetingId;
-        meetingId: string;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingDecisionRelevantDialog extends Serenity.EntityDialog<MeetingDecisionRelevantRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected form: MeetingDecisionRelevantForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingDecisionRelevantGrid extends Serenity.EntityGrid<MeetingDecisionRelevantRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDecisionRelevantDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingLocationDialog extends Serenity.EntityDialog<MeetingLocationRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingLocationForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingLocationDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingTypeForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingTypeGrid extends Serenity.EntityGrid<MeetingTypeRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingTypeDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
 declare namespace Enterprise.Northwind {
     class CustomerEditor extends Serenity.LookupEditorBase<Serenity.LookupEditorOptions, CustomerRow> {
         constructor(hidden: JQuery);
@@ -4572,6 +4379,199 @@ declare namespace Enterprise.Organization {
     class ContactGrid extends Serenity.EntityGrid<ContactRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ContactDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingForm;
+        private agendaGrid;
+        private decisionGrid;
+        constructor();
+        protected arrange(): void;
+        loadEntity(entity: MeetingRow): void;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaDialog extends Serenity.EntityDialog<MeetingAgendaRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _meetingId;
+        meetingId: string;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaRelevantDialog extends Serenity.EntityDialog<MeetingAgendaRelevantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaRelevantForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaRelevantGrid extends Serenity.EntityGrid<MeetingAgendaRelevantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaRelevantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaTypeDialog extends Serenity.EntityDialog<MeetingAgendaTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingAgendaTypeForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAgendaTypeGrid extends Serenity.EntityGrid<MeetingAgendaTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAgendaTypeDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAttendeeDialog extends Common.GridEditorDialog<MeetingAttendeeRow> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: MeetingAttendeeForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingAttendeeDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        protected getButtons(): any[];
+        protected createToolbarExtensions(): void;
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDecisionDialog extends Serenity.EntityDialog<MeetingDecisionRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingDecisionForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDecisionGrid extends Serenity.EntityGrid<MeetingDecisionRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDecisionDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _meetingId;
+        meetingId: string;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDecisionRelevantDialog extends Serenity.EntityDialog<MeetingDecisionRelevantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected form: MeetingDecisionRelevantForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDecisionRelevantGrid extends Serenity.EntityGrid<MeetingDecisionRelevantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDecisionRelevantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingLocationDialog extends Serenity.EntityDialog<MeetingLocationRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingLocationForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingLocationDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingTypeForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingTypeGrid extends Serenity.EntityGrid<MeetingTypeRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingTypeDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

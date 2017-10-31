@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Meeting/MeetingType/MeetingTypeIndex.cshtml");
+            return View(MVC.Views.Organization.Meeting.MeetingType.MeetingTypeIndex);
         }
     }
 }

@@ -2,22 +2,25 @@
 
 namespace Enterprise.Organization.Entities
 {
-    using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Agenda"), InstanceName("Agenda"), TwoLevelCached]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
+    [DisplayName("MeetingAttendees"), InstanceName("MeetingAttendees"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    public sealed class MeetingAgendaRow : Row, IIdRow, INameRow
+    public sealed class MeetingAttendeeRow : Row, IIdRow
     {
-        [DisplayName("Agenda Id"), Identity]
-        public Int32? AgendaId
+        public const string TableName = Constants.SCHEMA + "MeetingAttendee";
+
+        [DisplayName("Attendee Id"), Identity]
+        public Int32? AttendeeId
         {
-            get { return Fields.AgendaId[this]; }
-            set { Fields.AgendaId[this] = value; }
+            get { return Fields.AttendeeId[this]; }
+            set { Fields.AttendeeId[this] = value; }
         }
 
         [DisplayName("Meeting"), NotNull, ForeignKey("Meetings", "MeetingId"), LeftJoin("jMeeting"), TextualField("MeetingMeetingName")]
@@ -27,53 +30,25 @@ namespace Enterprise.Organization.Entities
             set { Fields.MeetingId[this] = value; }
         }
 
-        [DisplayName("No"), NotNull]
-        public Int32? AgendaNumber
+        [DisplayName("Contact"), NotNull, ForeignKey("Contacts", "ContactId"), LeftJoin("jContact"), TextualField("ContactTitle")]
+        public Int32? ContactId
         {
-            get { return Fields.AgendaNumber[this]; }
-            set { Fields.AgendaNumber[this] = value; }
+            get { return Fields.ContactId[this]; }
+            set { Fields.ContactId[this] = value; }
         }
 
-        [DisplayName("Title"), Size(2000), QuickSearch]
-        public String Title
+        [DisplayName("Attendee Type"), NotNull, DefaultValue(1)]
+        public MeetingAttendeeType? AttendeeType
         {
-            get { return Fields.Title[this]; }
-            set { Fields.Title[this] = value; }
+            get { return (MeetingAttendeeType?)Fields.AttendeeType[this]; }
+            set { Fields.AttendeeType[this] = (Int32?)value; }
         }
 
-        [DisplayName("Description")]
-        public String Description
+        [DisplayName("Attendance Status"), NotNull, DefaultValue(0)]
+        public MeetingAttendanceStatus? AttendanceStatus
         {
-            get { return Fields.Description[this]; }
-            set { Fields.Description[this] = value; }
-        }
-
-        [DisplayName("Agenda Type"), NotNull, ForeignKey("MeetingAgendaTypes", "AgendaTypeId"), LeftJoin("jAgendaType"), TextualField("AgendaTypeName")]
-        public Int32? AgendaTypeId
-        {
-            get { return Fields.AgendaTypeId[this]; }
-            set { Fields.AgendaTypeId[this] = value; }
-        }
-
-        [DisplayName("Requested By Contact"), ForeignKey("Contacts", "ContactId"), LeftJoin("jRequestedByContact"), TextualField("RequestedByContactTitle")]
-        public Int32? RequestedByContactId
-        {
-            get { return Fields.RequestedByContactId[this]; }
-            set { Fields.RequestedByContactId[this] = value; }
-        }
-
-        [DisplayName("Images"), MultipleImageUploadEditor]
-        public String Images
-        {
-            get { return Fields.Images[this]; }
-            set { Fields.Images[this] = value; }
-        }
-
-        [DisplayName("Attachments"), MultipleFileUploadEditor]
-        public String Attachments
-        {
-            get { return Fields.Attachments[this]; }
-            set { Fields.Attachments[this] = value; }
+            get { return (MeetingAttendanceStatus?)Fields.AttendanceStatus[this]; }
+            set { Fields.AttendanceStatus[this] = (Int32?)value; }
         }
 
         [DisplayName("Meeting Meeting Name"), Expression("jMeeting.[MeetingName]")]
@@ -174,92 +149,76 @@ namespace Enterprise.Organization.Entities
             set { Fields.MeetingUpdateDate[this] = value; }
         }
 
-        [DisplayName("Agenda Type"), Expression("jAgendaType.[Name]")]
-        public String AgendaTypeName
+        [DisplayName("Contact Title"), Expression("jContact.[Title]")]
+        public String ContactTitle
         {
-            get { return Fields.AgendaTypeName[this]; }
-            set { Fields.AgendaTypeName[this] = value; }
+            get { return Fields.ContactTitle[this]; }
+            set { Fields.ContactTitle[this] = value; }
         }
 
-        [DisplayName("Requested By Contact Title"), Expression("jRequestedByContact.[Title]")]
-        public String RequestedByContactTitle
+        [DisplayName("Contact First Name"), Expression("jContact.[FirstName]")]
+        public String ContactFirstName
         {
-            get { return Fields.RequestedByContactTitle[this]; }
-            set { Fields.RequestedByContactTitle[this] = value; }
+            get { return Fields.ContactFirstName[this]; }
+            set { Fields.ContactFirstName[this] = value; }
         }
 
-        [DisplayName("Requested By Contact First Name"), Expression("jRequestedByContact.[FirstName]")]
-        public String RequestedByContactFirstName
+        [DisplayName("Contact Last Name"), Expression("jContact.[LastName]")]
+        public String ContactLastName
         {
-            get { return Fields.RequestedByContactFirstName[this]; }
-            set { Fields.RequestedByContactFirstName[this] = value; }
+            get { return Fields.ContactLastName[this]; }
+            set { Fields.ContactLastName[this] = value; }
         }
 
-        [DisplayName("Requested By Contact Last Name"), Expression("jRequestedByContact.[LastName]")]
-        public String RequestedByContactLastName
+        [DisplayName("Attendee Name")]
+        [Expression("CONCAT(CONCAT(jContact.[FirstName], ' '), jContact.[LastName])")]
+        [Expression("(jContact.FirstName || ' ' || jContact.LastName)", Dialect = "Sqlite")]
+        public String ContactFullName
         {
-            get { return Fields.RequestedByContactLastName[this]; }
-            set { Fields.RequestedByContactLastName[this] = value; }
+            get { return Fields.ContactFullName[this]; }
+            set { Fields.ContactFullName[this] = value; }
         }
 
-        [DisplayName("Requested By")]
-        [Expression("CONCAT(CONCAT(jRequestedByContact.[FirstName], ' '), jRequestedByContact.[LastName])")]
-        [Expression("(jRequestedByContact.FirstName || ' ' || jRequestedByContact.LastName)", Dialect = "Sqlite")]
-        public String RequestedByContactFullName
+        [DisplayName("Contact Email"), Expression("jContact.[Email]")]
+        public String ContactEmail
         {
-            get { return Fields.RequestedByContactFullName[this]; }
-            set { Fields.RequestedByContactFullName[this] = value; }
+            get { return Fields.ContactEmail[this]; }
+            set { Fields.ContactEmail[this] = value; }
         }
 
-        [DisplayName("Requested By Contact Email"), Expression("jRequestedByContact.[Email]")]
-        public String RequestedByContactEmail
+        [DisplayName("Contact Identity No"), Expression("jContact.[IdentityNo]")]
+        public String ContactIdentityNo
         {
-            get { return Fields.RequestedByContactEmail[this]; }
-            set { Fields.RequestedByContactEmail[this] = value; }
+            get { return Fields.ContactIdentityNo[this]; }
+            set { Fields.ContactIdentityNo[this] = value; }
         }
 
-        [DisplayName("Requested By Contact Identity No"), Expression("jRequestedByContact.[IdentityNo]")]
-        public String RequestedByContactIdentityNo
+        [DisplayName("Contact User Id"), Expression("jContact.[UserId]")]
+        public Int32? ContactUserId
         {
-            get { return Fields.RequestedByContactIdentityNo[this]; }
-            set { Fields.RequestedByContactIdentityNo[this] = value; }
-        }
-
-        [DisplayName("Requested By Contact User Id"), Expression("jRequestedByContact.[UserId]")]
-        public Int32? RequestedByContactUserId
-        {
-            get { return Fields.RequestedByContactUserId[this]; }
-            set { Fields.RequestedByContactUserId[this] = value; }
+            get { return Fields.ContactUserId[this]; }
+            set { Fields.ContactUserId[this] = value; }
         }
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.AgendaId; }
-        }
-
-        StringField INameRow.NameField
-        {
-            get { return Fields.Title; }
+            get { return Fields.AttendeeId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public MeetingAgendaRow()
+        public MeetingAttendeeRow()
             : base(Fields)
         {
         }
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field AgendaId;
+            public Int32Field AttendeeId;
             public Int32Field MeetingId;
-            public Int32Field AgendaNumber;
-            public StringField Title;
-            public StringField Description;
-            public Int32Field AgendaTypeId;
-            public Int32Field RequestedByContactId;
-            public StringField Images;
-            public StringField Attachments;
+            public Int32Field ContactId;
+            public Int32Field AttendeeType;
+            public Int32Field AttendanceStatus;
 
             public StringField MeetingMeetingName;
             public StringField MeetingMeetingNumber;
@@ -276,20 +235,18 @@ namespace Enterprise.Organization.Entities
             public Int32Field MeetingUpdateUserId;
             public DateTimeField MeetingUpdateDate;
 
-            public StringField AgendaTypeName;
-
-            public StringField RequestedByContactTitle;
-            public StringField RequestedByContactFirstName;
-            public StringField RequestedByContactLastName;
-            public StringField RequestedByContactFullName;
-            public StringField RequestedByContactEmail;
-            public StringField RequestedByContactIdentityNo;
-            public Int32Field RequestedByContactUserId;
+            public StringField ContactTitle;
+            public StringField ContactFirstName;
+            public StringField ContactLastName;
+            public StringField ContactFullName;
+            public StringField ContactEmail;
+            public StringField ContactIdentityNo;
+            public Int32Field ContactUserId;
 
             public RowFields()
-                : base("MeetingAgendas")
+                : base()
             {
-                LocalTextPrefix = "Meeting.MeetingAgenda";
+                LocalTextPrefix = "Meeting.MeetingAttendee";
             }
         }
     }

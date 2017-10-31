@@ -15,7 +15,7 @@
     [LookupScript("Organization.BusinessUnit", Permission = PermissionKeys.General)]
     public sealed class BusinessUnitRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "BusinessUnits";
+        public const string TableName = Constants.SCHEMA + "BusinessUnit";
 
         [DisplayName("Unit Id"), Identity]
         public Int32? UnitId

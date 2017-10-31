@@ -7,11 +7,15 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Decisions"), InstanceName("Decision"), TwoLevelCached]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
+    [DisplayName("Decisions"), InstanceName("Decision"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     public sealed class MeetingDecisionRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + "MeetingDecision";
+
         [DisplayName("Decision Id"), Identity]
         public Int32? DecisionId
         {
@@ -359,7 +363,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ResponsibleContactUserId;
 
             public RowFields()
-                : base("MeetingDecisions")
+                : base()
             {
                 LocalTextPrefix = "Meeting.MeetingDecision";
             }

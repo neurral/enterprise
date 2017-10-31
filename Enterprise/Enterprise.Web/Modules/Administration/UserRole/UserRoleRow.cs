@@ -18,7 +18,7 @@ namespace Enterprise.Administration.Entities
             set { Fields.UserRoleId[this] = value; }
         }
 
-        [DisplayName("User Id"), NotNull, ForeignKey("Users", "UserId"), LeftJoin("jUser")]
+        [DisplayName("User Id"), NotNull, ForeignKey("User", "UserId"), LeftJoin("jUser")]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
@@ -68,7 +68,7 @@ namespace Enterprise.Administration.Entities
             public StringField User;
 
             public RowFields()
-                : base("UserRoles")
+                : base()
             {
                 LocalTextPrefix = "Administration.UserRole";
             }

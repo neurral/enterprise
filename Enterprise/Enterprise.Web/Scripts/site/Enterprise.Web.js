@@ -8521,572 +8521,6 @@ var Enterprise;
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
 (function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDialog = /** @class */ (function (_super) {
-            __extends(MeetingDialog, _super);
-            function MeetingDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Organization.MeetingForm(_this.idPrefix);
-                _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
-                _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
-                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
-                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.EndDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
-                        return "End Date can't be earlier than Start Date";
-                    }
-                    return null;
-                });
-                return _this;
-            }
-            MeetingDialog.prototype.getFormKey = function () { return Organization.MeetingForm.formKey; };
-            MeetingDialog.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingDialog.prototype.getNameProperty = function () { return Organization.MeetingRow.nameProperty; };
-            MeetingDialog.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
-            MeetingDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
-                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
-                    .triggerHandler('layout');
-            };
-            MeetingDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
-                //this.agendaGrid.customerID = entity.CustomerID;
-            };
-            MeetingDialog = __decorate([
-                Serenity.Decorators.maximizable(),
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDialog);
-            return MeetingDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingDialog = MeetingDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingGrid = /** @class */ (function (_super) {
-            __extends(MeetingGrid, _super);
-            function MeetingGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
-            MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
-            MeetingGrid.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingGrid.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
-            MeetingGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingGrid);
-            return MeetingGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingGrid = MeetingGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaDialog = /** @class */ (function (_super) {
-            __extends(MeetingAgendaDialog, _super);
-            function MeetingAgendaDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaForm.formKey; };
-            MeetingAgendaDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
-            MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaRow.nameProperty; };
-            MeetingAgendaDialog.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
-            MeetingAgendaDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaDialog);
-            return MeetingAgendaDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingAgendaDialog = MeetingAgendaDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaGrid = /** @class */ (function (_super) {
-            __extends(MeetingAgendaGrid, _super);
-            function MeetingAgendaGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgenda'; };
-            MeetingAgendaGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaDialog; };
-            MeetingAgendaGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
-            MeetingAgendaGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaGrid.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
-            MeetingAgendaGrid.prototype.addButtonClick = function () {
-                this.editItem({ MeetingId: this.meetingId });
-            };
-            MeetingAgendaGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            MeetingAgendaGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
-            };
-            Object.defineProperty(MeetingAgendaGrid.prototype, "meetingId", {
-                get: function () {
-                    return this._meetingId;
-                },
-                set: function (value) {
-                    if (this._meetingId !== value) {
-                        this._meetingId = value;
-                        this.setEquality('MeetingId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            MeetingAgendaGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaGrid);
-            return MeetingAgendaGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingAgendaGrid = MeetingAgendaGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRelevantDialog = /** @class */ (function (_super) {
-            __extends(MeetingAgendaRelevantDialog, _super);
-            function MeetingAgendaRelevantDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaRelevantForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaRelevantForm.formKey; };
-            MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantDialog.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
-            MeetingAgendaRelevantDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaRelevantDialog);
-            return MeetingAgendaRelevantDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingAgendaRelevantDialog = MeetingAgendaRelevantDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRelevantGrid = /** @class */ (function (_super) {
-            __extends(MeetingAgendaRelevantGrid, _super);
-            function MeetingAgendaRelevantGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaRelevant'; };
-            MeetingAgendaRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaRelevantDialog; };
-            MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantGrid.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
-            MeetingAgendaRelevantGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaRelevantGrid);
-            return MeetingAgendaRelevantGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingAgendaRelevantGrid = MeetingAgendaRelevantGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaTypeDialog = /** @class */ (function (_super) {
-            __extends(MeetingAgendaTypeDialog, _super);
-            function MeetingAgendaTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaTypeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAgendaTypeDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaTypeForm.formKey; };
-            MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaTypeRow.nameProperty; };
-            MeetingAgendaTypeDialog.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
-            MeetingAgendaTypeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAgendaTypeDialog);
-            return MeetingAgendaTypeDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingAgendaTypeDialog = MeetingAgendaTypeDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaTypeGrid = /** @class */ (function (_super) {
-            __extends(MeetingAgendaTypeGrid, _super);
-            function MeetingAgendaTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingAgendaTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaType'; };
-            MeetingAgendaTypeGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaTypeDialog; };
-            MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeGrid.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
-            MeetingAgendaTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAgendaTypeGrid);
-            return MeetingAgendaTypeGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingAgendaTypeGrid = MeetingAgendaTypeGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendeeDialog = /** @class */ (function (_super) {
-            __extends(MeetingAttendeeDialog, _super);
-            function MeetingAttendeeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAttendeeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingAttendeeDialog.prototype.getFormKey = function () { return Organization.MeetingAttendeeForm.formKey; };
-            MeetingAttendeeDialog.prototype.getIdProperty = function () { return Organization.MeetingAttendeeRow.idProperty; };
-            MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
-            MeetingAttendeeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingAttendeeDialog);
-            return MeetingAttendeeDialog;
-        }(Enterprise.Common.GridEditorDialog));
-        Organization.MeetingAttendeeDialog = MeetingAttendeeDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendeeEditor = /** @class */ (function (_super) {
-            __extends(MeetingAttendeeEditor, _super);
-            function MeetingAttendeeEditor(container) {
-                var _this = _super.call(this, container) || this;
-                _this.slickContainer.on('change', 'select', function (e) {
-                    var cell = _this.slickGrid.getCellFromEvent(e);
-                    if (!cell)
-                        return;
-                    var item = _this.itemAt(cell.row);
-                    var field = _this.slickGrid.getColumns()[cell.cell].field;
-                    item[field] = Q.toId($(e.target).val());
-                    _this.view.updateItem(_this.id(item), item);
-                });
-                return _this;
-            }
-            MeetingAttendeeEditor.prototype.getColumnsKey = function () { return 'Organization.MeetingAttendee'; };
-            MeetingAttendeeEditor.prototype.getDialogType = function () { return Organization.MeetingAttendeeDialog; };
-            MeetingAttendeeEditor.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
-            MeetingAttendeeEditor.prototype.getButtons = function () {
-                return [];
-            };
-            MeetingAttendeeEditor.prototype.createToolbarExtensions = function () {
-                var _this = this;
-                _super.prototype.createToolbarExtensions.call(this);
-                Serenity.Widget.create({
-                    type: Serenity.LookupEditor,
-                    options: {
-                        lookupKey: Organization.ContactRow.lookupKey
-                    },
-                    element: function (e) { return e.attr('placeholder', '--select contact to add--').appendTo(_this.toolbar.element); },
-                    init: function (w) { return w.changeSelect2(function (x) {
-                        if (Q.isEmptyOrNull(w.value))
-                            return;
-                        var contact = Organization.ContactRow.getLookup().itemById[Q.toId(w.value)];
-                        w.value = null;
-                        if (!contact)
-                            return;
-                        if (Q.any(_this.getItems(), function (i) { return i.ContactId == contact.ContactId; })) {
-                            Q.notifyWarning("Contact is already in attendee list!");
-                            return;
-                        }
-                        var item = {
-                            ContactId: contact.ContactId,
-                            ContactFullName: contact.FullName,
-                            AttendeeType: Organization.MeetingAttendeeType.Attendee,
-                            AttendanceStatus: Organization.MeetingAttendanceStatus.NotSet
-                        };
-                        _this.setNewId(item);
-                        var items = _this.getItems().slice();
-                        items.push(item);
-                        items.sort(function (a, b) { return Q.turkishLocaleCompare(a.ContactFullName, b.ContactFullName); });
-                        _this.setItems(items);
-                    }); }
-                });
-            };
-            MeetingAttendeeEditor.prototype.getColumns = function () {
-                var columns = _super.prototype.getColumns.call(this);
-                columns.unshift({
-                    field: 'Remove Attendee',
-                    name: '',
-                    format: function (ctx) { return '<a class="inline-action delete-row" title="delete">' +
-                        '<i class="fa fa-times text-red"></i></a>'; },
-                    width: 24,
-                    minWidth: 24,
-                    maxWidth: 24
-                });
-                return columns;
-            };
-            MeetingAttendeeEditor.prototype.onClick = function (e, row, cell) {
-                _super.prototype.onClick.call(this, e, row, cell);
-                if (e.isDefaultPrevented())
-                    return;
-                var item = this.itemAt(row);
-                var target = $(e.target);
-                if (target.parent().hasClass('inline-action'))
-                    target = target.parent();
-                if (target.hasClass('inline-action')) {
-                    e.preventDefault();
-                    if (target.hasClass('delete-row')) {
-                        var items = this.getItems();
-                        items.splice(row, 1);
-                        this.setItems(items);
-                    }
-                }
-            };
-            MeetingAttendeeEditor = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingAttendeeEditor);
-            return MeetingAttendeeEditor;
-        }(Enterprise.Common.GridEditorBase));
-        Organization.MeetingAttendeeEditor = MeetingAttendeeEditor;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionDialog = /** @class */ (function (_super) {
-            __extends(MeetingDecisionDialog, _super);
-            function MeetingDecisionDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingDecisionForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingDecisionDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionForm.formKey; };
-            MeetingDecisionDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
-            MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionDialog.prototype.getNameProperty = function () { return Organization.MeetingDecisionRow.nameProperty; };
-            MeetingDecisionDialog.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
-            MeetingDecisionDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDecisionDialog);
-            return MeetingDecisionDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingDecisionDialog = MeetingDecisionDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionGrid = /** @class */ (function (_super) {
-            __extends(MeetingDecisionGrid, _super);
-            function MeetingDecisionGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingDecisionGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecision'; };
-            MeetingDecisionGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionDialog; };
-            MeetingDecisionGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
-            MeetingDecisionGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionGrid.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
-            MeetingDecisionGrid.prototype.addButtonClick = function () {
-                this.editItem({ MeetingId: this.meetingId });
-            };
-            MeetingDecisionGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            MeetingDecisionGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
-            };
-            Object.defineProperty(MeetingDecisionGrid.prototype, "meetingId", {
-                get: function () {
-                    return this._meetingId;
-                },
-                set: function (value) {
-                    if (this._meetingId !== value) {
-                        this._meetingId = value;
-                        this.setEquality('MeetingId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            MeetingDecisionGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingDecisionGrid);
-            return MeetingDecisionGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingDecisionGrid = MeetingDecisionGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRelevantDialog = /** @class */ (function (_super) {
-            __extends(MeetingDecisionRelevantDialog, _super);
-            function MeetingDecisionRelevantDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingDecisionRelevantForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionRelevantForm.formKey; };
-            MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantDialog.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
-            MeetingDecisionRelevantDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDecisionRelevantDialog);
-            return MeetingDecisionRelevantDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingDecisionRelevantDialog = MeetingDecisionRelevantDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRelevantGrid = /** @class */ (function (_super) {
-            __extends(MeetingDecisionRelevantGrid, _super);
-            function MeetingDecisionRelevantGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingDecisionRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecisionRelevant'; };
-            MeetingDecisionRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionRelevantDialog; };
-            MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantGrid.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
-            MeetingDecisionRelevantGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingDecisionRelevantGrid);
-            return MeetingDecisionRelevantGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingDecisionRelevantGrid = MeetingDecisionRelevantGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingLocationDialog = /** @class */ (function (_super) {
-            __extends(MeetingLocationDialog, _super);
-            function MeetingLocationDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingLocationForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingLocationDialog.prototype.getFormKey = function () { return Organization.MeetingLocationForm.formKey; };
-            MeetingLocationDialog.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
-            MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationDialog.prototype.getNameProperty = function () { return Organization.MeetingLocationRow.nameProperty; };
-            MeetingLocationDialog.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
-            MeetingLocationDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingLocationDialog);
-            return MeetingLocationDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingLocationDialog = MeetingLocationDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingLocationGrid = /** @class */ (function (_super) {
-            __extends(MeetingLocationGrid, _super);
-            function MeetingLocationGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingLocationGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingLocation'; };
-            MeetingLocationGrid.prototype.getDialogType = function () { return Organization.MeetingLocationDialog; };
-            MeetingLocationGrid.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
-            MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationGrid.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
-            MeetingLocationGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingLocationGrid);
-            return MeetingLocationGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingLocationGrid = MeetingLocationGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingTypeDialog = /** @class */ (function (_super) {
-            __extends(MeetingTypeDialog, _super);
-            function MeetingTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingTypeForm(_this.idPrefix);
-                return _this;
-            }
-            MeetingTypeDialog.prototype.getFormKey = function () { return Organization.MeetingTypeForm.formKey; };
-            MeetingTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
-            MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingTypeRow.nameProperty; };
-            MeetingTypeDialog.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
-            MeetingTypeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingTypeDialog);
-            return MeetingTypeDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingTypeDialog = MeetingTypeDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingTypeGrid = /** @class */ (function (_super) {
-            __extends(MeetingTypeGrid, _super);
-            function MeetingTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingType'; };
-            MeetingTypeGrid.prototype.getDialogType = function () { return Organization.MeetingTypeDialog; };
-            MeetingTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
-            MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeGrid.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
-            MeetingTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingTypeGrid);
-            return MeetingTypeGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingTypeGrid = MeetingTypeGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
     var Northwind;
     (function (Northwind) {
         var CustomerEditor = /** @class */ (function (_super) {
@@ -9915,6 +9349,572 @@ var Enterprise;
             return ContactGrid;
         }(Serenity.EntityGrid));
         Organization.ContactGrid = ContactGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDialog = /** @class */ (function (_super) {
+            __extends(MeetingDialog, _super);
+            function MeetingDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Organization.MeetingForm(_this.idPrefix);
+                _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
+                _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
+                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
+                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.EndDate.valueAsDate != null &&
+                        _this.form.StartDate.valueAsDate != null &&
+                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
+                        return "End Date can't be earlier than Start Date";
+                    }
+                    return null;
+                });
+                return _this;
+            }
+            MeetingDialog.prototype.getFormKey = function () { return Organization.MeetingForm.formKey; };
+            MeetingDialog.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
+            MeetingDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
+            MeetingDialog.prototype.getNameProperty = function () { return Organization.MeetingRow.nameProperty; };
+            MeetingDialog.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingDialog.prototype.arrange = function () {
+                _super.prototype.arrange.call(this);
+                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
+                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
+                    .triggerHandler('layout');
+            };
+            MeetingDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
+                //this.agendaGrid.customerID = entity.CustomerID;
+            };
+            MeetingDialog = __decorate([
+                Serenity.Decorators.maximizable(),
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingDialog);
+            return MeetingDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingDialog = MeetingDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingGrid = /** @class */ (function (_super) {
+            __extends(MeetingGrid, _super);
+            function MeetingGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
+            MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
+            MeetingGrid.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
+            MeetingGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
+            MeetingGrid.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingGrid);
+            return MeetingGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingGrid = MeetingGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaDialog = /** @class */ (function (_super) {
+            __extends(MeetingAgendaDialog, _super);
+            function MeetingAgendaDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingAgendaForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingAgendaDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaForm.formKey; };
+            MeetingAgendaDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
+            MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
+            MeetingAgendaDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaRow.nameProperty; };
+            MeetingAgendaDialog.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
+            MeetingAgendaDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingAgendaDialog);
+            return MeetingAgendaDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingAgendaDialog = MeetingAgendaDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaGrid = /** @class */ (function (_super) {
+            __extends(MeetingAgendaGrid, _super);
+            function MeetingAgendaGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingAgendaGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgenda'; };
+            MeetingAgendaGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaDialog; };
+            MeetingAgendaGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
+            MeetingAgendaGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
+            MeetingAgendaGrid.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
+            MeetingAgendaGrid.prototype.addButtonClick = function () {
+                this.editItem({ MeetingId: this.meetingId });
+            };
+            MeetingAgendaGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            MeetingAgendaGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
+            };
+            Object.defineProperty(MeetingAgendaGrid.prototype, "meetingId", {
+                get: function () {
+                    return this._meetingId;
+                },
+                set: function (value) {
+                    if (this._meetingId !== value) {
+                        this._meetingId = value;
+                        this.setEquality('MeetingId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            MeetingAgendaGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingAgendaGrid);
+            return MeetingAgendaGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingAgendaGrid = MeetingAgendaGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaRelevantDialog = /** @class */ (function (_super) {
+            __extends(MeetingAgendaRelevantDialog, _super);
+            function MeetingAgendaRelevantDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingAgendaRelevantForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaRelevantForm.formKey; };
+            MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
+            MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
+            MeetingAgendaRelevantDialog.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
+            MeetingAgendaRelevantDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingAgendaRelevantDialog);
+            return MeetingAgendaRelevantDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingAgendaRelevantDialog = MeetingAgendaRelevantDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaRelevantGrid = /** @class */ (function (_super) {
+            __extends(MeetingAgendaRelevantGrid, _super);
+            function MeetingAgendaRelevantGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingAgendaRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaRelevant'; };
+            MeetingAgendaRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaRelevantDialog; };
+            MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
+            MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
+            MeetingAgendaRelevantGrid.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
+            MeetingAgendaRelevantGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingAgendaRelevantGrid);
+            return MeetingAgendaRelevantGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingAgendaRelevantGrid = MeetingAgendaRelevantGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaTypeDialog = /** @class */ (function (_super) {
+            __extends(MeetingAgendaTypeDialog, _super);
+            function MeetingAgendaTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingAgendaTypeForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingAgendaTypeDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaTypeForm.formKey; };
+            MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
+            MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
+            MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaTypeRow.nameProperty; };
+            MeetingAgendaTypeDialog.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
+            MeetingAgendaTypeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingAgendaTypeDialog);
+            return MeetingAgendaTypeDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingAgendaTypeDialog = MeetingAgendaTypeDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAgendaTypeGrid = /** @class */ (function (_super) {
+            __extends(MeetingAgendaTypeGrid, _super);
+            function MeetingAgendaTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingAgendaTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaType'; };
+            MeetingAgendaTypeGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaTypeDialog; };
+            MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
+            MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
+            MeetingAgendaTypeGrid.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
+            MeetingAgendaTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingAgendaTypeGrid);
+            return MeetingAgendaTypeGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingAgendaTypeGrid = MeetingAgendaTypeGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+/// <reference path="../../../Common/Helpers/GridEditorDialog.ts" />
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAttendeeDialog = /** @class */ (function (_super) {
+            __extends(MeetingAttendeeDialog, _super);
+            function MeetingAttendeeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingAttendeeForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingAttendeeDialog.prototype.getFormKey = function () { return Organization.MeetingAttendeeForm.formKey; };
+            MeetingAttendeeDialog.prototype.getIdProperty = function () { return Organization.MeetingAttendeeRow.idProperty; };
+            MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
+            MeetingAttendeeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingAttendeeDialog);
+            return MeetingAttendeeDialog;
+        }(Enterprise.Common.GridEditorDialog));
+        Organization.MeetingAttendeeDialog = MeetingAttendeeDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+/// <reference path="../../../Common/Helpers/GridEditorBase.ts" />
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingAttendeeEditor = /** @class */ (function (_super) {
+            __extends(MeetingAttendeeEditor, _super);
+            function MeetingAttendeeEditor(container) {
+                var _this = _super.call(this, container) || this;
+                _this.slickContainer.on('change', 'select', function (e) {
+                    var cell = _this.slickGrid.getCellFromEvent(e);
+                    if (!cell)
+                        return;
+                    var item = _this.itemAt(cell.row);
+                    var field = _this.slickGrid.getColumns()[cell.cell].field;
+                    item[field] = Q.toId($(e.target).val());
+                    _this.view.updateItem(_this.id(item), item);
+                });
+                return _this;
+            }
+            MeetingAttendeeEditor.prototype.getColumnsKey = function () { return 'Organization.MeetingAttendee'; };
+            MeetingAttendeeEditor.prototype.getDialogType = function () { return Organization.MeetingAttendeeDialog; };
+            MeetingAttendeeEditor.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
+            MeetingAttendeeEditor.prototype.getButtons = function () {
+                return [];
+            };
+            MeetingAttendeeEditor.prototype.createToolbarExtensions = function () {
+                var _this = this;
+                _super.prototype.createToolbarExtensions.call(this);
+                Serenity.Widget.create({
+                    type: Serenity.LookupEditor,
+                    options: {
+                        lookupKey: Organization.ContactRow.lookupKey
+                    },
+                    element: function (e) { return e.attr('placeholder', '--select contact to add--').appendTo(_this.toolbar.element); },
+                    init: function (w) { return w.changeSelect2(function (x) {
+                        if (Q.isEmptyOrNull(w.value))
+                            return;
+                        var contact = Organization.ContactRow.getLookup().itemById[Q.toId(w.value)];
+                        w.value = null;
+                        if (!contact)
+                            return;
+                        if (Q.any(_this.getItems(), function (i) { return i.ContactId == contact.ContactId; })) {
+                            Q.notifyWarning("Contact is already in attendee list!");
+                            return;
+                        }
+                        var item = {
+                            ContactId: contact.ContactId,
+                            ContactFullName: contact.FullName,
+                            AttendeeType: Organization.MeetingAttendeeType.Attendee,
+                            AttendanceStatus: Organization.MeetingAttendanceStatus.NotSet
+                        };
+                        _this.setNewId(item);
+                        var items = _this.getItems().slice();
+                        items.push(item);
+                        items.sort(function (a, b) { return Q.turkishLocaleCompare(a.ContactFullName, b.ContactFullName); });
+                        _this.setItems(items);
+                    }); }
+                });
+            };
+            MeetingAttendeeEditor.prototype.getColumns = function () {
+                var columns = _super.prototype.getColumns.call(this);
+                columns.unshift({
+                    field: 'Remove Attendee',
+                    name: '',
+                    format: function (ctx) { return '<a class="inline-action delete-row" title="delete">' +
+                        '<i class="fa fa-times text-red"></i></a>'; },
+                    width: 24,
+                    minWidth: 24,
+                    maxWidth: 24
+                });
+                return columns;
+            };
+            MeetingAttendeeEditor.prototype.onClick = function (e, row, cell) {
+                _super.prototype.onClick.call(this, e, row, cell);
+                if (e.isDefaultPrevented())
+                    return;
+                var item = this.itemAt(row);
+                var target = $(e.target);
+                if (target.parent().hasClass('inline-action'))
+                    target = target.parent();
+                if (target.hasClass('inline-action')) {
+                    e.preventDefault();
+                    if (target.hasClass('delete-row')) {
+                        var items = this.getItems();
+                        items.splice(row, 1);
+                        this.setItems(items);
+                    }
+                }
+            };
+            MeetingAttendeeEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingAttendeeEditor);
+            return MeetingAttendeeEditor;
+        }(Enterprise.Common.GridEditorBase));
+        Organization.MeetingAttendeeEditor = MeetingAttendeeEditor;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDecisionDialog = /** @class */ (function (_super) {
+            __extends(MeetingDecisionDialog, _super);
+            function MeetingDecisionDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingDecisionForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingDecisionDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionForm.formKey; };
+            MeetingDecisionDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
+            MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
+            MeetingDecisionDialog.prototype.getNameProperty = function () { return Organization.MeetingDecisionRow.nameProperty; };
+            MeetingDecisionDialog.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
+            MeetingDecisionDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingDecisionDialog);
+            return MeetingDecisionDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingDecisionDialog = MeetingDecisionDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDecisionGrid = /** @class */ (function (_super) {
+            __extends(MeetingDecisionGrid, _super);
+            function MeetingDecisionGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingDecisionGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecision'; };
+            MeetingDecisionGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionDialog; };
+            MeetingDecisionGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
+            MeetingDecisionGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
+            MeetingDecisionGrid.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
+            MeetingDecisionGrid.prototype.addButtonClick = function () {
+                this.editItem({ MeetingId: this.meetingId });
+            };
+            MeetingDecisionGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            MeetingDecisionGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.meetingId;
+            };
+            Object.defineProperty(MeetingDecisionGrid.prototype, "meetingId", {
+                get: function () {
+                    return this._meetingId;
+                },
+                set: function (value) {
+                    if (this._meetingId !== value) {
+                        this._meetingId = value;
+                        this.setEquality('MeetingId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            MeetingDecisionGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingDecisionGrid);
+            return MeetingDecisionGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingDecisionGrid = MeetingDecisionGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDecisionRelevantDialog = /** @class */ (function (_super) {
+            __extends(MeetingDecisionRelevantDialog, _super);
+            function MeetingDecisionRelevantDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingDecisionRelevantForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionRelevantForm.formKey; };
+            MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
+            MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
+            MeetingDecisionRelevantDialog.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
+            MeetingDecisionRelevantDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingDecisionRelevantDialog);
+            return MeetingDecisionRelevantDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingDecisionRelevantDialog = MeetingDecisionRelevantDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDecisionRelevantGrid = /** @class */ (function (_super) {
+            __extends(MeetingDecisionRelevantGrid, _super);
+            function MeetingDecisionRelevantGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingDecisionRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecisionRelevant'; };
+            MeetingDecisionRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionRelevantDialog; };
+            MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
+            MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
+            MeetingDecisionRelevantGrid.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
+            MeetingDecisionRelevantGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingDecisionRelevantGrid);
+            return MeetingDecisionRelevantGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingDecisionRelevantGrid = MeetingDecisionRelevantGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingLocationDialog = /** @class */ (function (_super) {
+            __extends(MeetingLocationDialog, _super);
+            function MeetingLocationDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingLocationForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingLocationDialog.prototype.getFormKey = function () { return Organization.MeetingLocationForm.formKey; };
+            MeetingLocationDialog.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
+            MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
+            MeetingLocationDialog.prototype.getNameProperty = function () { return Organization.MeetingLocationRow.nameProperty; };
+            MeetingLocationDialog.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
+            MeetingLocationDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingLocationDialog);
+            return MeetingLocationDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingLocationDialog = MeetingLocationDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingLocationGrid = /** @class */ (function (_super) {
+            __extends(MeetingLocationGrid, _super);
+            function MeetingLocationGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingLocationGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingLocation'; };
+            MeetingLocationGrid.prototype.getDialogType = function () { return Organization.MeetingLocationDialog; };
+            MeetingLocationGrid.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
+            MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
+            MeetingLocationGrid.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
+            MeetingLocationGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingLocationGrid);
+            return MeetingLocationGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingLocationGrid = MeetingLocationGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingTypeDialog = /** @class */ (function (_super) {
+            __extends(MeetingTypeDialog, _super);
+            function MeetingTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.MeetingTypeForm(_this.idPrefix);
+                return _this;
+            }
+            MeetingTypeDialog.prototype.getFormKey = function () { return Organization.MeetingTypeForm.formKey; };
+            MeetingTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
+            MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
+            MeetingTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingTypeRow.nameProperty; };
+            MeetingTypeDialog.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
+            MeetingTypeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingTypeDialog);
+            return MeetingTypeDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingTypeDialog = MeetingTypeDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingTypeGrid = /** @class */ (function (_super) {
+            __extends(MeetingTypeGrid, _super);
+            function MeetingTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingType'; };
+            MeetingTypeGrid.prototype.getDialogType = function () { return Organization.MeetingTypeDialog; };
+            MeetingTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
+            MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
+            MeetingTypeGrid.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
+            MeetingTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingTypeGrid);
+            return MeetingTypeGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingTypeGrid = MeetingTypeGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;

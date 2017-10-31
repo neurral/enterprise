@@ -9,7 +9,7 @@ namespace Enterprise.Migrations.DefaultDB
         {
             this.CreateTableWithId64("UserPermission", "UserPermissionId", s => s
                 .WithColumn("UserId").AsInt64().NotNullable()
-                    .ForeignKey("FK_UserPermission_UserId", "Users", "UserId")
+                    .ForeignKey("FK_UserPermission_UserId", "User", "UserId")
                 .WithColumn("PermissionKey").AsString(100).NotNullable()
                 .WithColumn("Granted").AsBoolean().NotNullable().WithDefaultValue(true));
 
@@ -35,7 +35,7 @@ namespace Enterprise.Migrations.DefaultDB
 
             this.CreateTableWithId64("UserRole", "UserRoleId", s => s
                 .WithColumn("UserId").AsInt64().NotNullable()
-                    .ForeignKey("FK_UserRole_UserId", "Users", "UserId")
+                    .ForeignKey("FK_UserRole_UserId", "User", "UserId")
                 .WithColumn("RoleId").AsInt64().NotNullable()
                     .ForeignKey("FK_UserRole_RoleId", "Role", "RoleId"));
 

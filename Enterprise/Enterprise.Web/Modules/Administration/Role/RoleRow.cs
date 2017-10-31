@@ -51,7 +51,7 @@ namespace Enterprise.Administration.Entities
             public StringField RoleName;
 
             public RowFields()
-                : base("Roles")
+                : base()
             {
                 LocalTextPrefix = "Administration.Role";
             }

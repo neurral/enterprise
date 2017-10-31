@@ -1,13 +1,9 @@
 ﻿
 namespace Enterprise.Organization.Columns
 {
-    using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
     using System.ComponentModel;
-    using System.Collections.Generic;
-    using System.IO;
 
     [ColumnsScript("Organization.Meeting")]
     [BasedOnRow(typeof(Entities.MeetingRow))]
@@ -15,19 +11,23 @@ namespace Enterprise.Organization.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 MeetingId { get; set; }
-        [EditLink]
+        [EditLink, Width(250)]
         public String MeetingName { get; set; }
+        [Width(125)]
         public String MeetingNumber { get; set; }
-        public Guid MeetingGuid { get; set; }
+        [Width(120), QuickFilter]
         public String MeetingTypeName { get; set; }
+        [Width(125), DisplayFormat("g")]
         public DateTime StartDate { get; set; }
+        [Width(125), DisplayFormat("g")]
         public DateTime EndDate { get; set; }
+        [Width(120), QuickFilter]
         public String LocationName { get; set; }
-        public String OrganizerContactTitle { get; set; }
-        public String ReporterContactTitle { get; set; }
-        public Int32 InsertUserId { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
-        public DateTime UpdateDate { get; set; }
+        [Width(150), QuickFilter]
+        public String UnitName { get; set; }
+        [Width(150), QuickFilter]
+        public String OrganizerContactFullName { get; set; }
+        [Width(150), QuickFilter]
+        public String ReporterContactFullName { get; set; }
     }
 }

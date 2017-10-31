@@ -8,8 +8,8 @@
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), 
-        TableName(TableName)]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
     [DisplayName("Personnel Status"), InstanceName("Personnel Status"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Maintenance.Management)]

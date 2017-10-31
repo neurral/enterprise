@@ -297,40 +297,6 @@ namespace MVC
             public const string ValidationError = "~/Views/Errors/ValidationError.cshtml";
         }
 
-        public static class Meeting
-        {
-            public static class Meeting_
-            {
-                public const string MeetingIndex = "~/Modules/Meeting/Meeting/MeetingIndex.cshtml";
-            }
-
-            public static class MeetingAgendaRelevant
-            {
-                public const string MeetingAgendaRelevantIndex = "~/Modules/Meeting/MeetingAgendaRelevant/MeetingAgendaRelevantIndex.cshtml";
-            }
-
-            public static class MeetingAgendaType
-            {
-                public const string MeetingAgendaTypeIndex = "~/Modules/Meeting/MeetingAgendaType/MeetingAgendaTypeIndex.cshtml";
-            }
-
-            public static class MeetingDecisionRelevant
-            {
-                public const string MeetingDecisionRelevantIndex = "~/Modules/Meeting/MeetingDecisionRelevant/MeetingDecisionRelevantIndex.cshtml";
-            }
-
-            public static class MeetingLocation
-            {
-                public const string MeetingLocationIndex = "~/Modules/Meeting/MeetingLocation/MeetingLocationIndex.cshtml";
-            }
-
-            public static class MeetingType
-            {
-                public const string MeetingTypeIndex = "~/Modules/Meeting/MeetingType/MeetingTypeIndex.cshtml";
-            }
-
-        }
-
         public static class Northwind
         {
             public static class Category
@@ -395,7 +361,31 @@ namespace MVC
 
             public static class Meeting
             {
+                public static class MeetingAgendaRelevant
+                {
+                    public const string MeetingAgendaRelevantIndex = "~/Modules/Organization/Meeting/MeetingAgendaRelevant/MeetingAgendaRelevantIndex.cshtml";
+                }
+
+                public static class MeetingAgendaType
+                {
+                    public const string MeetingAgendaTypeIndex = "~/Modules/Organization/Meeting/MeetingAgendaType/MeetingAgendaTypeIndex.cshtml";
+                }
+
+                public static class MeetingDecisionRelevant
+                {
+                    public const string MeetingDecisionRelevantIndex = "~/Modules/Organization/Meeting/MeetingDecisionRelevant/MeetingDecisionRelevantIndex.cshtml";
+                }
                 public const string MeetingIndex = "~/Modules/Organization/Meeting/MeetingIndex.cshtml";
+                public static class MeetingLocation
+                {
+                    public const string MeetingLocationIndex = "~/Modules/Organization/Meeting/MeetingLocation/MeetingLocationIndex.cshtml";
+                }
+
+                public static class MeetingType
+                {
+                    public const string MeetingTypeIndex = "~/Modules/Organization/Meeting/MeetingType/MeetingTypeIndex.cshtml";
+                }
+
             }
 
             public static class Membership
@@ -434,11 +424,10 @@ namespace MVC
             public static class Personnel
             {
                 public const string PersonnelIndex = "~/Modules/Organization/Personnel/PersonnelIndex.cshtml";
-            }
-
-            public static class PersonnelStatus
-            {
-                public const string PersonnelStatusIndex = "~/Modules/Organization/PersonnelStatus/PersonnelStatusIndex.cshtml";
+                public static class PersonnelStatus
+                {
+                    public const string PersonnelStatusIndex = "~/Modules/Organization/Personnel/PersonnelStatus/PersonnelStatusIndex.cshtml";
+                }
             }
         }
 

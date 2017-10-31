@@ -8,6 +8,8 @@ namespace Enterprise.Administration
     [DisplayName("Administration")]
     public class PermissionKeys
     {
+        public const string General = "Administration:General";
+
         [Description("Profile Management")]
         public const string Profile = "Administration:Profile Management";
 

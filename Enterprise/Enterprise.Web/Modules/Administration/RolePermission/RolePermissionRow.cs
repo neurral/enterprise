@@ -66,7 +66,7 @@ namespace Enterprise.Administration.Entities
 
 
             public RowFields()
-                : base("RolePermissions")
+                : base()
             {
                 LocalTextPrefix = "Administration.RolePermission";
             }

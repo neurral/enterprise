@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Pages
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Organization/Contact/ContactIndex.cshtml");
+            return View(MVC.Views.Organization.Contact.ContactIndex);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Enterprise.Administration.Entities
             set { Fields.UserPermissionId[this] = value; }
         }
 
-        [DisplayName("User Id"), NotNull, ForeignKey("Users", "UserId"), LeftJoin("jUser")]
+        [DisplayName("User Id"), NotNull, ForeignKey("User", "UserId"), LeftJoin("jUser")]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
@@ -81,7 +81,7 @@ namespace Enterprise.Administration.Entities
             public StringField User;
 
             public RowFields()
-                : base("UserPermissions")
+                : base()
             {
                 LocalTextPrefix = "Administration.UserPermission";
             }

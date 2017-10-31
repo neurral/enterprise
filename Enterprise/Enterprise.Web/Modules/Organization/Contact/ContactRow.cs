@@ -14,7 +14,7 @@
     [LookupScript("Organization.Contact", Permission = PermissionKeys.General)]
     public sealed class ContactRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "Contacts";
+        public const string TableName = Constants.SCHEMA + "Contact";
 
         [DisplayName("Contact Id"), Identity]
         public Int32? ContactId
@@ -66,7 +66,7 @@
             set { Fields.IdentityNo[this] = value; }
         }
 
-        [DisplayName("User"), ForeignKey("Users", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
+        [DisplayName("User"), ForeignKey("User", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
         [LookupEditor(typeof(Administration.Entities.UserRow))]
         [ModifyPermission(Administration.PermissionKeys.Security)]
         public Int32? UserId

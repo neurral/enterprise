@@ -7,11 +7,14 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("MeetingDecisionRelevant"), InstanceName("MeetingDecisionRelevant"), TwoLevelCached]
+    [ConnectionKey("Default")]
+    [TableName(TableName)]
+    [DisplayName("MeetingDecisionRelevant"), InstanceName("MeetingDecisionRelevant"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     public sealed class MeetingDecisionRelevantRow : Row, IIdRow
     {
+        public const string TableName = Constants.SCHEMA + "MeetingDecisionRelevant";
         [DisplayName("Decision Relevant Id"), Identity]
         public Int32? DecisionRelevantId
         {
@@ -174,7 +177,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ContactUserId;
 
             public RowFields()
-                : base("MeetingDecisionRelevant")
+                : base()
             {
                 LocalTextPrefix = "Meeting.MeetingDecisionRelevant";
             }
