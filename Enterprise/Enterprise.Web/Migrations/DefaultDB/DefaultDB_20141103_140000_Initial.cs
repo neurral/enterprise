@@ -9,7 +9,7 @@ namespace Enterprise.Migrations.DefaultDB
     {
         public override void Up()
         {
-            this.CreateTableWithId32("Users", "UserId", s => s
+            this.CreateTableWithId64("User", "UserId", s => s
                 .WithColumn("Username").AsString(100).NotNullable()
                 .WithColumn("DisplayName").AsString(100).NotNullable()
                 .WithColumn("Email").AsString(100).Nullable()
@@ -19,12 +19,12 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("LastDirectoryUpdate").AsDateTime().Nullable()
                 .WithColumn("UserImage").AsString(100).Nullable()
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
-                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("InsertUserId").AsInt64().NotNullable()
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
-                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                .WithColumn("UpdateUserId").AsInt64().Nullable()
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
 
-            Insert.IntoTable("Users").Row(new {
+            Insert.IntoTable("User").Row(new {
                 Username = "admin",
                 DisplayName = "admin",
                 Email = "admin@dummy.com",
@@ -36,71 +36,71 @@ namespace Enterprise.Migrations.DefaultDB
                 IsActive = 1
             });
 
-            this.CreateTableWithId32("Languages", "Id", s => s
+            this.CreateTableWithId64("Language", "Id", s => s
                 .WithColumn("LanguageId").AsString(10).NotNullable()
                 .WithColumn("LanguageName").AsString(50).NotNullable());
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "en",
                 LanguageName = "English"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "ru",
                 LanguageName = "Russian"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "es",
                 LanguageName = "Spanish"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "tr",
                 LanguageName = "Turkish"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "de",
                 LanguageName = "German"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "zh-CN",
                 LanguageName = "Chinese (Simplified)"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "it",
                 LanguageName = "Italian"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "pt",
                 LanguageName = "Portuguese"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "pt-BR",
                 LanguageName = "Portuguese (Brazil)"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "fa",
                 LanguageName = "Farsi"
             });
 
-            Insert.IntoTable("Languages").Row(new
+            Insert.IntoTable("Language").Row(new
             {
                 LanguageId = "vi-VN",
                 LanguageName = "Vietnamese (Vietnam)"

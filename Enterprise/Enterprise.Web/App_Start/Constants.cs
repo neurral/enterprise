@@ -13,11 +13,12 @@ namespace Enterprise
         public const string ASSEMBLY_TRADEMARK = "Neurral";
         public const string ASSEMBLY_CULTURE = "en-us";
 
-        public sealed class PersonnelStatus { 
-            public const string INACTIVE = "Inactive"; //initial status
-            public const string ACTIVATED = "Activated"; //usable account, included in transactions
-            public const string SUSPENDED = "Suspended"; //unusable, included in transactions
-            public const string TERMINATED = "Terminated"; //unusable, ignored except in history
+        public sealed class PersonnelStatus {
+            public const string UNVERIFIED = "unverified"; //initial status
+            public const string INACTIVE = "inactive"; //unusable account, included
+            public const string ACTIVATED = "activated"; //usable account, included in transactions
+            public const string SUSPENDED = "suspended"; //unusable, included in transactions
+            public const string TERMINATED = "terminated"; //unusable, ignored except in history
         }
 
         public const string Enterprise_SCHEMA = "ent";
