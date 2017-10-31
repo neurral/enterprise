@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting {
+namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
     export class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {

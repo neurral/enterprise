@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../Common/Helpers/GridEditorDialog.ts" />
 
-namespace Enterprise.Meeting {
+namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()

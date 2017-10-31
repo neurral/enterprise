@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting {
+namespace Enterprise.Organization {
 
     @Serenity.Decorators.maximizable()
     @Serenity.Decorators.registerClass()

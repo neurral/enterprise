@@ -1,19 +1,22 @@
 ﻿
-namespace Enterprise.Meeting.Entities
+namespace Enterprise.Organization.Entities
 {
-    using Organization.Entities;
+    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
+    using System.IO;
 
-    [ConnectionKey("Default"), DisplayName("Meetings"), InstanceName("Meeting"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
-    public sealed class MeetingRow : Administration.Entities.LoggingRow, IIdRow, INameRow
+    [ConnectionKey("Default"), TableName(TableName)]
+    [DisplayName("Meeting"), InstanceName("Meeting"), TwoLevelCached]
+    [ReadPermission("Organization:General")]
+    [ModifyPermission("Organization:General")]
+    public sealed class MeetingRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + "Meetings";
+
         [DisplayName("Meeting Id"), Identity]
         public Int32? MeetingId
         {
@@ -35,15 +38,14 @@ namespace Enterprise.Meeting.Entities
             set { Fields.MeetingNumber[this] = value; }
         }
 
-        [DisplayName("Meeting Guid"), NotNull, Insertable(false), Updatable(false)]
+        [DisplayName("Meeting Guid"), NotNull]
         public Guid? MeetingGuid
         {
             get { return Fields.MeetingGuid[this]; }
             set { Fields.MeetingGuid[this] = value; }
         }
 
-        [DisplayName("Meeting Type"), NotNull, ForeignKey("MeetingTypes", "MeetingTypeId"), LeftJoin("jMeetingType"), TextualField("MeetingTypeName")]
-        [LookupEditor(typeof(MeetingTypeRow), InplaceAdd = true, InplaceAddPermission = PermissionKeys.Management)]
+        [DisplayName("Meeting Type"), NotNull, ForeignKey("[dbo].[MeetingTypes]", "MeetingTypeId"), LeftJoin("jMeetingType"), TextualField("MeetingTypeName")]
         public Int32? MeetingTypeId
         {
             get { return Fields.MeetingTypeId[this]; }
@@ -51,7 +53,6 @@ namespace Enterprise.Meeting.Entities
         }
 
         [DisplayName("Start Date"), NotNull]
-        [DateTimeKind(DateTimeKind.Utc), DateTimeEditor]
         public DateTime? StartDate
         {
             get { return Fields.StartDate[this]; }
@@ -59,183 +60,163 @@ namespace Enterprise.Meeting.Entities
         }
 
         [DisplayName("End Date"), NotNull]
-        [DateTimeKind(DateTimeKind.Utc), DateTimeEditor]
         public DateTime? EndDate
         {
             get { return Fields.EndDate[this]; }
             set { Fields.EndDate[this] = value; }
         }
 
-        [DisplayName("Location"), ForeignKey("MeetingLocations", "LocationId"), LeftJoin("jLocation"), TextualField("LocationName")]
-        [LookupEditor(typeof(MeetingLocationRow), InplaceAdd = true, InplaceAddPermission = PermissionKeys.Management)]
+        [DisplayName("Location"), ForeignKey("[dbo].[MeetingLocations]", "LocationId"), LeftJoin("jLocation"), TextualField("LocationName")]
         public Int32? LocationId
         {
             get { return Fields.LocationId[this]; }
             set { Fields.LocationId[this] = value; }
         }
 
-        [DisplayName("Location"), Expression("jLocation.[Name]")]
-        public String LocationName
-        {
-            get { return Fields.LocationName[this]; }
-            set { Fields.LocationName[this] = value; }
-        }
-
-        [DisplayName("Unit"), ForeignKey("BusinessUnits", "UnitId"), LeftJoin("jUnit"), TextualField("UnitName")]
-        [Organization.BusinessUnitEditor(InplaceAdd = true, InplaceAddPermission = Organization.PermissionKeys.BusinessUnits.Management)]
-        public Int32? UnitId
-        {
-            get { return Fields.UnitId[this]; }
-            set { Fields.UnitId[this] = value; }
-        }
-
-        [DisplayName("Organized By"), ForeignKey("Contacts", "ContactId"), LeftJoin("jOrganizerContact"), TextualField("OrganizerContactFullName")]
-        [LookupEditor(typeof(ContactRow), InplaceAdd = true, InplaceAddPermission = Organization.PermissionKeys.Contacts.Management)]
+        [DisplayName("Organizer Contact"), ForeignKey("[dbo].[Contacts]", "ContactId"), LeftJoin("jOrganizerContact"), TextualField("OrganizerContactTitle")]
         public Int32? OrganizerContactId
         {
             get { return Fields.OrganizerContactId[this]; }
             set { Fields.OrganizerContactId[this] = value; }
         }
 
-        [DisplayName("Organized By")]
-        [Expression("CONCAT(CONCAT(jOrganizerContact.[FirstName], ' '), jOrganizerContact.[LastName])")]
-        [Expression("(jOrganizerContact.FirstName || ' ' || jOrganizerContact.LastName)", Dialect = "Sqlite")]
-        public String OrganizerContactFullName
-        {
-            get { return Fields.OrganizerContactFullName[this]; }
-            set { Fields.OrganizerContactFullName[this] = value; }
-        }
-
-        [DisplayName("Reporter"), ForeignKey("Contacts", "ContactId"), LeftJoin("jReporterContact"), TextualField("ReporterContactFullName")]
-        [LookupEditor(typeof(ContactRow), InplaceAdd = true, InplaceAddPermission = Organization.PermissionKeys.Contacts.Management)]
+        [DisplayName("Reporter Contact"), ForeignKey("[dbo].[Contacts]", "ContactId"), LeftJoin("jReporterContact"), TextualField("ReporterContactTitle")]
         public Int32? ReporterContactId
         {
             get { return Fields.ReporterContactId[this]; }
             set { Fields.ReporterContactId[this] = value; }
         }
 
-        [DisplayName("Reporter")]
-        [Expression("CONCAT(CONCAT(jReporterContact.[FirstName], ' '), jReporterContact.[LastName])")]
-        [Expression("(jReporterContact.FirstName || ' ' || jReporterContact.LastName)", Dialect = "Sqlite")]
-        public String ReporterContactFullName
+        [DisplayName("Insert User Id"), NotNull]
+        public Int32? InsertUserId
         {
-            get { return Fields.ReporterContactFullName[this]; }
-            set { Fields.ReporterContactFullName[this] = value; }
+            get { return Fields.InsertUserId[this]; }
+            set { Fields.InsertUserId[this] = value; }
         }
 
-        [DisplayName("Meeting Type"), Expression("jMeetingType.[Name]")]
+        [DisplayName("Insert Date"), NotNull]
+        public DateTime? InsertDate
+        {
+            get { return Fields.InsertDate[this]; }
+            set { Fields.InsertDate[this] = value; }
+        }
+
+        [DisplayName("Update User Id")]
+        public Int32? UpdateUserId
+        {
+            get { return Fields.UpdateUserId[this]; }
+            set { Fields.UpdateUserId[this] = value; }
+        }
+
+        [DisplayName("Update Date")]
+        public DateTime? UpdateDate
+        {
+            get { return Fields.UpdateDate[this]; }
+            set { Fields.UpdateDate[this] = value; }
+        }
+
+        [DisplayName("Meeting Type Name"), Expression("jMeetingType.[Name]")]
         public String MeetingTypeName
         {
             get { return Fields.MeetingTypeName[this]; }
             set { Fields.MeetingTypeName[this] = value; }
         }
-
-        [DisplayName("Unit Name"), Expression("jUnit.[Name]")]
-        public String UnitName
+        [DisplayName("Location Name"), Expression("jLocation.[Name]")]
+        public String LocationName
         {
-            get { return Fields.UnitName[this]; }
-            set { Fields.UnitName[this] = value; }
+            get { return Fields.LocationName[this]; }
+            set { Fields.LocationName[this] = value; }
         }
-
-        [DisplayName("Unit Parent Unit Id"), Expression("jUnit.[ParentUnitId]")]
-        public Int32? UnitParentUnitId
+        [DisplayName("Location Address"), Expression("jLocation.[Address]")]
+        public String LocationAddress
         {
-            get { return Fields.UnitParentUnitId[this]; }
-            set { Fields.UnitParentUnitId[this] = value; }
+            get { return Fields.LocationAddress[this]; }
+            set { Fields.LocationAddress[this] = value; }
         }
-
+        [DisplayName("Location Latitude"), Expression("jLocation.[Latitude]")]
+        public Double? LocationLatitude
+        {
+            get { return Fields.LocationLatitude[this]; }
+            set { Fields.LocationLatitude[this] = value; }
+        }
+        [DisplayName("Location Longitude"), Expression("jLocation.[Longitude]")]
+        public Double? LocationLongitude
+        {
+            get { return Fields.LocationLongitude[this]; }
+            set { Fields.LocationLongitude[this] = value; }
+        }
         [DisplayName("Organizer Contact Title"), Expression("jOrganizerContact.[Title]")]
         public String OrganizerContactTitle
         {
             get { return Fields.OrganizerContactTitle[this]; }
             set { Fields.OrganizerContactTitle[this] = value; }
         }
-
         [DisplayName("Organizer Contact First Name"), Expression("jOrganizerContact.[FirstName]")]
         public String OrganizerContactFirstName
         {
             get { return Fields.OrganizerContactFirstName[this]; }
             set { Fields.OrganizerContactFirstName[this] = value; }
         }
-
         [DisplayName("Organizer Contact Last Name"), Expression("jOrganizerContact.[LastName]")]
         public String OrganizerContactLastName
         {
             get { return Fields.OrganizerContactLastName[this]; }
             set { Fields.OrganizerContactLastName[this] = value; }
         }
-
         [DisplayName("Organizer Contact Email"), Expression("jOrganizerContact.[Email]")]
         public String OrganizerContactEmail
         {
             get { return Fields.OrganizerContactEmail[this]; }
             set { Fields.OrganizerContactEmail[this] = value; }
         }
-
         [DisplayName("Organizer Contact Identity No"), Expression("jOrganizerContact.[IdentityNo]")]
         public String OrganizerContactIdentityNo
         {
             get { return Fields.OrganizerContactIdentityNo[this]; }
             set { Fields.OrganizerContactIdentityNo[this] = value; }
         }
-
         [DisplayName("Organizer Contact User Id"), Expression("jOrganizerContact.[UserId]")]
         public Int32? OrganizerContactUserId
         {
             get { return Fields.OrganizerContactUserId[this]; }
             set { Fields.OrganizerContactUserId[this] = value; }
         }
-
         [DisplayName("Reporter Contact Title"), Expression("jReporterContact.[Title]")]
         public String ReporterContactTitle
         {
             get { return Fields.ReporterContactTitle[this]; }
             set { Fields.ReporterContactTitle[this] = value; }
         }
-
         [DisplayName("Reporter Contact First Name"), Expression("jReporterContact.[FirstName]")]
         public String ReporterContactFirstName
         {
             get { return Fields.ReporterContactFirstName[this]; }
             set { Fields.ReporterContactFirstName[this] = value; }
         }
-
         [DisplayName("Reporter Contact Last Name"), Expression("jReporterContact.[LastName]")]
         public String ReporterContactLastName
         {
             get { return Fields.ReporterContactLastName[this]; }
             set { Fields.ReporterContactLastName[this] = value; }
         }
-
         [DisplayName("Reporter Contact Email"), Expression("jReporterContact.[Email]")]
         public String ReporterContactEmail
         {
             get { return Fields.ReporterContactEmail[this]; }
             set { Fields.ReporterContactEmail[this] = value; }
         }
-
         [DisplayName("Reporter Contact Identity No"), Expression("jReporterContact.[IdentityNo]")]
         public String ReporterContactIdentityNo
         {
             get { return Fields.ReporterContactIdentityNo[this]; }
             set { Fields.ReporterContactIdentityNo[this] = value; }
         }
-
         [DisplayName("Reporter Contact User Id"), Expression("jReporterContact.[UserId]")]
         public Int32? ReporterContactUserId
         {
             get { return Fields.ReporterContactUserId[this]; }
             set { Fields.ReporterContactUserId[this] = value; }
         }
-
-        [DisplayName("Attendee List")]
-        [MasterDetailRelation("MeetingId", IncludeColumns = "ContactFullName"), MeetingAttendeeEditor]
-        public List<MeetingAttendeeRow> AttendeeList
-        {
-            get { return Fields.AttendeeList[this]; }
-            set { Fields.AttendeeList[this] = value; }
-        }
-
         IIdField IIdRow.IdField
         {
             get { return Fields.MeetingId; }
@@ -253,7 +234,7 @@ namespace Enterprise.Meeting.Entities
         {
         }
 
-        public class RowFields : Administration.Entities.LoggingRow.LoggingRowFields
+        public class RowFields : RowFieldsBase
         {
             public Int32Field MeetingId;
             public StringField MeetingName;
@@ -263,21 +244,23 @@ namespace Enterprise.Meeting.Entities
             public DateTimeField StartDate;
             public DateTimeField EndDate;
             public Int32Field LocationId;
-            public Int32Field UnitId;
             public Int32Field OrganizerContactId;
             public Int32Field ReporterContactId;
+            public Int32Field InsertUserId;
+            public DateTimeField InsertDate;
+            public Int32Field UpdateUserId;
+            public DateTimeField UpdateDate;
 
             public StringField MeetingTypeName;
 
             public StringField LocationName;
-
-            public StringField UnitName;
-            public Int32Field UnitParentUnitId;
+            public StringField LocationAddress;
+            public DoubleField LocationLatitude;
+            public DoubleField LocationLongitude;
 
             public StringField OrganizerContactTitle;
             public StringField OrganizerContactFirstName;
             public StringField OrganizerContactLastName;
-            public StringField OrganizerContactFullName;
             public StringField OrganizerContactEmail;
             public StringField OrganizerContactIdentityNo;
             public Int32Field OrganizerContactUserId;
@@ -285,17 +268,14 @@ namespace Enterprise.Meeting.Entities
             public StringField ReporterContactTitle;
             public StringField ReporterContactFirstName;
             public StringField ReporterContactLastName;
-            public StringField ReporterContactFullName;
             public StringField ReporterContactEmail;
             public StringField ReporterContactIdentityNo;
             public Int32Field ReporterContactUserId;
 
-            public ListField<MeetingAttendeeRow> AttendeeList;
-
             public RowFields()
-                : base("Meetings")
+                : base()
             {
-                LocalTextPrefix = "Meeting.Meeting";
+                LocalTextPrefix = "Organization.Meeting";
             }
         }
     }

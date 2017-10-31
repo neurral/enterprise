@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting.Pages
+namespace Enterprise.Organization.Pages
 {
     using Serenity.Web;
     using System.Web.Mvc;

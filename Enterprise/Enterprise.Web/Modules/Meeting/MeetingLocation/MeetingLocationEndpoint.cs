@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting.Endpoints
+namespace Enterprise.Organization.Endpoints
 {
     using Serenity.Data;
     using Serenity.Services;

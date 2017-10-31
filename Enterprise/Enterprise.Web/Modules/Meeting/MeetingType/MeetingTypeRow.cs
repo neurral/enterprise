@@ -1,6 +1,6 @@
 ﻿
 
-namespace Enterprise.Meeting.Entities
+namespace Enterprise.Organization.Entities
 {
     using Serenity.ComponentModel;
     using Serenity.Data;

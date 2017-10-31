@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting.Forms
+namespace Enterprise.Organization.Forms
 {
     using Entities;
     using Serenity.ComponentModel;

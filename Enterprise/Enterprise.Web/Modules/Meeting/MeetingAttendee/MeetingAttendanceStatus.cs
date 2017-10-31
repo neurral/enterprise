@@ -2,7 +2,7 @@
 using Serenity.ComponentModel;
 using System.ComponentModel;
 
-namespace Enterprise.Meeting
+namespace Enterprise.Organization
 {
     [EnumKey("Meeting.MeetingAttendanceStatus")]
     public enum MeetingAttendanceStatus

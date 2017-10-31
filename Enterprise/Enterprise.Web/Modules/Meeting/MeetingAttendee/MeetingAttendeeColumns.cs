@@ -1,5 +1,5 @@
 ﻿
-namespace Enterprise.Meeting.Columns
+namespace Enterprise.Organization.Columns
 {
     using Common;
     using Serenity.ComponentModel;

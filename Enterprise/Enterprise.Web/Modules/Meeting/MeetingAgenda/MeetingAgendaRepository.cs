@@ -1,6 +1,6 @@
 ﻿
 
-namespace Enterprise.Meeting.Repositories
+namespace Enterprise.Organization.Repositories
 {
     using Serenity.Data;
     using Serenity.Services;

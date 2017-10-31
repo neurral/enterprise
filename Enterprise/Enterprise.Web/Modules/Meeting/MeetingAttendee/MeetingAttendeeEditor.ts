@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 
-namespace Enterprise.Meeting {
+namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
     export class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
