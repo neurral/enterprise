@@ -1,17 +1,18 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using Enterprise;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle(Enterprise.Constants.ASSEMBLY_TITLE)]
-[assembly: AssemblyDescription(Enterprise.Constants.ASSEMBLY_DESCRIPTION)]
-[assembly: AssemblyConfiguration(Enterprise.Constants.ASSEMBLY_CONFIGURATION)]
-[assembly: AssemblyCompany(Enterprise.Constants.ASSEMBLY_COMPANY)]
-[assembly: AssemblyProduct(Enterprise.Constants.ASSEMBLY_PRODUCT)]
-[assembly: AssemblyCopyright(Enterprise.Constants.ASSEMBLY_COPYRIGHT)]
-[assembly: AssemblyTrademark(Enterprise.Constants.ASSEMBLY_TRADEMARK)]
-[assembly: AssemblyCulture(Enterprise.Constants.ASSEMBLY_CULTURE)]
+[assembly: AssemblyTitle(Constants.ASSEMBLY_TITLE)]
+[assembly: AssemblyDescription(Constants.ASSEMBLY_DESCRIPTION)]
+[assembly: AssemblyConfiguration(Constants.ASSEMBLY_CONFIGURATION)]
+[assembly: AssemblyCompany(Constants.ASSEMBLY_COMPANY)]
+[assembly: AssemblyProduct(Constants.ASSEMBLY_PRODUCT)]
+[assembly: AssemblyCopyright(Constants.ASSEMBLY_COPYRIGHT)]
+[assembly: AssemblyTrademark(Constants.ASSEMBLY_TRADEMARK)]
+[assembly: AssemblyCulture(Constants.ASSEMBLY_CULTURE)]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("84da6417-8089-4e8e-9306-400b1c96415f")]
+[assembly: Guid(Constants.GUID)]
 
 // Version information for an assembly consists of the following four values:
 //
