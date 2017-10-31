@@ -7,7 +7,7 @@ namespace Enterprise.Organization.Forms
     using System.Collections.Generic;
     using System.ComponentModel;
 
-    [FormScript("Meeting.Meeting")]
+    [FormScript("Organization.Meeting")]
     [BasedOnRow(typeof(Entities.MeetingRow))]
     public class MeetingForm
     {

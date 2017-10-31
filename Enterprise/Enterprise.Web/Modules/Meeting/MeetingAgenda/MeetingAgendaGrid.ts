@@ -3,7 +3,7 @@ namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
     export class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
-        protected getColumnsKey() { return 'Meeting.MeetingAgenda'; }
+        protected getColumnsKey() { return 'Organization.MeetingAgenda'; }
         protected getDialogType() { return MeetingAgendaDialog; }
         protected getIdProperty() { return MeetingAgendaRow.idProperty; }
         protected getLocalTextPrefix() { return MeetingAgendaRow.localTextPrefix; }

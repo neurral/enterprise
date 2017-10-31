@@ -2,7 +2,7 @@
 using Serenity.Extensibility;
 using System.ComponentModel;
 
-namespace Enterprise.Organization
+namespace Enterprise.Meeting
 {
     [NestedPermissionKeys]
     public class PermissionKeys

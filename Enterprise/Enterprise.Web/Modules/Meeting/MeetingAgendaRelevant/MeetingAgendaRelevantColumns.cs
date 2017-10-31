@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Columns
     using System;
     using System.ComponentModel;
 
-    [ColumnsScript("Meeting.MeetingAgendaRelevant")]
+    [ColumnsScript("Organization.MeetingAgendaRelevant")]
     [BasedOnRow(typeof(Entities.MeetingAgendaRelevantRow))]
     public class MeetingAgendaRelevantColumns
     {

@@ -6,7 +6,7 @@ namespace Enterprise.Organization.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Organization/PersonnelStatus"), Route("{action=index}")]
-    [PageAuthorize(typeof(Entities.PersonnelStatusRow))]
+    [PageAuthorize(PermissionKeys.Maintenance.Access)]
     public class PersonnelStatusController : Controller
     {
         public ActionResult Index()

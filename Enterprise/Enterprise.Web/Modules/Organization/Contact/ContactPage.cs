@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Organization/Contact"), Route("{action=index}")]
-    [PageAuthorize(typeof(Entities.ContactRow))]
+    [PageAuthorize(PermissionKeys.Contact.Access)]
     public class ContactController : Controller
     {
         public ActionResult Index()

@@ -393,6 +393,11 @@ namespace MVC
                 public const string ContactIndex = "~/Modules/Organization/Contact/ContactIndex.cshtml";
             }
 
+            public static class Meeting
+            {
+                public const string MeetingIndex = "~/Modules/Organization/Meeting/MeetingIndex.cshtml";
+            }
+
             public static class Membership
             {
                 public static class Account
@@ -424,6 +429,16 @@ namespace MVC
                         public const string AccountSignUp_AdminLTE = "~/Modules/Organization/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
                     }
                 }
+            }
+
+            public static class Personnel
+            {
+                public const string PersonnelIndex = "~/Modules/Organization/Personnel/PersonnelIndex.cshtml";
+            }
+
+            public static class PersonnelStatus
+            {
+                public const string PersonnelStatusIndex = "~/Modules/Organization/PersonnelStatus/PersonnelStatusIndex.cshtml";
             }
         }
 

@@ -20,16 +20,25 @@ namespace Enterprise.Organization
             public const string Management = Module + ":Business Units:Management";
         }
 
+
+        public class Personnel
+        {
+            public const string Access = Module + "Personnel:Access";
+            public const string Management = Module + ":Personnel:Management";
+        }
+
+
         public class Contact
         {
             public const string Access = Module + "Contacts:Access";
             public const string Management = Module + ":Contacts:Management";
         }
 
-        public class Personnel
+
+        public class Meeting
         {
-            public const string Access = Module + "Personnel:Access";
-            public const string Management = Module + ":Personnel:Management";
+            public const string Access = Module + "Meeting:Access";
+            public const string Management = Module + ":Meeting:Management";
         }
 
         [Description("[Maintenance]")]

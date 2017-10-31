@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Entities
 
     [ConnectionKey("Default"), DisplayName("Meeting Locations"), InstanceName("Meeting Location"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Management)]
+    [ModifyPermission(PermissionKeys.Meeting.Management)]
     [LookupScript("Organization.MeetingLocation")]
     public sealed class MeetingLocationRow : Row, IIdRow, INameRow
     {

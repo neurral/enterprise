@@ -10,7 +10,7 @@ namespace Enterprise.Organization.Entities
 
     [ConnectionKey("Default"), DisplayName("Agenda Types"), InstanceName("Agenda Type"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Management)]
+    [ModifyPermission(PermissionKeys.Meeting.Management)]
     [LookupScript("Organization.MeetingAgendaType")]
     public sealed class MeetingAgendaTypeRow : Row, IIdRow, INameRow
     {

@@ -4,7 +4,7 @@ namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
     export class MeetingAttendeeEditor extends Common.GridEditorBase<MeetingAttendeeRow> {
-        protected getColumnsKey() { return 'Meeting.MeetingAttendee'; }
+        protected getColumnsKey() { return 'Organization.MeetingAttendee'; }
         protected getDialogType() { return MeetingAttendeeDialog; }
         protected getLocalTextPrefix() { return MeetingAttendeeRow.localTextPrefix; }
 

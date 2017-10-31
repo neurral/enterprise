@@ -1357,6 +1357,114 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerGrossSalesRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaRelevantColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaRelevantForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaRelevantRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaRelevantService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAgendaTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAttendanceStatus.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAttendeeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAttendeeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAttendeeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingAttendeeType.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionRelevantColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionRelevantForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionRelevantRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionRelevantService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingDecisionService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingLocationColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingLocationForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingLocationRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingLocationService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingTypeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Language\LanguageDialog.ts" />
     <TypeScriptCompile Include="Modules\Administration\Language\LanguageGrid.ts" />
     <TypeScriptCompile Include="Modules\Administration\RolePermission\RolePermissionDialog.ts" />
@@ -1522,39 +1630,6 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\GetNextNumberResponse.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendanceStatus.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeType.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationColumns.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.OrderListRequest.ts">
@@ -1836,108 +1911,64 @@
     <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitGrid.ts" />
     <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitDialog.ts" />
     <Content Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRelevantForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaRelevant\MeetingAgendaRelevantDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgenda\MeetingAgendaDialog.ts" />
     <Content Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAgendaTypeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAgendaType\MeetingAgendaTypeDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingAttendeeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeEditor.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingAttendee\MeetingAttendeeDialog.ts" />
     <Content Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRelevantForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingDecisionRelevant\MeetingDecisionRelevantDialog.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingDecisionForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingDecision\MeetingDecisionGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingDecision\MeetingDecisionDialog.ts" />
     <Content Include="Modules\Meeting\MeetingLocation\MeetingLocationIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingLocationForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingLocation\MeetingLocationGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingLocation\MeetingLocationDialog.ts" />
     <Content Include="Modules\Meeting\Meeting\MeetingIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\Meeting\MeetingGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\Meeting\MeetingDialog.ts" />
     <Content Include="Modules\Meeting\MeetingType\MeetingTypeIndex.cshtml" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeRow.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeService.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Meeting.MeetingTypeForm.ts">
-      <DependentUpon>ServerTypings.tt</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeGrid.ts" />
     <TypeScriptCompile Include="Modules\Meeting\MeetingType\MeetingTypeDialog.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="wwwroot\Content\site\site.organization.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\Personnel\PersonnelIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\Personnel\PersonnelDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Personnel\PersonnelGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\PersonnelStatus\PersonnelStatusIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\PersonnelStatus\PersonnelStatusDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\PersonnelStatus\PersonnelStatusGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.MeetingForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1955,6 +1986,9 @@
     <Compile Include="App_Start\SiteInitialization.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Organization.MeetingAttendeeEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
@@ -2044,9 +2078,6 @@
     <Compile Include="Imports\ClientTypes\Common.EnumSelectFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Meeting.MeetingAttendeeEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Imports\ClientTypes\Northwind.CustomerEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2079,7 +2110,7 @@
     </Compile>
     <Compile Include="Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20161126_200000_Organization.cs" />
-    <Compile Include="Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20161126_210000_Meeting_and_Contacts.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20161029_130000_ExceptionLog.cs" />
     <Compile Include="Migrations\MigrationUtils.cs" />
     <Compile Include="Migrations\NorthwindDB\NorthwindDB_20161126_141700_ForwardDates.cs" />
@@ -2321,7 +2352,6 @@
     <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationRepository.cs" />
     <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationEndpoint.cs" />
     <Compile Include="Modules\Meeting\MeetingLocation\MeetingLocationPage.cs" />
-    <Compile Include="Modules\Meeting\Meeting\MeetingRow.cs" />
     <Compile Include="Modules\Meeting\Meeting\MeetingColumns.cs" />
     <Compile Include="Modules\Meeting\Meeting\MeetingForm.cs" />
     <Compile Include="Modules\Meeting\Meeting\MeetingRepository.cs" />
@@ -2333,6 +2363,19 @@
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypeRepository.cs" />
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypeEndpoint.cs" />
     <Compile Include="Modules\Meeting\MeetingType\MeetingTypePage.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelRow.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelRepository.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelEndpoint.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelPage.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelColumns.cs" />
+    <Compile Include="Modules\Organization\Personnel\PersonnelForm.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusRow.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusRepository.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusEndpoint.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusPage.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusColumns.cs" />
+    <Compile Include="Modules\Organization\PersonnelStatus\PersonnelStatusForm.cs" />
+    <Compile Include="Modules\Meeting\Meeting\MeetingRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

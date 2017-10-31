@@ -9,8 +9,8 @@
     [ConnectionKey("Default"), DisplayName("Contacts"),
         TableName(TableName), 
         InstanceName("Contact"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Contacts.Management)]
-    [ModifyPermission(PermissionKeys.Contacts.Management)]
+    [ReadPermission(PermissionKeys.General)]
+    [ModifyPermission(PermissionKeys.Contact.Management)]
     [LookupScript("Organization.Contact", Permission = PermissionKeys.General)]
     public sealed class ContactRow : Row, IIdRow, INameRow
     {
@@ -68,7 +68,7 @@
 
         [DisplayName("User"), ForeignKey("Users", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
         [LookupEditor(typeof(Administration.Entities.UserRow))]
-        [ModifyPermission(PermissionKeys.Contacts.Management)]
+        [ModifyPermission(Administration.PermissionKeys.Security)]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }

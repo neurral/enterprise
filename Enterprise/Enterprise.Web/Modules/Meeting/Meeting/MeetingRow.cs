@@ -9,7 +9,7 @@ namespace Enterprise.Organization.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName(TableName)]
+    [ConnectionKey("Default")]
     [DisplayName("Meeting"), InstanceName("Meeting"), TwoLevelCached]
     [ReadPermission("Organization:General")]
     [ModifyPermission("Organization:General")]
@@ -273,7 +273,7 @@ namespace Enterprise.Organization.Entities
             public Int32Field ReporterContactUserId;
 
             public RowFields()
-                : base()
+                : base("Meetings")
             {
                 LocalTextPrefix = "Organization.Meeting";
             }
