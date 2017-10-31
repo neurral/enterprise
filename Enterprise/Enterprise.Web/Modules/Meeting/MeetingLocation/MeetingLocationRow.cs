@@ -11,7 +11,7 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default"), DisplayName("Meeting Locations"), InstanceName("Meeting Location"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Management)]
-    [LookupScript("Meeting.MeetingLocation")]
+    [LookupScript("Organization.MeetingLocation")]
     public sealed class MeetingLocationRow : Row, IIdRow, INameRow
     {
         [DisplayName("Location Id"), Identity]

@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Columns
     using Serenity.ComponentModel;
     using System;
 
-    [ColumnsScript("Meeting.MeetingAttendee")]
+    [ColumnsScript("Organization.MeetingAttendee")]
     [BasedOnRow(typeof(Entities.MeetingAttendeeRow))]
     public class MeetingAttendeeColumns
     {

@@ -11,7 +11,7 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default"), DisplayName("Meeting Types"), InstanceName("Meeting Type"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Management)]
-    [LookupScript("Meeting.MeetingType")]
+    [LookupScript("Organization.MeetingType")]
     public sealed class MeetingTypeRow : Row, IIdRow, INameRow
     {
         [DisplayName("Meeting Type Id"), Identity]

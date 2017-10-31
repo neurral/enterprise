@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Columns
     using System;
     using System.ComponentModel;
 
-    [ColumnsScript("Meeting.MeetingAgendaType")]
+    [ColumnsScript("Organization.MeetingAgendaType")]
     [BasedOnRow(typeof(Entities.MeetingAgendaTypeRow))]
     public class MeetingAgendaTypeColumns
     {

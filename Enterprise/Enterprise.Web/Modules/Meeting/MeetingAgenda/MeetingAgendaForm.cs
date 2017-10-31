@@ -4,7 +4,7 @@ namespace Enterprise.Organization.Forms
     using Serenity.ComponentModel;
     using System;
 
-    [FormScript("Meeting.MeetingAgenda")]
+    [FormScript("Organization.MeetingAgenda")]
     [BasedOnRow(typeof(Entities.MeetingAgendaRow))]
     public class MeetingAgendaForm
     {

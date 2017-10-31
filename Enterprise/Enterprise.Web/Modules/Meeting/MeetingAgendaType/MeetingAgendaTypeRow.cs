@@ -11,7 +11,7 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default"), DisplayName("Agenda Types"), InstanceName("Agenda Type"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.Management)]
-    [LookupScript("Meeting.MeetingAgendaType")]
+    [LookupScript("Organization.MeetingAgendaType")]
     public sealed class MeetingAgendaTypeRow : Row, IIdRow, INameRow
     {
         [DisplayName("Agenda Type Id"), Identity]

@@ -4,7 +4,7 @@ namespace Enterprise.Organization.Forms
     using Serenity.ComponentModel;
     using System;
 
-    [FormScript("Meeting.MeetingDecisionRelevant")]
+    [FormScript("Organization.MeetingDecisionRelevant")]
     [BasedOnRow(typeof(Entities.MeetingDecisionRelevantRow))]
     public class MeetingDecisionRelevantForm
     {

@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Columns
     using System;
     using System.ComponentModel;
 
-    [ColumnsScript("Meeting.MeetingDecisionRelevant")]
+    [ColumnsScript("Organization.MeetingDecisionRelevant")]
     [BasedOnRow(typeof(Entities.MeetingDecisionRelevantRow))]
     public class MeetingDecisionRelevantColumns
     {
