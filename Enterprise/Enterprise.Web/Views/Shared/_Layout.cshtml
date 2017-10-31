@@ -49,7 +49,7 @@
     else
     {
         <div class="wrapper">
-            <header class="main-header">
+            <header class="main-header" data-spy="affix">
                 <nav class="navbar navbar-static-top">
                     <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle Navigation</span>
@@ -87,6 +87,7 @@
                         @{Html.RenderPartial(MVC.Views.Shared.LeftNavigation, new Enterprise.Navigation.NavigationModel()); }
                     </ul>
                 </section>
+               
             </aside>
 
             <div class="content-wrapper">
@@ -156,8 +157,23 @@
 
                     $(window).bind("load resize layout", doLayout);
                     doLayout();
+
+                    // Only enable scrol to top if the document has a long scroll bar
+                    // see window height + offset
+                    if (($(window).height() + 100) < $(document).height()) {
+                        $('#top-link-block').removeClass('hidden').affix({
+                            // how far to scroll down before link "slides" into view
+                            offset: { top: 100 }
+                        });
+                    }
                 });
             </script>
-                            }
+       }
+    <span id="top-link-block" class="hidden">
+        <a href="#top" class="well well-sm bg-black-active" 
+           onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+            <i class="glyphicon glyphicon-chevron-up"></i> Top
+        </a>
+    </span>
 </body>
 </html>
