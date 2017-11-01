@@ -15,7 +15,6 @@
         PersonnelStatusSequence?: number;
         PersonnelStatusPersonnelStatusName?: string;
         UserUsername?: string;
-        UserDisplayName?: string;
         UserEmail?: string;
         UserSource?: string;
         UserPasswordHash?: string;
@@ -55,7 +54,6 @@
             export declare const PersonnelStatusSequence: string;
             export declare const PersonnelStatusPersonnelStatusName: string;
             export declare const UserUsername: string;
-            export declare const UserDisplayName: string;
             export declare const UserEmail: string;
             export declare const UserSource: string;
             export declare const UserPasswordHash: string;
@@ -85,7 +83,6 @@
             'PersonnelStatusSequence', 
             'PersonnelStatusPersonnelStatusName', 
             'UserUsername', 
-            'UserDisplayName', 
             'UserEmail', 
             'UserSource', 
             'UserPasswordHash', 

@@ -19,13 +19,13 @@ namespace Enterprise.Organization.Entities
         public const string TableName = Constants.SCHEMA + Ks.Personnel;
 
         [DisplayName("Personnel Id"), Identity]
-        public Int32? PersonnelId
+        public Int64? PersonnelId
         {
             get { return Fields.PersonnelId[this]; }
             set { Fields.PersonnelId[this] = value; }
         }
 
-        [DisplayName("Identification No"), Size(20), QuickSearch]
+        [DisplayName("Company ID"), Size(20), QuickSearch]
         public String IdentificationNo
         {
             get { return Fields.IdentificationNo[this]; }
@@ -39,7 +39,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.FirstName[this] = value; }
         }
 
-        [DisplayName("Middle Name"), Size(50), NotNull]
+        [DisplayName("Middle Name"), Size(50)]
         public String MiddleName
         {
             get { return Fields.MiddleName[this]; }
@@ -61,10 +61,11 @@ namespace Enterprise.Organization.Entities
         }
 
         [DisplayName("Personnel Status"), NotNull, 
+            DefaultValue(0),
             ForeignKey(PersonnelStatusRow.TableName, "PersonnelStatusId"), LeftJoin("jPersonnelStatus"), TextualField("PersonnelStatusPersonnelStatusName")]
         [LookupEditor(typeof(Entities.PersonnelStatusRow), InplaceAddPermission = Keys.Personnel.Modify)]
         [ModifyPermission(Keys.Personnel.Modify)]
-        public Int32? PersonnelStatus
+        public Int64? PersonnelStatus
         {
             get { return Fields.PersonnelStatus[this]; }
             set { Fields.PersonnelStatus[this] = value; }
@@ -78,6 +79,7 @@ namespace Enterprise.Organization.Entities
         }
 
         [DisplayName("Date Started"), NotNull]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? DateStarted
         {
             get { return Fields.DateStarted[this]; }
@@ -85,6 +87,7 @@ namespace Enterprise.Organization.Entities
         }
 
         [DisplayName("Date Exited")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? DateExited
         {
             get { return Fields.DateExited[this]; }
@@ -92,6 +95,7 @@ namespace Enterprise.Organization.Entities
         }
 
         [DisplayName("Date Of Birth"), NotNull]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? DateOfBirth
         {
             get { return Fields.DateOfBirth[this]; }
@@ -102,14 +106,14 @@ namespace Enterprise.Organization.Entities
         [LookupEditor(typeof(Administration.Entities.UserRow), InplaceAdd =true, 
             InplaceAddPermission = Keys.Personnel.Modify)]
         [ModifyPermission(Keys.Personnel.Modify)]
-        public Int32? UserId
+        public Int64? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
         }
 
         [DisplayName("Personnel Status Sequence"), Expression("jPersonnelStatus.[Sequence]")]
-        public Int32? PersonnelStatusSequence
+        public Int64? PersonnelStatusSequence
         {
             get { return Fields.PersonnelStatusSequence[this]; }
             set { Fields.PersonnelStatusSequence[this] = value; }
@@ -126,12 +130,7 @@ namespace Enterprise.Organization.Entities
             get { return Fields.UserUsername[this]; }
             set { Fields.UserUsername[this] = value; }
         }
-        [DisplayName("User Display Name"), Expression("jUser.[DisplayName]")]
-        public String UserDisplayName
-        {
-            get { return Fields.UserDisplayName[this]; }
-            set { Fields.UserDisplayName[this] = value; }
-        }
+        
         [DisplayName("User Email"), Expression("jUser.[Email]")]
         public String UserEmail
         {
@@ -157,6 +156,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.UserPasswordSalt[this] = value; }
         }
         [DisplayName("User Last Directory Update"), Expression("jUser.[LastDirectoryUpdate]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? UserLastDirectoryUpdate
         {
             get { return Fields.UserLastDirectoryUpdate[this]; }
@@ -169,30 +169,32 @@ namespace Enterprise.Organization.Entities
             set { Fields.UserUserImage[this] = value; }
         }
         [DisplayName("User Insert Date"), Expression("jUser.[InsertDate]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? UserInsertDate
         {
             get { return Fields.UserInsertDate[this]; }
             set { Fields.UserInsertDate[this] = value; }
         }
         [DisplayName("User Insert User Id"), Expression("jUser.[InsertUserId]")]
-        public Int32? UserInsertUserId
+        public Int64? UserInsertUserId
         {
             get { return Fields.UserInsertUserId[this]; }
             set { Fields.UserInsertUserId[this] = value; }
         }
         [DisplayName("User Update Date"), Expression("jUser.[UpdateDate]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? UserUpdateDate
         {
             get { return Fields.UserUpdateDate[this]; }
             set { Fields.UserUpdateDate[this] = value; }
         }
         [DisplayName("User Update User Id"), Expression("jUser.[UpdateUserId]")]
-        public Int32? UserUpdateUserId
+        public Int64? UserUpdateUserId
         {
             get { return Fields.UserUpdateUserId[this]; }
             set { Fields.UserUpdateUserId[this] = value; }
         }
-        [DisplayName("User Is Active"), Expression("jUser.[IsActive]")]
+        [DisplayName("User Is Verified"), Expression("jUser.[IsActive]")]
         public Int16? UserIsActive
         {
             get { return Fields.UserIsActive[this]; }
@@ -217,24 +219,23 @@ namespace Enterprise.Organization.Entities
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field PersonnelId;
+            public Int64Field PersonnelId;
             public StringField IdentificationNo;
             public StringField FirstName;
             public StringField MiddleName;
             public StringField LastName;
             public StringField Email;
-            public Int32Field PersonnelStatus;
+            public Int64Field PersonnelStatus;
             public StringField Gender;
             public DateTimeField DateStarted;
             public DateTimeField DateExited;
             public DateTimeField DateOfBirth;
-            public Int32Field UserId;
+            public Int64Field UserId;
 
-            public Int32Field PersonnelStatusSequence;
+            public Int64Field PersonnelStatusSequence;
             public StringField PersonnelStatusPersonnelStatusName;
 
             public StringField UserUsername;
-            public StringField UserDisplayName;
             public StringField UserEmail;
             public StringField UserSource;
             public StringField UserPasswordHash;
@@ -242,9 +243,9 @@ namespace Enterprise.Organization.Entities
             public DateTimeField UserLastDirectoryUpdate;
             public StringField UserUserImage;
             public DateTimeField UserInsertDate;
-            public Int32Field UserInsertUserId;
+            public Int64Field UserInsertUserId;
             public DateTimeField UserUpdateDate;
-            public Int32Field UserUpdateUserId;
+            public Int64Field UserUpdateUserId;
             public Int16Field UserIsActive;
 
             public RowFields()

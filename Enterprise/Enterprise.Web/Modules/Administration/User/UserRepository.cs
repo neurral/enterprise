@@ -64,7 +64,7 @@ namespace Enterprise.Administration.Repositories
             displayName = displayName.TrimToNull();
 
             if (displayName == null)
-                throw DataValidation.RequiredError(fld.DisplayName.Name, fld.DisplayName.Title);
+                throw DataValidation.RequiredError("DisplayName", "DisplayName");
 
             return displayName;
         }
@@ -92,7 +92,6 @@ namespace Enterprise.Administration.Repositories
                     .Select(
                         fld.UserId,
                         fld.Username,
-                        fld.DisplayName,
                         fld.PasswordHash,
                         fld.PasswordSalt,
                         fld.IsActive)
@@ -192,14 +191,14 @@ namespace Enterprise.Administration.Repositories
                     if (Row.Username != Old.Username)
                         Row.Username = MySaveHandler.ValidateUsername(this.Connection, Row.Username, Old.UserId.Value);
 
-                    if (Row.DisplayName != Old.DisplayName)
-                        Row.DisplayName = ValidateDisplayName(this.Connection, Row.DisplayName, Old.UserId.Value);
+                    //if (Row.DisplayName != Old.DisplayName)
+                    //    Row.DisplayName = ValidateDisplayName(this.Connection, Row.DisplayName, Old.UserId.Value);
                 }
 
                 if (IsCreate)
                 {
                     this.Row.Username = ValidateUsername(this.Connection, this.Row.Username, null);
-                    this.Row.DisplayName = ValidateDisplayName(this.Connection, this.Row.DisplayName, null);
+                    //this.Row.DisplayName = ValidateDisplayName(this.Connection, this.Row.DisplayName, null);
                     password = ValidatePassword(Row.Username, Row.Password, true);
                 }
             }

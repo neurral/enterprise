@@ -5,7 +5,6 @@
         Source?: string;
         PasswordHash?: string;
         PasswordSalt?: string;
-        DisplayName?: string;
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
@@ -35,7 +34,6 @@
             export declare const Source: string;
             export declare const PasswordHash: string;
             export declare const PasswordSalt: string;
-            export declare const DisplayName: string;
             export declare const Email: string;
             export declare const UserImage: string;
             export declare const LastDirectoryUpdate: string;
@@ -54,7 +52,6 @@
             'Source', 
             'PasswordHash', 
             'PasswordSalt', 
-            'DisplayName', 
             'Email', 
             'UserImage', 
             'LastDirectoryUpdate', 

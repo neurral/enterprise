@@ -35,9 +35,11 @@
 
                 Q.serviceCall({
                     url: Q.resolveUrl('~/Account/SignUp'),
-                    request: {
-                        DisplayName: this.form.DisplayName.value,
-                        Email: this.form.Email.value,
+                    request: <SignUpRequest>{
+                        FirstName: this.form.FirstName.value,
+                        LastName: this.form.LastName.value,
+                        DateOfBirth: this.form.DateOfBirth.value,
+                        Email: this.form.Email.value,                        
                         Password: this.form.Password.value
                     },
                     onSuccess: response => {

@@ -106,14 +106,13 @@
                 string salt = user.PasswordSalt.TrimToNull();
                 var hash = UserRepository.GenerateHash(password, ref salt);
                 var displayName = entry.FirstName + " " + entry.LastName;
-                var email = entry.Email.TrimToNull() ?? user.Email ?? (username + "@yourdefaultdomain.com");
+                var email = entry.Email.TrimToNull() ?? user.Email ?? (username + Constants.DEFAULT_DOMAIN);
 
                 using (var connection = SqlConnections.NewFor<UserRow>())
                 using (var uow = new UnitOfWork(connection))
                 {
                     var fld = UserRow.Fields;
                     new SqlUpdate(fld.TableName)
-                        .Set(fld.DisplayName, displayName)
                         .Set(fld.PasswordHash, hash)
                         .Set(fld.PasswordSalt, salt)
                         .Set(fld.Email, email)
@@ -165,7 +164,7 @@
                 string salt = null;
                 var hash = UserRepository.GenerateHash(password, ref salt);
                 var displayName = entry.FirstName + " " + entry.LastName;
-                var email = entry.Email.TrimToNull() ?? (username + "@yourdefaultdomain.com");
+                var email = entry.Email.TrimToNull() ?? (username + Constants.DEFAULT_DOMAIN);
                 username = entry.Username.TrimToNull() ?? username;
 
                 using (var connection = SqlConnections.NewFor<UserRow>())
@@ -174,8 +173,7 @@
                     var userId = (int)connection.InsertAndGetID(new UserRow
                     {
                         Username = username,
-                        Source = "ldap", 
-                        DisplayName = displayName, 
+                        Source = "ldap",                         
                         Email = email, 
                         PasswordHash = hash, 
                         PasswordSalt = salt, 

@@ -70,9 +70,9 @@ namespace Enterprise.Northwind
                     userDisplayNames = connection.Query(new SqlQuery()
                             .From(u)
                             .Select(u.UserId)
-                            .Select(u.DisplayName)
+                            .Select(u.Username)
                             .Where(u.UserId.In(userIdList)))
-                        .ToDictionary(x => (int)(x.UserId ?? x.USERID), x => (string)x.DisplayName);
+                        .ToDictionary(x => (int)(x.UserId ?? x.USERID), x => (string)x.Username);
 
                 string s;
                 foreach (var x in notes)

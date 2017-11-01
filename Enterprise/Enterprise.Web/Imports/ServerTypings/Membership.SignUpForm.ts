@@ -5,13 +5,15 @@
     }
 
     export interface SignUpForm {
-        DisplayName: Serenity.StringEditor;
+        FirstName: Serenity.StringEditor;
+        LastName: Serenity.StringEditor;
+        DateOfBirth: Serenity.DateEditor;
         Email: Serenity.EmailEditor;
         ConfirmEmail: Serenity.EmailEditor;
         Password: Serenity.PasswordEditor;
         ConfirmPassword: Serenity.PasswordEditor;
     }
 
-    [['DisplayName', () => Serenity.StringEditor], ['Email', () => Serenity.EmailEditor], ['ConfirmEmail', () => Serenity.EmailEditor], ['Password', () => Serenity.PasswordEditor], ['ConfirmPassword', () => Serenity.PasswordEditor]].forEach(x => Object.defineProperty(SignUpForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['FirstName', () => Serenity.StringEditor], ['LastName', () => Serenity.StringEditor], ['DateOfBirth', () => Serenity.DateEditor], ['Email', () => Serenity.EmailEditor], ['ConfirmEmail', () => Serenity.EmailEditor], ['Password', () => Serenity.PasswordEditor], ['ConfirmPassword', () => Serenity.PasswordEditor]].forEach(x => Object.defineProperty(SignUpForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

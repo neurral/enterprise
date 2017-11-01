@@ -11,7 +11,7 @@ namespace Enterprise.Migrations.DefaultDB
         {
             this.CreateTableWithId64("User", "UserId", s => s
                 .WithColumn("Username").AsString(100).NotNullable()
-                .WithColumn("DisplayName").AsString(100).NotNullable()
+                //.WithColumn("DisplayName").AsString(100).NotNullable()
                 .WithColumn("Email").AsString(100).Nullable()
                 .WithColumn("Source").AsString(4).NotNullable()
                 .WithColumn("PasswordHash").AsString(86).NotNullable()

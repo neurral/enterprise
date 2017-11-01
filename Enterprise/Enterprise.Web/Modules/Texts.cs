@@ -72,7 +72,7 @@ namespace Enterprise
 
                 public static class SignUp
                 {
-                    public static LocalText ActivateEmailSubject = "Activate Your Enterprise Account";
+                    public static LocalText ActivateEmailSubject = "Neurral Enterprise - Activate Your Account";
                     public static LocalText ActivationCompleteMessage = "Your account is now activated. " + 
                         "Use the e-mail and password you used while signing up to login.";
                     public static LocalText FormInfo = "Enter your details to create a free account.";

@@ -831,7 +831,7 @@ declare namespace Enterprise.Common {
     }
 }
 declare namespace Enterprise.Dashboard {
-    class Dashboard {
+    class DashboardWidget {
         private container;
         constructor(container: JQuery);
         init(): void;
@@ -1904,7 +1904,7 @@ declare namespace Enterprise.Administration {
         const idProperty = "RoleId";
         const nameProperty = "RoleName";
         const localTextPrefix = "Administration.Role";
-        const lookupKey = "Administration.Role";
+        const lookupKey = "Administration.Roles";
         function getLookup(): Q.Lookup<RoleRow>;
         namespace Fields {
             const RoleId: string;
@@ -1970,7 +1970,6 @@ declare namespace Enterprise.Administration {
     }
     interface UserForm {
         Username: Serenity.StringEditor;
-        DisplayName: Serenity.StringEditor;
         Email: Serenity.EmailEditor;
         UserImage: Serenity.ImageUploadEditor;
         Password: Serenity.PasswordEditor;
@@ -2084,7 +2083,6 @@ declare namespace Enterprise.Administration {
         Source?: string;
         PasswordHash?: string;
         PasswordSalt?: string;
-        DisplayName?: string;
         Email?: string;
         UserImage?: string;
         LastDirectoryUpdate?: string;
@@ -2109,7 +2107,6 @@ declare namespace Enterprise.Administration {
             const Source: string;
             const PasswordHash: string;
             const PasswordSalt: string;
-            const DisplayName: string;
             const Email: string;
             const UserImage: string;
             const LastDirectoryUpdate: string;
@@ -2512,7 +2509,9 @@ declare namespace Enterprise.Membership {
         static formKey: string;
     }
     interface SignUpForm {
-        DisplayName: Serenity.StringEditor;
+        FirstName: Serenity.StringEditor;
+        LastName: Serenity.StringEditor;
+        DateOfBirth: Serenity.DateEditor;
         Email: Serenity.EmailEditor;
         ConfirmEmail: Serenity.EmailEditor;
         Password: Serenity.PasswordEditor;
@@ -2521,9 +2520,11 @@ declare namespace Enterprise.Membership {
 }
 declare namespace Enterprise.Membership {
     interface SignUpRequest extends Serenity.ServiceRequest {
-        DisplayName?: string;
+        FirstName?: string;
+        LastName?: string;
         Email?: string;
         Password?: string;
+        DateOfBirth?: string;
     }
 }
 declare namespace Enterprise.Northwind {
@@ -4550,7 +4551,6 @@ declare namespace Enterprise.Organization {
         PersonnelStatusSequence?: number;
         PersonnelStatusPersonnelStatusName?: string;
         UserUsername?: string;
-        UserDisplayName?: string;
         UserEmail?: string;
         UserSource?: string;
         UserPasswordHash?: string;
@@ -4585,7 +4585,6 @@ declare namespace Enterprise.Organization {
             const PersonnelStatusSequence: string;
             const PersonnelStatusPersonnelStatusName: string;
             const UserUsername: string;
-            const UserDisplayName: string;
             const UserEmail: string;
             const UserSource: string;
             const UserPasswordHash: string;

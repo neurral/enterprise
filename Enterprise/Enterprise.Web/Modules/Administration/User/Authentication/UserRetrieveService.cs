@@ -14,6 +14,7 @@
         private UserDefinition GetFirst(IDbConnection connection, BaseCriteria criteria)
         {
             var user = connection.TrySingle<Entities.UserRow>(criteria);
+            var personnel = user.GetPersonnelRecord(connection);
             if (user != null)
                 return new UserDefinition
                 {
@@ -21,7 +22,7 @@
                     Username = user.Username,
                     Email = user.Email,
                     UserImage = user.UserImage,
-                    DisplayName = user.DisplayName,
+                    DisplayName = personnel != null ? personnel.FirstName : user.Username,
                     IsActive = user.IsActive.Value,
                     Source = user.Source,
                     PasswordHash = user.PasswordHash,

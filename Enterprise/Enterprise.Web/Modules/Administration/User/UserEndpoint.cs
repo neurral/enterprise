@@ -4,6 +4,8 @@ namespace Enterprise.Administration.Endpoints
 {
     using Entities;
     using Membership;
+    using Organization.Entities;
+    using Organization.Repositories;
     using Repositories;
     using Serenity;
     using Serenity.ComponentModel;
@@ -61,9 +63,10 @@ namespace Enterprise.Administration.Endpoints
         {
             var response = new MyRepository().Retrieve(connection, request);
             var user = response.Entity;
+            var personnelRecord = user.GetPersonnelRecord(connection);
            
             if (user != null) {
-                var token = user.GetActivationToken();
+                var token = user.GetToken("Activate");
                 var externalUrl = Config.Get<EnvironmentSettings>().SiteExternalUrl ??
                         Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
 
@@ -72,7 +75,7 @@ namespace Enterprise.Administration.Endpoints
 
                 var emailModel = new ActivateEmailModel();
                 emailModel.Username = user.Username;
-                emailModel.DisplayName = user.DisplayName;
+                emailModel.DisplayName = (personnelRecord != null ? personnelRecord.FirstName : user.Username);
                 emailModel.ActivateLink = activateLink;
 
                 var emailSubject = Texts.Forms.Membership.SignUp.ActivateEmailSubject.ToString();

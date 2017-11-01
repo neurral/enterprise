@@ -4,6 +4,8 @@ namespace Enterprise.Membership.Pages
     using Administration;
     using Administration.Entities;
     using Administration.Repositories;
+    using Organization.Entities;
+    using Organization.Repositories;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -37,7 +39,9 @@ namespace Enterprise.Membership.Pages
                 Check.NotNullOrWhiteSpace(request.Email, "email");
                 Check.NotNullOrEmpty(request.Password, "password");
                 UserRepository.ValidatePassword(request.Email, request.Password, true);
-                Check.NotNullOrWhiteSpace(request.DisplayName, "displayName");
+                Check.NotNullOrWhiteSpace(request.FirstName, "firstName");
+                Check.NotNullOrWhiteSpace(request.LastName, "lastName");
+                Check.NotNull(request.DateOfBirth, "dateOfBirth");
 
                 if (connection.Exists<UserRow>(
                         UserRow.Fields.Username == request.Email |
@@ -50,7 +54,9 @@ namespace Enterprise.Membership.Pages
                 {
                     string salt = null;
                     var hash = UserRepository.GenerateHash(request.Password, ref salt);
-                    var displayName = request.DisplayName.TrimToEmpty();
+                    var firstName = request.FirstName.TrimToEmpty();
+                    var lastName = request.LastName.TrimToEmpty();
+                    var dateOfBirth = request.DateOfBirth;
                     var email = request.Email;
                     var username = request.Email;
 
@@ -59,7 +65,6 @@ namespace Enterprise.Membership.Pages
                     {
                         Username = username,
                         Source = "sign",
-                        DisplayName = displayName,
                         Email = email,
                         PasswordHash = hash,
                         PasswordSalt = salt,
@@ -69,7 +74,17 @@ namespace Enterprise.Membership.Pages
                         LastDirectoryUpdate = DateTime.Now
                     };
                     newUser.UserId = (int)connection.InsertAndGetID(newUser);
-                    var token = newUser.GetActivationToken();
+
+                    newUser.SetPersonnelRecord(uow, new PersonnelRow
+                    {
+                        FirstName = request.FirstName,
+                        LastName = request.LastName,
+                        DateOfBirth = request.DateOfBirth,
+                        PersonnelStatus = (long)Constants.PersonnelStatusIds.UNVERIFIED,
+                    });
+
+                    //activation link
+                    var token = newUser.GetToken("Activate");
 
                     var externalUrl = Config.Get<EnvironmentSettings>().SiteExternalUrl ??
                         Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
@@ -79,7 +94,7 @@ namespace Enterprise.Membership.Pages
 
                     var emailModel = new ActivateEmailModel();
                     emailModel.Username = username;
-                    emailModel.DisplayName = displayName;
+                    emailModel.DisplayName = firstName + " " + lastName;
                     emailModel.ActivateLink = activateLink;
 
                     var emailSubject = Texts.Forms.Membership.SignUp.ActivateEmailSubject.ToString();

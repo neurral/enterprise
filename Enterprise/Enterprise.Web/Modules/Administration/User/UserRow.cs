@@ -1,12 +1,16 @@
 ﻿
 namespace Enterprise.Administration.Entities
 {
+    using Organization.Entities;
+    using Organization.Repositories;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
+    using Serenity.Services;
     using System;
     using System.ComponentModel;
+    using System.Data;
     using System.IO;
     using System.Web;
     using System.Web.Security;
@@ -50,14 +54,7 @@ namespace Enterprise.Administration.Entities
         {
             get { return Fields.PasswordSalt[this]; }
             set { Fields.PasswordSalt[this] = value; }
-        }
-
-        [DisplayName("Display Name"), Size(100), NotNull, LookupInclude]
-        public String DisplayName
-        {
-            get { return Fields.DisplayName[this]; }
-            set { Fields.DisplayName[this] = value; }
-        }
+        }        
 
         [DisplayName("Email"), Size(100)]
         public String Email
@@ -132,7 +129,6 @@ namespace Enterprise.Administration.Entities
             public StringField Source;
             public StringField PasswordHash;
             public StringField PasswordSalt;
-            public StringField DisplayName;
             public StringField Email;
             public StringField UserImage;
             public DateTimeField LastDirectoryUpdate;
@@ -147,7 +143,7 @@ namespace Enterprise.Administration.Entities
             }
         }
 
-        public String GetActivationToken() {
+        public String GetToken(params string[] purposes) {
             int userId = this.UserId.GetValueOrDefault(0);
             byte[] bytes;
             using (var ms = new MemoryStream())
@@ -159,9 +155,21 @@ namespace Enterprise.Administration.Entities
                 bytes = ms.ToArray();
             }
 
-            var token = Convert.ToBase64String(MachineKey.Protect(bytes, "Activate"));
+            var token = Convert.ToBase64String(MachineKey.Protect(bytes, purposes));
 
             return token;
+        }
+
+        public void SetPersonnelRecord(UnitOfWork uow, PersonnelRow personnel) {
+            personnel.DateStarted = this.InsertDate;
+            personnel.Email = this.Email;
+            personnel.UserId = this.UserId.GetValueOrDefault(0);
+
+            uow.Connection.InsertAndGetID(personnel);
+        }
+
+        public PersonnelRow GetPersonnelRecord(IDbConnection connection) {
+            return connection.TrySingle<PersonnelRow>(new Criteria(PersonnelRow.Fields.UserId) == this.UserId.Value);
         }
     }
 }

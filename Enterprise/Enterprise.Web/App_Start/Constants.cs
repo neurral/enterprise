@@ -13,7 +13,12 @@ namespace Enterprise
         public const string ASSEMBLY_TRADEMARK = "Neurral";
         public const string ASSEMBLY_CULTURE = "";
 
-        public sealed class PersonnelStatus {
+        public const string Enterprise_SCHEMA = "ent";
+        public const string SCHEMA = Enterprise_SCHEMA + ".";
+        public const string DEFAULT_DOMAIN = "@neurral.info";
+
+        public sealed class PersonnelStatus
+        {
             public const string UNVERIFIED = "unverified"; //initial status
             public const string INACTIVE = "inactive"; //unusable account, included
             public const string ACTIVATED = "activated"; //usable account, included in transactions
@@ -21,8 +26,15 @@ namespace Enterprise
             public const string TERMINATED = "terminated"; //unusable, ignored except in history
         }
 
-        public const string Enterprise_SCHEMA = "ent";
-        public const string SCHEMA = Enterprise_SCHEMA + ".";
+        public enum PersonnelStatusIds
+        {
+            UNVERIFIED = 1,
+            INACTIVE = 2,
+            ACTIVATED = 3,
+            SUSPENDED = 4,
+            TERMINATED = 5
+        }
+
 
         //also seeded in DB
         public enum DefaultRoles

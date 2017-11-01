@@ -37,17 +37,9 @@ namespace Enterprise.Membership.Pages
                 if (user == null)
                     throw new ValidationError("CantFindUserWithEmail", Texts.Validation.CantFindUserWithEmail);
 
-                byte[] bytes;
-                using (var ms = new MemoryStream())
-                using (var bw = new BinaryWriter(ms))
-                {
-                    bw.Write(DateTime.UtcNow.AddHours(3).ToBinary());
-                    bw.Write(user.UserId.Value);
-                    bw.Flush();
-                    bytes = ms.ToArray();
-                }
+                var personnel = user.GetPersonnelRecord(connection);
 
-                var token = Convert.ToBase64String(MachineKey.Protect(bytes, "ResetPassword"));
+                var token = user.GetToken("ResetPassword");
 
                 var externalUrl = Config.Get<EnvironmentSettings>().SiteExternalUrl ??
                     Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
@@ -57,7 +49,7 @@ namespace Enterprise.Membership.Pages
 
                 var emailModel = new ResetPasswordEmailModel();
                 emailModel.Username = user.Username;
-                emailModel.DisplayName = user.DisplayName;
+                emailModel.DisplayName = personnel != null ? personnel.FirstName : user.Username;
                 emailModel.ResetLink = resetLink;
 
                 var emailSubject = Texts.Forms.Membership.ResetPassword.EmailSubject.ToString();

@@ -9,10 +9,10 @@
         export const idProperty = 'Id';
         export const nameProperty = 'LanguageName';
         export const localTextPrefix = 'Administration.Language';
-        export const lookupKey = 'Administration.Languages';
+        export const lookupKey = 'Administration.Language';
 
         export function getLookup(): Q.Lookup<LanguageRow> {
-            return Q.getLookup<LanguageRow>('Administration.Languages');
+            return Q.getLookup<LanguageRow>('Administration.Language');
         }
 
         export namespace Fields {

@@ -40,17 +40,19 @@ namespace Enterprise.Migrations.DefaultDB
             this.CreateTableWithId64("Personnel", "PersonnelId", s => s
                 .WithColumn("IdentificationNo").AsString(20).Nullable()
                 .WithColumn("FirstName").AsString(50).NotNullable()
-                .WithColumn("MiddleName").AsString(50).NotNullable()
+                .WithColumn("MiddleName").AsString(50).Nullable()
                 .WithColumn("LastName").AsString(50).NotNullable()
                 .WithColumn("Email").AsString(100).NotNullable()
                 .WithColumn("PersonnelStatus").AsInt64().WithDefaultValue(0)
                     .ForeignKey("FK_Personnel_StatusId", SCHEMA, "PersonnelStatus", "PersonnelStatusId")
                 .WithColumn("Gender").AsString(3)
-                .WithColumn("DateStarted").AsDate()
-                .WithColumn("DateExited").AsDate()
-                .WithColumn("DateOfBirth").AsDate()
+                .WithColumn("DateStarted").AsDate().Nullable()
+                .WithColumn("DateExited").AsDate().Nullable()
+                .WithColumn("DateOfBirth").AsDate().NotNullable()
                 .WithColumn("UserId").AsInt64().Nullable()
                     .ForeignKey("FK_Personnel_UserId", "User", "UserId"),
+                //.WithColumn("OrganizationId").AsInt64().Nullable()
+                //   .ForeignKey("FK_Personnel_OrganizationId", "Organization", "OrganizationId"),
                     schema: SCHEMA, 
                     checkExists: true);
         }

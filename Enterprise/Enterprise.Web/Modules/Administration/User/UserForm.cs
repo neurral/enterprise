@@ -8,7 +8,6 @@
     public class UserForm
     {
         public String Username { get; set; }
-        public String DisplayName { get; set; }
         [EmailEditor]
         public String Email { get; set; }
         public String UserImage { get; set; }
@@ -18,5 +17,8 @@
         public String PasswordConfirm { get; set; }
         [OneWay]
         public string Source { get; set; }
+
+
+        //TODO add PersonnelRow for profile updating
     }
 }

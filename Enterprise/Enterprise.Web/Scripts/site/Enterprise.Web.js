@@ -3300,18 +3300,18 @@ var Enterprise;
 var Enterprise;
 (function (Enterprise) {
     var Dashboard;
-    (function (Dashboard_1) {
-        var Dashboard = /** @class */ (function () {
-            function Dashboard(container) {
+    (function (Dashboard) {
+        var DashboardWidget = /** @class */ (function () {
+            function DashboardWidget(container) {
             }
-            Dashboard.prototype.init = function () {
+            DashboardWidget.prototype.init = function () {
             };
-            Dashboard = __decorate([
+            DashboardWidget = __decorate([
                 Serenity.Decorators.registerClass()
-            ], Dashboard);
-            return Dashboard;
+            ], DashboardWidget);
+            return DashboardWidget;
         }());
-        Dashboard_1.Dashboard = Dashboard;
+        Dashboard.DashboardWidget = DashboardWidget;
     })(Dashboard = Enterprise.Dashboard || (Enterprise.Dashboard = {}));
 })(Enterprise || (Enterprise = {}));
 /// <reference path="../../../Northwind/Order/OrderGrid.ts" />
@@ -6835,7 +6835,9 @@ var Enterprise;
                     Q.serviceCall({
                         url: Q.resolveUrl('~/Account/SignUp'),
                         request: {
-                            DisplayName: _this.form.DisplayName.value,
+                            FirstName: _this.form.FirstName.value,
+                            LastName: _this.form.LastName.value,
+                            DateOfBirth: _this.form.DateOfBirth.value,
                             Email: _this.form.Email.value,
                             Password: _this.form.Password.value
                         },
@@ -7510,9 +7512,9 @@ var Enterprise;
             RoleRow.idProperty = 'RoleId';
             RoleRow.nameProperty = 'RoleName';
             RoleRow.localTextPrefix = 'Administration.Role';
-            RoleRow.lookupKey = 'Administration.Role';
+            RoleRow.lookupKey = 'Administration.Roles';
             function getLookup() {
-                return Q.getLookup('Administration.Role');
+                return Q.getLookup('Administration.Roles');
             }
             RoleRow.getLookup = getLookup;
             var Fields;
@@ -7585,7 +7587,7 @@ var Enterprise;
             return UserForm;
         }(Serenity.PrefixedContext));
         Administration.UserForm = UserForm;
-        [['Username', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['UserImage', function () { return Serenity.ImageUploadEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['PasswordConfirm', function () { return Serenity.PasswordEditor; }], ['Source', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(UserForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['Username', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['UserImage', function () { return Serenity.ImageUploadEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['PasswordConfirm', function () { return Serenity.PasswordEditor; }], ['Source', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(UserForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = Enterprise.Administration || (Enterprise.Administration = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -7702,7 +7704,6 @@ var Enterprise;
                 'Source',
                 'PasswordHash',
                 'PasswordSalt',
-                'DisplayName',
                 'Email',
                 'UserImage',
                 'LastDirectoryUpdate',
@@ -8123,7 +8124,7 @@ var Enterprise;
             return SignUpForm;
         }(Serenity.PrefixedContext));
         Membership.SignUpForm = SignUpForm;
-        [['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['ConfirmEmail', function () { return Serenity.EmailEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(SignUpForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['FirstName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['ConfirmEmail', function () { return Serenity.EmailEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(SignUpForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = Enterprise.Membership || (Enterprise.Membership = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -10182,7 +10183,6 @@ var Enterprise;
                 'PersonnelStatusSequence',
                 'PersonnelStatusPersonnelStatusName',
                 'UserUsername',
-                'UserDisplayName',
                 'UserEmail',
                 'UserSource',
                 'UserPasswordHash',
