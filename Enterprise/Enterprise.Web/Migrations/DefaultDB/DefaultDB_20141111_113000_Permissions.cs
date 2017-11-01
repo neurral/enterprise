@@ -49,6 +49,14 @@ namespace Enterprise.Migrations.DefaultDB
                 .OnTable("UserRole")
                 .OnColumn("RoleId").Ascending()
                 .OnColumn("UserId").Ascending();
+
+
+            Insert.IntoTable("Role")
+              .Row(new { RoleName = "_Administrator" })
+              .Row(new { RoleName = "Bot" })
+              .Row(new { RoleName = "Account" })
+              .Row(new { RoleName = "Sub-Account" });
+              
         }
     }
 }
