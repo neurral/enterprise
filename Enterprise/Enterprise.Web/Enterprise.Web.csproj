@@ -547,7 +547,6 @@
     <Content Include="Content\site\slides\vegas\slide4.jpg" />
     <Content Include="Content\site\slides\vegas\slide5.jpg" />
     <Content Include="google389462b7350c0b59.html" />
-    <Content Include="Index.htm" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Sqlite.sql" />
     <Content Include="Content\slick-default-theme.css" />
@@ -1996,7 +1995,7 @@
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListResponse.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionListRequest.cs" />
-    <Compile Include="Modules\Administration\AdministrationPermissionKeys.cs" />
+    <Compile Include="Modules\Administration\AdministrationKeys.cs" />
     <Compile Include="Modules\Administration\UserPermission\ImplicitPermissionAttribute.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionListRequest.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionUpdateRequest.cs" />
@@ -2150,8 +2149,6 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingAttendee\MeetingAttendanceStatus.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingAttendee\MeetingAttendeeType.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingNavigation.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingPermissionKeys.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\EnvironmentSettings.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\ForgotPassword\AccountPage.ForgotPassword.cs" />
