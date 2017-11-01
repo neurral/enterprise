@@ -5,7 +5,7 @@ namespace Enterprise.Administration.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Administration/Translation"), Route("{action=index}")]
-    [PageAuthorize(PermissionKeys.Translation)]
+    [PageAuthorize(Keys.Languages)]
     public class TranslationController : Controller
     {  
         public ActionResult Index()

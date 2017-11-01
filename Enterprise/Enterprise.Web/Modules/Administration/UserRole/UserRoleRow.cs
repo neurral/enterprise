@@ -7,8 +7,8 @@ namespace Enterprise.Administration.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), DisplayName("UserRoles"), InstanceName("UserRoles"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.User.Modify)]
     public sealed class UserRoleRow : Row, IIdRow
     {
         [DisplayName("User Role Id"), Identity]

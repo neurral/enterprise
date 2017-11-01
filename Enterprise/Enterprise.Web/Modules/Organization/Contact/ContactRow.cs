@@ -68,7 +68,7 @@
 
         [DisplayName("User"), ForeignKey("User", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
         [LookupEditor(typeof(Administration.Entities.UserRow))]
-        [ModifyPermission(Administration.PermissionKeys.Security)]
+        [ModifyPermission(Keys.Contact.Modify)]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }

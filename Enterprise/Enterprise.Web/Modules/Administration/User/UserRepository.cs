@@ -109,7 +109,7 @@ namespace Enterprise.Administration.Repositories
             {
                 base.GetEditableFields(editable);
 
-                if (!Authorization.HasPermission(Administration.PermissionKeys.Security))
+                if (!Authorization.HasPermission(Administration.Keys.Security.Access))
                 {
                     editable.Remove(fld.Source);
                     editable.Remove(fld.IsActive);

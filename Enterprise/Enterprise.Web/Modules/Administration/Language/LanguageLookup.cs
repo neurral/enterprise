@@ -6,7 +6,7 @@ namespace Enterprise.Administration
     using Serenity.Data;
     using Serenity.Web;
 
-    [LookupScript("Administration.Language")]
+    [LookupScript(Ks.Module + "." + Ks.Languages)]
     public sealed class LanguageLookup : RowLookupScript<LanguageRow>
     {
         public LanguageLookup()

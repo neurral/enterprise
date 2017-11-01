@@ -6,4 +6,5 @@ using Administration = Enterprise.Administration.Pages;
 [assembly: NavigationLink(9000, "Administration/User Management", typeof(Administration.UserController), icon: "icon-people")]
 //[assembly: NavigationLink(9000, "Administration/Languages", typeof(Administration.LanguageController), icon: "icon-bubbles")]
 //[assembly: NavigationLink(9000, "Administration/Translations", typeof(Administration.TranslationController), icon: "icon-speech")]
-[assembly: NavigationLink(9000, "Administration/Exceptions Log", url: "~/errorlog.axd", permission: Enterprise.Administration.PermissionKeys.Security, icon: "icon-ban", Target = "_blank")]
+[assembly: NavigationMenu(9000, "Administration/Security", icon: "fa-shield")]
+[assembly: NavigationLink(9000, "Administration/Security/Exceptions Log", url: "~/errorlog.axd", permission: Enterprise.Administration.Keys.Security.Access, icon: "icon-ban", Target = "_blank")]

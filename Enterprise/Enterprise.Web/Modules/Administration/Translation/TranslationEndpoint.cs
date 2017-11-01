@@ -6,7 +6,7 @@ namespace Enterprise.Administration.Endpoints
     using MyRepository = Repositories.TranslationRepository;
 
     [RoutePrefix("Services/Administration/Translation"), Route("{action}")]
-    [ServiceAuthorize(PermissionKeys.Translation)]
+    [ServiceAuthorize(Keys.Languages)]
     public class TranslationController : ServiceEndpoint
     {
         public ListResponse<TranslationItem> List(TranslationListRequest request)

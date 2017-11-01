@@ -9,6 +9,7 @@ namespace Enterprise.Membership.Pages
     using Serenity.Services;
     using Serenity.Web;
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net.Mail;
     using System.Web;
@@ -129,6 +130,14 @@ namespace Enterprise.Membership.Pages
                     UserId = user.UserId.Value,
                     IsActive = 1
                 });
+
+                new UserRoleRepository().Update(uow, new UserRoleUpdateRequest
+                {
+                    UserID = user.UserId.Value,
+                    Roles = new List<int> { (int) Constants.DefaultRoles.ACCOUNT }
+                });
+                //TODO add Account Role
+
 
                 BatchGenerationUpdater.OnCommit(uow, UserRow.Fields.GenerationKey);
                 uow.Commit();

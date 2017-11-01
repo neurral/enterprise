@@ -5,7 +5,7 @@ namespace Enterprise.Administration.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Administration/User"), Route("{action=index}")]
-    [PageAuthorize(typeof(Entities.UserRow))]
+    [PageAuthorize(Keys.User.Access)]
     public class UserController : Controller
     {
         public ActionResult Index()

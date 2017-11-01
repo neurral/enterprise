@@ -8,8 +8,8 @@ namespace Enterprise.Administration.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), DisplayName("Languages"), InstanceName("Language"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Translation)]
-    [ModifyPermission(PermissionKeys.Translation)]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Languages)]
     [LookupScript(typeof(LanguageLookup))]
     public sealed class LanguageRow : Row, IIdRow, INameRow
     {

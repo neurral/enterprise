@@ -12,9 +12,9 @@ namespace Enterprise.Administration.Entities
     using System.Web.Security;
 
     [ConnectionKey("Default"), DisplayName("Users"), InstanceName("User"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Profile)]
-    [LookupScript("Administration.User", Permission = PermissionKeys.Security)]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.User.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.User, Permission = Keys.General)]
     public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity]

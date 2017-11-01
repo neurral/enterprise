@@ -7,8 +7,8 @@ namespace Enterprise.Administration.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), DisplayName("UserPermissions"), InstanceName("UserPermissions"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.User.Modify)]
     public sealed class UserPermissionRow : Row, IIdRow, INameRow
     {
         [DisplayName("User Permission Id"), Identity]

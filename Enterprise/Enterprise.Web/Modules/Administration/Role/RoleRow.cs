@@ -8,9 +8,9 @@ namespace Enterprise.Administration.Entities
     using System.ComponentModel;
 
     [ConnectionKey("Default"), DisplayName("Roles"), InstanceName("Role"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
-    [LookupScript("Administration.Role")]
+    [ReadPermission(Keys.Role.Access)]
+    [ModifyPermission(Keys.Role.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.Role, Permission = Keys.General)]
     public sealed class RoleRow : Row, IIdRow, INameRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
