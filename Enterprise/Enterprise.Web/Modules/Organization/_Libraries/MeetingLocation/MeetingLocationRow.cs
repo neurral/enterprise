@@ -11,9 +11,9 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default")]
     [TableName(TableName)]
     [DisplayName("Meeting Locations"), InstanceName("Meeting Location"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Meeting.Management)]
-    [LookupScript("Organization.MeetingLocation")]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.MeetingLocation, Permission = Keys.General)]
     public sealed class MeetingLocationRow : Row, IIdRow, INameRow
     {
         public const string TableName = Constants.SCHEMA + "MeetingLocation";

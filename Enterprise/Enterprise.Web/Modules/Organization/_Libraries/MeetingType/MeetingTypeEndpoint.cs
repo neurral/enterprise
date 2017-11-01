@@ -5,12 +5,12 @@ namespace Enterprise.Organization.Endpoints
     using Serenity.Services;
     using System.Data;
     using System.Web.Mvc;
-    using MyRepository = Repositories.MeetingAgendaRelevantRepository;
-    using MyRow = Entities.MeetingAgendaRelevantRow;
+    using MyRepository = Repositories.MeetingTypeRepository;
+    using MyRow = Entities.MeetingTypeRow;
 
-    [RoutePrefix("Services/Meeting/MeetingAgendaRelevant"), Route("{action}")]
+    [RoutePrefix("Services/Organization/MeetingType"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class MeetingAgendaRelevantController : ServiceEndpoint
+    public class MeetingTypeController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)

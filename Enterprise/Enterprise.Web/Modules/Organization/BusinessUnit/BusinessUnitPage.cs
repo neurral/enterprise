@@ -5,7 +5,7 @@ namespace Enterprise.Organization.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Organization/BusinessUnit"), Route("{action=index}")]
-    [PageAuthorize(PermissionKeys.BusinessUnit.Access)]
+    [PageAuthorize(typeof(Entities.BusinessUnitRow))]
     public class BusinessUnitController : Controller
     {
         public ActionResult Index()

@@ -8400,3 +8400,12 @@ div.content {
   padding: 0px;
   margin: 0px;
 }
+.s-Toolbar .button-inner {
+  height: 2.0em;
+  vertical-align: central;
+  text-shadow: 0 1px 0 #fff;
+}
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+}

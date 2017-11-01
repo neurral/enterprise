@@ -33,6 +33,11 @@
         export const idProperty = 'PersonnelId';
         export const nameProperty = 'IdentificationNo';
         export const localTextPrefix = 'Organization.Personnel';
+        export const lookupKey = 'Organization.Personnel';
+
+        export function getLookup(): Q.Lookup<PersonnelRow> {
+            return Q.getLookup<PersonnelRow>('Organization.Personnel');
+        }
 
         export namespace Fields {
             export declare const PersonnelId: string;

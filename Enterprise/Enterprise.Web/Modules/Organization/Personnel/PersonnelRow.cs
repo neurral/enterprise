@@ -1,5 +1,4 @@
 ﻿
-using static Enterprise.Constants;
 namespace Enterprise.Organization.Entities
 {
     using Serenity;
@@ -10,12 +9,15 @@ namespace Enterprise.Organization.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName(SCHEMA + "Personnel")]
+    [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Personnel"), InstanceName("Personnel"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Personnel.Management)]
+    [ReadPermission(Keys.Personnel.Access)]
+    [ModifyPermission(Keys.Personnel.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.Personnel, Permission = Keys.General)]
     public sealed class PersonnelRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.Personnel;
+
         [DisplayName("Personnel Id"), Identity]
         public Int32? PersonnelId
         {
@@ -60,8 +62,8 @@ namespace Enterprise.Organization.Entities
 
         [DisplayName("Personnel Status"), NotNull, 
             ForeignKey(PersonnelStatusRow.TableName, "PersonnelStatusId"), LeftJoin("jPersonnelStatus"), TextualField("PersonnelStatusPersonnelStatusName")]
-        [LookupEditor(typeof(Entities.PersonnelStatusRow), InplaceAddPermission = PermissionKeys.Maintenance.Management)]
-        [ModifyPermission(PermissionKeys.Personnel.Management)]
+        [LookupEditor(typeof(Entities.PersonnelStatusRow), InplaceAddPermission = Keys.Personnel.Modify)]
+        [ModifyPermission(Keys.Personnel.Modify)]
         public Int32? PersonnelStatus
         {
             get { return Fields.PersonnelStatus[this]; }
@@ -82,7 +84,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.DateStarted[this] = value; }
         }
 
-        [DisplayName("Date Exited"), NotNull]
+        [DisplayName("Date Exited")]
         public DateTime? DateExited
         {
             get { return Fields.DateExited[this]; }
@@ -98,8 +100,8 @@ namespace Enterprise.Organization.Entities
 
         [DisplayName("User"), ForeignKey("User", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
         [LookupEditor(typeof(Administration.Entities.UserRow), InplaceAdd =true, 
-            InplaceAddPermission = Administration.PermissionKeys.Security)]
-        [ModifyPermission(PermissionKeys.Maintenance.Management)]
+            InplaceAddPermission = Keys.Personnel.Modify)]
+        [ModifyPermission(Keys.Personnel.Modify)]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }

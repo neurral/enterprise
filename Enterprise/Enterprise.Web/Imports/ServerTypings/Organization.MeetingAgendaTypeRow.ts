@@ -8,10 +8,10 @@
         export const idProperty = 'AgendaTypeId';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Meeting.MeetingAgendaType';
-        export const lookupKey = 'Organization.MeetingAgendaType';
+        export const lookupKey = 'Organization.AgendaType';
 
         export function getLookup(): Q.Lookup<MeetingAgendaTypeRow> {
-            return Q.getLookup<MeetingAgendaTypeRow>('Organization.MeetingAgendaType');
+            return Q.getLookup<MeetingAgendaTypeRow>('Organization.AgendaType');
         }
 
         export namespace Fields {

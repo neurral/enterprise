@@ -37,6 +37,11 @@
         export const idProperty = 'MeetingId';
         export const nameProperty = 'MeetingName';
         export const localTextPrefix = 'Organization.Meeting';
+        export const lookupKey = 'Organization.Meeting';
+
+        export function getLookup(): Q.Lookup<MeetingRow> {
+            return Q.getLookup<MeetingRow>('Organization.Meeting');
+        }
 
         export namespace Fields {
             export declare const MeetingId: string;

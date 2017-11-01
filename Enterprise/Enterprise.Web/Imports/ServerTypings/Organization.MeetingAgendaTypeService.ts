@@ -1,6 +1,6 @@
 ﻿namespace Enterprise.Organization {
     export namespace MeetingAgendaTypeService {
-        export const baseUrl = 'Meeting/MeetingAgendaType';
+        export const baseUrl = 'Organization/MeetingAgendaType';
 
         export declare function Create(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Update(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;

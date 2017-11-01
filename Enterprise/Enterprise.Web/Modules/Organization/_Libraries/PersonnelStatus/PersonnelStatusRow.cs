@@ -11,9 +11,9 @@
     [ConnectionKey("Default")]
     [TableName(TableName)]
     [DisplayName("Personnel Status"), InstanceName("Personnel Status"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Maintenance.Management)]
-    [LookupScript("Organization.PersonnelStatus")]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.PersonnelStatus, Permission = Keys.General)]
     public sealed class PersonnelStatusRow : Row, IIdRow, INameRow
     {
         public const string TableName = Constants.SCHEMA + "PersonnelStatus";

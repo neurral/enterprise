@@ -18,53 +18,6 @@ var Enterprise;
 (function (Enterprise) {
     var Organization;
     (function (Organization) {
-        var PersonnelDialog = /** @class */ (function (_super) {
-            __extends(PersonnelDialog, _super);
-            function PersonnelDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.PersonnelForm(_this.idPrefix);
-                return _this;
-            }
-            PersonnelDialog.prototype.getFormKey = function () { return Organization.PersonnelForm.formKey; };
-            PersonnelDialog.prototype.getIdProperty = function () { return Organization.PersonnelRow.idProperty; };
-            PersonnelDialog.prototype.getLocalTextPrefix = function () { return Organization.PersonnelRow.localTextPrefix; };
-            PersonnelDialog.prototype.getNameProperty = function () { return Organization.PersonnelRow.nameProperty; };
-            PersonnelDialog.prototype.getService = function () { return Organization.PersonnelService.baseUrl; };
-            PersonnelDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], PersonnelDialog);
-            return PersonnelDialog;
-        }(Serenity.EntityDialog));
-        Organization.PersonnelDialog = PersonnelDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var PersonnelGrid = /** @class */ (function (_super) {
-            __extends(PersonnelGrid, _super);
-            function PersonnelGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            PersonnelGrid.prototype.getColumnsKey = function () { return 'Organization.Personnel'; };
-            PersonnelGrid.prototype.getDialogType = function () { return Organization.PersonnelDialog; };
-            PersonnelGrid.prototype.getIdProperty = function () { return Organization.PersonnelRow.idProperty; };
-            PersonnelGrid.prototype.getLocalTextPrefix = function () { return Organization.PersonnelRow.localTextPrefix; };
-            PersonnelGrid.prototype.getService = function () { return Organization.PersonnelService.baseUrl; };
-            PersonnelGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PersonnelGrid);
-            return PersonnelGrid;
-        }(Serenity.EntityGrid));
-        Organization.PersonnelGrid = PersonnelGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
         var PersonnelStatusDialog = /** @class */ (function (_super) {
             __extends(PersonnelStatusDialog, _super);
             function PersonnelStatusDialog() {
@@ -106,77 +59,6 @@ var Enterprise;
             return PersonnelStatusGrid;
         }(Serenity.EntityGrid));
         Organization.PersonnelStatusGrid = PersonnelStatusGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDialog = /** @class */ (function (_super) {
-            __extends(MeetingDialog, _super);
-            function MeetingDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Organization.MeetingForm(_this.idPrefix);
-                _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
-                _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
-                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
-                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.EndDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
-                        return "End Date can't be earlier than Start Date";
-                    }
-                    return null;
-                });
-                return _this;
-            }
-            MeetingDialog.prototype.getFormKey = function () { return Organization.MeetingForm.formKey; };
-            MeetingDialog.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingDialog.prototype.getNameProperty = function () { return Organization.MeetingRow.nameProperty; };
-            MeetingDialog.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
-            MeetingDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
-                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
-                    .triggerHandler('layout');
-            };
-            MeetingDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
-                //this.agendaGrid.customerID = entity.CustomerID;
-            };
-            MeetingDialog = __decorate([
-                Serenity.Decorators.maximizable(),
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDialog);
-            return MeetingDialog;
-        }(Serenity.EntityDialog));
-        Organization.MeetingDialog = MeetingDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingGrid = /** @class */ (function (_super) {
-            __extends(MeetingGrid, _super);
-            function MeetingGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
-            MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
-            MeetingGrid.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingGrid.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
-            MeetingGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingGrid);
-            return MeetingGrid;
-        }(Serenity.EntityGrid));
-        Organization.MeetingGrid = MeetingGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -846,6 +728,124 @@ var Enterprise;
             return MeetingAgendaGrid;
         }(Serenity.EntityGrid));
         Organization.MeetingAgendaGrid = MeetingAgendaGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var PersonnelDialog = /** @class */ (function (_super) {
+            __extends(PersonnelDialog, _super);
+            function PersonnelDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.PersonnelForm(_this.idPrefix);
+                return _this;
+            }
+            PersonnelDialog.prototype.getFormKey = function () { return Organization.PersonnelForm.formKey; };
+            PersonnelDialog.prototype.getIdProperty = function () { return Organization.PersonnelRow.idProperty; };
+            PersonnelDialog.prototype.getLocalTextPrefix = function () { return Organization.PersonnelRow.localTextPrefix; };
+            PersonnelDialog.prototype.getNameProperty = function () { return Organization.PersonnelRow.nameProperty; };
+            PersonnelDialog.prototype.getService = function () { return Organization.PersonnelService.baseUrl; };
+            PersonnelDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], PersonnelDialog);
+            return PersonnelDialog;
+        }(Serenity.EntityDialog));
+        Organization.PersonnelDialog = PersonnelDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var PersonnelGrid = /** @class */ (function (_super) {
+            __extends(PersonnelGrid, _super);
+            function PersonnelGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PersonnelGrid.prototype.getColumnsKey = function () { return 'Organization.Personnel'; };
+            PersonnelGrid.prototype.getDialogType = function () { return Organization.PersonnelDialog; };
+            PersonnelGrid.prototype.getIdProperty = function () { return Organization.PersonnelRow.idProperty; };
+            PersonnelGrid.prototype.getLocalTextPrefix = function () { return Organization.PersonnelRow.localTextPrefix; };
+            PersonnelGrid.prototype.getService = function () { return Organization.PersonnelService.baseUrl; };
+            PersonnelGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PersonnelGrid);
+            return PersonnelGrid;
+        }(Serenity.EntityGrid));
+        Organization.PersonnelGrid = PersonnelGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingDialog = /** @class */ (function (_super) {
+            __extends(MeetingDialog, _super);
+            function MeetingDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Organization.MeetingForm(_this.idPrefix);
+                _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
+                _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
+                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
+                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.EndDate.valueAsDate != null &&
+                        _this.form.StartDate.valueAsDate != null &&
+                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
+                        return "End Date can't be earlier than Start Date";
+                    }
+                    return null;
+                });
+                return _this;
+            }
+            MeetingDialog.prototype.getFormKey = function () { return Organization.MeetingForm.formKey; };
+            MeetingDialog.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
+            MeetingDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
+            MeetingDialog.prototype.getNameProperty = function () { return Organization.MeetingRow.nameProperty; };
+            MeetingDialog.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingDialog.prototype.arrange = function () {
+                _super.prototype.arrange.call(this);
+                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
+                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
+                    .triggerHandler('layout');
+            };
+            MeetingDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
+                //this.agendaGrid.customerID = entity.CustomerID;
+            };
+            MeetingDialog = __decorate([
+                Serenity.Decorators.maximizable(),
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], MeetingDialog);
+            return MeetingDialog;
+        }(Serenity.EntityDialog));
+        Organization.MeetingDialog = MeetingDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var MeetingGrid = /** @class */ (function (_super) {
+            __extends(MeetingGrid, _super);
+            function MeetingGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
+            MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
+            MeetingGrid.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
+            MeetingGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
+            MeetingGrid.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MeetingGrid);
+            return MeetingGrid;
+        }(Serenity.EntityGrid));
+        Organization.MeetingGrid = MeetingGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -3296,6 +3296,23 @@ var Enterprise;
             ExcelExportHelper.createToolButton = createToolButton;
         })(ExcelExportHelper = Common.ExcelExportHelper || (Common.ExcelExportHelper = {}));
     })(Common = Enterprise.Common || (Enterprise.Common = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Dashboard;
+    (function (Dashboard_1) {
+        var Dashboard = /** @class */ (function () {
+            function Dashboard(container) {
+            }
+            Dashboard.prototype.init = function () {
+            };
+            Dashboard = __decorate([
+                Serenity.Decorators.registerClass()
+            ], Dashboard);
+            return Dashboard;
+        }());
+        Dashboard_1.Dashboard = Dashboard;
+    })(Dashboard = Enterprise.Dashboard || (Enterprise.Dashboard = {}));
 })(Enterprise || (Enterprise = {}));
 /// <reference path="../../../Northwind/Order/OrderGrid.ts" />
 var Enterprise;
@@ -9419,6 +9436,11 @@ var Enterprise;
         (function (MeetingAgendaRelevantRow) {
             MeetingAgendaRelevantRow.idProperty = 'AgendaRelevantId';
             MeetingAgendaRelevantRow.localTextPrefix = 'Meeting.MeetingAgendaRelevant';
+            MeetingAgendaRelevantRow.lookupKey = 'Organization.AgendaRelevant';
+            function getLookup() {
+                return Q.getLookup('Organization.AgendaRelevant');
+            }
+            MeetingAgendaRelevantRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAgendaRelevantRow.Fields || (MeetingAgendaRelevantRow.Fields = {}));
@@ -9450,7 +9472,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingAgendaRelevantService;
         (function (MeetingAgendaRelevantService) {
-            MeetingAgendaRelevantService.baseUrl = 'Meeting/MeetingAgendaRelevant';
+            MeetingAgendaRelevantService.baseUrl = 'Organization/MeetingAgendaRelevant';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaRelevantService.Methods || (MeetingAgendaRelevantService.Methods = {}));
@@ -9478,6 +9500,11 @@ var Enterprise;
             MeetingAgendaRow.idProperty = 'AgendaId';
             MeetingAgendaRow.nameProperty = 'Title';
             MeetingAgendaRow.localTextPrefix = 'Meeting.MeetingAgenda';
+            MeetingAgendaRow.lookupKey = 'Organization.Agenda';
+            function getLookup() {
+                return Q.getLookup('Organization.Agenda');
+            }
+            MeetingAgendaRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAgendaRow.Fields || (MeetingAgendaRow.Fields = {}));
@@ -9523,7 +9550,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingAgendaService;
         (function (MeetingAgendaService) {
-            MeetingAgendaService.baseUrl = 'Meeting/MeetingAgenda';
+            MeetingAgendaService.baseUrl = 'Organization/MeetingAgenda';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaService.Methods || (MeetingAgendaService.Methods = {}));
@@ -9567,9 +9594,9 @@ var Enterprise;
             MeetingAgendaTypeRow.idProperty = 'AgendaTypeId';
             MeetingAgendaTypeRow.nameProperty = 'Name';
             MeetingAgendaTypeRow.localTextPrefix = 'Meeting.MeetingAgendaType';
-            MeetingAgendaTypeRow.lookupKey = 'Organization.MeetingAgendaType';
+            MeetingAgendaTypeRow.lookupKey = 'Organization.AgendaType';
             function getLookup() {
-                return Q.getLookup('Organization.MeetingAgendaType');
+                return Q.getLookup('Organization.AgendaType');
             }
             MeetingAgendaTypeRow.getLookup = getLookup;
             var Fields;
@@ -9588,7 +9615,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingAgendaTypeService;
         (function (MeetingAgendaTypeService) {
-            MeetingAgendaTypeService.baseUrl = 'Meeting/MeetingAgendaType';
+            MeetingAgendaTypeService.baseUrl = 'Organization/MeetingAgendaType';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingAgendaTypeService.Methods || (MeetingAgendaTypeService.Methods = {}));
@@ -9645,6 +9672,11 @@ var Enterprise;
         (function (MeetingAttendeeRow) {
             MeetingAttendeeRow.idProperty = 'AttendeeId';
             MeetingAttendeeRow.localTextPrefix = 'Meeting.MeetingAttendee';
+            MeetingAttendeeRow.lookupKey = 'Organization.Attendee';
+            function getLookup() {
+                return Q.getLookup('Organization.Attendee');
+            }
+            MeetingAttendeeRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingAttendeeRow.Fields || (MeetingAttendeeRow.Fields = {}));
@@ -9731,6 +9763,11 @@ var Enterprise;
         (function (MeetingDecisionRelevantRow) {
             MeetingDecisionRelevantRow.idProperty = 'DecisionRelevantId';
             MeetingDecisionRelevantRow.localTextPrefix = 'Meeting.MeetingDecisionRelevant';
+            MeetingDecisionRelevantRow.lookupKey = 'Organization.DecisionRelevant';
+            function getLookup() {
+                return Q.getLookup('Organization.DecisionRelevant');
+            }
+            MeetingDecisionRelevantRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingDecisionRelevantRow.Fields || (MeetingDecisionRelevantRow.Fields = {}));
@@ -9763,7 +9800,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingDecisionRelevantService;
         (function (MeetingDecisionRelevantService) {
-            MeetingDecisionRelevantService.baseUrl = 'Meeting/MeetingDecisionRelevant';
+            MeetingDecisionRelevantService.baseUrl = 'Organization/MeetingDecisionRelevant';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingDecisionRelevantService.Methods || (MeetingDecisionRelevantService.Methods = {}));
@@ -9791,6 +9828,11 @@ var Enterprise;
             MeetingDecisionRow.idProperty = 'DecisionId';
             MeetingDecisionRow.nameProperty = 'Description';
             MeetingDecisionRow.localTextPrefix = 'Meeting.MeetingDecision';
+            MeetingDecisionRow.lookupKey = 'Organization.Decision';
+            function getLookup() {
+                return Q.getLookup('Organization.Decision');
+            }
+            MeetingDecisionRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingDecisionRow.Fields || (MeetingDecisionRow.Fields = {}));
@@ -9845,7 +9887,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingDecisionService;
         (function (MeetingDecisionService) {
-            MeetingDecisionService.baseUrl = 'Meeting/MeetingDecision';
+            MeetingDecisionService.baseUrl = 'Organization/MeetingDecision';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingDecisionService.Methods || (MeetingDecisionService.Methods = {}));
@@ -9929,7 +9971,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingLocationService;
         (function (MeetingLocationService) {
-            MeetingLocationService.baseUrl = 'Meeting/MeetingLocation';
+            MeetingLocationService.baseUrl = 'Organization/MeetingLocation';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingLocationService.Methods || (MeetingLocationService.Methods = {}));
@@ -9957,6 +9999,11 @@ var Enterprise;
             MeetingRow.idProperty = 'MeetingId';
             MeetingRow.nameProperty = 'MeetingName';
             MeetingRow.localTextPrefix = 'Organization.Meeting';
+            MeetingRow.lookupKey = 'Organization.Meeting';
+            function getLookup() {
+                return Q.getLookup('Organization.Meeting');
+            }
+            MeetingRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = MeetingRow.Fields || (MeetingRow.Fields = {}));
@@ -10067,7 +10114,7 @@ var Enterprise;
     (function (Organization) {
         var MeetingTypeService;
         (function (MeetingTypeService) {
-            MeetingTypeService.baseUrl = 'Meeting/MeetingType';
+            MeetingTypeService.baseUrl = 'Organization/MeetingType';
             var Methods;
             (function (Methods) {
             })(Methods = MeetingTypeService.Methods || (MeetingTypeService.Methods = {}));
@@ -10111,6 +10158,11 @@ var Enterprise;
             PersonnelRow.idProperty = 'PersonnelId';
             PersonnelRow.nameProperty = 'IdentificationNo';
             PersonnelRow.localTextPrefix = 'Organization.Personnel';
+            PersonnelRow.lookupKey = 'Organization.Personnel';
+            function getLookup() {
+                return Q.getLookup('Organization.Personnel');
+            }
+            PersonnelRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = PersonnelRow.Fields || (PersonnelRow.Fields = {}));

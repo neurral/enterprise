@@ -1,6 +1,6 @@
 ﻿namespace Enterprise.Organization {
     export namespace MeetingDecisionService {
-        export const baseUrl = 'Meeting/MeetingDecision';
+        export const baseUrl = 'Organization/MeetingDecision';
 
         export declare function Create(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Update(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;

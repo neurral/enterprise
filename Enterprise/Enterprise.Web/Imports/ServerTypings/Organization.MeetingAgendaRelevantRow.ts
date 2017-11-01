@@ -22,6 +22,11 @@
     export namespace MeetingAgendaRelevantRow {
         export const idProperty = 'AgendaRelevantId';
         export const localTextPrefix = 'Meeting.MeetingAgendaRelevant';
+        export const lookupKey = 'Organization.AgendaRelevant';
+
+        export function getLookup(): Q.Lookup<MeetingAgendaRelevantRow> {
+            return Q.getLookup<MeetingAgendaRelevantRow>('Organization.AgendaRelevant');
+        }
 
         export namespace Fields {
             export declare const AgendaRelevantId: string;

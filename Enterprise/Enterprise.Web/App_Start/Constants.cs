@@ -11,7 +11,7 @@ namespace Enterprise
         public const string ASSEMBLY_PRODUCT = "Enterprise.Web";
         public const string ASSEMBLY_COPYRIGHT = "Copyright ©  2017";
         public const string ASSEMBLY_TRADEMARK = "Neurral";
-        public const string ASSEMBLY_CULTURE = "en-us";
+        public const string ASSEMBLY_CULTURE = "";
 
         public sealed class PersonnelStatus {
             public const string UNVERIFIED = "unverified"; //initial status

@@ -12,11 +12,12 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default")]
     [TableName(TableName)]
     [DisplayName("Meeting"), InstanceName("Meeting"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Keys.Meeting.Access)]
+    [ModifyPermission(Keys.Meeting.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.Meeting, Permission = Keys.General)]
     public sealed class MeetingRow : Row, IIdRow, INameRow
     {        
-        public const string TableName = Constants.SCHEMA + "Meeting";
+        public const string TableName = Constants.SCHEMA + Ks.Meeting;
 
         [DisplayName("Meeting Id"), Identity]
         public Int32? MeetingId

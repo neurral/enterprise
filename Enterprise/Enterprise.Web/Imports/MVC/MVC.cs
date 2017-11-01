@@ -381,6 +381,39 @@ namespace MVC
 
         public static class Organization
         {
+            public static class _Libraries
+            {
+                public static class MeetingAgendaRelevant
+                {
+                    public const string MeetingAgendaRelevantIndex = "~/Modules/Organization/_Libraries/MeetingAgendaRelevant/MeetingAgendaRelevantIndex.cshtml";
+                }
+
+                public static class MeetingAgendaType
+                {
+                    public const string MeetingAgendaTypeIndex = "~/Modules/Organization/_Libraries/MeetingAgendaType/MeetingAgendaTypeIndex.cshtml";
+                }
+
+                public static class MeetingDecisionRelevant
+                {
+                    public const string MeetingDecisionRelevantIndex = "~/Modules/Organization/_Libraries/MeetingDecisionRelevant/MeetingDecisionRelevantIndex.cshtml";
+                }
+
+                public static class MeetingLocation
+                {
+                    public const string MeetingLocationIndex = "~/Modules/Organization/_Libraries/MeetingLocation/MeetingLocationIndex.cshtml";
+                }
+
+                public static class MeetingType
+                {
+                    public const string MeetingTypeIndex = "~/Modules/Organization/_Libraries/MeetingType/MeetingTypeIndex.cshtml";
+                }
+
+                public static class PersonnelStatus
+                {
+                    public const string PersonnelStatusIndex = "~/Modules/Organization/_Libraries/PersonnelStatus/PersonnelStatusIndex.cshtml";
+                }
+            }
+
             public static class BusinessUnit
             {
                 public const string BusinessUnitIndex = "~/Modules/Organization/BusinessUnit/BusinessUnitIndex.cshtml";
@@ -393,39 +426,12 @@ namespace MVC
 
             public static class Meeting
             {
-                public static class MeetingAgendaRelevant
-                {
-                    public const string MeetingAgendaRelevantIndex = "~/Modules/Organization/Meeting/MeetingAgendaRelevant/MeetingAgendaRelevantIndex.cshtml";
-                }
-
-                public static class MeetingAgendaType
-                {
-                    public const string MeetingAgendaTypeIndex = "~/Modules/Organization/Meeting/MeetingAgendaType/MeetingAgendaTypeIndex.cshtml";
-                }
-
-                public static class MeetingDecisionRelevant
-                {
-                    public const string MeetingDecisionRelevantIndex = "~/Modules/Organization/Meeting/MeetingDecisionRelevant/MeetingDecisionRelevantIndex.cshtml";
-                }
                 public const string MeetingIndex = "~/Modules/Organization/Meeting/MeetingIndex.cshtml";
-                public static class MeetingLocation
-                {
-                    public const string MeetingLocationIndex = "~/Modules/Organization/Meeting/MeetingLocation/MeetingLocationIndex.cshtml";
-                }
-
-                public static class MeetingType
-                {
-                    public const string MeetingTypeIndex = "~/Modules/Organization/Meeting/MeetingType/MeetingTypeIndex.cshtml";
-                }
             }
 
             public static class Personnel
             {
                 public const string PersonnelIndex = "~/Modules/Organization/Personnel/PersonnelIndex.cshtml";
-                public static class PersonnelStatus
-                {
-                    public const string PersonnelStatusIndex = "~/Modules/Organization/Personnel/PersonnelStatus/PersonnelStatusIndex.cshtml";
-                }
             }
         }
 

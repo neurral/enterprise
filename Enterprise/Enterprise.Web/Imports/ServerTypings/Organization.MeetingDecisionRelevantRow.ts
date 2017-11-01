@@ -23,6 +23,11 @@
     export namespace MeetingDecisionRelevantRow {
         export const idProperty = 'DecisionRelevantId';
         export const localTextPrefix = 'Meeting.MeetingDecisionRelevant';
+        export const lookupKey = 'Organization.DecisionRelevant';
+
+        export function getLookup(): Q.Lookup<MeetingDecisionRelevantRow> {
+            return Q.getLookup<MeetingDecisionRelevantRow>('Organization.DecisionRelevant');
+        }
 
         export namespace Fields {
             export declare const DecisionRelevantId: string;

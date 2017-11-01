@@ -5,12 +5,12 @@ namespace Enterprise.Organization.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Meeting/MeetingAgendaType"), Route("{action=index}")]
-    [PageAuthorize(typeof(Entities.MeetingAgendaRow))]
+    [PageAuthorize(typeof(Entities.MeetingAgendaTypeRow))]
     public class MeetingAgendaTypeController : Controller
     {
         public ActionResult Index()
         {
-            return View(MVC.Views.Organization.Meeting.MeetingAgendaType.MeetingAgendaTypeIndex);
+            return View(MVC.Views.Organization._Libraries.MeetingAgendaType.MeetingAgendaTypeIndex);
         }
     }
 }

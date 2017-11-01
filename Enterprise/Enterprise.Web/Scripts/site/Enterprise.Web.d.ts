@@ -1,26 +1,6 @@
 ﻿/// <reference types="jquery" />
 /// <reference types="jqueryui" />
 declare namespace Enterprise.Organization {
-    class PersonnelDialog extends Serenity.EntityDialog<PersonnelRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: PersonnelForm;
-    }
-}
-declare namespace Enterprise.Organization {
-    class PersonnelGrid extends Serenity.EntityGrid<PersonnelRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof PersonnelDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
     class PersonnelStatusDialog extends Serenity.EntityDialog<PersonnelStatusRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -34,31 +14,6 @@ declare namespace Enterprise.Organization {
     class PersonnelStatusGrid extends Serenity.EntityGrid<PersonnelStatusRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof PersonnelStatusDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: MeetingForm;
-        private agendaGrid;
-        private decisionGrid;
-        constructor();
-        protected arrange(): void;
-        loadEntity(entity: MeetingRow): void;
-    }
-}
-declare namespace Enterprise.Organization {
-    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof MeetingDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -266,6 +221,51 @@ declare namespace Enterprise.Organization {
         protected getGridCanLoad(): boolean;
         private _meetingId;
         meetingId: string;
+    }
+}
+declare namespace Enterprise.Organization {
+    class PersonnelDialog extends Serenity.EntityDialog<PersonnelRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PersonnelForm;
+    }
+}
+declare namespace Enterprise.Organization {
+    class PersonnelGrid extends Serenity.EntityGrid<PersonnelRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PersonnelDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: MeetingForm;
+        private agendaGrid;
+        private decisionGrid;
+        constructor();
+        protected arrange(): void;
+        loadEntity(entity: MeetingRow): void;
+    }
+}
+declare namespace Enterprise.Organization {
+    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MeetingDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace Enterprise.Organization {
@@ -828,6 +828,13 @@ declare namespace Enterprise.Common {
     }
     namespace ExcelExportHelper {
         function createToolButton(options: ExcelExportOptions): Serenity.ToolButton;
+    }
+}
+declare namespace Enterprise.Dashboard {
+    class Dashboard {
+        private container;
+        constructor(container: JQuery);
+        init(): void;
     }
 }
 declare namespace Enterprise.BasicSamples {
@@ -3827,6 +3834,8 @@ declare namespace Enterprise.Organization {
     namespace MeetingAgendaRelevantRow {
         const idProperty = "AgendaRelevantId";
         const localTextPrefix = "Meeting.MeetingAgendaRelevant";
+        const lookupKey = "Organization.AgendaRelevant";
+        function getLookup(): Q.Lookup<MeetingAgendaRelevantRow>;
         namespace Fields {
             const AgendaRelevantId: string;
             const AgendaId: string;
@@ -3850,7 +3859,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingAgendaRelevantService {
-        const baseUrl = "Meeting/MeetingAgendaRelevant";
+        const baseUrl = "Organization/MeetingAgendaRelevant";
         function Create(request: Serenity.SaveRequest<MeetingAgendaRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3903,6 +3912,8 @@ declare namespace Enterprise.Organization {
         const idProperty = "AgendaId";
         const nameProperty = "Title";
         const localTextPrefix = "Meeting.MeetingAgenda";
+        const lookupKey = "Organization.Agenda";
+        function getLookup(): Q.Lookup<MeetingAgendaRow>;
         namespace Fields {
             const AgendaId: string;
             const MeetingId: string;
@@ -3940,7 +3951,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingAgendaService {
-        const baseUrl = "Meeting/MeetingAgenda";
+        const baseUrl = "Organization/MeetingAgenda";
         function Create(request: Serenity.SaveRequest<MeetingAgendaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -3974,7 +3985,7 @@ declare namespace Enterprise.Organization {
         const idProperty = "AgendaTypeId";
         const nameProperty = "Name";
         const localTextPrefix = "Meeting.MeetingAgendaType";
-        const lookupKey = "Organization.MeetingAgendaType";
+        const lookupKey = "Organization.AgendaType";
         function getLookup(): Q.Lookup<MeetingAgendaTypeRow>;
         namespace Fields {
             const AgendaTypeId: string;
@@ -3984,7 +3995,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingAgendaTypeService {
-        const baseUrl = "Meeting/MeetingAgendaType";
+        const baseUrl = "Organization/MeetingAgendaType";
         function Create(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingAgendaTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4052,6 +4063,8 @@ declare namespace Enterprise.Organization {
     namespace MeetingAttendeeRow {
         const idProperty = "AttendeeId";
         const localTextPrefix = "Meeting.MeetingAttendee";
+        const lookupKey = "Organization.Attendee";
+        function getLookup(): Q.Lookup<MeetingAttendeeRow>;
         namespace Fields {
             const AttendeeId: string;
             const MeetingId: string;
@@ -4143,6 +4156,8 @@ declare namespace Enterprise.Organization {
     namespace MeetingDecisionRelevantRow {
         const idProperty = "DecisionRelevantId";
         const localTextPrefix = "Meeting.MeetingDecisionRelevant";
+        const lookupKey = "Organization.DecisionRelevant";
+        function getLookup(): Q.Lookup<MeetingDecisionRelevantRow>;
         namespace Fields {
             const DecisionRelevantId: string;
             const DecisionId: string;
@@ -4167,7 +4182,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingDecisionRelevantService {
-        const baseUrl = "Meeting/MeetingDecisionRelevant";
+        const baseUrl = "Organization/MeetingDecisionRelevant";
         function Create(request: Serenity.SaveRequest<MeetingDecisionRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingDecisionRelevantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4229,6 +4244,8 @@ declare namespace Enterprise.Organization {
         const idProperty = "DecisionId";
         const nameProperty = "Description";
         const localTextPrefix = "Meeting.MeetingDecision";
+        const lookupKey = "Organization.Decision";
+        function getLookup(): Q.Lookup<MeetingDecisionRow>;
         namespace Fields {
             const DecisionId: string;
             const MeetingId: string;
@@ -4275,7 +4292,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingDecisionService {
-        const baseUrl = "Meeting/MeetingDecision";
+        const baseUrl = "Organization/MeetingDecision";
         function Create(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingDecisionRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4345,7 +4362,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingLocationService {
-        const baseUrl = "Meeting/MeetingLocation";
+        const baseUrl = "Organization/MeetingLocation";
         function Create(request: Serenity.SaveRequest<MeetingLocationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingLocationRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4398,6 +4415,8 @@ declare namespace Enterprise.Organization {
         const idProperty = "MeetingId";
         const nameProperty = "MeetingName";
         const localTextPrefix = "Organization.Meeting";
+        const lookupKey = "Organization.Meeting";
+        function getLookup(): Q.Lookup<MeetingRow>;
         namespace Fields {
             const MeetingId: string;
             const MeetingName: string;
@@ -4479,7 +4498,7 @@ declare namespace Enterprise.Organization {
 }
 declare namespace Enterprise.Organization {
     namespace MeetingTypeService {
-        const baseUrl = "Meeting/MeetingType";
+        const baseUrl = "Organization/MeetingType";
         function Create(request: Serenity.SaveRequest<MeetingTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<MeetingTypeRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -4548,6 +4567,8 @@ declare namespace Enterprise.Organization {
         const idProperty = "PersonnelId";
         const nameProperty = "IdentificationNo";
         const localTextPrefix = "Organization.Personnel";
+        const lookupKey = "Organization.Personnel";
+        function getLookup(): Q.Lookup<PersonnelRow>;
         namespace Fields {
             const PersonnelId: string;
             const IdentificationNo: string;

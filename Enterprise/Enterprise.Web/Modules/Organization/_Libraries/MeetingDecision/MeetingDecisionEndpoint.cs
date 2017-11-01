@@ -8,7 +8,7 @@ namespace Enterprise.Organization.Endpoints
     using MyRepository = Repositories.MeetingDecisionRepository;
     using MyRow = Entities.MeetingDecisionRow;
 
-    [RoutePrefix("Services/Meeting/MeetingDecision"), Route("{action}")]
+    [RoutePrefix("Services/Organization/MeetingDecision"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
     public class MeetingDecisionController : ServiceEndpoint
     {

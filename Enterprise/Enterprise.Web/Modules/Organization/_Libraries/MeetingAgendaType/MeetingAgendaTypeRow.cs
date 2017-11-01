@@ -10,19 +10,19 @@ namespace Enterprise.Organization.Entities
 
     [ConnectionKey("Default")]
     [TableName(TableName)]
-    [DisplayName("Meeting Types"), InstanceName("Meeting Type"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Meeting.Management)]
-    [LookupScript("Organization.MeetingType")]
-    public sealed class MeetingTypeRow : Row, IIdRow, INameRow
+    [DisplayName("Agenda Types"), InstanceName("Agenda Type"), TwoLevelCached]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.MeetingAgendaType, Permission = Keys.General)]
+    public sealed class MeetingAgendaTypeRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "MeetingType";
+        public const string TableName = Constants.SCHEMA + "MeetingAgendaType";
 
-        [DisplayName("Meeting Type Id"), Identity]
-        public Int32? MeetingTypeId
+        [DisplayName("Agenda Type Id"), Identity]
+        public Int32? AgendaTypeId
         {
-            get { return Fields.MeetingTypeId[this]; }
-            set { Fields.MeetingTypeId[this] = value; }
+            get { return Fields.AgendaTypeId[this]; }
+            set { Fields.AgendaTypeId[this] = value; }
         }
 
         [DisplayName("Name"), Size(100), NotNull, QuickSearch, Width(350)]
@@ -34,7 +34,7 @@ namespace Enterprise.Organization.Entities
 
         IIdField IIdRow.IdField
         {
-            get { return Fields.MeetingTypeId; }
+            get { return Fields.AgendaTypeId; }
         }
 
         StringField INameRow.NameField
@@ -44,20 +44,20 @@ namespace Enterprise.Organization.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public MeetingTypeRow()
+        public MeetingAgendaTypeRow()
             : base(Fields)
         {
         }
 
         public class RowFields : RowFieldsBase
         {
-            public Int32Field MeetingTypeId;
+            public Int32Field AgendaTypeId;
             public StringField Name;
 
             public RowFields()
                 : base()
             {
-                LocalTextPrefix = "Meeting.MeetingType";
+                LocalTextPrefix = "Meeting.MeetingAgendaType";
             }
         }
     }

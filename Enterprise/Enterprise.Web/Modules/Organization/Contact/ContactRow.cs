@@ -6,15 +6,15 @@
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Default"), DisplayName("Contacts"),
-        TableName(TableName), 
-        InstanceName("Contact"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.Contact.Management)]
-    [LookupScript("Organization.Contact", Permission = PermissionKeys.General)]
+    [ConnectionKey("Default")]
+    [InstanceName("Contact"), DisplayName("Contacts")]
+    [TableName(TableName), TwoLevelCached]
+    [ReadPermission(Keys.Contact.Access)]
+    [ModifyPermission(Keys.Contact.Modify)]
+    [LookupScript(Ks.Module+"."+Ks.Contact, Permission = Keys.General)]
     public sealed class ContactRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "Contact";
+        public const string TableName = Constants.SCHEMA + Ks.Contact;
 
         [DisplayName("Contact Id"), Identity]
         public Int32? ContactId

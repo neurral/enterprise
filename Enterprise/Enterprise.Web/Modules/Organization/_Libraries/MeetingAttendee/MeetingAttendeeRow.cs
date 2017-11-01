@@ -2,6 +2,7 @@
 
 namespace Enterprise.Organization.Entities
 {
+    using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
@@ -10,8 +11,9 @@ namespace Enterprise.Organization.Entities
     [ConnectionKey("Default")]
     [TableName(TableName)]
     [DisplayName("MeetingAttendees"), InstanceName("MeetingAttendees"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.General)]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.MeetingAttendee, Permission = Keys.General)]
     public sealed class MeetingAttendeeRow : Row, IIdRow
     {
         public const string TableName = Constants.SCHEMA + "MeetingAttendee";

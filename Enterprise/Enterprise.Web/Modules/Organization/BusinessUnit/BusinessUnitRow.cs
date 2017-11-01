@@ -7,15 +7,15 @@
     using System.ComponentModel;
 
 
-    [ConnectionKey("Default"), DisplayName("Business Units"), 
-        TableName(TableName), 
-        InstanceName("Business Unit"), TwoLevelCached]
-    [ReadPermission(PermissionKeys.General)]
-    [ModifyPermission(PermissionKeys.BusinessUnit.Management)]
-    [LookupScript("Organization.BusinessUnit", Permission = PermissionKeys.General)]
+    [ConnectionKey("Default")]
+    [DisplayName("Business Units")]
+    [TableName(TableName),InstanceName("Business Unit"), TwoLevelCached]
+    [ReadPermission(Keys.BusinessUnit.Access)]
+    [ModifyPermission(Keys.BusinessUnit.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.BusinessUnit, Permission = Keys.General)]
     public sealed class BusinessUnitRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "BusinessUnit";
+        public const string TableName = Constants.SCHEMA + Ks.BusinessUnit;
 
         [DisplayName("Unit Id"), Identity]
         public Int32? UnitId

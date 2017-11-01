@@ -6,12 +6,12 @@ namespace Enterprise.Organization.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Organization/Personnel"), Route("{action=index}")]
-    [PageAuthorize(PermissionKeys.Personnel.Access)]
+    [PageAuthorize(typeof(Entities.PersonnelRow))]
     public class PersonnelController : Controller
     {
         public ActionResult Index()
         {
-            return View("~/Modules/Organization/Personnel/PersonnelIndex.cshtml");
+            return View(MVC.Views.Organization.Personnel.PersonnelIndex);
         }
     }
 }
