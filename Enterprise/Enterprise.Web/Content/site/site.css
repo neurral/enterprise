@@ -8338,7 +8338,7 @@ body:not(.sidebar-collapse) .sidebar-toggle-bars {
 }
 body.mobile-device.sidebar-open .main-sidebar,
 body:not(.sidebar-collapse) .main-sidebar {
-  box-shadow: 0px 0px 600px #000;
+  box-shadow: 0px 0px 100px #000;
 }
 body.mobile-device:not(.sidebar-open) .sidebar-toggle-arrow,
 body.sidebar-collapse .sidebar-toggle-arrow {
