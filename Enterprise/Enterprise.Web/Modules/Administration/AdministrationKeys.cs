@@ -14,7 +14,7 @@ namespace Enterprise.Administration
         public const string Security = "Security";
 
         public const string Libraries = "[Libraries]";
-        public const string Languages = "Languages";
+        public const string Language = "Language";
 
     }
 
@@ -52,7 +52,7 @@ namespace Enterprise.Administration
         }
 
         [Description("Languages and Translations")]
-        public const string Languages = Ks.Module + ":" + Ks.Languages;
+        public const string Languages = Ks.Module + ":" + Ks.Language;
         
         [Description("Security and Logs")]
         public class Security
