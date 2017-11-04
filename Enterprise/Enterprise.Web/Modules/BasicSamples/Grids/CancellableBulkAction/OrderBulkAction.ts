@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../Common/Helpers/BulkServiceAction.ts" />
+﻿/// <reference path="../../../_Common/Helpers/BulkServiceAction.ts" />
 
 namespace Enterprise.BasicSamples {
 

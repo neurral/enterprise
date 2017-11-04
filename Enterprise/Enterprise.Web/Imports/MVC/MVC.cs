@@ -4,8 +4,22 @@ namespace MVC
 {
     public static class Views
     {
+        public static class _Common
+        {
+            public static class Reporting
+            {
+                public const string ReportPage = "~/Modules/_Common/Reporting/ReportPage.cshtml";
+            }
+
+        }
+
         public static class Administration
         {
+            public static class Dashboard
+            {
+                public const string DashboardIndex = "~/Modules/Administration/Dashboard/DashboardIndex.cshtml";
+            }
+
             public static class Language
             {
                 public const string LanguageIndex = "~/Modules/Administration/Language/LanguageIndex.cshtml";
@@ -306,20 +320,6 @@ namespace MVC
                 {
                     public const string Index = "~/Modules/BasicSamples/Grids/WrappedHeaders/Index.cshtml";
                 }
-            }
-
-        }
-
-        public static class Common
-        {
-            public static class Dashboard
-            {
-                public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
-            }
-
-            public static class Reporting
-            {
-                public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
             }
         }
 

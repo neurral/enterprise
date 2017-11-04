@@ -199,6 +199,7 @@
     <Content Include="Content\colorbox\images\loading.gif" />
     <Content Include="Content\colorbox\images\loading_background.png" />
     <Content Include="Content\colorbox\jquery.colorbox.css" />
+    <Content Include="Content\css\pace.theme.css" />
     <Content Include="Content\css\select2-spinner.gif" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.png" />
@@ -555,7 +556,10 @@
     <Content Include="Content\site\slides\vegas\slide3.jpg" />
     <Content Include="Content\site\slides\vegas\slide4.jpg" />
     <Content Include="Content\site\slides\vegas\slide5.jpg" />
-    <Content Include="google389462b7350c0b59.html" />
+    <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.css" />
+    <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.js" />
+    <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.min.css" />
+    <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.min.js" />
     <Content Include="wkhtmltopdf-license.txt" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_Sqlite.sql" />
     <Content Include="Content\slick-default-theme.css" />
@@ -864,6 +868,7 @@
     <Content Include="Content\favicon\manifest.json" />
     <None Include="Properties\PublishProfiles\cutin - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cutin - Web Deploy.pubxml" />
+    <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.min.js.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -1556,10 +1561,10 @@
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\TreeGrid\TreeGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAGrid.ts" />
-    <TypeScriptCompile Include="Modules\Common\Dashboard\Dashboard.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\EnumSelectFormatter.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\LanguageList.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\DialogUtils.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Dashboard\Dashboard.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\EnumSelectFormatter.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\LanguageList.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\DialogUtils.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\BasicSamples.ChangingLookupTextForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1650,13 +1655,13 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Navigation\ThemeSelection.ts" />
-    <TypeScriptCompile Include="Modules\Common\Navigation\SidebarSearch.ts" />
-    <TypeScriptCompile Include="Modules\Common\Navigation\LanguageSelection.ts" />
-    <TypeScriptCompile Include="Modules\Common\Reporting\ReportPage.ts" />
-    <TypeScriptCompile Include="Modules\Common\Reporting\ReportDialog.ts" />
-    <TypeScriptCompile Include="Modules\Common\ScriptInitialization.ts" />
-    <TypeScriptCompile Include="Modules\Common\UserPreference\UserPreferenceStorage.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Navigation\ThemeSelection.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Navigation\SidebarSearch.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Navigation\LanguageSelection.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Reporting\ReportPage.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Reporting\ReportDialog.ts" />
+    <TypeScriptCompile Include="Modules\_Common\ScriptInitialization.ts" />
+    <TypeScriptCompile Include="Modules\_Common\UserPreference\UserPreferenceStorage.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\Membership\Account\ResetPassword\ResetPasswordPanel.ts" />
@@ -1683,7 +1688,7 @@
     <TypeScriptCompile Include="Modules\Northwind\Supplier\SupplierDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Territory\TerritoryGrid.ts" />
-    <Content Include="Modules\Common\Reporting\ReportDialog.Template.html" />
+    <Content Include="Modules\_Common\Reporting\ReportDialog.Template.html" />
     <Content Include="Modules\Administration\User\Membership\Account\ForgotPassword\AccountForgotPassword.AdminLTE.cshtml" />
     <Content Include="Modules\Administration\User\Membership\Account\ResetPassword\AccountResetPassword.AdminLTE.cshtml" />
     <Content Include="Scripts\jquery.event.drag.live.js" />
@@ -1814,7 +1819,7 @@
     <Content Include="Scripts\site\texts\site.texts.tr.json" />
     <Content Include="Modules\Administration\User\Membership\Account\AccountLogin.cshtml" />
     <Content Include="Modules\Web.config" />
-    <Content Include="Modules\Common\Dashboard\DashboardIndex.cshtml" />
+    <Content Include="Modules\Administration\Dashboard\DashboardIndex.cshtml" />
     <Content Include="Modules\Administration\User\Membership\_ViewStart.cshtml" />
     <Content Include="Modules\_ViewStart.cshtml" />
     <Content Include="Views\Templates\EntityDialog.Template.html" />
@@ -1838,6 +1843,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.NeurralRelease.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
@@ -1875,12 +1883,12 @@
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\GridFilteredByCriteria\GridFilteredByCriteria.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\GroupingAndSummariesInGrid\GroupingAndSummariesInGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\ViewWithoutID\ViewWithoutIDGrid.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\GridEditorDialog.ts" />
-    <TypeScriptCompile Include="Modules\Common\Reporting\ReportHelper.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\GridEditorBase.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\ExcelExportHelper.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\BasicProgressDialog.ts" />
-    <TypeScriptCompile Include="Modules\Common\Helpers\BulkServiceAction.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\GridEditorDialog.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Reporting\ReportHelper.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\GridEditorBase.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\ExcelExportHelper.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\BasicProgressDialog.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Helpers\BulkServiceAction.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Customer\CustomerOrdersGrid.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Note\NotesEditor.ts" />
     <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailDialog.ts" />
@@ -1943,8 +1951,9 @@
     <Content Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeGrid.ts" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Widgets\BSToggleEditor.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap-toggle\bootstrap-toggle.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
-    <Content Include="wwwroot\Content\site\site.organization.less" />
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1995,6 +2004,9 @@
     <Compile Include="App_Start\SiteInitialization.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\BSToggleEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Organization.MeetingAttendeeEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
@@ -2058,11 +2070,11 @@
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAPost.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAThread.cs" />
     <Compile Include="Modules\BasicSamples\BasicSamplesNavigation.cs" />
-    <Compile Include="Modules\Common\Helpers\EmailHelper.cs" />
-    <Compile Include="Modules\Common\Helpers\ExcelImportRequest.cs" />
-    <Compile Include="Modules\Common\Dashboard\DashboardPageModel.cs" />
-    <Compile Include="Modules\Common\File\FilePage.cs" />
-    <Compile Include="Modules\Common\Helpers\DetailListSaveHandler.cs" />
+    <Compile Include="Modules\_Common\Helpers\EmailHelper.cs" />
+    <Compile Include="Modules\_Common\Helpers\ExcelImportRequest.cs" />
+    <Compile Include="Modules\Administration\Dashboard\DashboardPageModel.cs" />
+    <Compile Include="Modules\_Common\File\FilePage.cs" />
+    <Compile Include="Modules\_Common\Helpers\DetailListSaveHandler.cs" />
     <Compile Include="Imports\ClientTypes\Administration.PermissionCheckEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2137,25 +2149,25 @@
     <Compile Include="Modules\Administration\Translation\TranslationUpdateRequest.cs" />
     <Compile Include="Modules\Administration\Translation\TranslationListRequest.cs" />
     <Compile Include="Modules\Administration\Translation\TranslationItem.cs" />
-    <Compile Include="Modules\Common\Dashboard\DashboardPage.cs" />
-    <Compile Include="Modules\Common\Helpers\SqlExceptionHelper.cs" />
+    <Compile Include="Modules\Administration\Dashboard\DashboardPage.cs" />
+    <Compile Include="Modules\_Common\Helpers\SqlExceptionHelper.cs" />
     <Compile Include="Imports\MVC\MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Common\Navigation\NavigationItems.cs" />
-    <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
+    <Compile Include="Modules\_Common\Navigation\NavigationItems.cs" />
+    <Compile Include="Modules\_Common\Navigation\NavigationModel.cs" />
     <Content Include="Modules\Northwind\Customer\Northwind.CustomerDialog.Template.html" />
-    <Compile Include="Modules\Common\Reporting\DynamicDataReport.cs" />
-    <Compile Include="Modules\Common\Reporting\ExcelReportGenerator.cs" />
-    <Content Include="Modules\Common\Reporting\ReportPage.cshtml" />
-    <Compile Include="Modules\Common\Reporting\ReportTree.cs" />
-    <Compile Include="Modules\Common\Reporting\ReportController.cs" />
-    <Compile Include="Modules\Common\Reporting\ReportRepository.cs" />
-    <Compile Include="Modules\Common\UserPreference\UserPreferenceModels.cs" />
-    <Compile Include="Modules\Common\UserPreference\UserPreferenceEndpoint.cs" />
-    <Compile Include="Modules\Common\UserPreference\UserPreferenceRepository.cs" />
+    <Compile Include="Modules\_Common\Reporting\DynamicDataReport.cs" />
+    <Compile Include="Modules\_Common\Reporting\ExcelReportGenerator.cs" />
+    <Content Include="Modules\_Common\Reporting\ReportPage.cshtml" />
+    <Compile Include="Modules\_Common\Reporting\ReportTree.cs" />
+    <Compile Include="Modules\_Common\Reporting\ReportController.cs" />
+    <Compile Include="Modules\_Common\Reporting\ReportRepository.cs" />
+    <Compile Include="Modules\_Common\UserPreference\UserPreferenceModels.cs" />
+    <Compile Include="Modules\_Common\UserPreference\UserPreferenceEndpoint.cs" />
+    <Compile Include="Modules\_Common\UserPreference\UserPreferenceRepository.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingAttendee\MeetingAttendanceStatus.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingAttendee\MeetingAttendeeType.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\ChangePassword\AccountPage.ChangePassword.cs" />
@@ -2171,12 +2183,12 @@
     <Compile Include="Modules\Administration\User\Membership\Account\SignUp\ActivateEmailModel.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\SignUp\SignUpForm.cs" />
     <Compile Include="Modules\Administration\User\Membership\Account\SignUp\SignUpRequest.cs" />
-    <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
+    <Compile Include="Modules\_Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Northwind\CategoryLang\CategoryLangEndpoint.cs" />
     <Compile Include="Modules\Northwind\CategoryLang\CategoryLangRepository.cs" />
     <Compile Include="Modules\Northwind\CategoryLang\CategoryLangRow.cs" />
-    <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
-    <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\_Common\Helpers\GetNextNumberHelper.cs" />
+    <Compile Include="Modules\_Common\Helpers\GetNextNumberRequest.cs" />
     <Compile Include="Modules\Northwind\Customer\EmployeeListDecorator.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerLookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerCity.cs" />
@@ -2692,7 +2704,7 @@
     <TypeScriptCompile Include="Imports\ServerTypings\ScriptUserDefinition.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Common\Reporting\PdfExportHelper.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Reporting\PdfExportHelper.ts" />
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
   </ItemGroup>
   <PropertyGroup>

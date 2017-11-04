@@ -10,7 +10,7 @@ namespace Enterprise.Northwind.Pages
     {
         public ActionResult Index()
         {
-            return View(MVC.Views.Common.Reporting.ReportPage, 
+            return View(MVC.Views._Common.Reporting.ReportPage, 
                 new ReportRepository().GetReportTree("Northwind"));
         }
     }

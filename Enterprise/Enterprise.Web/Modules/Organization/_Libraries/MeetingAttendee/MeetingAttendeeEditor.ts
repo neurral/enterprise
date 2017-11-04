@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../Common/Helpers/GridEditorBase.ts" />
+﻿/// <reference path="../../../_Common/Helpers/GridEditorBase.ts" />
 
 namespace Enterprise.Organization {
     

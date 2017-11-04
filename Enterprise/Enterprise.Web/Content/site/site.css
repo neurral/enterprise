@@ -3087,7 +3087,9 @@ table.text-center th {
 }
 .skin-black .main-header .navbar-brand {
   color: #333;
-  border-right: 1px solid #eee;
+}
+.skin-black .main-header a.navbar-brand:hover {
+  text-shadow: 0 -1px 2px #ffffff !important;
 }
 .skin-black .main-header .navbar {
   background-color: #ffffff;
@@ -3113,21 +3115,15 @@ table.text-center th {
 }
 .skin-black .main-header .navbar > .sidebar-toggle {
   color: #333;
-  border-right: 1px solid #eee;
-}
-.skin-black .main-header .navbar .navbar-nav > li > a {
-  border-right: 1px solid #eee;
 }
 .skin-black .main-header .navbar .navbar-custom-menu .navbar-nav > li > a,
 .skin-black .main-header .navbar .navbar-right > li > a {
-  border-left: 1px solid #eee;
   border-right-width: 0;
 }
 .skin-black .main-header > .logo {
   background-color: #ffffff;
   color: #333333;
   border-bottom: 0 solid transparent;
-  border-right: 1px solid #eee;
 }
 .skin-black .main-header > .logo:hover {
   background-color: #fcfcfc;
@@ -3245,7 +3241,9 @@ table.text-center th {
 }
 .skin-black-light .main-header .navbar-brand {
   color: #333;
-  border-right: 1px solid #eee;
+}
+.skin-black-light .main-header a.navbar-brand:hover {
+  text-shadow: 0 -1px 2px #ffffff !important;
 }
 .skin-black-light .main-header .navbar {
   background-color: #ffffff;
@@ -3271,21 +3269,15 @@ table.text-center th {
 }
 .skin-black-light .main-header .navbar > .sidebar-toggle {
   color: #333;
-  border-right: 1px solid #eee;
-}
-.skin-black-light .main-header .navbar .navbar-nav > li > a {
-  border-right: 1px solid #eee;
 }
 .skin-black-light .main-header .navbar .navbar-custom-menu .navbar-nav > li > a,
 .skin-black-light .main-header .navbar .navbar-right > li > a {
-  border-left: 1px solid #eee;
   border-right-width: 0;
 }
 .skin-black-light .main-header > .logo {
   background-color: #ffffff;
   color: #333333;
   border-bottom: 0 solid transparent;
-  border-right: 1px solid #eee;
 }
 .skin-black-light .main-header > .logo:hover {
   background-color: #fcfcfc;
@@ -8177,6 +8169,30 @@ body.mobile-device c {
 .inline-action.add-child-unit {
   background-image: url(../serenity/images/node-insert-next.png);
 }
+.s-Organization-ContactDialog > .size {
+  width: 650px;
+}
+.s-Organization-ContactDialog .caption {
+  width: 150px;
+}
+.s-Organization-MeetingDialog > .size {
+  width: 650px;
+}
+.s-Organization-MeetingDialog .caption {
+  width: 150px;
+}
+.s-Organization-PersonnelDialog > .size {
+  width: 650px;
+}
+.s-Organization-PersonnelDialog .caption {
+  width: 150px;
+}
+.s-Organization-PersonnelStatusDialog > .size {
+  width: 650px;
+}
+.s-Organization-PersonnelStatusDialog .caption {
+  width: 150px;
+}
 html {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 0.95em;
@@ -8237,9 +8253,11 @@ a.navbar-brand {
   line-height: 1em;
   vertical-align: middle;
 }
-a.navbar-brand:hover b {
-  text-shadow: 0 1px 2px #000;
-}
+/*a.navbar-brand:hover {
+    b {
+        text-shadow: 0 1px 2px #000;
+    }
+}*/
 .main-header .dropdown-menu {
   padding: 0px !important;
 }

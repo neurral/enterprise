@@ -1,4 +1,4 @@
-﻿/// <reference path="../Common/Helpers/LanguageList.ts" />
+﻿/// <reference path="../_Common/Helpers/LanguageList.ts" />
 
 namespace Enterprise.ScriptInitialization {
     Q.Config.responsiveDialogs = true;
