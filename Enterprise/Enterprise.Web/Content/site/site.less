@@ -53,9 +53,10 @@ html {
   }
 }
 
-.main-header .navbar:hover, .main-header .dropdown-menu {
+.main-header .navbar:hover, 
+.user-menu.open .dropdown-menu {
     box-shadow: 0px 7px 10px #aaa;
-    transition: box-shadow ease-in-out 0.3s;
+    transition: box-shadow linear 0.1s;
 }
 
 a.navbar-brand {
@@ -248,6 +249,7 @@ body {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 16px;
     right: 8px;
+    z-index:999;
 }
 
 .content-wrapper {

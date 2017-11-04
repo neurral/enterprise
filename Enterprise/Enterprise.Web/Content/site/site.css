@@ -8242,9 +8242,9 @@ html {
   width: 100%;
 }
 .main-header .navbar:hover,
-.main-header .dropdown-menu {
+.user-menu.open .dropdown-menu {
   box-shadow: 0px 7px 10px #aaa;
-  transition: box-shadow ease-in-out 0.3s;
+  transition: box-shadow linear 0.1s;
 }
 a.navbar-brand {
   display: inline-block;
@@ -8409,6 +8409,7 @@ body.sidebar-collapse .main-sidebar {
   /* keeps it on the bottom once in view */
   bottom: 16px;
   right: 8px;
+  z-index: 999;
 }
 .content-wrapper {
   padding-top: 48px;
