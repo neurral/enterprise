@@ -31,7 +31,69 @@ var Enterprise;
         LanguageList.getValue = getValue;
     })(LanguageList = Enterprise.LanguageList || (Enterprise.LanguageList = {}));
 })(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var TemplateGrid = /** @class */ (function (_super) {
+        __extends(TemplateGrid, _super);
+        function TemplateGrid(container, options) {
+            return _super.call(this, container, options) || this;
+        }
+        TemplateGrid.prototype.getColumns = function () {
+            var _this = this;
+            var columns = _super.prototype.getColumns.call(this);
+            columns.unshift({
+                field: 'View Details',
+                name: '',
+                format: function (ctx) {
+                    return '<a class="grid-action action-open label label-primary" title="view details">View</a>';
+                },
+                width: 60,
+                maxWidth: 60
+            });
+            Q.tryFirst(columns, function (x) { return x.field == _this.getIdProperty(); }).visible = false;
+            return columns;
+        };
+        TemplateGrid.prototype.onClick = function (e, row, cell) {
+            _super.prototype.onClick.call(this, e, row, cell);
+            if (e.isDefaultPrevented())
+                return;
+            var item = this.itemAt(row);
+            var target = $(e.target);
+            // if user clicks "i" element, e.g. icon
+            if (target.parent().hasClass('grid-action'))
+                target = target.parent();
+            if (target.hasClass('grid-action')) {
+                e.preventDefault();
+                if (target.hasClass('action-open')) {
+                    this.editItem(item[this.getIdProperty()]);
+                }
+            }
+        };
+        TemplateGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TemplateGrid);
+        return TemplateGrid;
+    }(Serenity.EntityGrid));
+    Enterprise.TemplateGrid = TemplateGrid;
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var TemplateDialog = /** @class */ (function (_super) {
+        __extends(TemplateDialog, _super);
+        function TemplateDialog() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        TemplateDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TemplateDialog);
+        return TemplateDialog;
+    }(Serenity.EntityDialog));
+    Enterprise.TemplateDialog = TemplateDialog;
+})(Enterprise || (Enterprise = {}));
 /// <reference path="../_Common/Helpers/LanguageList.ts" />
+/// <reference path="../_Common/Templates/TemplateGrid.ts" />
+/// <reference path="../_Common/Templates/TemplateDialog.ts" />
 var Enterprise;
 (function (Enterprise) {
     var ScriptInitialization;
@@ -1211,7 +1273,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], PersonnelStatusDialog);
             return PersonnelStatusDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.PersonnelStatusDialog = PersonnelStatusDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1233,7 +1295,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], PersonnelStatusGrid);
             return PersonnelStatusGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.PersonnelStatusGrid = PersonnelStatusGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1258,7 +1320,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingTypeDialog);
             return MeetingTypeDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingTypeDialog = MeetingTypeDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1280,7 +1342,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingTypeGrid);
             return MeetingTypeGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingTypeGrid = MeetingTypeGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1305,7 +1367,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingLocationDialog);
             return MeetingLocationDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingLocationDialog = MeetingLocationDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1327,7 +1389,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingLocationGrid);
             return MeetingLocationGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingLocationGrid = MeetingLocationGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1351,7 +1413,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingDecisionRelevantDialog);
             return MeetingDecisionRelevantDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingDecisionRelevantDialog = MeetingDecisionRelevantDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1373,7 +1435,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingDecisionRelevantGrid);
             return MeetingDecisionRelevantGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingDecisionRelevantGrid = MeetingDecisionRelevantGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1398,7 +1460,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingDecisionDialog);
             return MeetingDecisionDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingDecisionDialog = MeetingDecisionDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1443,7 +1505,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingDecisionGrid);
             return MeetingDecisionGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingDecisionGrid = MeetingDecisionGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1590,7 +1652,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingAgendaTypeDialog);
             return MeetingAgendaTypeDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingAgendaTypeDialog = MeetingAgendaTypeDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1612,7 +1674,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingAgendaTypeGrid);
             return MeetingAgendaTypeGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingAgendaTypeGrid = MeetingAgendaTypeGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1636,7 +1698,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingAgendaRelevantDialog);
             return MeetingAgendaRelevantDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingAgendaRelevantDialog = MeetingAgendaRelevantDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1658,7 +1720,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingAgendaRelevantGrid);
             return MeetingAgendaRelevantGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingAgendaRelevantGrid = MeetingAgendaRelevantGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1683,7 +1745,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingAgendaDialog);
             return MeetingAgendaDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingAgendaDialog = MeetingAgendaDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1728,7 +1790,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingAgendaGrid);
             return MeetingAgendaGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingAgendaGrid = MeetingAgendaGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1753,10 +1815,11 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], PersonnelDialog);
             return PersonnelDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.PersonnelDialog = PersonnelDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
+/// <reference path="../../_Common/Templates/TemplateGrid.ts" />
 var Enterprise;
 (function (Enterprise) {
     var Organization;
@@ -1775,7 +1838,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], PersonnelGrid);
             return PersonnelGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.PersonnelGrid = PersonnelGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1824,7 +1887,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], MeetingDialog);
             return MeetingDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.MeetingDialog = MeetingDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1846,7 +1909,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], MeetingGrid);
             return MeetingGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.MeetingGrid = MeetingGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1871,7 +1934,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], ContactDialog);
             return ContactDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.ContactDialog = ContactDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1893,10 +1956,11 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], ContactGrid);
             return ContactGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.ContactGrid = ContactGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
+/// <reference path="../../_Common/Templates/TemplateDialog.ts" />
 var Enterprise;
 (function (Enterprise) {
     var Organization;
@@ -1918,7 +1982,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], BusinessUnitDialog);
             return BusinessUnitDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.BusinessUnitDialog = BusinessUnitDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1954,6 +2018,7 @@ var Enterprise;
         Organization.BusinessUnitEditor = BusinessUnitEditor;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
+/// <reference path="../../_Common/Templates/TemplateGrid.ts" />
 var Enterprise;
 (function (Enterprise) {
     var Organization;
@@ -2017,7 +2082,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], BusinessUnitGrid);
             return BusinessUnitGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.BusinessUnitGrid = BusinessUnitGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -10192,7 +10257,7 @@ var Enterprise;
             return PersonnelForm;
         }(Serenity.PrefixedContext));
         Organization.PersonnelForm = PersonnelForm;
-        [['IdentificationNo', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['Gender', function () { return Serenity.StringEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['IsActive', function () { return Serenity.BooleanEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['IdentificationNo', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['Gender', function () { return Serenity.StringEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;

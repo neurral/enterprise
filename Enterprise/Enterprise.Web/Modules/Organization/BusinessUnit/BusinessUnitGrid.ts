@@ -1,8 +1,9 @@
-﻿
+﻿/// <reference path="../../_Common/Templates/TemplateGrid.ts" />
+
 namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
-    export class BusinessUnitGrid extends Serenity.EntityGrid<BusinessUnitRow, any> {
+    export class BusinessUnitGrid extends TemplateGrid<BusinessUnitRow, any> {
         protected getColumnsKey() { return 'Organization.BusinessUnit'; }
         protected getDialogType() { return BusinessUnitDialog; }
         protected getIdProperty() { return BusinessUnitRow.idProperty; }

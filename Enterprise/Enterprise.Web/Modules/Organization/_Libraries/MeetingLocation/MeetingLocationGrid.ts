@@ -2,7 +2,7 @@
 namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
-    export class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
+    export class MeetingLocationGrid extends TemplateGrid<MeetingLocationRow, any> {
         protected getColumnsKey() { return 'Organization.MeetingLocation'; }
         protected getDialogType() { return MeetingLocationDialog; }
         protected getIdProperty() { return MeetingLocationRow.idProperty; }

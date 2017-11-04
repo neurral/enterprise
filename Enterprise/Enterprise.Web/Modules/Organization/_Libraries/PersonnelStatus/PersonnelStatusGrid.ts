@@ -2,7 +2,7 @@
 namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
-    export class PersonnelStatusGrid extends Serenity.EntityGrid<PersonnelStatusRow, any> {
+    export class PersonnelStatusGrid extends TemplateGrid<PersonnelStatusRow, any> {
         protected getColumnsKey() { return 'Organization.PersonnelStatus'; }
         protected getDialogType() { return PersonnelStatusDialog; }
         protected getIdProperty() { return PersonnelStatusRow.idProperty; }

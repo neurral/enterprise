@@ -7,8 +7,7 @@ namespace Enterprise.Columns
 
     public class TemplateColumns
     {
-
-        [EditLink, Width(90), CssClass("label label-primary"), OneWay, NotMapped]
+        [EditLink, Width(90), OneWay, NotMapped]
         public String LabelAction { get; set; }
     }
 }

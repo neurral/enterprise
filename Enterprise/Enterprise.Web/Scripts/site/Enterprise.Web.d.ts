@@ -1,7 +1,18 @@
-﻿/// <reference types="jqueryui" />
-/// <reference types="jquery" />
+﻿/// <reference types="jquery" />
+/// <reference types="jqueryui" />
 declare namespace Enterprise.LanguageList {
     function getValue(): string[][];
+}
+declare namespace Enterprise {
+    class TemplateGrid<TItem, TOptions> extends Serenity.EntityGrid<TItem, TOptions> {
+        constructor(container: JQuery, options?: any);
+        protected getColumns(): Slick.Column[];
+        protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace Enterprise {
+    class TemplateDialog<TItem, TOptions> extends Serenity.EntityDialog<TItem, TOptions> {
+    }
 }
 declare namespace Enterprise.ScriptInitialization {
 }
@@ -260,7 +271,7 @@ declare namespace Enterprise.Common {
     }
 }
 declare namespace Enterprise.Organization {
-    class PersonnelStatusDialog extends Serenity.EntityDialog<PersonnelStatusRow, any> {
+    class PersonnelStatusDialog extends TemplateDialog<PersonnelStatusRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -270,7 +281,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class PersonnelStatusGrid extends Serenity.EntityGrid<PersonnelStatusRow, any> {
+    class PersonnelStatusGrid extends TemplateGrid<PersonnelStatusRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof PersonnelStatusDialog;
         protected getIdProperty(): string;
@@ -280,7 +291,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
+    class MeetingTypeDialog extends TemplateDialog<MeetingTypeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -290,7 +301,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingTypeGrid extends Serenity.EntityGrid<MeetingTypeRow, any> {
+    class MeetingTypeGrid extends TemplateGrid<MeetingTypeRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingTypeDialog;
         protected getIdProperty(): string;
@@ -300,7 +311,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingLocationDialog extends Serenity.EntityDialog<MeetingLocationRow, any> {
+    class MeetingLocationDialog extends TemplateDialog<MeetingLocationRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -310,7 +321,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingLocationGrid extends Serenity.EntityGrid<MeetingLocationRow, any> {
+    class MeetingLocationGrid extends TemplateGrid<MeetingLocationRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingLocationDialog;
         protected getIdProperty(): string;
@@ -320,7 +331,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingDecisionRelevantDialog extends Serenity.EntityDialog<MeetingDecisionRelevantRow, any> {
+    class MeetingDecisionRelevantDialog extends TemplateDialog<MeetingDecisionRelevantRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -329,7 +340,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingDecisionRelevantGrid extends Serenity.EntityGrid<MeetingDecisionRelevantRow, any> {
+    class MeetingDecisionRelevantGrid extends TemplateGrid<MeetingDecisionRelevantRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingDecisionRelevantDialog;
         protected getIdProperty(): string;
@@ -339,7 +350,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingDecisionDialog extends Serenity.EntityDialog<MeetingDecisionRow, any> {
+    class MeetingDecisionDialog extends TemplateDialog<MeetingDecisionRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -349,7 +360,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingDecisionGrid extends Serenity.EntityGrid<MeetingDecisionRow, any> {
+    class MeetingDecisionGrid extends TemplateGrid<MeetingDecisionRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingDecisionDialog;
         protected getIdProperty(): string;
@@ -384,7 +395,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaTypeDialog extends Serenity.EntityDialog<MeetingAgendaTypeRow, any> {
+    class MeetingAgendaTypeDialog extends TemplateDialog<MeetingAgendaTypeRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -394,7 +405,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaTypeGrid extends Serenity.EntityGrid<MeetingAgendaTypeRow, any> {
+    class MeetingAgendaTypeGrid extends TemplateGrid<MeetingAgendaTypeRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingAgendaTypeDialog;
         protected getIdProperty(): string;
@@ -404,7 +415,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaRelevantDialog extends Serenity.EntityDialog<MeetingAgendaRelevantRow, any> {
+    class MeetingAgendaRelevantDialog extends TemplateDialog<MeetingAgendaRelevantRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -413,7 +424,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaRelevantGrid extends Serenity.EntityGrid<MeetingAgendaRelevantRow, any> {
+    class MeetingAgendaRelevantGrid extends TemplateGrid<MeetingAgendaRelevantRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingAgendaRelevantDialog;
         protected getIdProperty(): string;
@@ -423,7 +434,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaDialog extends Serenity.EntityDialog<MeetingAgendaRow, any> {
+    class MeetingAgendaDialog extends TemplateDialog<MeetingAgendaRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -433,7 +444,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingAgendaGrid extends Serenity.EntityGrid<MeetingAgendaRow, any> {
+    class MeetingAgendaGrid extends TemplateGrid<MeetingAgendaRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingAgendaDialog;
         protected getIdProperty(): string;
@@ -448,7 +459,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class PersonnelDialog extends Serenity.EntityDialog<PersonnelRow, any> {
+    class PersonnelDialog extends TemplateDialog<PersonnelRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -458,7 +469,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class PersonnelGrid extends Serenity.EntityGrid<PersonnelRow, any> {
+    class PersonnelGrid extends TemplateGrid<PersonnelRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof PersonnelDialog;
         protected getIdProperty(): string;
@@ -468,7 +479,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingDialog extends Serenity.EntityDialog<MeetingRow, any> {
+    class MeetingDialog extends TemplateDialog<MeetingRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -483,7 +494,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class MeetingGrid extends Serenity.EntityGrid<MeetingRow, any> {
+    class MeetingGrid extends TemplateGrid<MeetingRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof MeetingDialog;
         protected getIdProperty(): string;
@@ -493,7 +504,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class ContactDialog extends Serenity.EntityDialog<ContactRow, any> {
+    class ContactDialog extends TemplateDialog<ContactRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -503,7 +514,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class ContactGrid extends Serenity.EntityGrid<ContactRow, any> {
+    class ContactGrid extends TemplateGrid<ContactRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ContactDialog;
         protected getIdProperty(): string;
@@ -513,7 +524,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class BusinessUnitDialog extends Serenity.EntityDialog<BusinessUnitRow, any> {
+    class BusinessUnitDialog extends TemplateDialog<BusinessUnitRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
@@ -530,7 +541,7 @@ declare namespace Enterprise.Organization {
     }
 }
 declare namespace Enterprise.Organization {
-    class BusinessUnitGrid extends Serenity.EntityGrid<BusinessUnitRow, any> {
+    class BusinessUnitGrid extends TemplateGrid<BusinessUnitRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof BusinessUnitDialog;
         protected getIdProperty(): string;
@@ -4555,7 +4566,6 @@ declare namespace Enterprise.Organization {
         DateExited: Serenity.DateEditor;
         DateOfBirth: Serenity.DateEditor;
         UserId: Serenity.LookupEditor;
-        IsActive: Serenity.BooleanEditor;
     }
 }
 declare namespace Enterprise.Organization {

@@ -1,4 +1,6 @@
 ﻿/// <reference path="../_Common/Helpers/LanguageList.ts" />
+/// <reference path="../_Common/Templates/TemplateGrid.ts" />
+/// <reference path="../_Common/Templates/TemplateDialog.ts" />
 
 namespace Enterprise.ScriptInitialization {
     Q.Config.responsiveDialogs = true;

@@ -3,7 +3,7 @@ namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()
-    export class PersonnelDialog extends Serenity.EntityDialog<PersonnelRow, any> {
+    export class PersonnelDialog extends TemplateDialog<PersonnelRow, any> {
         protected getFormKey() { return PersonnelForm.formKey; }
         protected getIdProperty() { return PersonnelRow.idProperty; }
         protected getLocalTextPrefix() { return PersonnelRow.localTextPrefix; }

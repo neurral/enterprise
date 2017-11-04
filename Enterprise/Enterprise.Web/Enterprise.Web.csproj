@@ -1660,6 +1660,8 @@
     <TypeScriptCompile Include="Modules\_Common\Reporting\ReportPage.ts" />
     <TypeScriptCompile Include="Modules\_Common\Reporting\ReportDialog.ts" />
     <TypeScriptCompile Include="Modules\_Common\ScriptInitialization.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Templates\TemplateDialog.ts" />
+    <TypeScriptCompile Include="Modules\_Common\Templates\TemplateGrid.ts" />
     <TypeScriptCompile Include="Modules\_Common\UserPreference\UserPreferenceStorage.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\Membership\Account\ChangePassword\ChangePasswordPanel.ts" />
     <TypeScriptCompile Include="Modules\Administration\User\Membership\Account\ForgotPassword\ForgotPasswordPanel.ts" />
@@ -2164,6 +2166,7 @@
     <Compile Include="Modules\_Common\Reporting\ReportTree.cs" />
     <Compile Include="Modules\_Common\Reporting\ReportController.cs" />
     <Compile Include="Modules\_Common\Reporting\ReportRepository.cs" />
+    <Compile Include="Modules\_Common\Templates\TemplateColumns.cs" />
     <Compile Include="Modules\_Common\UserPreference\UserPreferenceModels.cs" />
     <Compile Include="Modules\_Common\UserPreference\UserPreferenceEndpoint.cs" />
     <Compile Include="Modules\_Common\UserPreference\UserPreferenceRepository.cs" />

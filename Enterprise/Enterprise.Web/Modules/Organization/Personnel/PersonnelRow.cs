@@ -25,7 +25,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.PersonnelId[this] = value; }
         }
 
-        [DisplayName("Company ID"), Size(20), QuickSearch]
+        [DisplayName("Company ID"), Size(20), QuickSearch, Required]
         public String IdentificationNo
         {
             get { return Fields.IdentificationNo[this]; }
@@ -118,13 +118,13 @@ namespace Enterprise.Organization.Entities
             get { return Fields.PersonnelStatusSequence[this]; }
             set { Fields.PersonnelStatusSequence[this] = value; }
         }
-        [DisplayName("Personnel Status Personnel Status Name"), Expression("jPersonnelStatus.[PersonnelStatusName]")]
+        [DisplayName("Status"), Expression("jPersonnelStatus.[PersonnelStatusName]")]
         public String PersonnelStatusPersonnelStatusName
         {
             get { return Fields.PersonnelStatusPersonnelStatusName[this]; }
             set { Fields.PersonnelStatusPersonnelStatusName[this] = value; }
         }
-        [DisplayName("User Username"), Expression("jUser.[Username]")]
+        [DisplayName("Username"), Expression("jUser.[Username]")]
         public String UserUsername
         {
             get { return Fields.UserUsername[this]; }

@@ -2,7 +2,7 @@
 namespace Enterprise.Organization {
     
     @Serenity.Decorators.registerClass()
-    export class ContactGrid extends Serenity.EntityGrid<ContactRow, any> {
+    export class ContactGrid extends TemplateGrid<ContactRow, any> {
         protected getColumnsKey() { return 'Organization.Contact'; }
         protected getDialogType() { return ContactDialog; }
         protected getIdProperty() { return ContactRow.idProperty; }

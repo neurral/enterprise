@@ -3,7 +3,7 @@ namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()
-    export class MeetingTypeDialog extends Serenity.EntityDialog<MeetingTypeRow, any> {
+    export class MeetingTypeDialog extends TemplateDialog<MeetingTypeRow, any> {
         protected getFormKey() { return MeetingTypeForm.formKey; }
         protected getIdProperty() { return MeetingTypeRow.idProperty; }
         protected getLocalTextPrefix() { return MeetingTypeRow.localTextPrefix; }
