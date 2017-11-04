@@ -8411,6 +8411,11 @@ body.sidebar-collapse .main-sidebar {
   right: 8px;
   z-index: 999;
 }
+section.content,
+div.content {
+  padding: 0px;
+  margin: 0px;
+}
 .content-wrapper {
   padding-top: 48px;
   padding-left: 4px;
@@ -8419,11 +8424,6 @@ body.sidebar-collapse .main-sidebar {
 .content-wrapper .content-header {
   padding-top: 4px;
   padding-bottom: 12px;
-}
-section.content,
-div.content {
-  padding: 0px;
-  margin: 0px;
 }
 .s-Toolbar .button-inner {
   height: 2.0em;

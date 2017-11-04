@@ -5,51 +5,157 @@
 }
 
 @section Head {
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        new Enterprise.Dashboard.DashboardWidget($('#DashboardDiv')).init();
-    });
-</script>    
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            new Enterprise.Dashboard.DashboardWidget($('#DashboardDiv')).init();
+        });
+    </script>
 }
 
-<div class="content">
+@section ContentHeader {
+    <h1>@ViewData["Title"]<small> Organization Name</small></h1>
+}
 
-    <div class="info-box jumbotron">
-        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-        <div class="info-box-content">
-            <h1 class="info-box-text">@LocalText.Get("Navigation.SiteTitle")</h1>
-            <span class="info-box-number">business process software</span>
-        </div><!-- /.info-box-content -->
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2 class="box-header">Getting started</h2>
-            <p class="box-body">
-                <ul>
-                    <li>Enroll users</li>
-                    <li>Update information</li>
-                    <li>Setup roles and permissions</li>
-                </ul>
-            </p>
+<div class="box box-default color-palette-box">
+    <div class="box-body">
+        <div class="box box-widget widget-user-2">
+            <div class="widget-user-header bg-gray">
+                <div class="widget-user-image">
+                    <img class="img-circle" src="/Content/adminlte/img/noavatar.png" alt="User Avatar">
+                </div>
+                <h3 class="widget-user-username">Alexander Pierce</h3>
+                <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                <span class="label label-success">active</span>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2 class="box-header">Announcements</h2>
-            <p class="box-body">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-left">
+                <li class="header"><i class="fa fa-th"></i> Announcements</li>
 
-            </p>
+            </ul>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_1-1" data-toggle="tab">
+                        <i class="fa fa-briefcase"></i> Organization
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_5-5" data-toggle="tab">
+                        <i class="fa fa-list"></i> My Timeline
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_2-2" data-toggle="tab">
+                        <i class="fa fa-birthday-cake"></i> Birthdays
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_3-3" data-toggle="tab">
+                        <i class="fa fa-user-plus"></i> New Hires
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_4-4" data-toggle="tab">
+                        <i class="fa fa-calendar-o"></i> Anniversaries
+                    </a>
+                </li>
+
+                <li class="dropdown pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-cog"></i> Actions<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" href="#">
+                                <i class="fa fa-refresh"></i>Refresh
+                            </a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1-1">
+                    <b>How to use:</b>
+                    <p>
+                        Exactly like the original bootstrap tabs except you should use
+                        the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.
+                    </p>
+                    A wonderful serenity has taken possession of my entire soul,
+                    like these sweet mornings of spring which I enjoy with my whole heart.
+                    I am alone, and feel the charm of existence in this spot,
+                    which was created for the bliss of souls like mine. I am so happy,
+                    my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
+                    that I neglect my talents. I should be incapable of drawing a single stroke
+                    at the present moment; and yet I feel that I never was a greater artist than now.
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_2-2">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipiscing elit</li>
+                        <li>Integer molestie lorem at massa</li>
+                        <li>Facilisis in pretium nisl aliquet</li>
+                    </ul>
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_3-3">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipiscing elit</li>
+                        <li>Integer molestie lorem at massa</li>
+                        <li>Facilisis in pretium nisl aliquet</li>
+                    </ul>
+
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_4-4">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipiscing elit</li>
+                        <li>Integer molestie lorem at massa</li>
+                        <li>Facilisis in pretium nisl aliquet</li>
+                    </ul>
+
+                </div><!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_5-5">
+                    <ul class="timeline">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                10 Feb. 2014
+                            </span>
+                        </li>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa fa-envelope bg-blue"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                <h3 class="timeline-header"><a href="#">Support Team</a> ...</h3>
+                                <div class="timeline-body">
+                                    ...
+                                    Content goes here
+                                </div>
+                                <div class="timeline-footer">
+                                    <a class="btn btn-primary btn-xs">...</a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- END timeline item -->
+                    </ul>
+                </div><!-- /.tab-pane -->
+            </div><!-- /.tab-content -->
         </div>
-        <div class="col-md-4">
-            <h2 class="box-header">Help Contents</h2>
-            <p class="box-body">
 
-            </p>
-            @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
 
+        <div id="DashboardDiv">
         </div>
-    </div>
-
-    <div id="DashboardDiv">
-
     </div>
 </div>

@@ -30,7 +30,8 @@
     <title>@(ViewData["Title"]) | Enterprise</title>
     @{Html.RenderPartial(MVC.Views.Shared._GoogleAdsense);}
 </head>
-<body id="bodytag" class="@(sidebarCollapsedHoverMenu )">
+<body id="bodytag" class="@(sidebarCollapsedHoverMenu )"
+      data-spy="scroll" data-offset="0" data-target="#navigation">
     <!-- <body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) fixed sidebar-mini hold-transition skin-@theme@(hideNav ? " no-navigation" : " has-layout-event")@(rtl ? " rtl" : "")">
      -->
     @if (hideNav)
@@ -50,7 +51,7 @@
     {
         <div class="wrapper">
             <header class="main-header" data-spy="affix">
-                <nav class="navbar navbar-static-top">
+                <nav class="navbar navbar-static-top" id="#navigation">
                     <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle Navigation</span>
                         <i class="sidebar-toggle-bars fa fa-bars"></i>
