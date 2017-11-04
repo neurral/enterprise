@@ -8412,6 +8412,12 @@ body.sidebar-collapse .main-sidebar {
 }
 .content-wrapper {
   padding-top: 48px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.content-wrapper .content-header {
+  padding-top: 4px;
+  padding-bottom: 12px;
 }
 section.content,
 div.content {
