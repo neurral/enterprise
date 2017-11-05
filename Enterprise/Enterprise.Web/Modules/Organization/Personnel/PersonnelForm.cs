@@ -18,6 +18,7 @@ namespace Enterprise.Organization.Forms
         public String MiddleName { get; set; }
         public String LastName { get; set; }
         public String Email { get; set; }
+        public String ContactNumber { get; set; }
         public Int32 PersonnelStatus { get; set; }
         public String Gender { get; set; }
         public DateTime DateStarted { get; set; }

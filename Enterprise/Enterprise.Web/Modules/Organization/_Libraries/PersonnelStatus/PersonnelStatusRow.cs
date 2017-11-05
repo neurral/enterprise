@@ -13,10 +13,10 @@
     [DisplayName("Personnel Status"), InstanceName("Personnel Status"), TwoLevelCached]
     [ReadPermission(Keys.General)]
     [ModifyPermission(Keys.Libraries.Modify)]
-    [LookupScript(Ks.Module + "." + Ks.PersonnelStatus, Permission = Keys.General)]
+    [LookupScript(typeof(PersonnelStatusLookup))]
     public sealed class PersonnelStatusRow : Row, IIdRow, INameRow
     {
-        public const string TableName = Constants.SCHEMA + "PersonnelStatus";
+        public const string TableName = Constants.SCHEMA + Ks.PersonnelStatus;
 
         [DisplayName("Personnel Status Id"), Identity]
         public Int32? PersonnelStatusId

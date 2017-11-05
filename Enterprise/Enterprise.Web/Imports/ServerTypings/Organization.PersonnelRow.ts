@@ -6,6 +6,7 @@
         MiddleName?: string;
         LastName?: string;
         Email?: string;
+        ContactNumber?: string;
         PersonnelStatus?: number;
         Gender?: string;
         DateStarted?: string;
@@ -13,7 +14,7 @@
         DateOfBirth?: string;
         UserId?: number;
         PersonnelStatusSequence?: number;
-        PersonnelStatusPersonnelStatusName?: string;
+        PersonnelStatusName?: string;
         UserUsername?: string;
         UserEmail?: string;
         UserSource?: string;
@@ -45,6 +46,7 @@
             export declare const MiddleName: string;
             export declare const LastName: string;
             export declare const Email: string;
+            export declare const ContactNumber: string;
             export declare const PersonnelStatus: string;
             export declare const Gender: string;
             export declare const DateStarted: string;
@@ -52,7 +54,7 @@
             export declare const DateOfBirth: string;
             export declare const UserId: string;
             export declare const PersonnelStatusSequence: string;
-            export declare const PersonnelStatusPersonnelStatusName: string;
+            export declare const PersonnelStatusName: string;
             export declare const UserUsername: string;
             export declare const UserEmail: string;
             export declare const UserSource: string;
@@ -74,6 +76,7 @@
             'MiddleName', 
             'LastName', 
             'Email', 
+            'ContactNumber', 
             'PersonnelStatus', 
             'Gender', 
             'DateStarted', 
@@ -81,7 +84,7 @@
             'DateOfBirth', 
             'UserId', 
             'PersonnelStatusSequence', 
-            'PersonnelStatusPersonnelStatusName', 
+            'PersonnelStatusName', 
             'UserUsername', 
             'UserEmail', 
             'UserSource', 

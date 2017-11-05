@@ -60,10 +60,17 @@ namespace Enterprise.Organization.Entities
             set { Fields.Email[this] = value; }
         }
 
+        [DisplayName("Contact Number"), Size(20)]
+        public String ContactNumber
+        {
+            get { return Fields.ContactNumber[this]; }
+            set { Fields.ContactNumber[this] = value; }
+        }
+
         [DisplayName("Personnel Status"), NotNull, 
             DefaultValue(0),
-            ForeignKey(PersonnelStatusRow.TableName, "PersonnelStatusId"), LeftJoin("jPersonnelStatus"), TextualField("PersonnelStatusPersonnelStatusName")]
-        [LookupEditor(typeof(Entities.PersonnelStatusRow), InplaceAddPermission = Keys.Personnel.Modify)]
+            ForeignKey(PersonnelStatusRow.TableName, "PersonnelStatusId"), LeftJoin("jPersonnelStatus"), TextualField("PersonnelStatusName")]
+        [LookupEditor(typeof(PersonnelStatusRow), InplaceAddPermission = Keys.Personnel.Modify)]
         [ModifyPermission(Keys.Personnel.Modify)]
         public Int64? PersonnelStatus
         {
@@ -112,17 +119,17 @@ namespace Enterprise.Organization.Entities
             set { Fields.UserId[this] = value; }
         }
 
-        [DisplayName("Personnel Status Sequence"), Expression("jPersonnelStatus.[Sequence]")]
+        [DisplayName("Personnel Status Sequence"), Expression("jPersonnelStatus.Sequence")]
         public Int64? PersonnelStatusSequence
         {
             get { return Fields.PersonnelStatusSequence[this]; }
             set { Fields.PersonnelStatusSequence[this] = value; }
         }
-        [DisplayName("Status"), Expression("jPersonnelStatus.[PersonnelStatusName]")]
-        public String PersonnelStatusPersonnelStatusName
+        [DisplayName("Status"), Expression("jPersonnelStatus.PersonnelStatusName")]
+        public String PersonnelStatusName
         {
-            get { return Fields.PersonnelStatusPersonnelStatusName[this]; }
-            set { Fields.PersonnelStatusPersonnelStatusName[this] = value; }
+            get { return Fields.PersonnelStatusName[this]; }
+            set { Fields.PersonnelStatusName[this] = value; }
         }
         [DisplayName("Username"), Expression("jUser.[Username]")]
         public String UserUsername
@@ -225,6 +232,7 @@ namespace Enterprise.Organization.Entities
             public StringField MiddleName;
             public StringField LastName;
             public StringField Email;
+            public StringField ContactNumber;
             public Int64Field PersonnelStatus;
             public StringField Gender;
             public DateTimeField DateStarted;
@@ -233,7 +241,7 @@ namespace Enterprise.Organization.Entities
             public Int64Field UserId;
 
             public Int64Field PersonnelStatusSequence;
-            public StringField PersonnelStatusPersonnelStatusName;
+            public StringField PersonnelStatusName;
 
             public StringField UserUsername;
             public StringField UserEmail;

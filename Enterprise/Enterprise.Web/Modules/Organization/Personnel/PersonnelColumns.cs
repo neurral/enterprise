@@ -21,7 +21,8 @@ namespace Enterprise.Organization.Columns
         public String MiddleName { get; set; }
         public String LastName { get; set; }
         public String Email { get; set; }
-        public String PersonnelStatusPersonnelStatusName { get; set; }
+        public String ContactNumber { get; set; }
+        public String PersonnelStatusName { get; set; }
         public String Gender { get; set; }
         public DateTime DateStarted { get; set; }
         public DateTime DateExited { get; set; }

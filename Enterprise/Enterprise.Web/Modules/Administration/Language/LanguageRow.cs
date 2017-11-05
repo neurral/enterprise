@@ -10,7 +10,7 @@ namespace Enterprise.Administration.Entities
     [ConnectionKey("Default"), DisplayName("Languages"), InstanceName("Language"), TwoLevelCached]
     [ReadPermission(Keys.General)]
     [ModifyPermission(Keys.Languages)]
-    [LookupScript(typeof(LanguageLookup), Permission = Keys.General)]
+    [LookupScript(typeof(LanguageLookup))]
     public sealed class LanguageRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity]
