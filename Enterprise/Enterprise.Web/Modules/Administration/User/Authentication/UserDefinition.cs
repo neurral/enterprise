@@ -19,4 +19,16 @@
         public DateTime? UpdateDate { get; set; }
         public DateTime? LastDirectoryUpdate { get; set; }
     }
+
+    /// <summary>
+    /// A handle for the current logged-in user, instead of always instantiating a <code>var user=((UserDefinition) Authorization.UserDefinition)</code>;
+    /// Just use PMUOnline.LoggedIn.User();
+    /// </summary>
+    public static class LoggedIn
+    {
+        public static UserDefinition User()
+        {
+            return (UserDefinition)Authorization.UserDefinition;
+        }
+    }
 }
