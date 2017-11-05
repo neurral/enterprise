@@ -11,8 +11,8 @@
 @navbar-text-height: 1.8em;
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.95em;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
     font-kerning: normal;
     line-height: 1em;
 }
@@ -43,17 +43,17 @@ html {
 }
 
 .main-header {
-  border-bottom: 1px solid #aaa;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
-  
-  &.affix {
-      position: fixed;
-    top: 0px;
-    width:100%;
-  }
+    border-bottom: 1px solid #aaa;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+
+    &.affix {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+    }
 }
 
-.main-header .navbar:hover, 
+.main-header .navbar:hover,
 .user-menu.open .dropdown-menu {
     box-shadow: 0px 7px 10px #aaa;
     transition: box-shadow linear 0.1s;
@@ -85,7 +85,7 @@ a.navbar-brand {
     display: none;
 }
 
-.control-sidebar-open, 
+.control-sidebar-open,
 .control-sidebar-open + .control-sidebar-bg {
     //make conext sidebar only 80% in small screens
     @media (max-width: @screen-xs-max) {
@@ -133,8 +133,6 @@ header.main-header {
     #profile-link {
         color: rgb(102, 102, 102);
     }
-
-
 }
 
 
@@ -156,7 +154,6 @@ header.main-header {
             padding-top: 10px;
             padding-bottom: 0px;
         }
-
         /*.navbar-custom-menu:before {
             display: inline-block;
         }
@@ -189,7 +186,7 @@ body {
         }
     }
 
-    &.mobile-device:not(.sidebar-open), 
+    &.mobile-device:not(.sidebar-open),
     &.sidebar-collapse {
         .sidebar-toggle-arrow {
             display: none;
@@ -232,7 +229,7 @@ body {
     //position: absolute;
     //width: 500px !important;
     //height: 60% !important;
-    top: 50px ;   //navbar height
+    top: 50px; //navbar height
     //left: 240px ; //sidebar width (230) + content padding (10)
     //display: block;
     //z-index: 1101;
@@ -245,27 +242,29 @@ body {
     bottom: -82px;
     right: 8px;
 }
+
 #top-link-block.affix {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 16px;
     right: 8px;
-    z-index:999;
+    z-index: 999;
 }
 
 section.content,
 div.content {
-    padding:0px;
-    margin:0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 
 .content-wrapper {
-    padding-top:48px;
+    padding-top: 48px;
     padding-left: 4px;
     padding-right: 4px;
+
     .content-header {
-        padding-top:4px;
-        padding-bottom:12px;
+        padding-top: 4px;
+        padding-bottom: 12px;
     }
 }
 
@@ -284,4 +283,30 @@ div.content {
 .tooltip {
     position: fixed;
     z-index: 9999;
+}
+
+
+.s-TemplateGrid {
+    // ROW height  - the styles below need to have a matching rowHeight:50 option in the slickgrid constructor
+    .slick-row {
+        height: 48px !important;
+        line-height: 48px !important;
+
+
+        > * {
+            height: 44px !important;
+            line-height: 44px !important;
+            //border:1px dotted red;
+        }
+    }
+
+    .slick-cell {
+        //border-bottom: 0px !important;
+        height: 48px !important;
+
+        > a.grid-action {
+            color: #fff;
+            margin-right:8px;
+        }
+    }
 }

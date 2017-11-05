@@ -37,4 +37,10 @@ namespace Enterprise {
         }
     }
 
+    export class Utils {
+        static isMobile(): boolean {
+            return $('body').hasClass("mobile-device");
+        }
+    }
+
 }

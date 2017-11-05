@@ -5,6 +5,20 @@ namespace Enterprise {
     export class TemplateGrid<TItem, TOptions> extends Serenity.EntityGrid<TItem, TOptions> {
         constructor(container: JQuery, options?: any) {
             super(container, options);
+            
+        }
+
+        protected getSlickOptions() {
+            let opt = super.getSlickOptions();
+            opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            opt.frozenColumn = 0;
+            return opt;
+        }
+
+        protected getCssClass() {
+            let klass = Q.trimToEmpty(super.getCssClass());
+            klass += " s-TemplateGrid";
+            return klass;
         }
 
         protected getColumns() {
@@ -14,9 +28,9 @@ namespace Enterprise {
                 field: 'View Details',
                 name: '',
                 format: ctx =>
-                    '<a class="grid-action action-open label label-primary" title="view details">View</a>',
-                width: 60,
-                maxWidth: 60
+                    '<a class="grid-action action-open btn btn-primary" title="view details">View</a>',
+                width: 80,
+                maxWidth: 100
             });
             Q.tryFirst(columns, x => x.field == this.getIdProperty()).visible = false;
             return columns;

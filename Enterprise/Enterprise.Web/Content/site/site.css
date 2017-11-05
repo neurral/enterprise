@@ -8194,8 +8194,8 @@ body.mobile-device c {
   width: 150px;
 }
 html {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.95em;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
   font-kerning: normal;
   line-height: 1em;
 }
@@ -8394,7 +8394,7 @@ body.sidebar-collapse .main-sidebar {
   padding-bottom: 16px;
 }
 .ui-dialog.s-Dialog[style] {
-  top: 50px ;
+  top: 50px;
   box-shadow: 0px 0px 200px #000 !important;
   box-shadow: 0px 0px 200px #000000 !important;
 }
@@ -8433,4 +8433,19 @@ div.content {
 .tooltip {
   position: fixed;
   z-index: 9999;
+}
+.s-TemplateGrid .slick-row {
+  height: 48px !important;
+  line-height: 48px !important;
+}
+.s-TemplateGrid .slick-row > * {
+  height: 44px !important;
+  line-height: 44px !important;
+}
+.s-TemplateGrid .slick-cell {
+  height: 48px !important;
+}
+.s-TemplateGrid .slick-cell > a.grid-action {
+  color: #fff;
+  margin-right: 8px;
 }
