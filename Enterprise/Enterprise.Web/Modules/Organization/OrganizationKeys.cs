@@ -54,26 +54,26 @@ namespace Enterprise.Organization
             public const string Modify = Ks.Module + ":" +Ks.Personnel + ":Modify";
         }
 
-        [DisplayName(Ks.Contact)]
-        public class Contact
-        {
-            public const string Access = Ks.Module + ":" +Ks.Contact + ":Access";
-            [ImplicitPermission(General), ImplicitPermission(Access)]
-            public const string Delete = Ks.Module + ":" +Ks.Contact + ":Delete";
-            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
-            public const string Modify = Ks.Module + ":" +Ks.Contact + ":Modify";
-        }
+        //[DisplayName(Ks.Contact)]
+        //public class Contact
+        //{
+        //    public const string Access = Ks.Module + ":" +Ks.Contact + ":Access";
+        //    [ImplicitPermission(General), ImplicitPermission(Access)]
+        //    public const string Delete = Ks.Module + ":" +Ks.Contact + ":Delete";
+        //    [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
+        //    public const string Modify = Ks.Module + ":" +Ks.Contact + ":Modify";
+        //}
 
 
-        [DisplayName(Ks.Meeting)]
-        public class Meeting
-        {
-            public const string Access = Ks.Module + ":" +Ks.Meeting + ":Access";
-            [ImplicitPermission(General), ImplicitPermission(Access)]
-            public const string Delete = Ks.Module + ":" +Ks.Meeting + ":Delete";
-            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
-            public const string Modify = Ks.Module + ":" +Ks.Meeting + ":Modify";
-        }
+        //[DisplayName(Ks.Meeting)]
+        //public class Meeting
+        //{
+        //    public const string Access = Ks.Module + ":" +Ks.Meeting + ":Access";
+        //    [ImplicitPermission(General), ImplicitPermission(Access)]
+        //    public const string Delete = Ks.Module + ":" +Ks.Meeting + ":Delete";
+        //    [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
+        //    public const string Modify = Ks.Module + ":" +Ks.Meeting + ":Modify";
+        //}
 
         [DisplayName(Ks.Libraries), Description("Reference Data")]
         public class Libraries

@@ -615,7 +615,6 @@
     <Content Include="Content\fonts\ionicons.svg" />
     <Content Include="Content\fonts\Simple-Line-Icons.svg" />
     <Content Include="Modules\BasicSamples\Dialogs\OtherFormInTabOneBar\OtherFormOneBarDialog.Template.html" />
-    <Content Include="Modules\Organization\Meeting\Organization.MeetingDialog.Template.html" />
     <Content Include="Modules\Administration\User\Membership\Account\SignUp\AccountSignUp.AdminLTE.cshtml" />
     <Content Include="Imports\Web.config" />
     <Content Include="Migrations\Web.config" />
@@ -1904,7 +1903,6 @@
     <TypeScriptCompile Include="Modules\Organization\BusinessUnit\BusinessUnitEditor.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleDialog.ts" />
-    <Content Include="Modules\Organization\Contact\ContactIndex.cshtml" />
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1914,8 +1912,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.ContactForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Modules\Organization\Contact\ContactGrid.ts" />
-    <TypeScriptCompile Include="Modules\Organization\Contact\ContactDialog.ts" />
     <Content Include="Modules\Organization\BusinessUnit\BusinessUnitIndex.cshtml" />
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.BusinessUnitRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
@@ -1946,9 +1942,6 @@
     <Content Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationGrid.ts" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationDialog.ts" />
-    <Content Include="Modules\Organization\Meeting\MeetingIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Organization\Meeting\MeetingGrid.ts" />
-    <TypeScriptCompile Include="Modules\Organization\Meeting\MeetingDialog.ts" />
     <Content Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeGrid.ts" />
     <TypeScriptCompile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeDialog.ts" />
@@ -2071,6 +2064,7 @@
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAPost.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAThread.cs" />
     <Compile Include="Modules\BasicSamples\BasicSamplesNavigation.cs" />
+    <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusLookup.cs" />
     <Compile Include="Modules\_Common\Helpers\EmailHelper.cs" />
     <Compile Include="Modules\_Common\Helpers\ExcelImportRequest.cs" />
     <Compile Include="Modules\Administration\Dashboard\DashboardPageModel.cs" />
@@ -2325,12 +2319,6 @@
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleForm.cs" />
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleRepository.cs" />
     <Compile Include="Modules\BasicSamples\Grids\DragDropInTreeGrid\DragDropSampleEndpoint.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactRow.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactColumns.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactForm.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactRepository.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactEndpoint.cs" />
-    <Compile Include="Modules\Organization\Contact\ContactPage.cs" />
     <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitRow.cs" />
     <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitColumns.cs" />
     <Compile Include="Modules\Organization\BusinessUnit\BusinessUnitForm.cs" />
@@ -2373,11 +2361,6 @@
     <Compile Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationRepository.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationEndpoint.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingLocation\MeetingLocationPage.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingColumns.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingForm.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingRepository.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingEndpoint.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingPage.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeRow.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeColumns.cs" />
     <Compile Include="Modules\Organization\_Libraries\MeetingType\MeetingTypeForm.cs" />
@@ -2396,7 +2379,6 @@
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusPage.cs" />
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusColumns.cs" />
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusForm.cs" />
-    <Compile Include="Modules\Organization\Meeting\MeetingRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
