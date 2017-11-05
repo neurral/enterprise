@@ -1368,10 +1368,22 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.CustomerGrossSalesRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordApprovalColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Administration\Language\LanguageDialog.ts" />
@@ -1837,6 +1849,55 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelStatusForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\CalendarHoliday\CalendarHolidayIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\CalendarHoliday\CalendarHolidayDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\CalendarHoliday\CalendarHolidayGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="wwwroot\Content\site\site.organization.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\TimeRecord\TimeRecordIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordApprovalRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordApprovalService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordApprovalForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1861,6 +1922,7 @@
     <Compile Include="Imports\ClientTypes\Organization.MeetingAttendeeEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\EnterpriseDB_20171126_010000_Timekeeping.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -2191,6 +2253,30 @@
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusPage.cs" />
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusColumns.cs" />
     <Compile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusForm.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayRow.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayRepository.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayEndpoint.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayPage.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayColumns.cs" />
+    <Compile Include="Modules\Organization\CalendarHoliday\CalendarHolidayForm.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordRow.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordRepository.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordEndpoint.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordPage.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordColumns.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordForm.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalRow.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalRepository.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalEndpoint.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalPage.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalColumns.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalForm.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeRow.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeRepository.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeEndpoint.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypePage.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeColumns.cs" />
+    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -419,6 +419,11 @@ namespace MVC
                 public const string BusinessUnitIndex = "~/Modules/Organization/BusinessUnit/BusinessUnitIndex.cshtml";
             }
 
+            public static class CalendarHoliday
+            {
+                public const string CalendarHolidayIndex = "~/Modules/Organization/CalendarHoliday/CalendarHolidayIndex.cshtml";
+            }
+
             public static class Contact
             {
                 public const string ContactIndex = "~/Modules/Organization/Contact/ContactIndex.cshtml";
@@ -432,6 +437,19 @@ namespace MVC
             public static class Personnel
             {
                 public const string PersonnelIndex = "~/Modules/Organization/Personnel/PersonnelIndex.cshtml";
+            }
+
+            public static class TimeRecord
+            {
+                public static class TimeRecordApproval
+                {
+                    public const string TimeRecordApprovalIndex = "~/Modules/Organization/TimeRecord/TimeRecordApproval/TimeRecordApprovalIndex.cshtml";
+                }
+                public const string TimeRecordIndex = "~/Modules/Organization/TimeRecord/TimeRecordIndex.cshtml";
+                public static class TimeRecordType
+                {
+                    public const string TimeRecordTypeIndex = "~/Modules/Organization/TimeRecord/TimeRecordType/TimeRecordTypeIndex.cshtml";
+                }
             }
         }
 

@@ -46,6 +46,22 @@ namespace Enterprise
             SUBACCOUNT = 4
         }
 
+        public enum ApprovalStatuses
+        {
+            SUBMITTED = 'S',
+            CANCELLED = 'C',
+            APPROVED = 'A',
+            REJECTED = 'R'
+        }
+
+        public sealed class TimeRecordType
+        {
+            public const string DTR = "DTR"; 
+            public const string OT = "OT"; 
+            public const string UT = "UT"; 
+            public const string LATE = "LATE"; 
+            public const string SPECIAL = "SPECIAL"; //special billed time like travel or events
+        }
 
     }
 }

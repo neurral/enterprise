@@ -14,3 +14,7 @@ using Organization = Enterprise.Organization.Pages;
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Agenda Types", typeof(Organization.MeetingAgendaTypeController))]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Locations", typeof(Organization.MeetingLocationController))]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Types", typeof(Organization.MeetingTypeController))]
+[assembly: NavigationLink(int.MaxValue, "Organization/Calendar Holiday", typeof(MyPages.CalendarHolidayController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Organization/Time Record", typeof(MyPages.TimeRecordController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Organization/Time Record Approval", typeof(MyPages.TimeRecordApprovalController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Organization/Time Record Type", typeof(MyPages.TimeRecordTypeController), icon: null)]
