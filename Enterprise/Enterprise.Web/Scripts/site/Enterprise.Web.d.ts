@@ -6,6 +6,8 @@ declare namespace Enterprise.LanguageList {
 declare namespace Enterprise {
     class TemplateGrid<TItem, TOptions> extends Serenity.EntityGrid<TItem, TOptions> {
         constructor(container: JQuery, options?: any);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected getCssClass(): string;
         protected getColumns(): Slick.Column[];
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
@@ -30,6 +32,9 @@ declare namespace Enterprise {
             slides: any[];
         };
         static PlugVegas(jquerySelector: string): void;
+    }
+    class Utils {
+        static isMobile(): boolean;
     }
 }
 declare namespace Enterprise {

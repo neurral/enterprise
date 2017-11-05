@@ -38,6 +38,17 @@ var Enterprise;
         function TemplateGrid(container, options) {
             return _super.call(this, container, options) || this;
         }
+        TemplateGrid.prototype.getSlickOptions = function () {
+            var opt = _super.prototype.getSlickOptions.call(this);
+            opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            opt.frozenColumn = 0;
+            return opt;
+        };
+        TemplateGrid.prototype.getCssClass = function () {
+            var klass = Q.trimToEmpty(_super.prototype.getCssClass.call(this));
+            klass += " s-TemplateGrid";
+            return klass;
+        };
         TemplateGrid.prototype.getColumns = function () {
             var _this = this;
             var columns = _super.prototype.getColumns.call(this);
@@ -45,10 +56,10 @@ var Enterprise;
                 field: 'View Details',
                 name: '',
                 format: function (ctx) {
-                    return '<a class="grid-action action-open label label-primary" title="view details">View</a>';
+                    return '<a class="grid-action action-open btn btn-primary" title="view details">View</a>';
                 },
-                width: 60,
-                maxWidth: 60
+                width: 80,
+                maxWidth: 100
             });
             Q.tryFirst(columns, function (x) { return x.field == _this.getIdProperty(); }).visible = false;
             return columns;
@@ -134,6 +145,15 @@ var Enterprise;
         return Options;
     }());
     Enterprise.Options = Options;
+    var Utils = /** @class */ (function () {
+        function Utils() {
+        }
+        Utils.isMobile = function () {
+            return $('body').hasClass("mobile-device");
+        };
+        return Utils;
+    }());
+    Enterprise.Utils = Utils;
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
 (function (Enterprise) {
@@ -1307,14 +1327,14 @@ var Enterprise;
             __extends(MeetingTypeDialog, _super);
             function MeetingTypeDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingTypeForm(_this.idPrefix);
+                _this.form = new MeetingTypeForm(_this.idPrefix);
                 return _this;
             }
-            MeetingTypeDialog.prototype.getFormKey = function () { return Organization.MeetingTypeForm.formKey; };
-            MeetingTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
-            MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingTypeRow.nameProperty; };
-            MeetingTypeDialog.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
+            MeetingTypeDialog.prototype.getFormKey = function () { return MeetingTypeForm.formKey; };
+            MeetingTypeDialog.prototype.getIdProperty = function () { return MeetingTypeRow.idProperty; };
+            MeetingTypeDialog.prototype.getLocalTextPrefix = function () { return MeetingTypeRow.localTextPrefix; };
+            MeetingTypeDialog.prototype.getNameProperty = function () { return MeetingTypeRow.nameProperty; };
+            MeetingTypeDialog.prototype.getService = function () { return MeetingTypeService.baseUrl; };
             MeetingTypeDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1335,9 +1355,9 @@ var Enterprise;
             }
             MeetingTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingType'; };
             MeetingTypeGrid.prototype.getDialogType = function () { return Organization.MeetingTypeDialog; };
-            MeetingTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingTypeRow.idProperty; };
-            MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingTypeRow.localTextPrefix; };
-            MeetingTypeGrid.prototype.getService = function () { return Organization.MeetingTypeService.baseUrl; };
+            MeetingTypeGrid.prototype.getIdProperty = function () { return MeetingTypeRow.idProperty; };
+            MeetingTypeGrid.prototype.getLocalTextPrefix = function () { return MeetingTypeRow.localTextPrefix; };
+            MeetingTypeGrid.prototype.getService = function () { return MeetingTypeService.baseUrl; };
             MeetingTypeGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingTypeGrid);
@@ -1354,14 +1374,14 @@ var Enterprise;
             __extends(MeetingLocationDialog, _super);
             function MeetingLocationDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingLocationForm(_this.idPrefix);
+                _this.form = new MeetingLocationForm(_this.idPrefix);
                 return _this;
             }
-            MeetingLocationDialog.prototype.getFormKey = function () { return Organization.MeetingLocationForm.formKey; };
-            MeetingLocationDialog.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
-            MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationDialog.prototype.getNameProperty = function () { return Organization.MeetingLocationRow.nameProperty; };
-            MeetingLocationDialog.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
+            MeetingLocationDialog.prototype.getFormKey = function () { return MeetingLocationForm.formKey; };
+            MeetingLocationDialog.prototype.getIdProperty = function () { return MeetingLocationRow.idProperty; };
+            MeetingLocationDialog.prototype.getLocalTextPrefix = function () { return MeetingLocationRow.localTextPrefix; };
+            MeetingLocationDialog.prototype.getNameProperty = function () { return MeetingLocationRow.nameProperty; };
+            MeetingLocationDialog.prototype.getService = function () { return MeetingLocationService.baseUrl; };
             MeetingLocationDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1382,9 +1402,9 @@ var Enterprise;
             }
             MeetingLocationGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingLocation'; };
             MeetingLocationGrid.prototype.getDialogType = function () { return Organization.MeetingLocationDialog; };
-            MeetingLocationGrid.prototype.getIdProperty = function () { return Organization.MeetingLocationRow.idProperty; };
-            MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingLocationRow.localTextPrefix; };
-            MeetingLocationGrid.prototype.getService = function () { return Organization.MeetingLocationService.baseUrl; };
+            MeetingLocationGrid.prototype.getIdProperty = function () { return MeetingLocationRow.idProperty; };
+            MeetingLocationGrid.prototype.getLocalTextPrefix = function () { return MeetingLocationRow.localTextPrefix; };
+            MeetingLocationGrid.prototype.getService = function () { return MeetingLocationService.baseUrl; };
             MeetingLocationGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingLocationGrid);
@@ -1401,13 +1421,13 @@ var Enterprise;
             __extends(MeetingDecisionRelevantDialog, _super);
             function MeetingDecisionRelevantDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingDecisionRelevantForm(_this.idPrefix);
+                _this.form = new MeetingDecisionRelevantForm(_this.idPrefix);
                 return _this;
             }
-            MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionRelevantForm.formKey; };
-            MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantDialog.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
+            MeetingDecisionRelevantDialog.prototype.getFormKey = function () { return MeetingDecisionRelevantForm.formKey; };
+            MeetingDecisionRelevantDialog.prototype.getIdProperty = function () { return MeetingDecisionRelevantRow.idProperty; };
+            MeetingDecisionRelevantDialog.prototype.getLocalTextPrefix = function () { return MeetingDecisionRelevantRow.localTextPrefix; };
+            MeetingDecisionRelevantDialog.prototype.getService = function () { return MeetingDecisionRelevantService.baseUrl; };
             MeetingDecisionRelevantDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1428,9 +1448,9 @@ var Enterprise;
             }
             MeetingDecisionRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecisionRelevant'; };
             MeetingDecisionRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionRelevantDialog; };
-            MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRelevantRow.idProperty; };
-            MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRelevantRow.localTextPrefix; };
-            MeetingDecisionRelevantGrid.prototype.getService = function () { return Organization.MeetingDecisionRelevantService.baseUrl; };
+            MeetingDecisionRelevantGrid.prototype.getIdProperty = function () { return MeetingDecisionRelevantRow.idProperty; };
+            MeetingDecisionRelevantGrid.prototype.getLocalTextPrefix = function () { return MeetingDecisionRelevantRow.localTextPrefix; };
+            MeetingDecisionRelevantGrid.prototype.getService = function () { return MeetingDecisionRelevantService.baseUrl; };
             MeetingDecisionRelevantGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingDecisionRelevantGrid);
@@ -1447,14 +1467,14 @@ var Enterprise;
             __extends(MeetingDecisionDialog, _super);
             function MeetingDecisionDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingDecisionForm(_this.idPrefix);
+                _this.form = new MeetingDecisionForm(_this.idPrefix);
                 return _this;
             }
-            MeetingDecisionDialog.prototype.getFormKey = function () { return Organization.MeetingDecisionForm.formKey; };
-            MeetingDecisionDialog.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
-            MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionDialog.prototype.getNameProperty = function () { return Organization.MeetingDecisionRow.nameProperty; };
-            MeetingDecisionDialog.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
+            MeetingDecisionDialog.prototype.getFormKey = function () { return MeetingDecisionForm.formKey; };
+            MeetingDecisionDialog.prototype.getIdProperty = function () { return MeetingDecisionRow.idProperty; };
+            MeetingDecisionDialog.prototype.getLocalTextPrefix = function () { return MeetingDecisionRow.localTextPrefix; };
+            MeetingDecisionDialog.prototype.getNameProperty = function () { return MeetingDecisionRow.nameProperty; };
+            MeetingDecisionDialog.prototype.getService = function () { return MeetingDecisionService.baseUrl; };
             MeetingDecisionDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1475,9 +1495,9 @@ var Enterprise;
             }
             MeetingDecisionGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingDecision'; };
             MeetingDecisionGrid.prototype.getDialogType = function () { return Organization.MeetingDecisionDialog; };
-            MeetingDecisionGrid.prototype.getIdProperty = function () { return Organization.MeetingDecisionRow.idProperty; };
-            MeetingDecisionGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingDecisionRow.localTextPrefix; };
-            MeetingDecisionGrid.prototype.getService = function () { return Organization.MeetingDecisionService.baseUrl; };
+            MeetingDecisionGrid.prototype.getIdProperty = function () { return MeetingDecisionRow.idProperty; };
+            MeetingDecisionGrid.prototype.getLocalTextPrefix = function () { return MeetingDecisionRow.localTextPrefix; };
+            MeetingDecisionGrid.prototype.getService = function () { return MeetingDecisionService.baseUrl; };
             MeetingDecisionGrid.prototype.addButtonClick = function () {
                 this.editItem({ MeetingId: this.meetingId });
             };
@@ -1518,12 +1538,12 @@ var Enterprise;
             __extends(MeetingAttendeeDialog, _super);
             function MeetingAttendeeDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAttendeeForm(_this.idPrefix);
+                _this.form = new MeetingAttendeeForm(_this.idPrefix);
                 return _this;
             }
-            MeetingAttendeeDialog.prototype.getFormKey = function () { return Organization.MeetingAttendeeForm.formKey; };
-            MeetingAttendeeDialog.prototype.getIdProperty = function () { return Organization.MeetingAttendeeRow.idProperty; };
-            MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
+            MeetingAttendeeDialog.prototype.getFormKey = function () { return MeetingAttendeeForm.formKey; };
+            MeetingAttendeeDialog.prototype.getIdProperty = function () { return MeetingAttendeeRow.idProperty; };
+            MeetingAttendeeDialog.prototype.getLocalTextPrefix = function () { return MeetingAttendeeRow.localTextPrefix; };
             MeetingAttendeeDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1555,7 +1575,7 @@ var Enterprise;
             }
             MeetingAttendeeEditor.prototype.getColumnsKey = function () { return 'Organization.MeetingAttendee'; };
             MeetingAttendeeEditor.prototype.getDialogType = function () { return Organization.MeetingAttendeeDialog; };
-            MeetingAttendeeEditor.prototype.getLocalTextPrefix = function () { return Organization.MeetingAttendeeRow.localTextPrefix; };
+            MeetingAttendeeEditor.prototype.getLocalTextPrefix = function () { return MeetingAttendeeRow.localTextPrefix; };
             MeetingAttendeeEditor.prototype.getButtons = function () {
                 return [];
             };
@@ -1582,8 +1602,8 @@ var Enterprise;
                         var item = {
                             ContactId: contact.ContactId,
                             ContactFullName: contact.FullName,
-                            AttendeeType: Organization.MeetingAttendeeType.Attendee,
-                            AttendanceStatus: Organization.MeetingAttendanceStatus.NotSet
+                            AttendeeType: MeetingAttendeeType.Attendee,
+                            AttendanceStatus: MeetingAttendanceStatus.NotSet
                         };
                         _this.setNewId(item);
                         var items = _this.getItems().slice();
@@ -1639,14 +1659,14 @@ var Enterprise;
             __extends(MeetingAgendaTypeDialog, _super);
             function MeetingAgendaTypeDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaTypeForm(_this.idPrefix);
+                _this.form = new MeetingAgendaTypeForm(_this.idPrefix);
                 return _this;
             }
-            MeetingAgendaTypeDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaTypeForm.formKey; };
-            MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaTypeRow.nameProperty; };
-            MeetingAgendaTypeDialog.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
+            MeetingAgendaTypeDialog.prototype.getFormKey = function () { return MeetingAgendaTypeForm.formKey; };
+            MeetingAgendaTypeDialog.prototype.getIdProperty = function () { return MeetingAgendaTypeRow.idProperty; };
+            MeetingAgendaTypeDialog.prototype.getLocalTextPrefix = function () { return MeetingAgendaTypeRow.localTextPrefix; };
+            MeetingAgendaTypeDialog.prototype.getNameProperty = function () { return MeetingAgendaTypeRow.nameProperty; };
+            MeetingAgendaTypeDialog.prototype.getService = function () { return MeetingAgendaTypeService.baseUrl; };
             MeetingAgendaTypeDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1667,9 +1687,9 @@ var Enterprise;
             }
             MeetingAgendaTypeGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaType'; };
             MeetingAgendaTypeGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaTypeDialog; };
-            MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaTypeRow.idProperty; };
-            MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaTypeRow.localTextPrefix; };
-            MeetingAgendaTypeGrid.prototype.getService = function () { return Organization.MeetingAgendaTypeService.baseUrl; };
+            MeetingAgendaTypeGrid.prototype.getIdProperty = function () { return MeetingAgendaTypeRow.idProperty; };
+            MeetingAgendaTypeGrid.prototype.getLocalTextPrefix = function () { return MeetingAgendaTypeRow.localTextPrefix; };
+            MeetingAgendaTypeGrid.prototype.getService = function () { return MeetingAgendaTypeService.baseUrl; };
             MeetingAgendaTypeGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingAgendaTypeGrid);
@@ -1686,13 +1706,13 @@ var Enterprise;
             __extends(MeetingAgendaRelevantDialog, _super);
             function MeetingAgendaRelevantDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaRelevantForm(_this.idPrefix);
+                _this.form = new MeetingAgendaRelevantForm(_this.idPrefix);
                 return _this;
             }
-            MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaRelevantForm.formKey; };
-            MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantDialog.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
+            MeetingAgendaRelevantDialog.prototype.getFormKey = function () { return MeetingAgendaRelevantForm.formKey; };
+            MeetingAgendaRelevantDialog.prototype.getIdProperty = function () { return MeetingAgendaRelevantRow.idProperty; };
+            MeetingAgendaRelevantDialog.prototype.getLocalTextPrefix = function () { return MeetingAgendaRelevantRow.localTextPrefix; };
+            MeetingAgendaRelevantDialog.prototype.getService = function () { return MeetingAgendaRelevantService.baseUrl; };
             MeetingAgendaRelevantDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1713,9 +1733,9 @@ var Enterprise;
             }
             MeetingAgendaRelevantGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgendaRelevant'; };
             MeetingAgendaRelevantGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaRelevantDialog; };
-            MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRelevantRow.idProperty; };
-            MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRelevantRow.localTextPrefix; };
-            MeetingAgendaRelevantGrid.prototype.getService = function () { return Organization.MeetingAgendaRelevantService.baseUrl; };
+            MeetingAgendaRelevantGrid.prototype.getIdProperty = function () { return MeetingAgendaRelevantRow.idProperty; };
+            MeetingAgendaRelevantGrid.prototype.getLocalTextPrefix = function () { return MeetingAgendaRelevantRow.localTextPrefix; };
+            MeetingAgendaRelevantGrid.prototype.getService = function () { return MeetingAgendaRelevantService.baseUrl; };
             MeetingAgendaRelevantGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingAgendaRelevantGrid);
@@ -1732,14 +1752,14 @@ var Enterprise;
             __extends(MeetingAgendaDialog, _super);
             function MeetingAgendaDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.MeetingAgendaForm(_this.idPrefix);
+                _this.form = new MeetingAgendaForm(_this.idPrefix);
                 return _this;
             }
-            MeetingAgendaDialog.prototype.getFormKey = function () { return Organization.MeetingAgendaForm.formKey; };
-            MeetingAgendaDialog.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
-            MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaDialog.prototype.getNameProperty = function () { return Organization.MeetingAgendaRow.nameProperty; };
-            MeetingAgendaDialog.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
+            MeetingAgendaDialog.prototype.getFormKey = function () { return MeetingAgendaForm.formKey; };
+            MeetingAgendaDialog.prototype.getIdProperty = function () { return MeetingAgendaRow.idProperty; };
+            MeetingAgendaDialog.prototype.getLocalTextPrefix = function () { return MeetingAgendaRow.localTextPrefix; };
+            MeetingAgendaDialog.prototype.getNameProperty = function () { return MeetingAgendaRow.nameProperty; };
+            MeetingAgendaDialog.prototype.getService = function () { return MeetingAgendaService.baseUrl; };
             MeetingAgendaDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1760,9 +1780,9 @@ var Enterprise;
             }
             MeetingAgendaGrid.prototype.getColumnsKey = function () { return 'Organization.MeetingAgenda'; };
             MeetingAgendaGrid.prototype.getDialogType = function () { return Organization.MeetingAgendaDialog; };
-            MeetingAgendaGrid.prototype.getIdProperty = function () { return Organization.MeetingAgendaRow.idProperty; };
-            MeetingAgendaGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingAgendaRow.localTextPrefix; };
-            MeetingAgendaGrid.prototype.getService = function () { return Organization.MeetingAgendaService.baseUrl; };
+            MeetingAgendaGrid.prototype.getIdProperty = function () { return MeetingAgendaRow.idProperty; };
+            MeetingAgendaGrid.prototype.getLocalTextPrefix = function () { return MeetingAgendaRow.localTextPrefix; };
+            MeetingAgendaGrid.prototype.getService = function () { return MeetingAgendaService.baseUrl; };
             MeetingAgendaGrid.prototype.addButtonClick = function () {
                 this.editItem({ MeetingId: this.meetingId });
             };
@@ -1850,7 +1870,7 @@ var Enterprise;
             __extends(MeetingDialog, _super);
             function MeetingDialog() {
                 var _this = _super.call(this) || this;
-                _this.form = new Organization.MeetingForm(_this.idPrefix);
+                _this.form = new MeetingForm(_this.idPrefix);
                 _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
                 _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
                 _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
@@ -1864,11 +1884,11 @@ var Enterprise;
                 });
                 return _this;
             }
-            MeetingDialog.prototype.getFormKey = function () { return Organization.MeetingForm.formKey; };
-            MeetingDialog.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingDialog.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingDialog.prototype.getNameProperty = function () { return Organization.MeetingRow.nameProperty; };
-            MeetingDialog.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingDialog.prototype.getFormKey = function () { return MeetingForm.formKey; };
+            MeetingDialog.prototype.getIdProperty = function () { return MeetingRow.idProperty; };
+            MeetingDialog.prototype.getLocalTextPrefix = function () { return MeetingRow.localTextPrefix; };
+            MeetingDialog.prototype.getNameProperty = function () { return MeetingRow.nameProperty; };
+            MeetingDialog.prototype.getService = function () { return MeetingService.baseUrl; };
             MeetingDialog.prototype.arrange = function () {
                 _super.prototype.arrange.call(this);
                 var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
@@ -1902,9 +1922,9 @@ var Enterprise;
             }
             MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
             MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
-            MeetingGrid.prototype.getIdProperty = function () { return Organization.MeetingRow.idProperty; };
-            MeetingGrid.prototype.getLocalTextPrefix = function () { return Organization.MeetingRow.localTextPrefix; };
-            MeetingGrid.prototype.getService = function () { return Organization.MeetingService.baseUrl; };
+            MeetingGrid.prototype.getIdProperty = function () { return MeetingRow.idProperty; };
+            MeetingGrid.prototype.getLocalTextPrefix = function () { return MeetingRow.localTextPrefix; };
+            MeetingGrid.prototype.getService = function () { return MeetingService.baseUrl; };
             MeetingGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], MeetingGrid);
@@ -1921,14 +1941,14 @@ var Enterprise;
             __extends(ContactDialog, _super);
             function ContactDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.ContactForm(_this.idPrefix);
+                _this.form = new ContactForm(_this.idPrefix);
                 return _this;
             }
-            ContactDialog.prototype.getFormKey = function () { return Organization.ContactForm.formKey; };
-            ContactDialog.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
-            ContactDialog.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
-            ContactDialog.prototype.getNameProperty = function () { return Organization.ContactRow.nameProperty; };
-            ContactDialog.prototype.getService = function () { return Organization.ContactService.baseUrl; };
+            ContactDialog.prototype.getFormKey = function () { return ContactForm.formKey; };
+            ContactDialog.prototype.getIdProperty = function () { return ContactRow.idProperty; };
+            ContactDialog.prototype.getLocalTextPrefix = function () { return ContactRow.localTextPrefix; };
+            ContactDialog.prototype.getNameProperty = function () { return ContactRow.nameProperty; };
+            ContactDialog.prototype.getService = function () { return ContactService.baseUrl; };
             ContactDialog = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.responsive()
@@ -1949,9 +1969,9 @@ var Enterprise;
             }
             ContactGrid.prototype.getColumnsKey = function () { return 'Organization.Contact'; };
             ContactGrid.prototype.getDialogType = function () { return Organization.ContactDialog; };
-            ContactGrid.prototype.getIdProperty = function () { return Organization.ContactRow.idProperty; };
-            ContactGrid.prototype.getLocalTextPrefix = function () { return Organization.ContactRow.localTextPrefix; };
-            ContactGrid.prototype.getService = function () { return Organization.ContactService.baseUrl; };
+            ContactGrid.prototype.getIdProperty = function () { return ContactRow.idProperty; };
+            ContactGrid.prototype.getLocalTextPrefix = function () { return ContactRow.localTextPrefix; };
+            ContactGrid.prototype.getService = function () { return ContactService.baseUrl; };
             ContactGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], ContactGrid);
@@ -9427,827 +9447,6 @@ var Enterprise;
 (function (Enterprise) {
     var Organization;
     (function (Organization) {
-        var ContactForm = /** @class */ (function (_super) {
-            __extends(ContactForm, _super);
-            function ContactForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            ContactForm.formKey = 'Organization.Contact';
-            return ContactForm;
-        }(Serenity.PrefixedContext));
-        Organization.ContactForm = ContactForm;
-        [['Title', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['IdentityNo', function () { return Serenity.StringEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(ContactForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var ContactRow;
-        (function (ContactRow) {
-            ContactRow.idProperty = 'ContactId';
-            ContactRow.nameProperty = 'FullName';
-            ContactRow.localTextPrefix = 'Organization.Contact';
-            ContactRow.lookupKey = 'Organization.Contact';
-            function getLookup() {
-                return Q.getLookup('Organization.Contact');
-            }
-            ContactRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = ContactRow.Fields || (ContactRow.Fields = {}));
-            [
-                'ContactId',
-                'Title',
-                'FirstName',
-                'LastName',
-                'FullName',
-                'Email',
-                'IdentityNo',
-                'UserId',
-                'Username',
-                'UserDisplayName',
-                'UserEmail',
-                'UserSource',
-                'UserPasswordHash',
-                'UserPasswordSalt',
-                'UserLastDirectoryUpdate',
-                'UserUserImage',
-                'UserInsertDate',
-                'UserInsertUserId',
-                'UserUpdateDate',
-                'UserUpdateUserId',
-                'UserIsActive'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(ContactRow = Organization.ContactRow || (Organization.ContactRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var ContactService;
-        (function (ContactService) {
-            ContactService.baseUrl = 'Organization/Contact';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ContactService.Methods || (ContactService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                ContactService[x] = function (r, s, o) {
-                    return Q.serviceRequest(ContactService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = ContactService.baseUrl + '/' + x;
-            });
-        })(ContactService = Organization.ContactService || (Organization.ContactService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaForm = /** @class */ (function (_super) {
-            __extends(MeetingAgendaForm, _super);
-            function MeetingAgendaForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingAgendaForm.formKey = 'Organization.MeetingAgenda';
-            return MeetingAgendaForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingAgendaForm = MeetingAgendaForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaNumber', function () { return Serenity.IntegerEditor; }], ['Title', function () { return Serenity.StringEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['AgendaTypeId', function () { return Serenity.IntegerEditor; }], ['RequestedByContactId', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.MultipleImageUploadEditor; }], ['Attachments', function () { return Serenity.MultipleImageUploadEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRelevantForm = /** @class */ (function (_super) {
-            __extends(MeetingAgendaRelevantForm, _super);
-            function MeetingAgendaRelevantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingAgendaRelevantForm.formKey = 'Organization.MeetingAgendaRelevant';
-            return MeetingAgendaRelevantForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingAgendaRelevantForm = MeetingAgendaRelevantForm;
-        [['AgendaId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRelevantRow;
-        (function (MeetingAgendaRelevantRow) {
-            MeetingAgendaRelevantRow.idProperty = 'AgendaRelevantId';
-            MeetingAgendaRelevantRow.localTextPrefix = 'Meeting.MeetingAgendaRelevant';
-            MeetingAgendaRelevantRow.lookupKey = 'Organization.AgendaRelevant';
-            function getLookup() {
-                return Q.getLookup('Organization.AgendaRelevant');
-            }
-            MeetingAgendaRelevantRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaRelevantRow.Fields || (MeetingAgendaRelevantRow.Fields = {}));
-            [
-                'AgendaRelevantId',
-                'AgendaId',
-                'ContactId',
-                'AgendaMeetingId',
-                'AgendaAgendaNumber',
-                'AgendaTitle',
-                'AgendaDescription',
-                'AgendaAgendaTypeId',
-                'AgendaRequestedByContactId',
-                'AgendaImages',
-                'AgendaAttachments',
-                'ContactTitle',
-                'ContactFirstName',
-                'ContactLastName',
-                'ContactEmail',
-                'ContactIdentityNo',
-                'ContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaRelevantRow = Organization.MeetingAgendaRelevantRow || (Organization.MeetingAgendaRelevantRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRelevantService;
-        (function (MeetingAgendaRelevantService) {
-            MeetingAgendaRelevantService.baseUrl = 'Organization/MeetingAgendaRelevant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaRelevantService.Methods || (MeetingAgendaRelevantService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingAgendaRelevantService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingAgendaRelevantService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingAgendaRelevantService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaRelevantService = Organization.MeetingAgendaRelevantService || (Organization.MeetingAgendaRelevantService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaRow;
-        (function (MeetingAgendaRow) {
-            MeetingAgendaRow.idProperty = 'AgendaId';
-            MeetingAgendaRow.nameProperty = 'Title';
-            MeetingAgendaRow.localTextPrefix = 'Meeting.MeetingAgenda';
-            MeetingAgendaRow.lookupKey = 'Organization.Agenda';
-            function getLookup() {
-                return Q.getLookup('Organization.Agenda');
-            }
-            MeetingAgendaRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaRow.Fields || (MeetingAgendaRow.Fields = {}));
-            [
-                'AgendaId',
-                'MeetingId',
-                'AgendaNumber',
-                'Title',
-                'Description',
-                'AgendaTypeId',
-                'RequestedByContactId',
-                'Images',
-                'Attachments',
-                'MeetingMeetingName',
-                'MeetingMeetingNumber',
-                'MeetingMeetingGuid',
-                'MeetingMeetingTypeId',
-                'MeetingStartDate',
-                'MeetingEndDate',
-                'MeetingLocationId',
-                'MeetingUnitId',
-                'MeetingOrganizerContactId',
-                'MeetingReporterContactId',
-                'MeetingInsertUserId',
-                'MeetingInsertDate',
-                'MeetingUpdateUserId',
-                'MeetingUpdateDate',
-                'AgendaTypeName',
-                'RequestedByContactTitle',
-                'RequestedByContactFirstName',
-                'RequestedByContactLastName',
-                'RequestedByContactFullName',
-                'RequestedByContactEmail',
-                'RequestedByContactIdentityNo',
-                'RequestedByContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaRow = Organization.MeetingAgendaRow || (Organization.MeetingAgendaRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaService;
-        (function (MeetingAgendaService) {
-            MeetingAgendaService.baseUrl = 'Organization/MeetingAgenda';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaService.Methods || (MeetingAgendaService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingAgendaService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingAgendaService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingAgendaService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaService = Organization.MeetingAgendaService || (Organization.MeetingAgendaService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaTypeForm = /** @class */ (function (_super) {
-            __extends(MeetingAgendaTypeForm, _super);
-            function MeetingAgendaTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingAgendaTypeForm.formKey = 'Organization.MeetingAgendaType';
-            return MeetingAgendaTypeForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingAgendaTypeForm = MeetingAgendaTypeForm;
-        [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAgendaTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaTypeRow;
-        (function (MeetingAgendaTypeRow) {
-            MeetingAgendaTypeRow.idProperty = 'AgendaTypeId';
-            MeetingAgendaTypeRow.nameProperty = 'Name';
-            MeetingAgendaTypeRow.localTextPrefix = 'Meeting.MeetingAgendaType';
-            MeetingAgendaTypeRow.lookupKey = 'Organization.AgendaType';
-            function getLookup() {
-                return Q.getLookup('Organization.AgendaType');
-            }
-            MeetingAgendaTypeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAgendaTypeRow.Fields || (MeetingAgendaTypeRow.Fields = {}));
-            [
-                'AgendaTypeId',
-                'Name'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAgendaTypeRow = Organization.MeetingAgendaTypeRow || (Organization.MeetingAgendaTypeRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAgendaTypeService;
-        (function (MeetingAgendaTypeService) {
-            MeetingAgendaTypeService.baseUrl = 'Organization/MeetingAgendaType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingAgendaTypeService.Methods || (MeetingAgendaTypeService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingAgendaTypeService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingAgendaTypeService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingAgendaTypeService.baseUrl + '/' + x;
-            });
-        })(MeetingAgendaTypeService = Organization.MeetingAgendaTypeService || (Organization.MeetingAgendaTypeService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendanceStatus;
-        (function (MeetingAttendanceStatus) {
-            MeetingAttendanceStatus[MeetingAttendanceStatus["NotSet"] = 0] = "NotSet";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["Attended"] = 1] = "Attended";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["Absent"] = 2] = "Absent";
-            MeetingAttendanceStatus[MeetingAttendanceStatus["AbsentWithPermission"] = 3] = "AbsentWithPermission";
-        })(MeetingAttendanceStatus = Organization.MeetingAttendanceStatus || (Organization.MeetingAttendanceStatus = {}));
-        Serenity.Decorators.registerEnum(MeetingAttendanceStatus, 'Meeting.MeetingAttendanceStatus');
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendeeForm = /** @class */ (function (_super) {
-            __extends(MeetingAttendeeForm, _super);
-            function MeetingAttendeeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingAttendeeForm.formKey = 'Organization.MeetingAttendee';
-            return MeetingAttendeeForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingAttendeeForm = MeetingAttendeeForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }], ['AttendeeType', function () { return Serenity.EnumEditor; }], ['AttendanceStatus', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingAttendeeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendeeRow;
-        (function (MeetingAttendeeRow) {
-            MeetingAttendeeRow.idProperty = 'AttendeeId';
-            MeetingAttendeeRow.localTextPrefix = 'Meeting.MeetingAttendee';
-            MeetingAttendeeRow.lookupKey = 'Organization.Attendee';
-            function getLookup() {
-                return Q.getLookup('Organization.Attendee');
-            }
-            MeetingAttendeeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingAttendeeRow.Fields || (MeetingAttendeeRow.Fields = {}));
-            [
-                'AttendeeId',
-                'MeetingId',
-                'ContactId',
-                'AttendeeType',
-                'AttendanceStatus',
-                'MeetingMeetingName',
-                'MeetingMeetingNumber',
-                'MeetingMeetingGuid',
-                'MeetingMeetingTypeId',
-                'MeetingStartDate',
-                'MeetingEndDate',
-                'MeetingLocationId',
-                'MeetingUnitId',
-                'MeetingOrganizerContactId',
-                'MeetingReporterContactId',
-                'MeetingInsertUserId',
-                'MeetingInsertDate',
-                'MeetingUpdateUserId',
-                'MeetingUpdateDate',
-                'ContactTitle',
-                'ContactFirstName',
-                'ContactLastName',
-                'ContactFullName',
-                'ContactEmail',
-                'ContactIdentityNo',
-                'ContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingAttendeeRow = Organization.MeetingAttendeeRow || (Organization.MeetingAttendeeRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingAttendeeType;
-        (function (MeetingAttendeeType) {
-            MeetingAttendeeType[MeetingAttendeeType["Attendee"] = 1] = "Attendee";
-            MeetingAttendeeType[MeetingAttendeeType["Guest"] = 2] = "Guest";
-        })(MeetingAttendeeType = Organization.MeetingAttendeeType || (Organization.MeetingAttendeeType = {}));
-        Serenity.Decorators.registerEnum(MeetingAttendeeType, 'Meeting.MeetingAttendeeType');
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionForm = /** @class */ (function (_super) {
-            __extends(MeetingDecisionForm, _super);
-            function MeetingDecisionForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingDecisionForm.formKey = 'Organization.MeetingDecision';
-            return MeetingDecisionForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingDecisionForm = MeetingDecisionForm;
-        [['MeetingId', function () { return Serenity.IntegerEditor; }], ['AgendaId', function () { return Serenity.IntegerEditor; }], ['Description', function () { return Serenity.StringEditor; }], ['DecisionNumber', function () { return Serenity.IntegerEditor; }], ['ResponsibleContactId', function () { return Serenity.IntegerEditor; }], ['DueDate', function () { return Serenity.DateEditor; }], ['ResolutionStatus', function () { return Serenity.IntegerEditor; }], ['Images', function () { return Serenity.StringEditor; }], ['Attachments', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRelevantForm = /** @class */ (function (_super) {
-            __extends(MeetingDecisionRelevantForm, _super);
-            function MeetingDecisionRelevantForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingDecisionRelevantForm.formKey = 'Organization.MeetingDecisionRelevant';
-            return MeetingDecisionRelevantForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingDecisionRelevantForm = MeetingDecisionRelevantForm;
-        [['DecisionId', function () { return Serenity.IntegerEditor; }], ['ContactId', function () { return Serenity.IntegerEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingDecisionRelevantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRelevantRow;
-        (function (MeetingDecisionRelevantRow) {
-            MeetingDecisionRelevantRow.idProperty = 'DecisionRelevantId';
-            MeetingDecisionRelevantRow.localTextPrefix = 'Meeting.MeetingDecisionRelevant';
-            MeetingDecisionRelevantRow.lookupKey = 'Organization.DecisionRelevant';
-            function getLookup() {
-                return Q.getLookup('Organization.DecisionRelevant');
-            }
-            MeetingDecisionRelevantRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingDecisionRelevantRow.Fields || (MeetingDecisionRelevantRow.Fields = {}));
-            [
-                'DecisionRelevantId',
-                'DecisionId',
-                'ContactId',
-                'DecisionMeetingId',
-                'DecisionAgendaId',
-                'DecisionDescription',
-                'DecisionDecisionNumber',
-                'DecisionResponsibleContactId',
-                'DecisionDueDate',
-                'DecisionResolutionStatus',
-                'DecisionImages',
-                'DecisionAttachments',
-                'ContactTitle',
-                'ContactFirstName',
-                'ContactLastName',
-                'ContactEmail',
-                'ContactIdentityNo',
-                'ContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingDecisionRelevantRow = Organization.MeetingDecisionRelevantRow || (Organization.MeetingDecisionRelevantRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRelevantService;
-        (function (MeetingDecisionRelevantService) {
-            MeetingDecisionRelevantService.baseUrl = 'Organization/MeetingDecisionRelevant';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingDecisionRelevantService.Methods || (MeetingDecisionRelevantService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingDecisionRelevantService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingDecisionRelevantService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingDecisionRelevantService.baseUrl + '/' + x;
-            });
-        })(MeetingDecisionRelevantService = Organization.MeetingDecisionRelevantService || (Organization.MeetingDecisionRelevantService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionRow;
-        (function (MeetingDecisionRow) {
-            MeetingDecisionRow.idProperty = 'DecisionId';
-            MeetingDecisionRow.nameProperty = 'Description';
-            MeetingDecisionRow.localTextPrefix = 'Meeting.MeetingDecision';
-            MeetingDecisionRow.lookupKey = 'Organization.Decision';
-            function getLookup() {
-                return Q.getLookup('Organization.Decision');
-            }
-            MeetingDecisionRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingDecisionRow.Fields || (MeetingDecisionRow.Fields = {}));
-            [
-                'DecisionId',
-                'MeetingId',
-                'AgendaId',
-                'Description',
-                'DecisionNumber',
-                'ResponsibleContactId',
-                'DueDate',
-                'ResolutionStatus',
-                'Images',
-                'Attachments',
-                'MeetingMeetingName',
-                'MeetingMeetingNumber',
-                'MeetingMeetingGuid',
-                'MeetingMeetingTypeId',
-                'MeetingStartDate',
-                'MeetingEndDate',
-                'MeetingLocationId',
-                'MeetingUnitId',
-                'MeetingOrganizerContactId',
-                'MeetingReporterContactId',
-                'MeetingInsertUserId',
-                'MeetingInsertDate',
-                'MeetingUpdateUserId',
-                'MeetingUpdateDate',
-                'AgendaMeetingId',
-                'AgendaNumber',
-                'AgendaTitle',
-                'AgendaDescription',
-                'AgendaAgendaTypeId',
-                'AgendaRequestedByContactId',
-                'AgendaImages',
-                'AgendaAttachments',
-                'DecisionNumberName',
-                'ResponsibleContactTitle',
-                'ResponsibleContactFirstName',
-                'ResponsibleContactLastName',
-                'ResponsibleContactFullName',
-                'ResponsibleContactEmail',
-                'ResponsibleContactIdentityNo',
-                'ResponsibleContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingDecisionRow = Organization.MeetingDecisionRow || (Organization.MeetingDecisionRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDecisionService;
-        (function (MeetingDecisionService) {
-            MeetingDecisionService.baseUrl = 'Organization/MeetingDecision';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingDecisionService.Methods || (MeetingDecisionService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingDecisionService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingDecisionService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingDecisionService.baseUrl + '/' + x;
-            });
-        })(MeetingDecisionService = Organization.MeetingDecisionService || (Organization.MeetingDecisionService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingForm = /** @class */ (function (_super) {
-            __extends(MeetingForm, _super);
-            function MeetingForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingForm.formKey = 'Organization.Meeting';
-            return MeetingForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingForm = MeetingForm;
-        [['MeetingName', function () { return Serenity.StringEditor; }], ['MeetingTypeId', function () { return Serenity.IntegerEditor; }], ['MeetingNumber', function () { return Serenity.StringEditor; }], ['StartDate', function () { return Serenity.DateEditor; }], ['EndDate', function () { return Serenity.DateEditor; }], ['LocationId', function () { return Serenity.IntegerEditor; }], ['UnitId', function () { return Serenity.IntegerEditor; }], ['OrganizerContactId', function () { return Serenity.IntegerEditor; }], ['ReporterContactId', function () { return Serenity.IntegerEditor; }], ['AttendeeList', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingLocationForm = /** @class */ (function (_super) {
-            __extends(MeetingLocationForm, _super);
-            function MeetingLocationForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingLocationForm.formKey = 'Organization.MeetingLocation';
-            return MeetingLocationForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingLocationForm = MeetingLocationForm;
-        [['Name', function () { return Serenity.StringEditor; }], ['Address', function () { return Serenity.StringEditor; }], ['Latitude', function () { return Serenity.DecimalEditor; }], ['Longitude', function () { return Serenity.DecimalEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingLocationForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingLocationRow;
-        (function (MeetingLocationRow) {
-            MeetingLocationRow.idProperty = 'LocationId';
-            MeetingLocationRow.nameProperty = 'Name';
-            MeetingLocationRow.localTextPrefix = 'Meeting.MeetingLocation';
-            MeetingLocationRow.lookupKey = 'Organization.MeetingLocation';
-            function getLookup() {
-                return Q.getLookup('Organization.MeetingLocation');
-            }
-            MeetingLocationRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingLocationRow.Fields || (MeetingLocationRow.Fields = {}));
-            [
-                'LocationId',
-                'Name',
-                'Address',
-                'Latitude',
-                'Longitude'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingLocationRow = Organization.MeetingLocationRow || (Organization.MeetingLocationRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingLocationService;
-        (function (MeetingLocationService) {
-            MeetingLocationService.baseUrl = 'Organization/MeetingLocation';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingLocationService.Methods || (MeetingLocationService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingLocationService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingLocationService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingLocationService.baseUrl + '/' + x;
-            });
-        })(MeetingLocationService = Organization.MeetingLocationService || (Organization.MeetingLocationService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingRow;
-        (function (MeetingRow) {
-            MeetingRow.idProperty = 'MeetingId';
-            MeetingRow.nameProperty = 'MeetingName';
-            MeetingRow.localTextPrefix = 'Organization.Meeting';
-            MeetingRow.lookupKey = 'Organization.Meeting';
-            function getLookup() {
-                return Q.getLookup('Organization.Meeting');
-            }
-            MeetingRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingRow.Fields || (MeetingRow.Fields = {}));
-            [
-                'MeetingId',
-                'MeetingName',
-                'MeetingNumber',
-                'MeetingGuid',
-                'MeetingTypeId',
-                'StartDate',
-                'EndDate',
-                'LocationId',
-                'OrganizerContactId',
-                'ReporterContactId',
-                'InsertUserId',
-                'InsertDate',
-                'UpdateUserId',
-                'UpdateDate',
-                'MeetingTypeName',
-                'LocationName',
-                'LocationAddress',
-                'LocationLatitude',
-                'LocationLongitude',
-                'OrganizerContactTitle',
-                'OrganizerContactFirstName',
-                'OrganizerContactLastName',
-                'OrganizerContactEmail',
-                'OrganizerContactIdentityNo',
-                'OrganizerContactUserId',
-                'ReporterContactTitle',
-                'ReporterContactFirstName',
-                'ReporterContactLastName',
-                'ReporterContactEmail',
-                'ReporterContactIdentityNo',
-                'ReporterContactUserId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingRow = Organization.MeetingRow || (Organization.MeetingRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingService;
-        (function (MeetingService) {
-            MeetingService.baseUrl = 'Meeting/Meeting';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingService.Methods || (MeetingService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingService.baseUrl + '/' + x;
-            });
-        })(MeetingService = Organization.MeetingService || (Organization.MeetingService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingTypeForm = /** @class */ (function (_super) {
-            __extends(MeetingTypeForm, _super);
-            function MeetingTypeForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            MeetingTypeForm.formKey = 'Organization.MeetingType';
-            return MeetingTypeForm;
-        }(Serenity.PrefixedContext));
-        Organization.MeetingTypeForm = MeetingTypeForm;
-        [['Name', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(MeetingTypeForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingTypeRow;
-        (function (MeetingTypeRow) {
-            MeetingTypeRow.idProperty = 'MeetingTypeId';
-            MeetingTypeRow.nameProperty = 'Name';
-            MeetingTypeRow.localTextPrefix = 'Meeting.MeetingType';
-            MeetingTypeRow.lookupKey = 'Organization.MeetingType';
-            function getLookup() {
-                return Q.getLookup('Organization.MeetingType');
-            }
-            MeetingTypeRow.getLookup = getLookup;
-            var Fields;
-            (function (Fields) {
-            })(Fields = MeetingTypeRow.Fields || (MeetingTypeRow.Fields = {}));
-            [
-                'MeetingTypeId',
-                'Name'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(MeetingTypeRow = Organization.MeetingTypeRow || (Organization.MeetingTypeRow = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingTypeService;
-        (function (MeetingTypeService) {
-            MeetingTypeService.baseUrl = 'Organization/MeetingType';
-            var Methods;
-            (function (Methods) {
-            })(Methods = MeetingTypeService.Methods || (MeetingTypeService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                MeetingTypeService[x] = function (r, s, o) {
-                    return Q.serviceRequest(MeetingTypeService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = MeetingTypeService.baseUrl + '/' + x;
-            });
-        })(MeetingTypeService = Organization.MeetingTypeService || (Organization.MeetingTypeService = {}));
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
         var PersonnelForm = /** @class */ (function (_super) {
             __extends(PersonnelForm, _super);
             function PersonnelForm() {
@@ -10257,7 +9456,7 @@ var Enterprise;
             return PersonnelForm;
         }(Serenity.PrefixedContext));
         Organization.PersonnelForm = PersonnelForm;
-        [['IdentificationNo', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['Gender', function () { return Serenity.StringEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['IdentificationNo', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['ContactNumber', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['Gender', function () { return Serenity.StringEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -10284,6 +9483,7 @@ var Enterprise;
                 'MiddleName',
                 'LastName',
                 'Email',
+                'ContactNumber',
                 'PersonnelStatus',
                 'Gender',
                 'DateStarted',
@@ -10291,7 +9491,7 @@ var Enterprise;
                 'DateOfBirth',
                 'UserId',
                 'PersonnelStatusSequence',
-                'PersonnelStatusPersonnelStatusName',
+                'PersonnelStatusName',
                 'UserUsername',
                 'UserEmail',
                 'UserSource',
