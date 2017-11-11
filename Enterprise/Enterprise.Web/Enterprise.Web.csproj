@@ -1861,7 +1861,6 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <Content Include="wwwroot\Content\site\site.organization.less" />
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordRow.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>

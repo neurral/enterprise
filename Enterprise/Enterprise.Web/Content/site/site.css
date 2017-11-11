@@ -8193,6 +8193,30 @@ body.mobile-device c {
 .s-Organization-PersonnelStatusDialog .caption {
   width: 150px;
 }
+.s-Organization-CalendarHolidayDialog > .size {
+  width: 650px;
+}
+.s-Organization-CalendarHolidayDialog .caption {
+  width: 150px;
+}
+.s-Organization-TimeRecordDialog > .size {
+  width: 650px;
+}
+.s-Organization-TimeRecordDialog .caption {
+  width: 150px;
+}
+.s-Organization-TimeRecordApprovalDialog > .size {
+  width: 650px;
+}
+.s-Organization-TimeRecordApprovalDialog .caption {
+  width: 150px;
+}
+.s-Organization-TimeRecordTypeDialog > .size {
+  width: 650px;
+}
+.s-Organization-TimeRecordTypeDialog .caption {
+  width: 150px;
+}
 html {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 1.1em;
