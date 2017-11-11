@@ -6713,6 +6713,7 @@ table.text-center th {
 }
 body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
   color: #000;
   -ms-overflow-style: scrollbar;
 }
@@ -8221,7 +8222,7 @@ body.mobile-device c {
 }
 html {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 1.25em;
+  font-size: 0.95em;
   font-kerning: normal;
   line-height: 1em;
 }
@@ -8277,7 +8278,7 @@ a {
 }
 .main-header .navbar,
 .user-menu.open .dropdown-menu {
-  box-shadow: 0px 7px 5px #aaa;
+  box-shadow: 0px 3px 10px #444;
   transition: box-shadow linear 0.1s;
 }
 a.navbar-brand {
@@ -8331,6 +8332,16 @@ header.main-header .navbar-custom-menu {
   line-height: 1em;
   vertical-align: middle;
 }
+header.main-header .main-header .sidebar-toggle {
+  padding: 0px;
+  vertical-align: middle;
+}
+header.main-header #navigation .navbar-brand b {
+  display: inline;
+}
+header.main-header #navigation span#mobile-title {
+  display: none;
+}
 header.main-header .user-image {
   border: solid 1px #444;
   margin: -4px 10px 0 0;
@@ -8376,6 +8387,12 @@ header.main-header #profile-link {
   line-height: 1em;
   padding-top: 10px;
   padding-bottom: 0px;
+}
+.mobile-device header.main-header #navigation .navbar-brand b {
+  display: none;
+}
+.mobile-device header.main-header #navigation span#mobile-title {
+  display: inline;
 }
 .sidebar-collapse:not(.sidebar-open):not(.mobile-device) .sidebar-top .navbar-brand span {
   visibility: hidden;
@@ -8442,7 +8459,7 @@ body.sidebar-collapse .main-sidebar {
   position: fixed;
   /* keeps it on the bottom once in view */
   bottom: 16px;
-  right: 8px;
+  left: 8px;
   z-index: 999;
 }
 section.content,

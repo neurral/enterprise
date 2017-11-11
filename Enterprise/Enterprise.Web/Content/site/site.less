@@ -12,7 +12,7 @@
 
 html {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    font-size: 1.25em;
+    font-size: 0.95em;
     font-kerning: normal;
     line-height: 1em;
 }
@@ -64,7 +64,7 @@ a {
 
 .main-header .navbar,
 .user-menu.open .dropdown-menu {
-    box-shadow: 0px 7px 5px #aaa;
+    box-shadow: 0px 3px 10px #444;
     transition: box-shadow linear 0.1s;
 }
 
@@ -113,7 +113,6 @@ a.navbar-brand {
     table-layout: fixed;
 }*/
 
-
 header.main-header {
     .navbar-header {
         width: auto;
@@ -126,6 +125,21 @@ header.main-header {
         height: @navbar-height;
         line-height: 1em;
         vertical-align: middle;
+    }
+
+    .main-header .sidebar-toggle {
+        padding: 0px;
+        vertical-align: middle;
+    }
+
+    #navigation {
+        .navbar-brand b {
+            display: inline;
+        }
+
+        span#mobile-title {
+            display: none;
+        }
     }
 
     .user-image {
@@ -143,8 +157,6 @@ header.main-header {
         color: rgb(102, 102, 102);
     }
 }
-
-
 
 /* Make the header bar 40px only in mobile*/
 .mobile-device {
@@ -170,9 +182,17 @@ header.main-header {
         .nav.navbar-nav:before {
             display: inline-block;
         }*/
+        #navigation {
+            .navbar-brand b {
+                display: none;
+            }
+
+            span#mobile-title {
+                display: inline;
+            }
+        }
     }
 }
-
 
 //hide Neurral brand if sidebar collapsed
 .sidebar-collapse:not(.sidebar-open):not(.mobile-device) .sidebar-top .navbar-brand span {
@@ -210,9 +230,6 @@ body {
         }
     }
 }
-
-
-
 
 .sidebar-top {
     height: @navbar-height;
@@ -255,7 +272,7 @@ body {
 #top-link-block.affix {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 16px;
-    right: 8px;
+    left: 8px;
     z-index: 999;
 }
 
@@ -264,7 +281,6 @@ div.content {
     padding: 0px;
     margin: 0px;
 }
-
 
 .content-wrapper {
     padding-top: 48px;
@@ -276,8 +292,6 @@ div.content {
         padding-bottom: 12px;
     }
 }
-
-
 
 //toolbars
 .s-Toolbar {
@@ -294,7 +308,6 @@ div.content {
     z-index: 9999;
 }
 
-
 .s-TemplateGrid {
     //Header Row height
     .slick-header-columns,
@@ -306,7 +319,6 @@ div.content {
     .slick-header-column.ui-state-default {
         height: 32px;
     }
-    
     // ROW height  - the styles below need to have a matching rowHeight:50 option in the slickgrid constructor
     .slick-row {
         height: 48px !important;
@@ -321,6 +333,7 @@ div.content {
 
     .slick-cell {
         height: 48px !important;
+
         > a.grid-action {
             color: #fff;
             margin-right: 8px;

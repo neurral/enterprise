@@ -10,7 +10,7 @@
     var hideNav = Request["hideNav"] == "1";
     var logged = Serenity.Authorization.Username;
     var themeCookie = Request.Cookies["ThemePreference"];
-    var theme = "skin-" +  (themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : color_dark);
+    var theme = "skin-" + (themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : color_dark);
     var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
 
     //AdminLTE alternate layouts
@@ -41,35 +41,33 @@
                 @RenderSection("PageInitScript", false)
             });
         </script>
-            <div id="page-outer-nonav">
-                <div id="page-container" class="page-container-common">
-                    @RenderBody()
-                </div>
+        <div id="page-outer-nonav">
+            <div id="page-container" class="page-container-common">
+                @RenderBody()
             </div>
+        </div>
     }
     else
     {
         <div class="wrapper">
             <header class="main-header" data-spy="affix">
-                <nav class="navbar navbar-static-top" id="#navigation">
+                <nav class="navbar navbar-static-top" id="navigation">
                     <a class="sidebar-toggle" href="#" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle Navigation</span>
                         <i class="sidebar-toggle-bars fa fa-bars"></i>
                         <i class="sidebar-toggle-arrow fa fa-arrow-circle-left"></i>
                     </a>
 
-                    @*<div class="navbar-header">*@
-                        <a href="/" class="navbar-brand">
-                            <b>@LocalText.Get("Navigation.SiteTitle")</b>
-                        </a>
-                        @Html.Partial("_LoginPartial")
-                    @*</div>*@
-                    
+                    <a href="/" class="navbar-brand">
+                        <b>@LocalText.Get("Navigation.SiteTitle")</b>
+                        <span id="mobile-title">@(ViewData["Title"])</span>
+                    </a>
+                    @Html.Partial("_LoginPartial")
                 </nav>
             </header>
 
             <aside class="main-sidebar">
-                <nav class="navbar-static-top sidebar-top">                    
+                <nav class="navbar-static-top sidebar-top">
                     <a href="/" class="navbar-brand">
                         <div class="site-logo-mini"></div>
                         <span>@LocalText.Get("Navigation.OrgTitle")</span>
@@ -88,7 +86,7 @@
                         @{Html.RenderPartial(MVC.Views.Shared.LeftNavigation, new Enterprise.Navigation.NavigationModel()); }
                     </ul>
                 </section>
-               
+
             </aside>
 
             <div class="content-wrapper">
@@ -132,46 +130,46 @@
             <div class="control-sidebar-bg"></div>
         </div>
 
-            <script type="text/javascript">
-                $().ready(function () {
-                    new Enterprise.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
-                    new Enterprise.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
-                    new Enterprise.Common.ThemeSelection($('#ThemeSelect'));
-                    @RenderSection("PageInitScript", false);
+        <script type="text/javascript">
+            $().ready(function () {
+                new Enterprise.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
+                new Enterprise.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
+                new Enterprise.Common.ThemeSelection($('#ThemeSelect'));
+                @RenderSection("PageInitScript", false);
 
-                    var doLayout = function () {
-                        height = (this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height;
-                        height -= $('header.main-header').outerHeight() || 0;
-                        height -= $('section.content-header').outerHeight() || 0;
-                        height -= $('footer.main-footer').outerHeight() || 0;
-                        if (height < 200) height = 200;
-                        $("section.content").css("min-height", (height) + "px");
+                var doLayout = function () {
+                    height = (this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height;
+                    height -= $('header.main-header').outerHeight() || 0;
+                    height -= $('section.content-header').outerHeight() || 0;
+                    height -= $('footer.main-footer').outerHeight() || 0;
+                    if (height < 200) height = 200;
+                    $("section.content").css("min-height", (height) + "px");
 
-                        $('body').triggerHandler('layout');
+                    $('body').triggerHandler('layout');
 
-                        var $hamburger = $(".hamburger");
-                        $hamburger.on("click", function (e) {
-                            $hamburger.toggleClass("is-active");
-                            // Do something else, like open/close menu
-                        });
-                    };
+                    var $hamburger = $(".hamburger");
+                    $hamburger.on("click", function (e) {
+                        $hamburger.toggleClass("is-active");
+                        // Do something else, like open/close menu
+                    });
+                };
 
-                    $(window).bind("load resize layout", doLayout);
-                    doLayout();
+                $(window).bind("load resize layout", doLayout);
+                doLayout();
 
-                    // Only enable scrol to top if the document has a long scroll bar
-                    // see window height + offset
-                    if (($(window).height() + 100) < $(document).height()) {
-                        $('#top-link-block').removeClass('hidden').affix({
-                            // how far to scroll down before link "slides" into view
-                            offset: { top: 100 }
-                        });
-                    }
-                });
-            </script>
-       }
+                // Only enable scrol to top if the document has a long scroll bar
+                // see window height + offset
+                if (($(window).height() + 100) < $(document).height()) {
+                    $('#top-link-block').removeClass('hidden').affix({
+                        // how far to scroll down before link "slides" into view
+                        offset: { top: 100 }
+                    });
+                }
+            });
+        </script>
+                            }
     <span id="top-link-block" class="hidden">
-        <a href="#top" class="well well-sm bg-black-active" 
+        <a href="#top" class="well well-sm bg-black-active"
            onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
             <i class="glyphicon glyphicon-chevron-up"></i> Top
         </a>
