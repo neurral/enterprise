@@ -53,7 +53,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.LastName[this] = value; }
         }
 
-        [DisplayName("Email"), Size(100), NotNull]
+        [DisplayName("Email"), Size(100)]
         public String Email
         {
             get { return Fields.Email[this]; }
@@ -139,6 +139,7 @@ namespace Enterprise.Organization.Entities
         }
         
         [DisplayName("User Email"), Expression("jUser.[Email]")]
+        [MinSelectLevel(SelectLevel.Always)]
         public String UserEmail
         {
             get { return Fields.UserEmail[this]; }

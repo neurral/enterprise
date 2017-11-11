@@ -5,20 +5,20 @@
     }
 
     export interface PersonnelForm {
-        IdentificationNo: Serenity.StringEditor;
         FirstName: Serenity.StringEditor;
-        MiddleName: Serenity.StringEditor;
         LastName: Serenity.StringEditor;
+        MiddleName: Serenity.StringEditor;
+        Gender: Serenity.StringEditor;
+        DateOfBirth: Serenity.DateEditor;
         Email: Serenity.StringEditor;
         ContactNumber: Serenity.StringEditor;
+        IdentificationNo: Serenity.StringEditor;
         PersonnelStatus: Serenity.LookupEditor;
-        Gender: Serenity.StringEditor;
+        UserId: Serenity.LookupEditor;
         DateStarted: Serenity.DateEditor;
         DateExited: Serenity.DateEditor;
-        DateOfBirth: Serenity.DateEditor;
-        UserId: Serenity.LookupEditor;
     }
 
-    [['IdentificationNo', () => Serenity.StringEditor], ['FirstName', () => Serenity.StringEditor], ['MiddleName', () => Serenity.StringEditor], ['LastName', () => Serenity.StringEditor], ['Email', () => Serenity.StringEditor], ['ContactNumber', () => Serenity.StringEditor], ['PersonnelStatus', () => Serenity.LookupEditor], ['Gender', () => Serenity.StringEditor], ['DateStarted', () => Serenity.DateEditor], ['DateExited', () => Serenity.DateEditor], ['DateOfBirth', () => Serenity.DateEditor], ['UserId', () => Serenity.LookupEditor]].forEach(x => Object.defineProperty(PersonnelForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+    [['FirstName', () => Serenity.StringEditor], ['LastName', () => Serenity.StringEditor], ['MiddleName', () => Serenity.StringEditor], ['Gender', () => Serenity.StringEditor], ['DateOfBirth', () => Serenity.DateEditor], ['Email', () => Serenity.StringEditor], ['ContactNumber', () => Serenity.StringEditor], ['IdentificationNo', () => Serenity.StringEditor], ['PersonnelStatus', () => Serenity.LookupEditor], ['UserId', () => Serenity.LookupEditor], ['DateStarted', () => Serenity.DateEditor], ['DateExited', () => Serenity.DateEditor]].forEach(x => Object.defineProperty(PersonnelForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
 }
 

@@ -37,7 +37,20 @@ namespace Enterprise.Organization.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow> {
+
+            protected override void BeforeSave()
+            {
+                if (IsCreate)
+                {
+                    if (Row.Email.TrimToNull() == null)
+                    {
+                        Row.Email = Row.UserEmail;
+                    }
+                }
+                base.BeforeSave();
+            }
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }
