@@ -184,6 +184,7 @@
   </ItemGroup>
   <Import Project="..\..\Serenity\tools\Submodule\Serenity.Submodule.Web.targets" Condition=" Exists('..\..\Serenity\Serenity.Core\Serenity.Core.Net45.csproj') " />
   <ItemGroup>
+    <Content Include="Content\adminlte\img\noavatar.png" />
     <Content Include="Content\aristo\aristo.css" />
     <Content Include="Content\aristo\images\icon_sprite.png" />
     <Content Include="Content\aristo\images\progress_bar.gif" />
@@ -867,6 +868,8 @@
     <None Include="Properties\PublishProfiles\cutin - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cutin - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.min.js.map" />
+    <None Include="Properties\PublishProfiles\neurral-cutin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\neurral-cutin - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

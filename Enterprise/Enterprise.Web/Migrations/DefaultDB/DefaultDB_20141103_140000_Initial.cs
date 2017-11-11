@@ -26,8 +26,8 @@ namespace Enterprise.Migrations.DefaultDB
 
             Insert.IntoTable("User").Row(new {
                 Username = "admin",
-                DisplayName = "admin",
-                Email = "admin@dummy.com",
+                //DisplayName = "admin",
+                Email = "neurralsystems@gmail.com",
                 Source = "site",
                 PasswordHash = "rfqpSPYs0ekFlPyvIRTXsdhE/qrTHFF+kKsAUla7pFkXL4BgLGlTe89GDX5DBysenMDj8AqbIZPybqvusyCjwQ",
                 PasswordSalt = "hJf_F",
