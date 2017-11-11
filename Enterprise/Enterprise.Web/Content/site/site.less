@@ -12,7 +12,7 @@
 
 html {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
+    font-size: 1.25em;
     font-kerning: normal;
     line-height: 1em;
 }
@@ -64,7 +64,7 @@ a {
 
 .main-header .navbar,
 .user-menu.open .dropdown-menu {
-    box-shadow: 0px 7px 10px #aaa;
+    box-shadow: 0px 7px 5px #aaa;
     transition: box-shadow linear 0.1s;
 }
 
@@ -296,6 +296,17 @@ div.content {
 
 
 .s-TemplateGrid {
+    //Header Row height
+    .slick-header-columns,
+    .slick-headerrow-columns {
+        white-space: normal;
+    }
+
+    .slick-header-column,
+    .slick-header-column.ui-state-default {
+        height: 32px;
+    }
+    
     // ROW height  - the styles below need to have a matching rowHeight:50 option in the slickgrid constructor
     .slick-row {
         height: 48px !important;
@@ -305,14 +316,11 @@ div.content {
         > * {
             height: 44px !important;
             line-height: 44px !important;
-            //border:1px dotted red;
         }
     }
 
     .slick-cell {
-        //border-bottom: 0px !important;
         height: 48px !important;
-
         > a.grid-action {
             color: #fff;
             margin-right: 8px;

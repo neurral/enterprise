@@ -6713,7 +6713,6 @@ table.text-center th {
 }
 body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 13px;
   color: #000;
   -ms-overflow-style: scrollbar;
 }
@@ -6721,7 +6720,10 @@ body {
   z-index: 1100;
 }
 .slick-cell > a {
-  color: #0000be;
+  color: #0077aa;
+}
+.slick-cell > a:hover {
+  border-bottom: 1px dotted #0077aa;
 }
 .main-sidebar a:hover,
 .main-header a:hover,
@@ -8219,7 +8221,7 @@ body.mobile-device c {
 }
 html {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 1.1em;
+  font-size: 1.25em;
   font-kerning: normal;
   line-height: 1em;
 }
@@ -8273,9 +8275,9 @@ a {
   top: 0px;
   width: 100%;
 }
-.main-header .navbar:hover,
+.main-header .navbar,
 .user-menu.open .dropdown-menu {
-  box-shadow: 0px 7px 10px #aaa;
+  box-shadow: 0px 7px 5px #aaa;
   transition: box-shadow linear 0.1s;
 }
 a.navbar-brand {
@@ -8465,6 +8467,14 @@ div.content {
 .tooltip {
   position: fixed;
   z-index: 9999;
+}
+.s-TemplateGrid .slick-header-columns,
+.s-TemplateGrid .slick-headerrow-columns {
+  white-space: normal;
+}
+.s-TemplateGrid .slick-header-column,
+.s-TemplateGrid .slick-header-column.ui-state-default {
+  height: 32px;
 }
 .s-TemplateGrid .slick-row {
   height: 48px !important;
