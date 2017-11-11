@@ -41,6 +41,9 @@ namespace Enterprise {
         static isMobile(): boolean {
             return $('body').hasClass("mobile-device");
         }
+        static getUser() {
+            return Authorization.userDefinition;
+        }
     }
 
 }
