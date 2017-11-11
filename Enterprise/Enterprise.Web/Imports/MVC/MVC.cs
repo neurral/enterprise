@@ -424,16 +424,6 @@ namespace MVC
                 public const string CalendarHolidayIndex = "~/Modules/Organization/CalendarHoliday/CalendarHolidayIndex.cshtml";
             }
 
-            public static class Contact
-            {
-                public const string ContactIndex = "~/Modules/Organization/Contact/ContactIndex.cshtml";
-            }
-
-            public static class Meeting
-            {
-                public const string MeetingIndex = "~/Modules/Organization/Meeting/MeetingIndex.cshtml";
-            }
-
             public static class Personnel
             {
                 public const string PersonnelIndex = "~/Modules/Organization/Personnel/PersonnelIndex.cshtml";
