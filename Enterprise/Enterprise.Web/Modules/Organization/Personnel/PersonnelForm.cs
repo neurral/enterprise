@@ -13,17 +13,26 @@ namespace Enterprise.Organization.Forms
     [BasedOnRow(typeof(Entities.PersonnelRow))]
     public class PersonnelForm
     {
-        public String IdentificationNo { get; set; }
+        [Category("Personal Info")]
+
         public String FirstName { get; set; }
-        public String MiddleName { get; set; }
         public String LastName { get; set; }
+        public String MiddleName { get; set; }
+        
+        public String Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
+        [Category("Contact Info")]
         public String Email { get; set; }
         public String ContactNumber { get; set; }
+
+        [Category("Employment Info")]
+        public String IdentificationNo { get; set; }
         public Int32 PersonnelStatus { get; set; }
-        public String Gender { get; set; }
+        public Int32 UserId { get; set; }
+        [ReadOnly(true)]
         public DateTime DateStarted { get; set; }
         public DateTime DateExited { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public Int32 UserId { get; set; }
+
     }
 }
