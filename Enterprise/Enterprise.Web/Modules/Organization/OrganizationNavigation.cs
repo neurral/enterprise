@@ -9,12 +9,13 @@ using Organization = Enterprise.Organization.Pages;
 //[assembly: NavigationLink(8000, "Organization/Meetings", typeof(Organization.MeetingController))]
 
 
-//[assembly: NavigationMenu(8000, "Organization/Libraries", icon: "fa-list")]
+[assembly: NavigationMenu(8000, "Organization/Libraries", icon: "fa-list")]
 //[assembly: NavigationLink(8000, "Libraries/Personnel Status", typeof(MyPages.PersonnelStatusController), icon: null)]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Agenda Types", typeof(Organization.MeetingAgendaTypeController))]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Locations", typeof(Organization.MeetingLocationController))]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Types", typeof(Organization.MeetingTypeController))]
-[assembly: NavigationLink(int.MaxValue, "Organization/Calendar Holiday", typeof(MyPages.CalendarHolidayController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Organization/Time Record", typeof(MyPages.TimeRecordController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Organization/Time Record Approval", typeof(MyPages.TimeRecordApprovalController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Organization/Time Record Type", typeof(MyPages.TimeRecordTypeController), icon: null)]
+[assembly: NavigationLink(8000, "Organization/Libraries/Calendar Holiday", typeof(MyPages.CalendarHolidayController), icon: null)]
+[assembly: NavigationLink(8000, "Organization/Libraries/Time Record Type", typeof(MyPages.TimeRecordTypeController), icon: null)]
+
+[assembly: NavigationLink(8000, "TimeKeeping/Time Record", typeof(MyPages.TimeRecordController), icon: null)]
+[assembly: NavigationLink(8000, "TimeKeeping/Time Record Approval", typeof(MyPages.TimeRecordApprovalController), icon: null)]
