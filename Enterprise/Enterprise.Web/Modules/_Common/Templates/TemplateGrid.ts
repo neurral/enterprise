@@ -10,7 +10,9 @@ namespace Enterprise {
 
         protected getSlickOptions() {
             let opt = super.getSlickOptions();
-            opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            if (Utils.isMobile()) {
+                opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            }
             opt.frozenColumn = 0;
             return opt;
         }

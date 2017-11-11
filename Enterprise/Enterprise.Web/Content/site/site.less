@@ -319,24 +319,36 @@ div.content {
     .slick-header-column.ui-state-default {
         height: 32px;
     }
-    // ROW height  - the styles below need to have a matching rowHeight:50 option in the slickgrid constructor
-    .slick-row {
-        height: 48px !important;
-        line-height: 48px !important;
-
-
-        > * {
-            height: 44px !important;
-            line-height: 44px !important;
-        }
-    }
 
     .slick-cell {
-        height: 48px !important;
-
+        vertical-align: middle;
         > a.grid-action {
             color: #fff;
-            margin-right: 8px;
+            margin-right: 4px;
+            margin-bottom:4px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    }
+}
+
+
+.mobile-device {
+    .s-TemplateGrid {
+        // ROW height  - the styles below need to have a matching rowHeight:50 option in the slickgrid constructor
+        .slick-row {
+            height: 48px !important;
+            line-height: 48px !important;
+
+
+            > * {
+                height: 44px !important;
+                line-height: 44px !important;
+            }
+        }
+
+        .slick-cell {
+            height: 48px !important;
         }
     }
 }

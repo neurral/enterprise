@@ -8493,18 +8493,24 @@ div.content {
 .s-TemplateGrid .slick-header-column.ui-state-default {
   height: 32px;
 }
-.s-TemplateGrid .slick-row {
-  height: 48px !important;
-  line-height: 48px !important;
-}
-.s-TemplateGrid .slick-row > * {
-  height: 44px !important;
-  line-height: 44px !important;
-}
 .s-TemplateGrid .slick-cell {
-  height: 48px !important;
+  vertical-align: middle;
 }
 .s-TemplateGrid .slick-cell > a.grid-action {
   color: #fff;
-  margin-right: 8px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.mobile-device .s-TemplateGrid .slick-row {
+  height: 48px !important;
+  line-height: 48px !important;
+}
+.mobile-device .s-TemplateGrid .slick-row > * {
+  height: 44px !important;
+  line-height: 44px !important;
+}
+.mobile-device .s-TemplateGrid .slick-cell {
+  height: 48px !important;
 }
