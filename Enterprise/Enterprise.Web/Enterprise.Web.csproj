@@ -1900,6 +1900,13 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationRow.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <Content Include="Modules\Organization\Organization\OrganizationIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\Organization\OrganizationDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\Organization\OrganizationGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <Content Include="wwwroot\Content\site\site.organization.less" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2283,6 +2290,12 @@
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypePage.cs" />
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeColumns.cs" />
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeForm.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationRow.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationRepository.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationEndpoint.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationPage.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationColumns.cs" />
+    <Compile Include="Modules\Organization\Organization\OrganizationForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
