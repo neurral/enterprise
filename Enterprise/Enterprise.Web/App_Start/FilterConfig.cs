@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 
 namespace Enterprise
 {
@@ -9,6 +10,10 @@ namespace Enterprise
             filters.Add(new HandleErrorAttribute());
             filters.Add(new Serenity.Services.AntiforgeryCookieResultFilter());
             filters.Add(new Serenity.Services.AutoValidateAntiforgeryTokenAttribute());
+            if (!HttpContext.Current.IsDebuggingEnabled)
+            {
+                filters.Add(new RequireHttpsAttribute());
+            }
         }
     }
 }
