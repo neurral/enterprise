@@ -3,10 +3,11 @@
         TimeRecordId?: number;
         PersonnelId?: number;
         WorkDate?: string;
+        TimeRecordTypeId?: number;
         TimeStart?: string;
         TimeEnd?: string;
         Remarks?: string;
-        Status?: string;
+        Status?: ApprovalStatuses;
         InsertDate?: string;
         InsertUserId?: number;
         PersonnelIdentificationNo?: string;
@@ -44,6 +45,7 @@
             export declare const TimeRecordId: string;
             export declare const PersonnelId: string;
             export declare const WorkDate: string;
+            export declare const TimeRecordTypeId: string;
             export declare const TimeStart: string;
             export declare const TimeEnd: string;
             export declare const Remarks: string;
@@ -80,6 +82,7 @@
             'TimeRecordId', 
             'PersonnelId', 
             'WorkDate', 
+            'TimeRecordTypeId', 
             'TimeStart', 
             'TimeEnd', 
             'Remarks', 

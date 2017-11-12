@@ -8,6 +8,7 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using static Constants;
 
     [ConnectionKey("Default"), TableName("[ent].[TimeRecordApproval]")]
     [DisplayName("Time Record Approval"), InstanceName("Time Record Approval"), TwoLevelCached]
@@ -36,12 +37,20 @@ namespace Enterprise.Organization.Entities
             set { Fields.RequestorId[this] = value; }
         }
 
-        [DisplayName("Approval Status"), Size(1), NotNull, QuickSearch]
-        public String ApprovalStatus
+        [DisplayName("Approver"), NotNull, ForeignKey("[ent].[Personnel]", "PersonnelId"), LeftJoin("jApprover"), TextualField("ApproverIdentificationNo")]
+        public Int64? ApproverId
         {
-            get { return Fields.ApprovalStatus[this]; }
-            set { Fields.ApprovalStatus[this] = value; }
+            get { return Fields.ApproverId[this]; }
+            set { Fields.ApproverId[this] = value; }
         }
+
+        [DisplayName("Approval Status"), NotNull, DefaultValue(0), EnumEditor]
+        [ModifyPermission(Keys.TimeRecordApproval.Approve)]
+        public ApprovalStatuses? ApprovalStatus
+        {
+            get { return (ApprovalStatuses?)Fields.ApprovalStatus[this]; }
+            set { Fields.ApprovalStatus[this] = (Int16?)value; }
+        }        
 
         [DisplayName("Requestor Locked"), NotNull]
         public Boolean? RequestorLocked
@@ -146,6 +155,15 @@ namespace Enterprise.Organization.Entities
             get { return Fields.RequestorIdentificationNo[this]; }
             set { Fields.RequestorIdentificationNo[this] = value; }
         }
+
+        [DisplayName("Full Name"), Size(50), NotMapped, OneWay]
+        [Expression("CONCAT(jRequestor.FirstName, CONCAT(' ',jRequestor.LastName))")]
+        public String RequestorFullName
+        {
+            get { return Fields.RequestorFullName[this]; }
+            set { Fields.RequestorFullName[this] = value; }
+        }
+
         [DisplayName("Requestor First Name"), Expression("jRequestor.[FirstName]")]
         public String RequestorFirstName
         {
@@ -206,12 +224,29 @@ namespace Enterprise.Organization.Entities
             get { return Fields.RequestorDateOfBirth[this]; }
             set { Fields.RequestorDateOfBirth[this] = value; }
         }
+
         [DisplayName("Requestor User Id"), Expression("jRequestor.[UserId]")]
         public Int64? RequestorUserId
         {
             get { return Fields.RequestorUserId[this]; }
             set { Fields.RequestorUserId[this] = value; }
         }
+
+        [DisplayName("Full Name"), Size(50), NotMapped, OneWay]
+        [Expression("CONCAT(jApprover.FirstName, CONCAT(' ',jApprover.LastName))")]
+        public String ApproverFullName
+        {
+            get { return Fields.ApproverFullName[this]; }
+            set { Fields.ApproverFullName[this] = value; }
+        }
+
+        [DisplayName("Approver User Id"), Expression("jApprover.[UserId]")]
+        public Int64? ApproverUserId
+        {
+            get { return Fields.ApproverUserId[this]; }
+            set { Fields.ApproverUserId[this] = value; }
+        }
+
         [DisplayName("Update User Username"), Expression("jUpdateUser.[Username]")]
         public String UpdateUserUsername
         {
@@ -363,7 +398,7 @@ namespace Enterprise.Organization.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.ApprovalStatus; }
+            get { return Fields.RequestorFullName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -378,7 +413,8 @@ namespace Enterprise.Organization.Entities
             public Int64Field ApprovalId;
             public Int64Field TimeRecordId;
             public Int64Field RequestorId;
-            public StringField ApprovalStatus;
+            public Int64Field ApproverId;
+            public Int16Field ApprovalStatus;
             public BooleanField RequestorLocked;
             public BooleanField ApproverLocked;
             public DateTimeField DateReviewed;
@@ -396,6 +432,7 @@ namespace Enterprise.Organization.Entities
             public DateTimeField TimeRecordInsertDate;
             public Int64Field TimeRecordInsertUserId;
 
+            public StringField RequestorFullName;
             public StringField RequestorIdentificationNo;
             public StringField RequestorFirstName;
             public StringField RequestorMiddleName;
@@ -408,6 +445,9 @@ namespace Enterprise.Organization.Entities
             public DateTimeField RequestorDateExited;
             public DateTimeField RequestorDateOfBirth;
             public Int64Field RequestorUserId;
+
+            public Int64Field ApproverUserId;
+            public StringField ApproverFullName;
 
             public StringField UpdateUserUsername;
             public StringField UpdateUserEmail;

@@ -3,11 +3,9 @@ namespace Enterprise.Organization.Forms
 {
     using Serenity;
     using Serenity.ComponentModel;
-    using Serenity.Data;
     using System;
-    using System.ComponentModel;
-    using System.Collections.Generic;
-    using System.IO;
+    using System.ComponentModel;    
+    using static Constants;
 
     [FormScript("Organization.Personnel")]
     [BasedOnRow(typeof(Entities.PersonnelRow))]
@@ -19,7 +17,7 @@ namespace Enterprise.Organization.Forms
         public String LastName { get; set; }
         public String MiddleName { get; set; }
         
-        public String Gender { get; set; }
+        public Gender Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         [Category("Contact Info")]

@@ -8,7 +8,7 @@
         Email?: string;
         ContactNumber?: string;
         PersonnelStatus?: number;
-        Gender?: string;
+        Gender?: Gender;
         DateStarted?: string;
         DateExited?: string;
         DateOfBirth?: string;
@@ -27,6 +27,7 @@
         UserUpdateDate?: string;
         UserUpdateUserId?: number;
         UserIsActive?: number;
+        OrganizationId?: number;
         FullName?: string;
     }
 
@@ -68,6 +69,7 @@
             export declare const UserUpdateDate: string;
             export declare const UserUpdateUserId: string;
             export declare const UserIsActive: string;
+            export declare const OrganizationId: string;
             export declare const FullName: string;
         }
 
@@ -99,6 +101,7 @@
             'UserUpdateDate', 
             'UserUpdateUserId', 
             'UserIsActive', 
+            'OrganizationId', 
             'FullName'
         ].forEach(x => (<any>Fields)[x] = x);
     }

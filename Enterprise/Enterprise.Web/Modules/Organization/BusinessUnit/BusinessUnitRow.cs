@@ -9,7 +9,7 @@
 
     [ConnectionKey("Default")]
     [DisplayName("Business Units")]
-    [TableName(TableName),InstanceName("Business Unit"), TwoLevelCached]
+    [TableName(TableName), InstanceName("Business Unit"), TwoLevelCached]
     [ReadPermission(Keys.BusinessUnit.Access)]
     [ModifyPermission(Keys.BusinessUnit.Modify)]
     [LookupScript(Ks.Module + "." + Ks.BusinessUnit, Permission = Keys.General)]
@@ -54,6 +54,14 @@
             set { Fields.ParentUnitParentUnitId[this] = value; }
         }
 
+        [DisplayName("Organization"), ForeignKey("Organization", "OrganizationId"),
+           LeftJoin("jOrganization"), TextualField("OrganizationName")]
+        public Int32? OrganizationId
+        {
+            get { return Fields.OrganizationId[this]; }
+            set { Fields.OrganizationId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.UnitId; }
@@ -79,6 +87,7 @@
 
             public StringField ParentUnitName;
             public Int32Field ParentUnitParentUnitId;
+            public Int32Field OrganizationId;
 
             public RowFields()
                 : base()

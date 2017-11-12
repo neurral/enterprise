@@ -3,7 +3,8 @@
         ApprovalId?: number;
         TimeRecordId?: number;
         RequestorId?: number;
-        ApprovalStatus?: string;
+        ApproverId?: number;
+        ApprovalStatus?: ApprovalStatuses;
         RequestorLocked?: boolean;
         ApproverLocked?: boolean;
         DateReviewed?: string;
@@ -19,6 +20,7 @@
         TimeRecordStatus?: string;
         TimeRecordInsertDate?: string;
         TimeRecordInsertUserId?: number;
+        RequestorFullName?: string;
         RequestorIdentificationNo?: string;
         RequestorFirstName?: string;
         RequestorMiddleName?: string;
@@ -31,6 +33,8 @@
         RequestorDateExited?: string;
         RequestorDateOfBirth?: string;
         RequestorUserId?: number;
+        ApproverUserId?: number;
+        ApproverFullName?: string;
         UpdateUserUsername?: string;
         UpdateUserEmail?: string;
         UpdateUserSource?: string;
@@ -59,13 +63,14 @@
 
     export namespace TimeRecordApprovalRow {
         export const idProperty = 'ApprovalId';
-        export const nameProperty = 'ApprovalStatus';
+        export const nameProperty = 'RequestorFullName';
         export const localTextPrefix = 'Organization.TimeRecordApproval';
 
         export namespace Fields {
             export declare const ApprovalId: string;
             export declare const TimeRecordId: string;
             export declare const RequestorId: string;
+            export declare const ApproverId: string;
             export declare const ApprovalStatus: string;
             export declare const RequestorLocked: string;
             export declare const ApproverLocked: string;
@@ -82,6 +87,7 @@
             export declare const TimeRecordStatus: string;
             export declare const TimeRecordInsertDate: string;
             export declare const TimeRecordInsertUserId: string;
+            export declare const RequestorFullName: string;
             export declare const RequestorIdentificationNo: string;
             export declare const RequestorFirstName: string;
             export declare const RequestorMiddleName: string;
@@ -94,6 +100,8 @@
             export declare const RequestorDateExited: string;
             export declare const RequestorDateOfBirth: string;
             export declare const RequestorUserId: string;
+            export declare const ApproverUserId: string;
+            export declare const ApproverFullName: string;
             export declare const UpdateUserUsername: string;
             export declare const UpdateUserEmail: string;
             export declare const UpdateUserSource: string;
@@ -124,6 +132,7 @@
             'ApprovalId', 
             'TimeRecordId', 
             'RequestorId', 
+            'ApproverId', 
             'ApprovalStatus', 
             'RequestorLocked', 
             'ApproverLocked', 
@@ -140,6 +149,7 @@
             'TimeRecordStatus', 
             'TimeRecordInsertDate', 
             'TimeRecordInsertUserId', 
+            'RequestorFullName', 
             'RequestorIdentificationNo', 
             'RequestorFirstName', 
             'RequestorMiddleName', 
@@ -152,6 +162,8 @@
             'RequestorDateExited', 
             'RequestorDateOfBirth', 
             'RequestorUserId', 
+            'ApproverUserId', 
+            'ApproverFullName', 
             'UpdateUserUsername', 
             'UpdateUserEmail', 
             'UpdateUserSource', 

@@ -5,6 +5,7 @@
         ParentUnitId?: number;
         ParentUnitName?: string;
         ParentUnitParentUnitId?: number;
+        OrganizationId?: number;
     }
 
     export namespace BusinessUnitRow {
@@ -23,6 +24,7 @@
             export declare const ParentUnitId: string;
             export declare const ParentUnitName: string;
             export declare const ParentUnitParentUnitId: string;
+            export declare const OrganizationId: string;
         }
 
         [
@@ -30,7 +32,8 @@
             'Name', 
             'ParentUnitId', 
             'ParentUnitName', 
-            'ParentUnitParentUnitId'
+            'ParentUnitParentUnitId', 
+            'OrganizationId'
         ].forEach(x => (<any>Fields)[x] = x);
     }
 }

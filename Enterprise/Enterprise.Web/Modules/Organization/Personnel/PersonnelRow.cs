@@ -1,6 +1,7 @@
 ﻿
 namespace Enterprise.Organization.Entities
 {
+    using Common;
     using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
@@ -8,6 +9,7 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using static Constants;
 
     [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Personnel"), InstanceName("Personnel"), TwoLevelCached]
@@ -78,11 +80,11 @@ namespace Enterprise.Organization.Entities
             set { Fields.PersonnelStatus[this] = value; }
         }
 
-        [DisplayName("Gender"), Size(3), NotNull]
-        public String Gender
+        [DisplayName("Gender"), Size(3), EnumEditor]
+        public Gender? Gender
         {
-            get { return Fields.Gender[this]; }
-            set { Fields.Gender[this] = value; }
+            get { return (Gender?)Fields.Gender[this]; }
+            set { Fields.Gender[this] = (Int16?)value; }
         }
 
         [DisplayName("Date Started"), NotNull]
@@ -209,6 +211,14 @@ namespace Enterprise.Organization.Entities
             set { Fields.UserIsActive[this] = value; }
         }
 
+        [DisplayName("Organization"), ForeignKey("Organization", "OrganizationId"),
+          LeftJoin("jOrganization"), TextualField("OrganizationName")]
+        public Int64? OrganizationId
+        {
+            get { return Fields.OrganizationId[this]; }
+            set { Fields.OrganizationId[this] = value; }
+        }
+
         [DisplayName("Full Name"), Size(50), NotMapped, OneWay]
         [Expression("CONCAT(FirstName, CONCAT(' ',LastName))")]
         public String FullName
@@ -244,7 +254,7 @@ namespace Enterprise.Organization.Entities
             public StringField Email;
             public StringField ContactNumber;
             public Int64Field PersonnelStatus;
-            public StringField Gender;
+            public Int16Field Gender;
             public DateTimeField DateStarted;
             public DateTimeField DateExited;
             public DateTimeField DateOfBirth;
@@ -265,6 +275,8 @@ namespace Enterprise.Organization.Entities
             public DateTimeField UserUpdateDate;
             public Int64Field UserUpdateUserId;
             public Int16Field UserIsActive;
+
+            public Int64Field OrganizationId;
 
             public StringField FullName;
             public RowFields()

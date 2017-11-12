@@ -8,6 +8,7 @@ namespace Enterprise.Organization.Entities
     using System;
     using System.ComponentModel;
     using System.IO;
+    using static Constants;
 
     [ConnectionKey("Default"), TableName("[ent].[TimeRecord]")]
     [DisplayName("Time Record"), InstanceName("Time Record"), TwoLevelCached]
@@ -31,11 +32,21 @@ namespace Enterprise.Organization.Entities
             set { Fields.PersonnelId[this] = value; }
         }
 
-        [DisplayName("Work Date"), NotNull]
+        [DisplayName("Work Date"), DateTimeKind(DateTimeKind.Utc)]
         public DateTime? WorkDate
         {
             get { return Fields.WorkDate[this]; }
             set { Fields.WorkDate[this] = value; }
+        }
+
+        [DisplayName("Time Record Type"), NotNull,
+            DefaultValue(0),
+            ForeignKey(TimeRecordTypeRow.TableName, "TimeRecordTypeId"), LeftJoin("jTimeRecordType"), TextualField("TimeRecordTypeName")]
+        [LookupEditor(typeof(TimeRecordTypeRow), InplaceAddPermission = Keys.Libraries.Modify)]
+        public Int64? TimeRecordTypeId
+        {
+            get { return Fields.TimeRecordTypeId[this]; }
+            set { Fields.TimeRecordTypeId[this] = value; }
         }
 
         [DisplayName("Time Start"), NotNull]
@@ -59,14 +70,14 @@ namespace Enterprise.Organization.Entities
             set { Fields.Remarks[this] = value; }
         }
 
-        [DisplayName("Status"), Size(20), NotNull]
-        public String Status
+        [DisplayName("Approval Status"), NotNull, DefaultValue(0), EnumEditor]
+        public ApprovalStatuses? Status
         {
-            get { return Fields.Status[this]; }
-            set { Fields.Status[this] = value; }
+            get { return (ApprovalStatuses?)Fields.Status[this]; }
+            set { Fields.Status[this] = (Int16?)value; }
         }
 
-        [DisplayName("Insert Date")]
+        [DisplayName("Insert Date"), DateTimeKind(DateTimeKind.Utc)]
         public DateTime? InsertDate
         {
             get { return Fields.InsertDate[this]; }
@@ -129,18 +140,21 @@ namespace Enterprise.Organization.Entities
             set { Fields.PersonnelGender[this] = value; }
         }
         [DisplayName("Personnel Date Started"), Expression("jPersonnel.[DateStarted]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? PersonnelDateStarted
         {
             get { return Fields.PersonnelDateStarted[this]; }
             set { Fields.PersonnelDateStarted[this] = value; }
         }
         [DisplayName("Personnel Date Exited"), Expression("jPersonnel.[DateExited]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? PersonnelDateExited
         {
             get { return Fields.PersonnelDateExited[this]; }
             set { Fields.PersonnelDateExited[this] = value; }
         }
         [DisplayName("Personnel Date Of Birth"), Expression("jPersonnel.[DateOfBirth]")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? PersonnelDateOfBirth
         {
             get { return Fields.PersonnelDateOfBirth[this]; }
@@ -246,10 +260,11 @@ namespace Enterprise.Organization.Entities
             public Int64Field TimeRecordId;
             public Int64Field PersonnelId;
             public DateTimeField WorkDate;
+            public Int64Field TimeRecordTypeId;
             public TimeSpanField TimeStart;
             public TimeSpanField TimeEnd;
             public StringField Remarks;
-            public StringField Status;
+            public Int16Field Status;
             public DateTimeField InsertDate;
             public Int64Field InsertUserId;
 

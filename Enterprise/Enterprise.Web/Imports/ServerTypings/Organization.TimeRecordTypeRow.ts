@@ -9,10 +9,10 @@
         export const idProperty = 'TimeRecordTypeId';
         export const nameProperty = 'Code';
         export const localTextPrefix = 'Organization.TimeRecordType';
-        export const lookupKey = 'Organization.TimeRecordType';
+        export const lookupKey = 'Organization.PersonnelStatus';
 
         export function getLookup(): Q.Lookup<TimeRecordTypeRow> {
-            return Q.getLookup<TimeRecordTypeRow>('Organization.TimeRecordType');
+            return Q.getLookup<TimeRecordTypeRow>('Organization.PersonnelStatus');
         }
 
         export namespace Fields {

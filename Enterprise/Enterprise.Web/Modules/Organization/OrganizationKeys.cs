@@ -28,6 +28,7 @@ namespace Enterprise.Organization
         public const string CalendarHoliday = "CalendarHoliday";
         public const string TimeRecordType = "TimeRecordType";
         public const string TimeRecord = "TimeRecord";
+        public const string TimeRecordApproval = "TimeRecordApproval";
     }
 
     [NestedPermissionKeys]
@@ -78,6 +79,30 @@ namespace Enterprise.Organization
         //    [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
         //    public const string Modify = Ks.Module + ":" +Ks.Meeting + ":Modify";
         //}
+
+
+        [DisplayName(Ks.TimeRecord)]
+        public class TimeRecord
+        {
+            public const string Access = Ks.Module + ":" + Ks.TimeRecord + ":Access";
+            [ImplicitPermission(General), ImplicitPermission(Access)]
+            public const string Delete = Ks.Module + ":" + Ks.TimeRecord + ":Delete";
+            [Description("Create/Update"), ImplicitPermission(General), ImplicitPermission(Access)]
+            public const string Modify = Ks.Module + ":" + Ks.TimeRecord + ":Modify";
+        }
+
+        [DisplayName(Ks.TimeRecordApproval)]
+        public class TimeRecordApproval
+        {
+            public const string Access = Ks.Module + ":" + Ks.TimeRecordApproval + ":Access";
+            [ImplicitPermission(General), ImplicitPermission(Access)]
+            public const string Delete = Ks.Module + ":" + Ks.TimeRecordApproval + ":Delete";
+            [Description("Create/File Approvals"), ImplicitPermission(General), ImplicitPermission(Access)]
+            public const string File = Ks.Module + ":" + Ks.TimeRecordApproval + ":File";
+            [Description("Modify/Approve"), ImplicitPermission(General), ImplicitPermission(Access)]
+            public const string Approve = Ks.Module + ":" + Ks.TimeRecordApproval + ":Approve";
+        }
+
 
         [DisplayName(Ks.Libraries), Description("Reference Data")]
         public class Libraries

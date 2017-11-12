@@ -8,6 +8,7 @@ namespace Enterprise.Organization.Columns
     using System.ComponentModel;
     using System.Collections.Generic;
     using System.IO;
+    using static Constants;
 
     [ColumnsScript("Organization.TimeRecord")]
     [BasedOnRow(typeof(Entities.TimeRecordRow))]
@@ -19,11 +20,12 @@ namespace Enterprise.Organization.Columns
         public Int64 PersonnelId { get; set; }
         public String PersonnelIdentificationNo { get; set; }
         public DateTime WorkDate { get; set; }
+        public Int64 TimeRecordTypeId;
         public TimeSpan TimeStart { get; set; }
         public TimeSpan TimeEnd { get; set; }
         [EditLink]
         public String Remarks { get; set; }
-        public String Status { get; set; }
+        public ApprovalStatuses Status { get; set; }
         public DateTime InsertDate { get; set; }
         public String InsertUserUsername { get; set; }
     }
