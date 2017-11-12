@@ -13,7 +13,7 @@ using Organization = Enterprise.Organization.Pages;
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Locations", typeof(Organization.MeetingLocationController))]
 //[assembly: NavigationLink(8000, "Organization/Libraries/Meeting Types", typeof(Organization.MeetingTypeController))]
 [assembly: NavigationLink(8000, "Organization/Libraries/Calendar Holiday", typeof(MyPages.CalendarHolidayController), icon: null)]
-[assembly: NavigationLink(8000, "Organization/Libraries/Time Record Type", typeof(MyPages.TimeRecordTypeController), icon: null)]
+//[assembly: NavigationLink(8000, "Organization/Libraries/Time Record Type", typeof(MyPages.TimeRecordTypeController), icon: null)]
 
 [assembly: NavigationMenu(8300, "Timekeeping", icon: "fa-clock-o")]
 [assembly: NavigationLink(8300, "Timekeeping/Time Record", typeof(MyPages.TimeRecordController), icon: null)]
