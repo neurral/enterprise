@@ -11,10 +11,20 @@ namespace Enterprise.Migrations.DefaultDB
         {
             Create.Schema(SCHEMA);
 
+
+            this.CreateTableWithId64("Organization", "OrganizationId", s => s
+                .WithColumn("Name").AsString(100).NotNullable()
+                .WithColumn("OwnerId").AsInt64().Nullable()
+                    .ForeignKey("FK_Organization_UserId", SCHEMA, "User", "UserId"),
+                    schema: SCHEMA,
+                    checkExists: true);
+
             this.CreateTableWithId64("BusinessUnit", "UnitId", s => s
                 .WithColumn("Name").AsString(100).NotNullable()
                 .WithColumn("ParentUnitId").AsInt64().Nullable()
-                    .ForeignKey("FK_BusinessUnit_ParentUnit", SCHEMA, "BusinessUnit", "UnitId"),                    
+                    .ForeignKey("FK_BusinessUnit_ParentUnit", SCHEMA, "BusinessUnit", "UnitId")
+                .WithColumn("OrganizationId").AsInt64().Nullable()
+                   .ForeignKey("FK_BusinessUnit_OrganizationId", "Organization", "OrganizationId"),                    
                     schema: SCHEMA,
                     checkExists: true);
 
@@ -46,14 +56,14 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("ContactNumber").AsString(20).Nullable()
                 .WithColumn("PersonnelStatus").AsInt64().WithDefaultValue(0)
                     .ForeignKey("FK_Personnel_StatusId", SCHEMA, "PersonnelStatus", "PersonnelStatusId")
-                .WithColumn("Gender").AsString(3)
+                .WithColumn("Gender").AsInt16()
                 .WithColumn("DateStarted").AsDate().Nullable()
                 .WithColumn("DateExited").AsDate().Nullable()
                 .WithColumn("DateOfBirth").AsDate().NotNullable()
                 .WithColumn("UserId").AsInt64().Nullable()
-                    .ForeignKey("FK_Personnel_UserId", "User", "UserId"),
-                //.WithColumn("OrganizationId").AsInt64().Nullable()
-                //   .ForeignKey("FK_Personnel_OrganizationId", "Organization", "OrganizationId"),
+                    .ForeignKey("FK_Personnel_UserId", "User", "UserId")
+                .WithColumn("OrganizationId").AsInt64().Nullable()
+                   .ForeignKey("FK_Personnel_OrganizationId", "Organization", "OrganizationId"),
                     schema: SCHEMA, 
                     checkExists: true);
         }
