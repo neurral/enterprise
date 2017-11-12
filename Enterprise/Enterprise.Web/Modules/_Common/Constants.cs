@@ -1,4 +1,7 @@
 ﻿
+using Serenity.ComponentModel;
+using System.ComponentModel;
+
 namespace Enterprise
 {
     public partial class Constants
@@ -17,6 +20,14 @@ namespace Enterprise
         public const string SCHEMA = Enterprise_SCHEMA + ".";
         public const string DEFAULT_DOMAIN = "@neurral.info";
 
+        public enum Gender
+        {
+            Undefined = 0,
+            Male = 1,
+            Female = 2
+        }
+
+        
         public sealed class PersonnelStatus
         {
             public const string UNVERIFIED = "unverified"; //initial status
@@ -26,6 +37,7 @@ namespace Enterprise
             public const string TERMINATED = "terminated"; //unusable, ignored except in history
         }
 
+        [ScriptInclude]
         public enum PersonnelStatusIds
         {
             UNVERIFIED = 1,
@@ -37,6 +49,7 @@ namespace Enterprise
 
 
         //also seeded in DB
+        [ScriptInclude]
         public enum DefaultRoles
         {
             UNVERIFIED = 0,
@@ -46,14 +59,21 @@ namespace Enterprise
             SUBACCOUNT = 4
         }
 
+        [ScriptInclude]
         public enum ApprovalStatuses
-        {
-            SUBMITTED = 'S',
-            CANCELLED = 'C',
-            APPROVED = 'A',
-            REJECTED = 'R'
+        {   
+            [Description("Locked for editing")]
+            LOCKED = 0,
+            [Description("Submitted")]
+            SUBMITTED = 1,
+            [Description("Cancelled")]
+            CANCELLED = 2,
+            [Description("Approved")]
+            APPROVED = 3,
+            [Description("Rejected")]
+            REJECTED = 4
         }
-
+        
         public sealed class TimeRecordType
         {
             public const string DTR = "DTR"; 
