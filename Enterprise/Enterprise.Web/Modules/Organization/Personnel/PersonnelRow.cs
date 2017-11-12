@@ -208,6 +208,15 @@ namespace Enterprise.Organization.Entities
             get { return Fields.UserIsActive[this]; }
             set { Fields.UserIsActive[this] = value; }
         }
+
+        [DisplayName("Full Name"), Size(50), NotMapped, OneWay]
+        [Expression("CONCAT(FirstName, CONCAT(' ',LastName))")]
+        public String FullName
+        {
+            get { return Fields.FullName[this]; }
+            set { Fields.FullName[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.PersonnelId; }
@@ -215,7 +224,7 @@ namespace Enterprise.Organization.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.IdentificationNo; }
+            get { return Fields.FullName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -257,6 +266,7 @@ namespace Enterprise.Organization.Entities
             public Int64Field UserUpdateUserId;
             public Int16Field UserIsActive;
 
+            public StringField FullName;
             public RowFields()
                 : base()
             {
