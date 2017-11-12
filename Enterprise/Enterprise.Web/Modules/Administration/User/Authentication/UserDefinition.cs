@@ -26,9 +26,9 @@
     /// </summary>
     public static class LoggedIn
     {
-        public static UserDefinition User()
+        public static UserDefinition User
         {
-            return (UserDefinition)Authorization.UserDefinition;
+            get { return (UserDefinition )Authorization.UserDefinition; }
         }
     }
 }

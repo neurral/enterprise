@@ -11,6 +11,7 @@
     [ScriptInclude]
     public class ScriptUserDefinition
     {
+        public Int64 UserId { get; set; }
         public String Username { get; set; }
         public String DisplayName { get; set; }
         public Boolean IsAdmin { get; set; }

@@ -119,7 +119,8 @@
         }
 
         static showProfile(userId: number) {
-            (new UserDialog({profileMode: true})).loadByIdAndOpenDialog(userId);               
+            (new UserDialog({ profileMode: true })).loadByIdAndOpenDialog(userId);               
+            //(new Enterprise.Organization.PersonnelDialog({ profileMode: true })).loadByIdAndOpenDialog(userId);               
         }
     }
 }
