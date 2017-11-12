@@ -15,11 +15,12 @@ namespace Enterprise.Organization.Forms
     {
         public Int64 PersonnelId { get; set; }
         public DateTime WorkDate { get; set; }
+        [TimeEditor]
         public TimeSpan TimeStart { get; set; }
+        [TimeEditor]
         public TimeSpan TimeEnd { get; set; }
+        [TextAreaEditor]
         public String Remarks { get; set; }
         public String Status { get; set; }
-        public DateTime InsertDate { get; set; }
-        public Int64 InsertUserId { get; set; }
     }
 }

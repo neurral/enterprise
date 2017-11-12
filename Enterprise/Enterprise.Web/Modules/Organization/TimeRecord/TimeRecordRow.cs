@@ -22,7 +22,9 @@ namespace Enterprise.Organization.Entities
             set { Fields.TimeRecordId[this] = value; }
         }
 
-        [DisplayName("Personnel"), NotNull, ForeignKey("[ent].[Personnel]", "PersonnelId"), LeftJoin("jPersonnel"), TextualField("PersonnelIdentificationNo")]
+        [DisplayName("Personnel"), NotNull, ForeignKey("ent.Personnel", "PersonnelId"), 
+            LeftJoin("jPersonnel"), TextualField("PersonnelIdentificationNo")]
+        [LookupEditor(typeof(PersonnelRow), InplaceAddPermission = Keys.Personnel.Modify)]
         public Int64? PersonnelId
         {
             get { return Fields.PersonnelId[this]; }

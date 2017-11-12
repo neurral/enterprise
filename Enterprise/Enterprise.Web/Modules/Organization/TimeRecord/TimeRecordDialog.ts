@@ -3,7 +3,7 @@ namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.responsive()
-    export class TimeRecordDialog extends Serenity.EntityDialog<TimeRecordRow, any> {
+    export class TimeRecordDialog extends TemplateDialog<TimeRecordRow, any> {
         protected getFormKey() { return TimeRecordForm.formKey; }
         protected getIdProperty() { return TimeRecordRow.idProperty; }
         protected getLocalTextPrefix() { return TimeRecordRow.localTextPrefix; }

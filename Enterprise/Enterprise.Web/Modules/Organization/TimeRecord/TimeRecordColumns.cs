@@ -15,6 +15,8 @@ namespace Enterprise.Organization.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int64 TimeRecordId { get; set; }
+        [Visible(false)]
+        public Int64 PersonnelId { get; set; }
         public String PersonnelIdentificationNo { get; set; }
         public DateTime WorkDate { get; set; }
         public TimeSpan TimeStart { get; set; }

@@ -27,11 +27,12 @@
         UserUpdateDate?: string;
         UserUpdateUserId?: number;
         UserIsActive?: number;
+        FullName?: string;
     }
 
     export namespace PersonnelRow {
         export const idProperty = 'PersonnelId';
-        export const nameProperty = 'IdentificationNo';
+        export const nameProperty = 'FullName';
         export const localTextPrefix = 'Organization.Personnel';
         export const lookupKey = 'Organization.Personnel';
 
@@ -67,6 +68,7 @@
             export declare const UserUpdateDate: string;
             export declare const UserUpdateUserId: string;
             export declare const UserIsActive: string;
+            export declare const FullName: string;
         }
 
         [
@@ -96,7 +98,8 @@
             'UserInsertUserId', 
             'UserUpdateDate', 
             'UserUpdateUserId', 
-            'UserIsActive'
+            'UserIsActive', 
+            'FullName'
         ].forEach(x => (<any>Fields)[x] = x);
     }
 }

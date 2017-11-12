@@ -2,7 +2,7 @@
 namespace Enterprise.Organization {
 
     @Serenity.Decorators.registerClass()
-    export class TimeRecordApprovalGrid extends Serenity.EntityGrid<TimeRecordApprovalRow, any> {
+    export class TimeRecordApprovalGrid extends TemplateGrid<TimeRecordApprovalRow, any> {
         protected getColumnsKey() { return 'Organization.TimeRecordApproval'; }
         protected getDialogType() { return TimeRecordApprovalDialog; }
         protected getIdProperty() { return TimeRecordApprovalRow.idProperty; }

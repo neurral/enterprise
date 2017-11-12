@@ -24,6 +24,10 @@ namespace Enterprise.Organization
         public const string MeetingLocation = "MeetingLocation";
         public const string MeetingType = "MeetingType";
         public const string PersonnelStatus = "PersonnelStatus";
+
+        public const string CalendarHoliday = "CalendarHoliday";
+        public const string TimeRecordType = "TimeRecordType";
+        public const string TimeRecord = "TimeRecord";
     }
 
     [NestedPermissionKeys]

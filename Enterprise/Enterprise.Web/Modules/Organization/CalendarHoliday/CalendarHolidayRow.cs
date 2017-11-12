@@ -11,10 +11,13 @@ namespace Enterprise.Organization.Entities
 
     [ConnectionKey("Default"), TableName("[ent].[CalendarHoliday]")]
     [DisplayName("Calendar Holiday"), InstanceName("Calendar Holiday"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.CalendarHoliday, Permission = Keys.General)]
     public sealed class CalendarHolidayRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.CalendarHoliday;
+
         [DisplayName("Calendar Holiday Id"), Identity]
         public Int64? CalendarHolidayId
         {

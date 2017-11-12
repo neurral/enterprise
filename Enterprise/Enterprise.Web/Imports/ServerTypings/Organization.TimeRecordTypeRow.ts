@@ -9,6 +9,11 @@
         export const idProperty = 'TimeRecordTypeId';
         export const nameProperty = 'Code';
         export const localTextPrefix = 'Organization.TimeRecordType';
+        export const lookupKey = 'Organization.TimeRecordType';
+
+        export function getLookup(): Q.Lookup<TimeRecordTypeRow> {
+            return Q.getLookup<TimeRecordTypeRow>('Organization.TimeRecordType');
+        }
 
         export namespace Fields {
             export declare const TimeRecordTypeId: string;

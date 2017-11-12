@@ -25,6 +25,11 @@
         export const idProperty = 'CalendarHolidayId';
         export const nameProperty = 'Description';
         export const localTextPrefix = 'Organization.CalendarHoliday';
+        export const lookupKey = 'Organization.CalendarHoliday';
+
+        export function getLookup(): Q.Lookup<CalendarHolidayRow> {
+            return Q.getLookup<CalendarHolidayRow>('Organization.CalendarHoliday');
+        }
 
         export namespace Fields {
             export declare const CalendarHolidayId: string;

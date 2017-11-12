@@ -11,10 +11,13 @@ namespace Enterprise.Organization.Entities
 
     [ConnectionKey("Default"), TableName("[ent].[TimeRecordType]")]
     [DisplayName("Time Record Type"), InstanceName("Time Record Type"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Keys.General)]
+    [ModifyPermission(Keys.Libraries.Modify)]
+    [LookupScript(typeof(TimeRecordTypeLookup))]
     public sealed class TimeRecordTypeRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.TimeRecordType;
+
         [DisplayName("Time Record Type Id"), Identity]
         public Int64? TimeRecordTypeId
         {

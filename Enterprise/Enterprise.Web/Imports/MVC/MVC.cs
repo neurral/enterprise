@@ -412,6 +412,11 @@ namespace MVC
                 {
                     public const string PersonnelStatusIndex = "~/Modules/Organization/_Libraries/PersonnelStatus/PersonnelStatusIndex.cshtml";
                 }
+
+                public static class TimeRecordType
+                {
+                    public const string TimeRecordTypeIndex = "~/Modules/Organization/_Libraries/TimeRecordType/TimeRecordTypeIndex.cshtml";
+                }
             }
 
             public static class BusinessUnit
@@ -436,10 +441,6 @@ namespace MVC
                     public const string TimeRecordApprovalIndex = "~/Modules/Organization/TimeRecord/TimeRecordApproval/TimeRecordApprovalIndex.cshtml";
                 }
                 public const string TimeRecordIndex = "~/Modules/Organization/TimeRecord/TimeRecordIndex.cshtml";
-                public static class TimeRecordType
-                {
-                    public const string TimeRecordTypeIndex = "~/Modules/Organization/TimeRecord/TimeRecordType/TimeRecordTypeIndex.cshtml";
-                }
             }
         }
 
