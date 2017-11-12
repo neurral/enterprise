@@ -65,6 +65,11 @@
         export const idProperty = 'ApprovalId';
         export const nameProperty = 'RequestorFullName';
         export const localTextPrefix = 'Organization.TimeRecordApproval';
+        export const lookupKey = 'Organization.TimeRecordApproval';
+
+        export function getLookup(): Q.Lookup<TimeRecordApprovalRow> {
+            return Q.getLookup<TimeRecordApprovalRow>('Organization.TimeRecordApproval');
+        }
 
         export namespace Fields {
             export declare const ApprovalId: string;

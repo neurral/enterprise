@@ -26,6 +26,11 @@
         export const idProperty = 'TimeRecordId';
         export const nameProperty = 'Remarks';
         export const localTextPrefix = 'Organization.TimeRecord';
+        export const lookupKey = 'Organization.TimeRecord';
+
+        export function getLookup(): Q.Lookup<TimeRecordRow> {
+            return Q.getLookup<TimeRecordRow>('Organization.TimeRecord');
+        }
 
         export namespace Fields {
             export declare const TimeRecordId: string;
