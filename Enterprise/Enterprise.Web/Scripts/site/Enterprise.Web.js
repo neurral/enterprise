@@ -40,7 +40,9 @@ var Enterprise;
         }
         TemplateGrid.prototype.getSlickOptions = function () {
             var opt = _super.prototype.getSlickOptions.call(this);
-            opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            if (Enterprise.Utils.isMobile()) {
+                opt.rowHeight = 50; //must have equivalent px in site.less for .slick-row
+            }
             opt.frozenColumn = 0;
             return opt;
         };
@@ -151,9 +153,53 @@ var Enterprise;
         Utils.isMobile = function () {
             return $('body').hasClass("mobile-device");
         };
+        Utils.getUser = function () {
+            return Enterprise.Authorization.userDefinition;
+        };
+        Utils.getPersonnelRecord = function (userId) {
+            return Enterprise.Administration.UserService.GetPersonnelRecord({
+                EntityId: userId
+            }, function (response) { return response.Entity; });
+        };
         return Utils;
     }());
     Enterprise.Utils = Utils;
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    /**
+     * Our select editor with hardcoded values.
+     *
+     * When you define a new editor type, make sure you build
+     * and transform templates for it to be available
+     * in server side forms, e.g. [HardCodedValuesEditor]
+     */
+    var ApprovalStatusEditor = /** @class */ (function (_super) {
+        __extends(ApprovalStatusEditor, _super);
+        function ApprovalStatusEditor(container) {
+            var _this = _super.call(this, container, null) || this;
+            // add option accepts a key (id) value and display text value
+            _this.addOption("key1", "Text 1");
+            _this.addOption("key2", "Text 2");
+            // you may also use addItem which accepts a Select2Item parameter
+            _this.addItem({
+                id: "key3",
+                text: "Text 3"
+            });
+            // don't let selecting this one (disabled)
+            _this.addItem({
+                id: "key4",
+                text: "Text 4",
+                disabled: true
+            });
+            return _this;
+        }
+        ApprovalStatusEditor = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], ApprovalStatusEditor);
+        return ApprovalStatusEditor;
+    }(Serenity.Select2Editor));
+    Enterprise.ApprovalStatusEditor = ApprovalStatusEditor;
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
 (function (Enterprise) {
@@ -1276,6 +1322,53 @@ var Enterprise;
 (function (Enterprise) {
     var Organization;
     (function (Organization) {
+        var TimeRecordTypeDialog = /** @class */ (function (_super) {
+            __extends(TimeRecordTypeDialog, _super);
+            function TimeRecordTypeDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.TimeRecordTypeForm(_this.idPrefix);
+                return _this;
+            }
+            TimeRecordTypeDialog.prototype.getFormKey = function () { return Organization.TimeRecordTypeForm.formKey; };
+            TimeRecordTypeDialog.prototype.getIdProperty = function () { return Organization.TimeRecordTypeRow.idProperty; };
+            TimeRecordTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.TimeRecordTypeRow.localTextPrefix; };
+            TimeRecordTypeDialog.prototype.getNameProperty = function () { return Organization.TimeRecordTypeRow.nameProperty; };
+            TimeRecordTypeDialog.prototype.getService = function () { return Organization.TimeRecordTypeService.baseUrl; };
+            TimeRecordTypeDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], TimeRecordTypeDialog);
+            return TimeRecordTypeDialog;
+        }(Enterprise.TemplateDialog));
+        Organization.TimeRecordTypeDialog = TimeRecordTypeDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var TimeRecordTypeGrid = /** @class */ (function (_super) {
+            __extends(TimeRecordTypeGrid, _super);
+            function TimeRecordTypeGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TimeRecordTypeGrid.prototype.getColumnsKey = function () { return 'Organization.TimeRecordType'; };
+            TimeRecordTypeGrid.prototype.getDialogType = function () { return Organization.TimeRecordTypeDialog; };
+            TimeRecordTypeGrid.prototype.getIdProperty = function () { return Organization.TimeRecordTypeRow.idProperty; };
+            TimeRecordTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.TimeRecordTypeRow.localTextPrefix; };
+            TimeRecordTypeGrid.prototype.getService = function () { return Organization.TimeRecordTypeService.baseUrl; };
+            TimeRecordTypeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TimeRecordTypeGrid);
+            return TimeRecordTypeGrid;
+        }(Enterprise.TemplateGrid));
+        Organization.TimeRecordTypeGrid = TimeRecordTypeGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
         var PersonnelStatusDialog = /** @class */ (function (_super) {
             __extends(PersonnelStatusDialog, _super);
             function PersonnelStatusDialog() {
@@ -1295,6 +1388,29 @@ var Enterprise;
             return PersonnelStatusDialog;
         }(Enterprise.TemplateDialog));
         Organization.PersonnelStatusDialog = PersonnelStatusDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var PersonnelStatusEditor = /** @class */ (function (_super) {
+            __extends(PersonnelStatusEditor, _super);
+            function PersonnelStatusEditor(hidden) {
+                return _super.call(this, hidden) || this;
+            }
+            PersonnelStatusEditor.prototype.getLookupKey = function () {
+                return Organization.PersonnelStatusRow.lookupKey;
+            };
+            PersonnelStatusEditor.prototype.getItemText = function (item, lookup) {
+                return _super.prototype.getItemText.call(this, item, lookup) + ' [' + item.PersonnelStatusId + ']';
+            };
+            PersonnelStatusEditor = __decorate([
+                Serenity.Decorators.registerEditor()
+            ], PersonnelStatusEditor);
+            return PersonnelStatusEditor;
+        }(Serenity.LookupEditorBase));
+        Organization.PersonnelStatusEditor = PersonnelStatusEditor;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -1835,7 +1951,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], TimeRecordDialog);
             return TimeRecordDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.TimeRecordDialog = TimeRecordDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1853,59 +1969,25 @@ var Enterprise;
             TimeRecordGrid.prototype.getIdProperty = function () { return Organization.TimeRecordRow.idProperty; };
             TimeRecordGrid.prototype.getLocalTextPrefix = function () { return Organization.TimeRecordRow.localTextPrefix; };
             TimeRecordGrid.prototype.getService = function () { return Organization.TimeRecordService.baseUrl; };
+            TimeRecordGrid.prototype.addButtonClick = function () {
+                var _this = this;
+                Enterprise.Utils.getPersonnelRecord(Enterprise.Utils.getUser().UserId)
+                    .then(function (res) {
+                    _this.editItem({
+                        PersonnelId: res.Entity.PersonnelId,
+                        WorkDate: new Date().toUTCString()
+                    });
+                }, function (xhr, status, err) {
+                    console.log(JSON.stringify(err));
+                    _super.prototype.addButtonClick.call(_this);
+                });
+            };
             TimeRecordGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], TimeRecordGrid);
             return TimeRecordGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.TimeRecordGrid = TimeRecordGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var TimeRecordTypeDialog = /** @class */ (function (_super) {
-            __extends(TimeRecordTypeDialog, _super);
-            function TimeRecordTypeDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Organization.TimeRecordTypeForm(_this.idPrefix);
-                return _this;
-            }
-            TimeRecordTypeDialog.prototype.getFormKey = function () { return Organization.TimeRecordTypeForm.formKey; };
-            TimeRecordTypeDialog.prototype.getIdProperty = function () { return Organization.TimeRecordTypeRow.idProperty; };
-            TimeRecordTypeDialog.prototype.getLocalTextPrefix = function () { return Organization.TimeRecordTypeRow.localTextPrefix; };
-            TimeRecordTypeDialog.prototype.getNameProperty = function () { return Organization.TimeRecordTypeRow.nameProperty; };
-            TimeRecordTypeDialog.prototype.getService = function () { return Organization.TimeRecordTypeService.baseUrl; };
-            TimeRecordTypeDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], TimeRecordTypeDialog);
-            return TimeRecordTypeDialog;
-        }(Serenity.EntityDialog));
-        Organization.TimeRecordTypeDialog = TimeRecordTypeDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var TimeRecordTypeGrid = /** @class */ (function (_super) {
-            __extends(TimeRecordTypeGrid, _super);
-            function TimeRecordTypeGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            TimeRecordTypeGrid.prototype.getColumnsKey = function () { return 'Organization.TimeRecordType'; };
-            TimeRecordTypeGrid.prototype.getDialogType = function () { return Organization.TimeRecordTypeDialog; };
-            TimeRecordTypeGrid.prototype.getIdProperty = function () { return Organization.TimeRecordTypeRow.idProperty; };
-            TimeRecordTypeGrid.prototype.getLocalTextPrefix = function () { return Organization.TimeRecordTypeRow.localTextPrefix; };
-            TimeRecordTypeGrid.prototype.getService = function () { return Organization.TimeRecordTypeService.baseUrl; };
-            TimeRecordTypeGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TimeRecordTypeGrid);
-            return TimeRecordTypeGrid;
-        }(Serenity.EntityGrid));
-        Organization.TimeRecordTypeGrid = TimeRecordTypeGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -1929,7 +2011,7 @@ var Enterprise;
                 Serenity.Decorators.responsive()
             ], TimeRecordApprovalDialog);
             return TimeRecordApprovalDialog;
-        }(Serenity.EntityDialog));
+        }(Enterprise.TemplateDialog));
         Organization.TimeRecordApprovalDialog = TimeRecordApprovalDialog;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -1951,7 +2033,7 @@ var Enterprise;
                 Serenity.Decorators.registerClass()
             ], TimeRecordApprovalGrid);
             return TimeRecordApprovalGrid;
-        }(Serenity.EntityGrid));
+        }(Enterprise.TemplateGrid));
         Organization.TimeRecordApprovalGrid = TimeRecordApprovalGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
@@ -2001,124 +2083,6 @@ var Enterprise;
             return PersonnelGrid;
         }(Enterprise.TemplateGrid));
         Organization.PersonnelGrid = PersonnelGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingDialog = /** @class */ (function (_super) {
-            __extends(MeetingDialog, _super);
-            function MeetingDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new MeetingForm(_this.idPrefix);
-                _this.agendaGrid = new Organization.MeetingAgendaGrid(_this.byId('AgendaGrid'));
-                _this.decisionGrid = new Organization.MeetingDecisionGrid(_this.byId('DecisionGrid'));
-                _this.element.closest('.ui-dialog').find('.ui-dialog-titlebar-maximize').click();
-                _this.form.EndDate.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.EndDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate != null &&
-                        _this.form.StartDate.valueAsDate > _this.form.EndDate.valueAsDate) {
-                        return "End Date can't be earlier than Start Date";
-                    }
-                    return null;
-                });
-                return _this;
-            }
-            MeetingDialog.prototype.getFormKey = function () { return MeetingForm.formKey; };
-            MeetingDialog.prototype.getIdProperty = function () { return MeetingRow.idProperty; };
-            MeetingDialog.prototype.getLocalTextPrefix = function () { return MeetingRow.localTextPrefix; };
-            MeetingDialog.prototype.getNameProperty = function () { return MeetingRow.nameProperty; };
-            MeetingDialog.prototype.getService = function () { return MeetingService.baseUrl; };
-            MeetingDialog.prototype.arrange = function () {
-                _super.prototype.arrange.call(this);
-                var attendeeGrid = this.form.AttendeeList.element.find('.grid-container');
-                attendeeGrid.css('height', Math.max(150, this.element.height() - attendeeGrid.position().top - 15) + 'px')
-                    .triggerHandler('layout');
-            };
-            MeetingDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Agenda', this.isNewOrDeleted());
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Decision', this.isNewOrDeleted());
-                //this.agendaGrid.customerID = entity.CustomerID;
-            };
-            MeetingDialog = __decorate([
-                Serenity.Decorators.maximizable(),
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], MeetingDialog);
-            return MeetingDialog;
-        }(Enterprise.TemplateDialog));
-        Organization.MeetingDialog = MeetingDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var MeetingGrid = /** @class */ (function (_super) {
-            __extends(MeetingGrid, _super);
-            function MeetingGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            MeetingGrid.prototype.getColumnsKey = function () { return 'Organization.Meeting'; };
-            MeetingGrid.prototype.getDialogType = function () { return Organization.MeetingDialog; };
-            MeetingGrid.prototype.getIdProperty = function () { return MeetingRow.idProperty; };
-            MeetingGrid.prototype.getLocalTextPrefix = function () { return MeetingRow.localTextPrefix; };
-            MeetingGrid.prototype.getService = function () { return MeetingService.baseUrl; };
-            MeetingGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], MeetingGrid);
-            return MeetingGrid;
-        }(Enterprise.TemplateGrid));
-        Organization.MeetingGrid = MeetingGrid;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var ContactDialog = /** @class */ (function (_super) {
-            __extends(ContactDialog, _super);
-            function ContactDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new ContactForm(_this.idPrefix);
-                return _this;
-            }
-            ContactDialog.prototype.getFormKey = function () { return ContactForm.formKey; };
-            ContactDialog.prototype.getIdProperty = function () { return ContactRow.idProperty; };
-            ContactDialog.prototype.getLocalTextPrefix = function () { return ContactRow.localTextPrefix; };
-            ContactDialog.prototype.getNameProperty = function () { return ContactRow.nameProperty; };
-            ContactDialog.prototype.getService = function () { return ContactService.baseUrl; };
-            ContactDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.responsive()
-            ], ContactDialog);
-            return ContactDialog;
-        }(Enterprise.TemplateDialog));
-        Organization.ContactDialog = ContactDialog;
-    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
-})(Enterprise || (Enterprise = {}));
-var Enterprise;
-(function (Enterprise) {
-    var Organization;
-    (function (Organization) {
-        var ContactGrid = /** @class */ (function (_super) {
-            __extends(ContactGrid, _super);
-            function ContactGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            ContactGrid.prototype.getColumnsKey = function () { return 'Organization.Contact'; };
-            ContactGrid.prototype.getDialogType = function () { return Organization.ContactDialog; };
-            ContactGrid.prototype.getIdProperty = function () { return ContactRow.idProperty; };
-            ContactGrid.prototype.getLocalTextPrefix = function () { return ContactRow.localTextPrefix; };
-            ContactGrid.prototype.getService = function () { return ContactService.baseUrl; };
-            ContactGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ContactGrid);
-            return ContactGrid;
-        }(Enterprise.TemplateGrid));
-        Organization.ContactGrid = ContactGrid;
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -7027,6 +6991,7 @@ var Enterprise;
             };
             UserDialog.showProfile = function (userId) {
                 (new UserDialog_1({ profileMode: true })).loadByIdAndOpenDialog(userId);
+                //(new Enterprise.Organization.PersonnelDialog({ profileMode: true })).loadByIdAndOpenDialog(userId);               
             };
             UserDialog = UserDialog_1 = __decorate([
                 Serenity.Decorators.registerClass()
@@ -8053,7 +8018,8 @@ var Enterprise;
                 'Undelete',
                 'Retrieve',
                 'List',
-                'ResendActivationLink'
+                'ResendActivationLink',
+                'GetPersonnelRecord'
             ].forEach(function (x) {
                 UserService[x] = function (r, s, o) {
                     return Q.serviceRequest(UserService.baseUrl + '/' + x, r, s, o);
@@ -8062,6 +8028,18 @@ var Enterprise;
             });
         })(UserService = Administration.UserService || (Administration.UserService = {}));
     })(Administration = Enterprise.Administration || (Enterprise.Administration = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var ApprovalStatuses;
+    (function (ApprovalStatuses) {
+        ApprovalStatuses[ApprovalStatuses["LOCKED"] = 0] = "LOCKED";
+        ApprovalStatuses[ApprovalStatuses["SUBMITTED"] = 1] = "SUBMITTED";
+        ApprovalStatuses[ApprovalStatuses["CANCELLED"] = 2] = "CANCELLED";
+        ApprovalStatuses[ApprovalStatuses["APPROVED"] = 3] = "APPROVED";
+        ApprovalStatuses[ApprovalStatuses["REJECTED"] = 4] = "REJECTED";
+    })(ApprovalStatuses = Enterprise.ApprovalStatuses || (Enterprise.ApprovalStatuses = {}));
+    Serenity.Decorators.registerEnum(ApprovalStatuses, 'Enterprise.Constants+ApprovalStatuses');
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
 (function (Enterprise) {
@@ -8364,6 +8342,28 @@ var Enterprise;
             });
         })(UserPreferenceService = Common.UserPreferenceService || (Common.UserPreferenceService = {}));
     })(Common = Enterprise.Common || (Enterprise.Common = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var DefaultRoles;
+    (function (DefaultRoles) {
+        DefaultRoles[DefaultRoles["UNVERIFIED"] = 0] = "UNVERIFIED";
+        DefaultRoles[DefaultRoles["ADMINISTRATOR"] = 1] = "ADMINISTRATOR";
+        DefaultRoles[DefaultRoles["BOT"] = 2] = "BOT";
+        DefaultRoles[DefaultRoles["ACCOUNT"] = 3] = "ACCOUNT";
+        DefaultRoles[DefaultRoles["SUBACCOUNT"] = 4] = "SUBACCOUNT";
+    })(DefaultRoles = Enterprise.DefaultRoles || (Enterprise.DefaultRoles = {}));
+    Serenity.Decorators.registerEnum(DefaultRoles, 'Enterprise.Constants+DefaultRoles');
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Gender;
+    (function (Gender) {
+        Gender[Gender["Undefined"] = 0] = "Undefined";
+        Gender[Gender["Male"] = 1] = "Male";
+        Gender[Gender["Female"] = 2] = "Female";
+    })(Gender = Enterprise.Gender || (Enterprise.Gender = {}));
+    Serenity.Decorators.registerEnum(Gender, 'Enterprise.Constants+Gender');
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
 (function (Enterprise) {
@@ -9601,7 +9601,8 @@ var Enterprise;
                 'Name',
                 'ParentUnitId',
                 'ParentUnitName',
-                'ParentUnitParentUnitId'
+                'ParentUnitParentUnitId',
+                'OrganizationId'
             ].forEach(function (x) { return Fields[x] = x; });
         })(BusinessUnitRow = Organization.BusinessUnitRow || (Organization.BusinessUnitRow = {}));
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
@@ -9656,6 +9657,11 @@ var Enterprise;
             CalendarHolidayRow.idProperty = 'CalendarHolidayId';
             CalendarHolidayRow.nameProperty = 'Description';
             CalendarHolidayRow.localTextPrefix = 'Organization.CalendarHoliday';
+            CalendarHolidayRow.lookupKey = 'Organization.CalendarHoliday';
+            function getLookup() {
+                return Q.getLookup('Organization.CalendarHoliday');
+            }
+            CalendarHolidayRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = CalendarHolidayRow.Fields || (CalendarHolidayRow.Fields = {}));
@@ -9721,7 +9727,7 @@ var Enterprise;
             return PersonnelForm;
         }(Serenity.PrefixedContext));
         Organization.PersonnelForm = PersonnelForm;
-        [['IdentificationNo', function () { return Serenity.StringEditor; }], ['FirstName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['ContactNumber', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['Gender', function () { return Serenity.StringEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['UserId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['FirstName', function () { return Serenity.StringEditor; }], ['LastName', function () { return Serenity.StringEditor; }], ['MiddleName', function () { return Serenity.StringEditor; }], ['Gender', function () { return Serenity.EnumEditor; }], ['DateOfBirth', function () { return Serenity.DateEditor; }], ['Email', function () { return Serenity.StringEditor; }], ['ContactNumber', function () { return Serenity.StringEditor; }], ['IdentificationNo', function () { return Serenity.StringEditor; }], ['PersonnelStatus', function () { return Serenity.LookupEditor; }], ['UserId', function () { return Serenity.LookupEditor; }], ['DateStarted', function () { return Serenity.DateEditor; }], ['DateExited', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(PersonnelForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -9731,7 +9737,7 @@ var Enterprise;
         var PersonnelRow;
         (function (PersonnelRow) {
             PersonnelRow.idProperty = 'PersonnelId';
-            PersonnelRow.nameProperty = 'IdentificationNo';
+            PersonnelRow.nameProperty = 'FullName';
             PersonnelRow.localTextPrefix = 'Organization.Personnel';
             PersonnelRow.lookupKey = 'Organization.Personnel';
             function getLookup() {
@@ -9768,7 +9774,9 @@ var Enterprise;
                 'UserInsertUserId',
                 'UserUpdateDate',
                 'UserUpdateUserId',
-                'UserIsActive'
+                'UserIsActive',
+                'OrganizationId',
+                'FullName'
             ].forEach(function (x) { return Fields[x] = x; });
         })(PersonnelRow = Organization.PersonnelRow || (Organization.PersonnelRow = {}));
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
@@ -9877,7 +9885,7 @@ var Enterprise;
             return TimeRecordApprovalForm;
         }(Serenity.PrefixedContext));
         Organization.TimeRecordApprovalForm = TimeRecordApprovalForm;
-        [['TimeRecordId', function () { return Serenity.StringEditor; }], ['RequestorId', function () { return Serenity.StringEditor; }], ['ApprovalStatus', function () { return Serenity.StringEditor; }], ['RequestorLocked', function () { return Serenity.BooleanEditor; }], ['ApproverLocked', function () { return Serenity.BooleanEditor; }], ['DateReviewed', function () { return Serenity.DateEditor; }], ['UpdateDate', function () { return Serenity.DateEditor; }], ['UpdateUserId', function () { return Serenity.StringEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['InsertUserId', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TimeRecordApprovalForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['TimeRecordId', function () { return Serenity.StringEditor; }], ['RequestorId', function () { return Serenity.StringEditor; }], ['ApprovalStatus', function () { return Serenity.EnumEditor; }], ['RequestorLocked', function () { return Serenity.BooleanEditor; }], ['ApproverLocked', function () { return Serenity.BooleanEditor; }], ['DateReviewed', function () { return Serenity.DateEditor; }]].forEach(function (x) { return Object.defineProperty(TimeRecordApprovalForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -9887,8 +9895,13 @@ var Enterprise;
         var TimeRecordApprovalRow;
         (function (TimeRecordApprovalRow) {
             TimeRecordApprovalRow.idProperty = 'ApprovalId';
-            TimeRecordApprovalRow.nameProperty = 'ApprovalStatus';
+            TimeRecordApprovalRow.nameProperty = 'RequestorFullName';
             TimeRecordApprovalRow.localTextPrefix = 'Organization.TimeRecordApproval';
+            TimeRecordApprovalRow.lookupKey = 'Organization.TimeRecordApproval';
+            function getLookup() {
+                return Q.getLookup('Organization.TimeRecordApproval');
+            }
+            TimeRecordApprovalRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = TimeRecordApprovalRow.Fields || (TimeRecordApprovalRow.Fields = {}));
@@ -9896,6 +9909,7 @@ var Enterprise;
                 'ApprovalId',
                 'TimeRecordId',
                 'RequestorId',
+                'ApproverId',
                 'ApprovalStatus',
                 'RequestorLocked',
                 'ApproverLocked',
@@ -9912,6 +9926,7 @@ var Enterprise;
                 'TimeRecordStatus',
                 'TimeRecordInsertDate',
                 'TimeRecordInsertUserId',
+                'RequestorFullName',
                 'RequestorIdentificationNo',
                 'RequestorFirstName',
                 'RequestorMiddleName',
@@ -9924,6 +9939,8 @@ var Enterprise;
                 'RequestorDateExited',
                 'RequestorDateOfBirth',
                 'RequestorUserId',
+                'ApproverUserId',
+                'ApproverFullName',
                 'UpdateUserUsername',
                 'UpdateUserEmail',
                 'UpdateUserSource',
@@ -9990,7 +10007,7 @@ var Enterprise;
             return TimeRecordForm;
         }(Serenity.PrefixedContext));
         Organization.TimeRecordForm = TimeRecordForm;
-        [['PersonnelId', function () { return Serenity.StringEditor; }], ['WorkDate', function () { return Serenity.DateEditor; }], ['TimeStart', function () { return Serenity.StringEditor; }], ['TimeEnd', function () { return Serenity.StringEditor; }], ['Remarks', function () { return Serenity.StringEditor; }], ['Status', function () { return Serenity.StringEditor; }], ['InsertDate', function () { return Serenity.DateEditor; }], ['InsertUserId', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TimeRecordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+        [['PersonnelId', function () { return Serenity.LookupEditor; }], ['WorkDate', function () { return Serenity.DateEditor; }], ['TimeRecordTypeId', function () { return Serenity.LookupEditor; }], ['TimeStartInt', function () { return Serenity.TimeEditor; }], ['TimeEndInt', function () { return Serenity.TimeEditor; }], ['Remarks', function () { return Serenity.TextAreaEditor; }], ['Status', function () { return Serenity.EnumEditor; }]].forEach(function (x) { return Object.defineProperty(TimeRecordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;
@@ -10002,6 +10019,11 @@ var Enterprise;
             TimeRecordRow.idProperty = 'TimeRecordId';
             TimeRecordRow.nameProperty = 'Remarks';
             TimeRecordRow.localTextPrefix = 'Organization.TimeRecord';
+            TimeRecordRow.lookupKey = 'Organization.TimeRecord';
+            function getLookup() {
+                return Q.getLookup('Organization.TimeRecord');
+            }
+            TimeRecordRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = TimeRecordRow.Fields || (TimeRecordRow.Fields = {}));
@@ -10009,36 +10031,23 @@ var Enterprise;
                 'TimeRecordId',
                 'PersonnelId',
                 'WorkDate',
+                'TimeRecordTypeId',
                 'TimeStart',
                 'TimeEnd',
+                'TimeStartInt',
+                'TimeEndInt',
                 'Remarks',
                 'Status',
                 'InsertDate',
                 'InsertUserId',
                 'PersonnelIdentificationNo',
+                'PersonnelFullName',
                 'PersonnelFirstName',
-                'PersonnelMiddleName',
                 'PersonnelLastName',
                 'PersonnelEmail',
                 'PersonnelContactNumber',
                 'PersonnelPersonnelStatus',
-                'PersonnelGender',
-                'PersonnelDateStarted',
-                'PersonnelDateExited',
-                'PersonnelDateOfBirth',
-                'PersonnelUserId',
-                'InsertUserUsername',
-                'InsertUserEmail',
-                'InsertUserSource',
-                'InsertUserPasswordHash',
-                'InsertUserPasswordSalt',
-                'InsertUserLastDirectoryUpdate',
-                'InsertUserUserImage',
-                'InsertUserInsertDate',
-                'InsertUserInsertUserId',
-                'InsertUserUpdateDate',
-                'InsertUserUpdateUserId',
-                'InsertUserIsActive'
+                'PersonnelUserId'
             ].forEach(function (x) { return Fields[x] = x; });
         })(TimeRecordRow = Organization.TimeRecordRow || (Organization.TimeRecordRow = {}));
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
@@ -10093,6 +10102,11 @@ var Enterprise;
             TimeRecordTypeRow.idProperty = 'TimeRecordTypeId';
             TimeRecordTypeRow.nameProperty = 'Code';
             TimeRecordTypeRow.localTextPrefix = 'Organization.TimeRecordType';
+            TimeRecordTypeRow.lookupKey = 'Organization.PersonnelStatus';
+            function getLookup() {
+                return Q.getLookup('Organization.PersonnelStatus');
+            }
+            TimeRecordTypeRow.getLookup = getLookup;
             var Fields;
             (function (Fields) {
             })(Fields = TimeRecordTypeRow.Fields || (TimeRecordTypeRow.Fields = {}));
@@ -10128,5 +10142,17 @@ var Enterprise;
             });
         })(TimeRecordTypeService = Organization.TimeRecordTypeService || (Organization.TimeRecordTypeService = {}));
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var PersonnelStatusIds;
+    (function (PersonnelStatusIds) {
+        PersonnelStatusIds[PersonnelStatusIds["UNVERIFIED"] = 1] = "UNVERIFIED";
+        PersonnelStatusIds[PersonnelStatusIds["INACTIVE"] = 2] = "INACTIVE";
+        PersonnelStatusIds[PersonnelStatusIds["ACTIVATED"] = 3] = "ACTIVATED";
+        PersonnelStatusIds[PersonnelStatusIds["SUSPENDED"] = 4] = "SUSPENDED";
+        PersonnelStatusIds[PersonnelStatusIds["TERMINATED"] = 5] = "TERMINATED";
+    })(PersonnelStatusIds = Enterprise.PersonnelStatusIds || (Enterprise.PersonnelStatusIds = {}));
+    Serenity.Decorators.registerEnum(PersonnelStatusIds, 'Enterprise.Constants+PersonnelStatusIds');
 })(Enterprise || (Enterprise = {}));
 //# sourceMappingURL=Enterprise.Web.js.map

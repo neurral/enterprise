@@ -2284,6 +2284,8 @@
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypePage.cs" />
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeColumns.cs" />
     <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeForm.cs" />
+    <Compile Include="Modules\Organization\TimeRecordApproval\TimeRecordApprovalRepository.cs" />
+    <Compile Include="Modules\Organization\TimeRecordApproval\TimeRecordApprovalEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
