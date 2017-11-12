@@ -28,11 +28,11 @@ namespace Enterprise.Organization.Entities
         [LookupEditor(typeof(PersonnelRow), InplaceAddPermission = Keys.Personnel.Modify)]
         public Int64? PersonnelId
         {
-            get { return Fields.PersonnelId[this]; }
+            get { return Fields.PersonnelId[this]; } 
             set { Fields.PersonnelId[this] = value; }
         }
 
-        [DisplayName("Work Date"), DateTimeKind(DateTimeKind.Utc)]
+        [DisplayName("Work Date"), DateTimeKind(DateTimeKind.Utc), DisplayFormat("yyyy/MM/dd")]
         public DateTime? WorkDate
         {
             get { return Fields.WorkDate[this]; }
@@ -41,7 +41,8 @@ namespace Enterprise.Organization.Entities
 
         [DisplayName("Time Record Type"), NotNull,
             DefaultValue(0),
-            ForeignKey(TimeRecordTypeRow.TableName, "TimeRecordTypeId"), LeftJoin("jTimeRecordType"), TextualField("TimeRecordTypeName")]
+            ForeignKey(TimeRecordTypeRow.TableName, "TimeRecordTypeId"), 
+            LeftJoin("jTimeRecordType"), TextualField("TimeRecordTypeName")]
         [LookupEditor(typeof(TimeRecordTypeRow), InplaceAddPermission = Keys.Libraries.Modify)]
         public Int64? TimeRecordTypeId
         {
@@ -50,18 +51,35 @@ namespace Enterprise.Organization.Entities
         }
 
         [DisplayName("Time Start"), NotNull]
+        [DisplayFormat("hh:mm")]
         public TimeSpan? TimeStart
         {
             get { return Fields.TimeStart[this]; }
             set { Fields.TimeStart[this] = value; }
         }
 
-        [DisplayName("Time End")]
+        [DisplayName("Time End"), NotNull]
+        [DisplayFormat("hh:mm")]
         public TimeSpan? TimeEnd
         {
             get { return Fields.TimeEnd[this]; }
             set { Fields.TimeEnd[this] = value; }
         }
+
+        [DisplayName("Time Start"), NotMapped]
+        public Int32? TimeStartInt
+        {
+            get { return Fields.TimeStartInt[this]; }
+            set { Fields.TimeStartInt[this] = value; }
+        }
+
+        [DisplayName("Time End"), NotMapped]
+        public Int32? TimeEndInt
+        {
+            get { return Fields.TimeEndInt[this]; }
+            set { Fields.TimeEndInt[this] = value; }
+        }
+
 
         [DisplayName("Remarks"), Size(100), NotNull, QuickSearch]
         public String Remarks
@@ -70,7 +88,7 @@ namespace Enterprise.Organization.Entities
             set { Fields.Remarks[this] = value; }
         }
 
-        [DisplayName("Approval Status"), NotNull, DefaultValue(0), EnumEditor]
+        [DisplayName("Approval Status"), OneWay, DefaultValue(0), EnumEditor]
         public ApprovalStatuses? Status
         {
             get { return (ApprovalStatuses?)Fields.Status[this]; }
@@ -91,7 +109,16 @@ namespace Enterprise.Organization.Entities
             set { Fields.InsertUserId[this] = value; }
         }
 
-        [DisplayName("Personnel Identification No"), Expression("jPersonnel.[IdentificationNo]")]
+
+        [DisplayName("Full Name")]
+        [Expression("CONCAT(jPersonnel.FirstName, CONCAT(' ',jPersonnel.LastName))")]
+        public String PersonnelFullName
+        {
+            get { return Fields.PersonnelFullName[this]; }
+            set { Fields.PersonnelFullName[this] = value; }
+        }
+
+        [DisplayName("Company ID"), Expression("jPersonnel.[IdentificationNo]")]
         public String PersonnelIdentificationNo
         {
             get { return Fields.PersonnelIdentificationNo[this]; }
@@ -103,12 +130,7 @@ namespace Enterprise.Organization.Entities
             get { return Fields.PersonnelFirstName[this]; }
             set { Fields.PersonnelFirstName[this] = value; }
         }
-        [DisplayName("Personnel Middle Name"), Expression("jPersonnel.[MiddleName]")]
-        public String PersonnelMiddleName
-        {
-            get { return Fields.PersonnelMiddleName[this]; }
-            set { Fields.PersonnelMiddleName[this] = value; }
-        }
+   
         [DisplayName("Personnel Last Name"), Expression("jPersonnel.[LastName]")]
         public String PersonnelLastName
         {
@@ -133,111 +155,14 @@ namespace Enterprise.Organization.Entities
             get { return Fields.PersonnelPersonnelStatus[this]; }
             set { Fields.PersonnelPersonnelStatus[this] = value; }
         }
-        [DisplayName("Personnel Gender"), Expression("jPersonnel.[Gender]")]
-        public String PersonnelGender
-        {
-            get { return Fields.PersonnelGender[this]; }
-            set { Fields.PersonnelGender[this] = value; }
-        }
-        [DisplayName("Personnel Date Started"), Expression("jPersonnel.[DateStarted]")]
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime? PersonnelDateStarted
-        {
-            get { return Fields.PersonnelDateStarted[this]; }
-            set { Fields.PersonnelDateStarted[this] = value; }
-        }
-        [DisplayName("Personnel Date Exited"), Expression("jPersonnel.[DateExited]")]
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime? PersonnelDateExited
-        {
-            get { return Fields.PersonnelDateExited[this]; }
-            set { Fields.PersonnelDateExited[this] = value; }
-        }
-        [DisplayName("Personnel Date Of Birth"), Expression("jPersonnel.[DateOfBirth]")]
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime? PersonnelDateOfBirth
-        {
-            get { return Fields.PersonnelDateOfBirth[this]; }
-            set { Fields.PersonnelDateOfBirth[this] = value; }
-        }
+   
         [DisplayName("Personnel User Id"), Expression("jPersonnel.[UserId]")]
         public Int64? PersonnelUserId
         {
             get { return Fields.PersonnelUserId[this]; }
             set { Fields.PersonnelUserId[this] = value; }
         }
-        [DisplayName("Insert User Username"), Expression("jInsertUser.[Username]")]
-        public String InsertUserUsername
-        {
-            get { return Fields.InsertUserUsername[this]; }
-            set { Fields.InsertUserUsername[this] = value; }
-        }
-        [DisplayName("Insert User Email"), Expression("jInsertUser.[Email]")]
-        public String InsertUserEmail
-        {
-            get { return Fields.InsertUserEmail[this]; }
-            set { Fields.InsertUserEmail[this] = value; }
-        }
-        [DisplayName("Insert User Source"), Expression("jInsertUser.[Source]")]
-        public String InsertUserSource
-        {
-            get { return Fields.InsertUserSource[this]; }
-            set { Fields.InsertUserSource[this] = value; }
-        }
-        [DisplayName("Insert User Password Hash"), Expression("jInsertUser.[PasswordHash]")]
-        public String InsertUserPasswordHash
-        {
-            get { return Fields.InsertUserPasswordHash[this]; }
-            set { Fields.InsertUserPasswordHash[this] = value; }
-        }
-        [DisplayName("Insert User Password Salt"), Expression("jInsertUser.[PasswordSalt]")]
-        public String InsertUserPasswordSalt
-        {
-            get { return Fields.InsertUserPasswordSalt[this]; }
-            set { Fields.InsertUserPasswordSalt[this] = value; }
-        }
-        [DisplayName("Insert User Last Directory Update"), Expression("jInsertUser.[LastDirectoryUpdate]")]
-        public DateTime? InsertUserLastDirectoryUpdate
-        {
-            get { return Fields.InsertUserLastDirectoryUpdate[this]; }
-            set { Fields.InsertUserLastDirectoryUpdate[this] = value; }
-        }
-        [DisplayName("Insert User User Image"), Expression("jInsertUser.[UserImage]")]
-        public String InsertUserUserImage
-        {
-            get { return Fields.InsertUserUserImage[this]; }
-            set { Fields.InsertUserUserImage[this] = value; }
-        }
-        [DisplayName("Insert User Insert Date"), Expression("jInsertUser.[InsertDate]")]
-        public DateTime? InsertUserInsertDate
-        {
-            get { return Fields.InsertUserInsertDate[this]; }
-            set { Fields.InsertUserInsertDate[this] = value; }
-        }
-        [DisplayName("Insert User Insert User Id"), Expression("jInsertUser.[InsertUserId]")]
-        public Int64? InsertUserInsertUserId
-        {
-            get { return Fields.InsertUserInsertUserId[this]; }
-            set { Fields.InsertUserInsertUserId[this] = value; }
-        }
-        [DisplayName("Insert User Update Date"), Expression("jInsertUser.[UpdateDate]")]
-        public DateTime? InsertUserUpdateDate
-        {
-            get { return Fields.InsertUserUpdateDate[this]; }
-            set { Fields.InsertUserUpdateDate[this] = value; }
-        }
-        [DisplayName("Insert User Update User Id"), Expression("jInsertUser.[UpdateUserId]")]
-        public Int64? InsertUserUpdateUserId
-        {
-            get { return Fields.InsertUserUpdateUserId[this]; }
-            set { Fields.InsertUserUpdateUserId[this] = value; }
-        }
-        [DisplayName("Insert User Is Active"), Expression("jInsertUser.[IsActive]")]
-        public Int16? InsertUserIsActive
-        {
-            get { return Fields.InsertUserIsActive[this]; }
-            set { Fields.InsertUserIsActive[this] = value; }
-        }
+     
         IIdField IIdRow.IdField
         {
             get { return Fields.TimeRecordId; }
@@ -255,6 +180,16 @@ namespace Enterprise.Organization.Entities
         {
         }
 
+        public void SyncTimesForSaving() {
+            this.TimeStart = TimeSpan.FromMinutes(this.TimeStartInt.Value);
+            this.TimeEnd = TimeSpan.FromMinutes(this.TimeEndInt.Value);
+        }
+
+        public void SyncTimesForDisplaying() {
+            this.TimeStartInt = Convert.ToInt32(this.TimeStart.Value.TotalMinutes);
+            this.TimeEndInt = Convert.ToInt32(this.TimeEnd.Value.TotalMinutes);
+        }
+
         public class RowFields : RowFieldsBase
         {
             public Int64Field TimeRecordId;
@@ -263,36 +198,21 @@ namespace Enterprise.Organization.Entities
             public Int64Field TimeRecordTypeId;
             public TimeSpanField TimeStart;
             public TimeSpanField TimeEnd;
+            public Int32Field TimeStartInt;
+            public Int32Field TimeEndInt;
             public StringField Remarks;
             public Int16Field Status;
             public DateTimeField InsertDate;
             public Int64Field InsertUserId;
 
             public StringField PersonnelIdentificationNo;
+            public StringField PersonnelFullName;
             public StringField PersonnelFirstName;
-            public StringField PersonnelMiddleName;
             public StringField PersonnelLastName;
             public StringField PersonnelEmail;
             public StringField PersonnelContactNumber;
             public Int64Field PersonnelPersonnelStatus;
-            public StringField PersonnelGender;
-            public DateTimeField PersonnelDateStarted;
-            public DateTimeField PersonnelDateExited;
-            public DateTimeField PersonnelDateOfBirth;
             public Int64Field PersonnelUserId;
-
-            public StringField InsertUserUsername;
-            public StringField InsertUserEmail;
-            public StringField InsertUserSource;
-            public StringField InsertUserPasswordHash;
-            public StringField InsertUserPasswordSalt;
-            public DateTimeField InsertUserLastDirectoryUpdate;
-            public StringField InsertUserUserImage;
-            public DateTimeField InsertUserInsertDate;
-            public Int64Field InsertUserInsertUserId;
-            public DateTimeField InsertUserUpdateDate;
-            public Int64Field InsertUserUpdateUserId;
-            public Int16Field InsertUserIsActive;
 
             public RowFields()
                 : base()

@@ -7,6 +7,7 @@ namespace Enterprise.Organization.Repositories
     using System;
     using System.Data;
     using MyRow = Entities.TimeRecordRow;
+    using Entities;
 
     public class TimeRecordRepository
     {
@@ -40,13 +41,26 @@ namespace Enterprise.Organization.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> {
             protected override void BeforeSave()
             {
+                Row.SyncTimesForSaving();
                 Row.InsertDate = DateTime.UtcNow;
                 Row.InsertUserId = Convert.ToInt64(LoggedIn.User.Id);
                 base.BeforeSave();
             }
         }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {
+            protected override void OnReturn()
+            {
+                base.OnReturn();
+                Row.SyncTimesForDisplaying();
+            }
+        }
+        private class MyListHandler : ListRequestHandler<MyRow> {
+            protected override MyRow ProcessEntity(MyRow row)
+            {
+                row.SyncTimesForDisplaying();
+                return base.ProcessEntity(row);
+            }
+        }
     }
 }
