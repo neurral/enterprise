@@ -1473,6 +1473,7 @@
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\TreeGrid\TreeGrid.ts" />
     <TypeScriptCompile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAGrid.ts" />
     <TypeScriptCompile Include="Modules\Administration\Dashboard\Dashboard.ts" />
+    <TypeScriptCompile Include="Modules\Organization\_Libraries\PersonnelStatus\PersonnelStatusEditor.ts" />
     <TypeScriptCompile Include="Modules\_Common\Helpers\EnumSelectFormatter.ts" />
     <TypeScriptCompile Include="Modules\_Common\Helpers\LanguageList.ts" />
     <TypeScriptCompile Include="Modules\_Common\Helpers\DialogUtils.ts" />
@@ -1894,9 +1895,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeService.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <Content Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeIndex.cshtml" />
-    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeDialog.ts" />
-    <TypeScriptCompile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeGrid.ts" />
+    <Content Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeGrid.ts" />
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1908,7 +1909,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Constants.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeLookup.cs" />
+    <Compile Include="Modules\_Common\Constants.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SqlErrorStore.cs" />
@@ -1922,6 +1924,9 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Organization.MeetingAttendeeEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Organization.PersonnelStatusEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DefaultDB\EnterpriseDB_20171126_010000_Timekeeping.cs" />
@@ -2273,12 +2278,12 @@
     <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalPage.cs" />
     <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalColumns.cs" />
     <Compile Include="Modules\Organization\TimeRecord\TimeRecordApproval\TimeRecordApprovalForm.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeRow.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeRepository.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeEndpoint.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypePage.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeColumns.cs" />
-    <Compile Include="Modules\Organization\TimeRecord\TimeRecordType\TimeRecordTypeForm.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeRow.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeRepository.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeEndpoint.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypePage.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeColumns.cs" />
+    <Compile Include="Modules\Organization\_Libraries\TimeRecordType\TimeRecordTypeForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
