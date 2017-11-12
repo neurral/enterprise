@@ -15,7 +15,7 @@ namespace Enterprise.Migrations.DefaultDB
             this.CreateTableWithId64("Organization", "OrganizationId", s => s
                 .WithColumn("Name").AsString(100).NotNullable()
                 .WithColumn("OwnerId").AsInt64().Nullable()
-                    .ForeignKey("FK_Organization_UserId", SCHEMA, "User", "UserId"),
+                    .ForeignKey("FK_Organization_UserId", "User", "UserId"),
                     schema: SCHEMA,
                     checkExists: true);
 
@@ -24,7 +24,7 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("ParentUnitId").AsInt64().Nullable()
                     .ForeignKey("FK_BusinessUnit_ParentUnit", SCHEMA, "BusinessUnit", "UnitId")
                 .WithColumn("OrganizationId").AsInt64().Nullable()
-                   .ForeignKey("FK_BusinessUnit_OrganizationId", "Organization", "OrganizationId"),                    
+                   .ForeignKey("FK_BusinessUnit_OrganizationId", SCHEMA, "Organization", "OrganizationId"),                    
                     schema: SCHEMA,
                     checkExists: true);
 
@@ -63,7 +63,7 @@ namespace Enterprise.Migrations.DefaultDB
                 .WithColumn("UserId").AsInt64().Nullable()
                     .ForeignKey("FK_Personnel_UserId", "User", "UserId")
                 .WithColumn("OrganizationId").AsInt64().Nullable()
-                   .ForeignKey("FK_Personnel_OrganizationId", "Organization", "OrganizationId"),
+                   .ForeignKey("FK_Personnel_OrganizationId", SCHEMA, "Organization", "OrganizationId"),
                     schema: SCHEMA, 
                     checkExists: true);
         }
