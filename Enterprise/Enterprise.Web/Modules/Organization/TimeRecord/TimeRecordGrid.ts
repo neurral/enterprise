@@ -14,9 +14,20 @@ namespace Enterprise.Organization {
         }
 
         protected addButtonClick() {
-            this.editItem(<TimeRecordRow>{
-                PersonnelId: Utils.getUser().UserId
-            });
+            Utils.getPersonnelRecord(Utils.getUser().UserId)
+                .then(
+                (res) => {
+                    this.editItem(<TimeRecordRow>{
+                        PersonnelId: (<PersonnelRow>res.Entity).PersonnelId,
+                        WorkDate: new Date().toUTCString()
+                    });
+                },
+                (xhr, status, err) => {
+                    console.log(JSON.stringify(err));
+                    super.addButtonClick();
+                }
+                );
+
         }
     }
 }
