@@ -9,6 +9,7 @@
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function ResendActivationLink(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function GetPersonnelRecord(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<Organization.PersonnelRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
         export namespace Methods {
             export declare const Create: string;
@@ -18,6 +19,7 @@
             export declare const Retrieve: string;
             export declare const List: string;
             export declare const ResendActivationLink: string;
+            export declare const GetPersonnelRecord: string;
         }
 
         [
@@ -27,7 +29,8 @@
             'Undelete', 
             'Retrieve', 
             'List', 
-            'ResendActivationLink'
+            'ResendActivationLink', 
+            'GetPersonnelRecord'
         ].forEach(x => {
             (<any>UserService)[x] = function (r, s, o) {
                 return Q.serviceRequest(baseUrl + '/' + x, r, s, o);

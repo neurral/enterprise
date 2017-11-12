@@ -88,6 +88,14 @@ namespace Enterprise.Administration.Endpoints
             return response;
         }
 
+        public RetrieveResponse<PersonnelRow> GetPersonnelRecord(IDbConnection connection, RetrieveRequest request)
+        {
+            var response = new MyRepository().Retrieve(connection, request);
+            var user = response.Entity;
+          
+            return new RetrieveResponse<PersonnelRow>() { Entity=user.GetPersonnelRecord(connection)};
+        }
+
         private static string[] permissionsUsedFromScript;
 
         /// <summary>

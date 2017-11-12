@@ -44,6 +44,13 @@ namespace Enterprise {
         static getUser() {
             return Authorization.userDefinition;
         }
-    }
 
+        static getPersonnelRecord(userId) {
+            return Administration.UserService.GetPersonnelRecord({
+                EntityId: userId
+            },
+                (response) => response.Entity
+            );
+        }
+    }
 }
