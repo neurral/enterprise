@@ -65,6 +65,7 @@ namespace Enterprise.Administration
             [ImplicitPermission(General), ImplicitPermission(Access)]
             public const string Export = Ks.Module + ":" + Ks.Security + ":Export";
 
+            public const string Samples = Ks.Module + ":" + Ks.Security + ":Samples";
         }
     }
 }
