@@ -18,4 +18,3 @@ using Organization = Enterprise.Organization.Pages;
 [assembly: NavigationMenu(8300, "Timekeeping", icon: "fa-clock-o")]
 [assembly: NavigationLink(8300, "Timekeeping/Time Record", typeof(MyPages.TimeRecordController), icon: null)]
 [assembly: NavigationLink(8300, "Timekeeping/Time Record Approval", typeof(MyPages.TimeRecordApprovalController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Organization/Organization", typeof(MyPages.OrganizationController), icon: null)]

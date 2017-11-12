@@ -9,12 +9,15 @@ namespace Enterprise.Organization.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[ent].[Organization]")]
+    [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Organization"), InstanceName("Organization"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Administration.Keys.Security.Access)]
+    [ModifyPermission(Keys.General)]
+    [LookupScript(Ks.Module + "." + Ks.Module)]
     public sealed class OrganizationRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.Module;
+
         [DisplayName("Organization Id"), Identity]
         public Int64? OrganizationId
         {
@@ -29,7 +32,11 @@ namespace Enterprise.Organization.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Owner"), ForeignKey("[dbo].[User]", "UserId"), LeftJoin("jOwner"), TextualField("OwnerUsername")]
+        [DisplayName("Owner"), 
+            ForeignKey("[dbo].[User]", "UserId"), LeftJoin("jOwner"), TextualField("OwnerUsername")]
+        [LookupEditor(typeof(Administration.Entities.UserRow))]
+        [ModifyPermission(Administration.Keys.Security.Access), 
+            RequiredPermission(Administration.Keys.Security.Access)]
         public Int64? OwnerId
         {
             get { return Fields.OwnerId[this]; }

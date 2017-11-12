@@ -12,5 +12,11 @@ namespace Enterprise.Organization {
         constructor(container: JQuery) {
             super(container);
         }
+
+        protected addButtonClick() {
+            this.editItem(<OrganizationRow>{
+                OwnerId: Utils.getUser().UserId
+            });
+        }
     }
 }
