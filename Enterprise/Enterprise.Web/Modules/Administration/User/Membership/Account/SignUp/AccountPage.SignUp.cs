@@ -81,6 +81,7 @@ namespace Enterprise.Membership.Pages
                         LastName = request.LastName,
                         DateOfBirth = request.DateOfBirth,
                         PersonnelStatus = (long)Constants.PersonnelStatusIds.UNVERIFIED,
+                        Gender = Constants.Gender.Undefined
                     });
 
                     //activation link
