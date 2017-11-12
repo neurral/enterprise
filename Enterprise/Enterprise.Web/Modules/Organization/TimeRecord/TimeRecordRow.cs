@@ -113,7 +113,7 @@ namespace Enterprise.Organization.Entities
         }
 
 
-        [DisplayName("Full Name")]
+        [DisplayName("Requestor Full Name")]
         [Expression("CONCAT(jPersonnel.FirstName, CONCAT(' ',jPersonnel.LastName))")]
         public String PersonnelFullName
         {
