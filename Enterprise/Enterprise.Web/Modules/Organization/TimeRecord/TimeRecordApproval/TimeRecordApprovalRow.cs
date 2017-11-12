@@ -10,12 +10,16 @@ namespace Enterprise.Organization.Entities
     using System.IO;
     using static Constants;
 
-    [ConnectionKey("Default"), TableName("[ent].[TimeRecordApproval]")]
+    [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Time Record Approval"), InstanceName("Time Record Approval"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Keys.TimeRecordApproval.Access)]
+    [ModifyPermission(Keys.TimeRecordApproval.Approve)]
+    [InsertPermission(Keys.TimeRecordApproval.File)]
+    [LookupScript(Ks.Module + "." + Ks.TimeRecordApproval, Permission = Keys.General)]
     public sealed class TimeRecordApprovalRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.TimeRecordApproval;
+
         [DisplayName("Approval Id"), Identity]
         public Int64? ApprovalId
         {

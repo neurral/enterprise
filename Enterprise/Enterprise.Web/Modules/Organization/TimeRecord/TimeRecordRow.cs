@@ -10,12 +10,15 @@ namespace Enterprise.Organization.Entities
     using System.IO;
     using static Constants;
 
-    [ConnectionKey("Default"), TableName("[ent].[TimeRecord]")]
+    [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Time Record"), InstanceName("Time Record"), TwoLevelCached]
-    [ReadPermission("Organization:General")]
-    [ModifyPermission("Organization:General")]
+    [ReadPermission(Keys.TimeRecord.Access)]
+    [ModifyPermission(Keys.TimeRecord.Modify)]
+    [LookupScript(Ks.Module + "." + Ks.TimeRecord, Permission = Keys.General)]
     public sealed class TimeRecordRow : Row, IIdRow, INameRow
     {
+        public const string TableName = Constants.SCHEMA + Ks.TimeRecord;
+
         [DisplayName("Time Record Id"), Identity]
         public Int64? TimeRecordId
         {

@@ -9,7 +9,7 @@ namespace Enterprise.Organization.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[ent].[CalendarHoliday]")]
+    [ConnectionKey("Default"), TableName(TableName)]
     [DisplayName("Calendar Holiday"), InstanceName("Calendar Holiday"), TwoLevelCached]
     [ReadPermission(Keys.General)]
     [ModifyPermission(Keys.Libraries.Modify)]
