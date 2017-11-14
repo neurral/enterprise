@@ -101,6 +101,9 @@
                 </section>
             </div>
 
+
+            @{Html.RenderPartial(MVC.Views.Shared.Ads._AdMobile_Partial);}
+
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
                     @Texts.Site.Layout.FooterInfo
@@ -149,11 +152,6 @@
 
                     $('body').triggerHandler('layout');
 
-                    var $hamburger = $(".hamburger");
-                    $hamburger.on("click", function (e) {
-                        $hamburger.toggleClass("is-active");
-                        // Do something else, like open/close menu
-                    });
                 };
 
                 $(window).bind("load resize layout", doLayout);
@@ -166,15 +164,18 @@
                         // how far to scroll down before link "slides" into view
                         offset: { top: 100 }
                     });
+                    $('#fixed-mobile-ad').affix();
                 }
             });
         </script>
                             }
     <span id="top-link-block" class="hidden">
-        <a href="#top" class="well well-sm bg-black-active"
+
+        <a href="#top" class="btn btn-sm btn-primary"
            onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
             <i class="glyphicon glyphicon-chevron-up"></i> Top
         </a>
+
     </span>
 </body>
 </html>
