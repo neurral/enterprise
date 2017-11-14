@@ -19,7 +19,7 @@ namespace Enterprise.Administration.Entities
     [ReadPermission(Keys.General)]
     [ModifyPermission(Keys.User.Modify)]
     [LookupScript(Ks.Module + "." + Ks.User, Permission = Keys.General)]
-    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class UserRow : AuditLoggingRow, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity]
         public Int32? UserId

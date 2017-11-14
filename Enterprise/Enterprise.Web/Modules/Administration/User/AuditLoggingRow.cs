@@ -12,9 +12,9 @@
     /// two. There is also an optional IDeleteLogRow interface that supports auditing on delete but for it to work
     /// you need to also implement IIsActiveDeletedRow so that your rows aren't actually deleted.
     /// </summary>
-    public abstract class LoggingRow : Row, ILoggingRow
+    public abstract class AuditLoggingRow : Row, ILoggingRow, IIsActiveDeletedRow
     {
-        protected LoggingRow(RowFieldsBase fields)
+        protected AuditLoggingRow(RowFieldsBase fields)
             : base(fields)
         {
             loggingFields = (LoggingRowFields)fields;
@@ -48,6 +48,14 @@
             set { loggingFields.UpdateDate[this] = value; }
         }
 
+        [Insertable(true), Updatable(true)]
+        public Int16? IsActive
+        {
+            get { return loggingFields.IsActive[this]; }
+            set { loggingFields.IsActive[this] = value; }
+        }
+
+
         IIdField IInsertLogRow.InsertUserIdField
         {
             get { return loggingFields.InsertUserId; }
@@ -68,14 +76,21 @@
             get { return loggingFields.UpdateDate; }
         }
 
+        Int16Field IIsActiveRow.IsActiveField
+        {
+            get { return loggingFields.IsActive; }
+        }
+
         private LoggingRowFields loggingFields;
 
         public class LoggingRowFields : RowFieldsBase
         {
+
             public Int32Field InsertUserId;
             public DateTimeField InsertDate;
             public Int32Field UpdateUserId;
             public DateTimeField UpdateDate;
+            public Int16Field IsActive;
 
             public LoggingRowFields(string tableName = null, string fieldPrefix = null)
                 : base(tableName, fieldPrefix)

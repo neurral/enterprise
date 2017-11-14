@@ -13,7 +13,7 @@
 
         private UserDefinition GetFirst(IDbConnection connection, BaseCriteria criteria)
         {
-            var user = connection.TrySingle<Entities.UserRow>(criteria);
+            var user = connection.TrySingle<MyRow>(criteria);
             var personnel = user.GetPersonnelRecord(connection);
             if (user != null)
                 return new UserDefinition
