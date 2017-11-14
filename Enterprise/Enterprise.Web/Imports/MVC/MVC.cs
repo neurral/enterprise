@@ -15,12 +15,6 @@ namespace MVC
 
         public static class Administration
         {
-            public static class Ads
-            {
-                public const string _AdMega_Partial = "~/Modules/Administration/Ads/_AdMega_Partial.cshtml";
-                public const string _AdMobile_Partial = "~/Modules/Administration/Ads/_AdMobile_Partial.cshtml";
-            }
-
             public static class Dashboard
             {
                 public const string DashboardIndex = "~/Modules/Administration/Dashboard/DashboardIndex.cshtml";
@@ -133,6 +127,12 @@ namespace MVC
                 public const string Timeline = "~/Modules/AdminLTE/UIElements/Timeline.cshtml";
             }
             public const string Widgets = "~/Modules/AdminLTE/Widgets.cshtml";
+        }
+
+        public static class Ads
+        {
+            public const string _AdMega_Partial = "~/Views/Ads/_AdMega_Partial.cshtml";
+            public const string _AdMobile_Partial = "~/Views/Ads/_AdMobile_Partial.cshtml";
         }
 
         public static class BasicSamples
