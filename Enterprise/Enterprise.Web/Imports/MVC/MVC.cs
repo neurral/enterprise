@@ -15,6 +15,12 @@ namespace MVC
 
         public static class Administration
         {
+            public static class Ads
+            {
+                public const string _AdMega_Partial = "~/Modules/Administration/Ads/_AdMega_Partial.cshtml";
+                public const string _AdMobile_Partial = "~/Modules/Administration/Ads/_AdMobile_Partial.cshtml";
+            }
+
             public static class Dashboard
             {
                 public const string DashboardIndex = "~/Modules/Administration/Dashboard/DashboardIndex.cshtml";
@@ -427,6 +433,11 @@ namespace MVC
             public static class CalendarHoliday
             {
                 public const string CalendarHolidayIndex = "~/Modules/Organization/CalendarHoliday/CalendarHolidayIndex.cshtml";
+            }
+
+            public static class Organization_
+            {
+                public const string OrganizationIndex = "~/Modules/Organization/Organization/OrganizationIndex.cshtml";
             }
 
             public static class Personnel
