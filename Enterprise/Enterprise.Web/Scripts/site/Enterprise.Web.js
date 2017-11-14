@@ -2089,6 +2089,58 @@ var Enterprise;
 (function (Enterprise) {
     var Organization;
     (function (Organization) {
+        var OrganizationDialog = /** @class */ (function (_super) {
+            __extends(OrganizationDialog, _super);
+            function OrganizationDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Organization.OrganizationForm(_this.idPrefix);
+                return _this;
+            }
+            OrganizationDialog.prototype.getFormKey = function () { return Organization.OrganizationForm.formKey; };
+            OrganizationDialog.prototype.getIdProperty = function () { return Organization.OrganizationRow.idProperty; };
+            OrganizationDialog.prototype.getLocalTextPrefix = function () { return Organization.OrganizationRow.localTextPrefix; };
+            OrganizationDialog.prototype.getNameProperty = function () { return Organization.OrganizationRow.nameProperty; };
+            OrganizationDialog.prototype.getService = function () { return Organization.OrganizationService.baseUrl; };
+            OrganizationDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.responsive()
+            ], OrganizationDialog);
+            return OrganizationDialog;
+        }(Serenity.EntityDialog));
+        Organization.OrganizationDialog = OrganizationDialog;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var OrganizationGrid = /** @class */ (function (_super) {
+            __extends(OrganizationGrid, _super);
+            function OrganizationGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrganizationGrid.prototype.getColumnsKey = function () { return 'Organization.Organization'; };
+            OrganizationGrid.prototype.getDialogType = function () { return Organization.OrganizationDialog; };
+            OrganizationGrid.prototype.getIdProperty = function () { return Organization.OrganizationRow.idProperty; };
+            OrganizationGrid.prototype.getLocalTextPrefix = function () { return Organization.OrganizationRow.localTextPrefix; };
+            OrganizationGrid.prototype.getService = function () { return Organization.OrganizationService.baseUrl; };
+            OrganizationGrid.prototype.addButtonClick = function () {
+                this.editItem({
+                    OwnerId: Enterprise.Utils.getUser().UserId
+                });
+            };
+            OrganizationGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrganizationGrid);
+            return OrganizationGrid;
+        }(Serenity.EntityGrid));
+        Organization.OrganizationGrid = OrganizationGrid;
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
         var CalendarHolidayDialog = /** @class */ (function (_super) {
             __extends(CalendarHolidayDialog, _super);
             function CalendarHolidayDialog() {
@@ -9712,6 +9764,84 @@ var Enterprise;
                 Methods[x] = CalendarHolidayService.baseUrl + '/' + x;
             });
         })(CalendarHolidayService = Organization.CalendarHolidayService || (Organization.CalendarHolidayService = {}));
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var OrganizationForm = /** @class */ (function (_super) {
+            __extends(OrganizationForm, _super);
+            function OrganizationForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            OrganizationForm.formKey = 'Organization.Organization';
+            return OrganizationForm;
+        }(Serenity.PrefixedContext));
+        Organization.OrganizationForm = OrganizationForm;
+        [['Name', function () { return Serenity.StringEditor; }], ['OwnerId', function () { return Serenity.LookupEditor; }]].forEach(function (x) { return Object.defineProperty(OrganizationForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var OrganizationRow;
+        (function (OrganizationRow) {
+            OrganizationRow.idProperty = 'OrganizationId';
+            OrganizationRow.nameProperty = 'Name';
+            OrganizationRow.localTextPrefix = 'Organization.Organization';
+            OrganizationRow.lookupKey = 'Organization.Organization';
+            function getLookup() {
+                return Q.getLookup('Organization.Organization');
+            }
+            OrganizationRow.getLookup = getLookup;
+            var Fields;
+            (function (Fields) {
+            })(Fields = OrganizationRow.Fields || (OrganizationRow.Fields = {}));
+            [
+                'OrganizationId',
+                'Name',
+                'OwnerId',
+                'OwnerUsername',
+                'OwnerEmail',
+                'OwnerSource',
+                'OwnerPasswordHash',
+                'OwnerPasswordSalt',
+                'OwnerLastDirectoryUpdate',
+                'OwnerUserImage',
+                'OwnerInsertDate',
+                'OwnerInsertUserId',
+                'OwnerUpdateDate',
+                'OwnerUpdateUserId',
+                'OwnerIsActive'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(OrganizationRow = Organization.OrganizationRow || (Organization.OrganizationRow = {}));
+    })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
+})(Enterprise || (Enterprise = {}));
+var Enterprise;
+(function (Enterprise) {
+    var Organization;
+    (function (Organization) {
+        var OrganizationService;
+        (function (OrganizationService) {
+            OrganizationService.baseUrl = 'Organization/Organization';
+            var Methods;
+            (function (Methods) {
+            })(Methods = OrganizationService.Methods || (OrganizationService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrganizationService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrganizationService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = OrganizationService.baseUrl + '/' + x;
+            });
+        })(OrganizationService = Organization.OrganizationService || (Organization.OrganizationService = {}));
     })(Organization = Enterprise.Organization || (Enterprise.Organization = {}));
 })(Enterprise || (Enterprise = {}));
 var Enterprise;

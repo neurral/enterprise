@@ -129,12 +129,6 @@ namespace MVC
             public const string Widgets = "~/Modules/AdminLTE/Widgets.cshtml";
         }
 
-        public static class Ads
-        {
-            public const string _AdMega_Partial = "~/Views/Ads/_AdMega_Partial.cshtml";
-            public const string _AdMobile_Partial = "~/Views/Ads/_AdMobile_Partial.cshtml";
-        }
-
         public static class BasicSamples
         {
             public static class Dialogs
@@ -464,6 +458,11 @@ namespace MVC
             public const string _LayoutMeta = "~/Views/Shared/_LayoutMeta.cshtml";
             public const string _LayoutNoNavigation = "~/Views/Shared/_LayoutNoNavigation.cshtml";
             public const string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
+            public static class Ads
+            {
+                public const string _AdMega_Partial = "~/Views/Shared/Ads/_AdMega_Partial.cshtml";
+                public const string _AdMobile_Partial = "~/Views/Shared/Ads/_AdMobile_Partial.cshtml";
+            }
             public const string Error = "~/Views/Shared/Error.cshtml";
             public const string LeftNavigation = "~/Views/Shared/LeftNavigation.cshtml";
         }
