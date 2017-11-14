@@ -1,5 +1,4 @@
-﻿
-namespace Enterprise.Organization {
+﻿namespace Enterprise.Organization {
     export namespace OrganizationService {
         export const baseUrl = 'Organization/Organization';
 
@@ -24,10 +23,11 @@ namespace Enterprise.Organization {
             'Retrieve', 
             'List'
         ].forEach(x => {
-            (<any>OrganizationService)[x] = function (r, s, o) { 
-                return Q.serviceRequest(baseUrl + '/' + x, r, s, o); 
+            (<any>OrganizationService)[x] = function (r, s, o) {
+                return Q.serviceRequest(baseUrl + '/' + x, r, s, o);
             };
             (<any>Methods)[x] = baseUrl + '/' + x;
         });
     }
 }
+

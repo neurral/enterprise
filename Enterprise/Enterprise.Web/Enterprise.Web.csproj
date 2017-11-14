@@ -865,6 +865,8 @@
     <Content Include="Content\fonts\OpenSansCondensedLightItalic.ttf" />
     <Content Include="Modules\Administration\User\Membership\Account\AccountLogin.AdminLTE.cshtml" />
     <Content Include="Content\favicon\manifest.json" />
+    <Content Include="Views\Ads\_AdMobile_Partial.cshtml" />
+    <Content Include="Views\Ads\_AdMega_Partial.cshtml" />
     <None Include="Properties\PublishProfiles\cutin - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cutin - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap-toggle\bootstrap-toggle.min.js.map" />
@@ -1368,6 +1370,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Content>
+    <None Include="Web.Base.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.NeurralRelease.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <TypeScriptCompile Include="Imports\ServerTypings\ApprovalStatuses.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1381,6 +1396,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.CalendarHolidayColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.PersonnelColumns.ts">
@@ -1900,13 +1918,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Organization.TimeRecordTypeForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationRow.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <Content Include="Modules\Organization\Organization\OrganizationIndex.cshtml" />
     <TypeScriptCompile Include="Modules\Organization\Organization\OrganizationDialog.ts" />
     <TypeScriptCompile Include="Modules\Organization\Organization\OrganizationGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
-    <Content Include="wwwroot\Content\site\site.organization.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Organization.OrganizationForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2150,7 +2173,7 @@
     <Compile Include="Modules\Administration\User\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\PermissionService.cs" />
-    <Compile Include="Modules\Administration\User\LoggingRow.cs" />
+    <Compile Include="Modules\Administration\User\AuditLoggingRow.cs" />
     <Compile Include="Modules\Administration\User\Authentication\UserDefinition.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthenticationService.cs" />
     <Compile Include="Modules\Administration\User\Authentication\UserRetrieveService.cs" />
