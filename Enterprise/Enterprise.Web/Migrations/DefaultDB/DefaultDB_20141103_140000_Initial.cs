@@ -26,11 +26,11 @@ namespace Enterprise.Migrations.DefaultDB
 
             Insert.IntoTable("User").Row(new {
                 Username = "admin",
-                //DisplayName = "admin",
+                //DisplayName/PW = "admin/sysadmin",
                 Email = "neurralsystems@gmail.com",
                 Source = "site",
-                PasswordHash = "rfqpSPYs0ekFlPyvIRTXsdhE/qrTHFF+kKsAUla7pFkXL4BgLGlTe89GDX5DBysenMDj8AqbIZPybqvusyCjwQ",
-                PasswordSalt = "hJf_F",
+                PasswordHash = "R9//EDq9NNSogDpOcwowEmzmOOQmckYSn6PqiyNBWTAvFB73YofQq5W8nsssol/n+8TmF9Bl0Irsw9FlZk0BrA",
+                PasswordSalt = "NdR&*",
                 InsertDate = new DateTime(2014, 1, 1),
                 InsertUserId = 1,
                 IsActive = 1
